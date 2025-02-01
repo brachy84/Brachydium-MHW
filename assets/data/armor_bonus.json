@@ -1,0 +1,532 @@
+{
+  "data": [
+    {
+      "name": "Anjanath Power",
+      "primaryBonusSkill": "Adrenaline",
+      "primaryBonusDesc": "Temporarily reduces stamina depletion when health is at 40% or lower.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Anjanath Will",
+      "primaryBonusSkill": "Adrenaline",
+      "secondaryBonusSkill": "Stamina Cap Up",
+      "primaryBonusDesc": "Temporarily reduces stamina depletion when health is at 40% or lower.",
+      "secondaryBonusDesc": "Increases Stamina Cap.",
+      "primaryReq": 2,
+      "secondaryReq": 4
+    },
+    {
+      "name": "Astral Blessing",
+      "primaryBonusSkill": "Astral Blessing",
+      "primaryBonusDesc": "Often increases the number of rewards received at the end of a quest. (Does not work if joining a quest in progress)",
+      "primaryReq": 5
+    },
+    {
+      "name": "Bazelgeuse Protection",
+      "primaryBonusSkill": "Guts",
+      "primaryBonusDesc": "Once only, above a certain threshold, you withstand an attack that would normally cart you",
+      "primaryReq": 3
+    },
+    {
+      "name": "Commission Guidance",
+      "primaryBonusSkill": "Carving Master",
+      "primaryBonusDesc": "Lets you carve one additional time (no effect when joining mid-quest)",
+      "primaryReq": 4
+    },
+    {
+      "name": "Diablos Mastery",
+      "primaryBonusSkill": "Bludgeoner",
+      "secondaryBonusSkill": "Non-Elemental Boost",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Raises attack as your weapon loses sharpness. Also boost ranged weapon melee attacks and odds of stunning.",
+      "secondaryBonusDesc": "Powers up non-elemental weapons you have equipped."
+    },
+    {
+      "name": "Diablos Power",
+      "primaryBonusSkill": "Bludgeoner",
+      "secondaryBonusSkill": "Non-Elemental Boost",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Raises attack as your weapon loses sharpness. Also boost ranged weapon melee attacks and odds of stunning.",
+      "secondaryBonusDesc": "Powers up non-elemental weapons you have equipped."
+    },
+    {
+      "name": "Guild Guidance",
+      "primaryBonusSkill": "Great Luck",
+      "primaryBonusDesc": "High chance of increased game rewards (no effect when joining mid-quest).",
+      "primaryReq": 4
+    },
+    {
+      "name": "Kirin Blessing",
+      "primaryBonusSkill": "Capture Master",
+      "primaryBonusDesc": "High chance of increased capture rewards (no effect when joining mid-quest).",
+      "primaryReq": 4
+    },
+    {
+      "name": "Kirin Favor",
+      "primaryBonusSkill": "Capture Master",
+      "primaryBonusDesc": "High chance of increased capture rewards (no effect when joining mid-quest).",
+      "primaryReq": 3
+    },
+    {
+      "name": "Kushala Daora Flight",
+      "primaryBonusSkill": "Nullify Wind Pressure",
+      "primaryBonusDesc": "Negates all wind pressure.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Legiana Blessing",
+      "primaryBonusSkill": "Good Luck",
+      "primaryBonusDesc": "Good chance of increased quest rewards (no effect when joining mid-quest).",
+      "primaryReq": 3
+    },
+    {
+      "name": "Legiana Favor",
+      "primaryBonusSkill": "Good Luck",
+      "secondaryBonusSkill": "Bow Charge Plus",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Good chance of increased quest rewards (no effect when joining mid-quest).",
+      "secondaryBonusDesc": "Increase Max Bow Charge level by one."
+    },
+    {
+      "name": "Lunastra Favor",
+      "primaryBonusSkill": "Stamina Cap Up",
+      "secondaryBonusSkill": "Mind's Eye/Ballistics",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Increases Stamina Cap.",
+      "secondaryBonusDesc": "Prevents attacks from being deflected. Also shortens the distance before ammo and arrows reach maximum power."
+    },
+    {
+      "name": "Nergigante Hunger",
+      "primaryBonusSkill": "Hasten Recovery",
+      "primaryBonusDesc": "Regenerates your health as you continuosly attack a monster. Recovery varies by weapon.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Odogaron Mastery",
+      "primaryBonusSkill": "Punishing Draw",
+      "secondaryBonusSkill": "Protective Polish",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Adds a stun effect to draw attacks and slightly increases attack power.",
+      "secondaryBonusDesc": "Weapon sharpness does not decrease for a set time after sharpening."
+    },
+    {
+      "name": "Odogaron Power",
+      "primaryBonusSkill": "Punishing Draw",
+      "primaryBonusDesc": "Adds a stun effect to draw attacks and slightly increases attack power.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Pink Rathian Mastery",
+      "primaryBonusSkill": "Poison Duration Up",
+      "primaryBonusDesc": "Extends the duration of your poison's effect on monsters.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Rathalos Power",
+      "primaryBonusSkill": "Critical Element",
+      "primaryBonusDesc": "Increases Elemental Damage when landing critical hits.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Rathalos Mastery",
+      "primaryBonusSkill": "Critical Element",
+      "secondaryBonusSkill": "Mind's Eye/Ballistics",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Increases Elemental Damage when landing critical hits.",
+      "secondaryBonusDesc": "Prevents attacks from being deflected. Also shortens the distance before ammo and arrows reach maximum power."
+    },
+    {
+      "name": "Soul of the Dragoon",
+      "primaryBonusSkill": "Elemental Airborne",
+      "secondaryBonusSkill": "Master's Touch",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Elemental damage increased for jumping attacks.",
+      "secondaryBonusDesc": "Prevents your weapon from losing sharpness during critical hits."
+    },
+    {
+      "name": "Teostra Technique",
+      "primaryBonusSkill": "Master's Touch",
+      "primaryBonusDesc": "Prevents your weapon from losing sharpness during critical hits.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Uragaan Protection",
+      "primaryBonusSkill": "Guard Up",
+      "primaryBonusDesc": "Allows you to guard against ordinarily unblockable attacks.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Vaal Hazak Vitality",
+      "primaryBonusSkill": "Super Recovery",
+      "primaryBonusDesc": "Allows recovery to exceed the red portion of the health gauge.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Xeno'jiva Divinity",
+      "primaryBonusSkill": "Razor Sharp/Spare Shot",
+      "primaryBonusDesc": "Halves sharpness loss. For bows and bowguns, shots have a chance not to expend coatings or ammo.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Zorah Magdaros Mastery",
+      "primaryBonusSkill": "Critical Status",
+      "primaryBonusDesc": "Increases abnormal status effect damage when landing critical hits.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Anjanath Dominance",
+      "primaryBonusSkill": "Stamina Cap Up",
+      "primaryBonusDesc": "Increases Stamina Cap.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Rathian Essence",
+      "primaryBonusSkill": "Poison Duration Up",
+      "primaryBonusDesc": "Extends the duration of your poison's effect on monsters.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Ancient Divinity",
+      "primaryBonusSkill": "Critical Status",
+      "primaryBonusDesc": "Increases abnormal status effect damage (paralysis, poison, sleep, blast) when landing critical hits.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Commission Alchemy",
+      "primaryBonusSkill": "Bombardier Secret",
+      "primarySkillSecret": "Bombardier",
+      "primaryReq": 3
+    },
+    {
+      "name": "Barioth Hidden Art",
+      "primaryBonusSkill": "Punishing Draw ",
+      "primaryBonusDesc": "Adds a stun effect to draw attacks and slightly increases attack power.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Rathalos Essence",
+      "primaryBonusSkill": "Mind's Eye/Ballistics",
+      "primaryBonusDesc": "Prevents attacks from being deflected. Also shortens the distance before ammo and arrows reach maximum power.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Diablos Ambition",
+      "primaryBonusSkill": "Slugger Secret",
+      "primarySkillSecret": "Slugger",
+      "primaryReq": 3
+    },
+    {
+      "name": "Legiana Ambition",
+      "primaryBonusSkill": "Bow Charge Plus",
+      "primaryBonusDesc": "Increases max bow charge level by one.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Odogaron Essence",
+      "primaryBonusSkill": "Protective Polish",
+      "primaryBonusDesc": "Weapon sharpness does not decrease for a set time after sharpening.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Uragaan Ambition",
+      "primaryBonusSkill": "Guard Up",
+      "primaryBonusDesc": "Allows you to guard against ordinarily unblockable attacks.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Nargacuga Essence",
+      "primaryBonusSkill": "True Razor Sharp/Spare Shot",
+      "primaryBonusDesc": "Greatly reduces sharpness loss and bows and bowguns have a chance not to expend coating or ammo.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Glavenus Essence",
+      "primaryBonusSkill": "Maximum Might Secret",
+      "primarySkillSecret": "Maximum Might",
+      "primaryReq": 3
+    },
+    {
+      "name": "Brachydios Essence",
+      "primaryBonusSkill": "Agitator Secret",
+      "primarySkillSecret": "Agitator",
+      "primaryReq": 3
+    },
+    {
+      "name": "Tigrex Essence",
+      "primaryBonusSkill": "Free Meal Secret",
+      "primarySkillSecret": "Free Meal",
+      "primaryReq": 3
+    },
+    {
+      "name": "Instructor's Guidance",
+      "primaryBonusSkill": "Capture Master",
+      "primaryBonusDesc": "High chance of increased capture rewards.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Bazelgeuse Ambition",
+      "primaryBonusSkill": "Guts",
+      "primaryBonusDesc": "Above a certain health threshold, you withstand an attack would normally cart you (once only).",
+      "primaryReq": 2
+    },
+    {
+      "name": "Deviljho Essence",
+      "primaryBonusSkill": "Stamina Thief Secret",
+      "primarySkillSecret": "Stamina Thief",
+      "primaryReq": 3
+    },
+    {
+      "name": "Velkhana Divinity",
+      "primaryBonusSkill": "Critical Element",
+      "secondaryBonusSkill": "Frostcraft",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Increases Elemental Damage when landing critical hits.",
+      "secondaryBonusDesc": "An aura of frost builds when your weapon is sheathed, raising attack. Wanes each melee hit or shot fired."
+    },
+    {
+      "name": "Vaal Soulvein",
+      "primaryBonusSkill": "Super Recovery",
+      "primaryBonusDesc": "Allows recovery to exceed the red portion of the health gauge.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Nergigante Ambition",
+      "primaryBonusSkill": "Hasten Recovery",
+      "primaryBonusDesc": "Regenerates your health as you continually attack a monster. Recovery varies by weapon.",
+      "primaryReq": 2
+    },
+    {
+      "name": "Kirin Divinity",
+      "primaryBonusSkill": "Great Luck",
+      "primaryBonusDesc": "High chance of increased quest rewards.",
+      "primaryReq": 3
+    },
+    {
+      "name": "Namielle Divinity",
+      "primaryBonusSkill": "Element Acceleration",
+      "secondaryBonusSkill": "True Element Acceleration",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Continually attacking a monster activates Free Element/Ammo Up Lv2 and increases elemental damage.",
+      "secondaryBonusDesc": "Continually attacking a monster activates Free Element/Ammo Up Lv3 and increases elemental damage."
+    },
+    {
+      "name": "Shara Ishvalda Divinity",
+      "primaryBonusSkill": "Gaia's Veil",
+      "secondaryBonusSkill": "True Gaia's Veil",
+      "primaryReq": 4,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "While wearing a mantle, gain Windproof Lv3, Earplugs Lv3, Tremor Res Lv3, and Flinch Free.",
+      "secondaryBonusDesc": "While wearing a mantle, gain Tremor Resistance Lv3, Earplugs Lv5, max Windproof, and Flinch Free."
+    },
+    {
+      "name": "Zorah Magdaros Essence",
+      "primaryBonusSkill": "Artillery Secret",
+      "primarySkillSecret": "Artillery",
+      "primaryReq": 3
+    },
+    {
+      "name": "Zinogre Essence",
+      "primaryBonusSkill": "Latent Power Secret",
+      "primarySkillSecret": "Latent Power",
+      "primaryReq": 3
+    },
+    {
+      "name": "Rajang's Rage",
+      "primaryBonusSkill": "Mind's Eye Ballistics",
+      "secondaryBonusSkill": "Protective Polish",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Prevents attacks from being deflected. Also shortens the distance before ammo and arrows reach maximum power.",
+      "secondaryBonusDesc": "Weapon sharpness does not decrease for a set time(60 seconds) after sharpening."
+    },
+    {
+      "name": "Survivor",
+      "primaryBonusSkill": "Zombie & Effluvia Resistance",
+      "secondaryBonusSkill": "Agitator Secret",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Prevents zombie and effluvial buildup.",
+      "secondarySkillSecret": "Agitator"
+    },
+    {
+      "name": "Safi'jiva Seal",
+      "primaryBonusSkill": "Dragonvein Awakening",
+      "secondaryBonusSkill": "True Dragonvein Awakening",
+      "primaryReq": 3,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "Elem. Abnormal status, & affinity up with weapon drawn. Take damage when attacking but can be recovered by continually attacking.",
+      "secondaryBonusDesc": "Enhances attacks even more with weapon drawn. Take damage when attacking, but can be recovered by continually attacking."
+    },
+    {
+      "name": "Guild Pride",
+      "primaryBonusSkill": "Good Luck",
+      "secondaryBonusSkill": "Carving Master",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": ".",
+      "secondaryBonusDesc": "."
+    },
+    {
+      "name": "Silver Rathalos Essence",
+      "primaryBonusSkill": "Slinger Capacity Secret",
+      "secondaryBonusSkill": "True Critical Element",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primarySkillSecret": "Slinger Capacity",
+      "secondaryBonusDesc": "Greatly increases Elemental Damage when landing critical hits."
+    },
+    {
+      "name": "Gold Rathian Essence",
+      "primaryBonusSkill": "Divine Blessing Secret",
+      "secondaryBonusSkill": "True Critical Status",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primarySkillSecret": "Divine Blessing",
+      "secondaryBonusDesc": "Greatly increases status effect damage when landing critical hits."
+    },
+    {
+      "name": "Lunastra Essence",
+      "primaryBonusSkill": "Tool Specialist Secret",
+      "primarySkillSecret": "Tool Specialist",
+      "primaryReq": 3
+    },
+    {
+      "name": "Brachydios Will",
+      "primaryBonusSkill": "Agitator Secret",
+      "secondaryBonusSkill": "Artillery Secret",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primarySkillSecret": "Agitator",
+      "secondarySkillSecret": "Artillery"
+    },
+    {
+      "name": "Rajang Will",
+      "primaryBonusSkill": "Maximum Might Secret",
+      "secondaryBonusSkill": "Heroics Secret",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primarySkillSecret": "Maximum Might",
+      "secondarySkillSecret": "Heroics"
+    },
+    {
+      "name": "Kulve Taroth Essence",
+      "primaryBonusSkill": "Guts",
+      "secondaryBonusSkill": "Free Meal Secret",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Above a certain health threshold, you withstand an attack that would normally cart you (once only).",
+      "secondarySkillSecret": "Free Meal"
+    },
+    {
+      "name": "Frostfang Absolute Art",
+      "primaryBonusSkill": "Punishing Draw",
+      "secondaryBonusSkill": "Slugger Secret",
+      "primaryReq": 1,
+      "secondaryReq": 3,
+      "primaryBonusDesc": "Adds a stun effect to draw attacks and slightly increases attack power.",
+      "secondarySkillSecret": "Slugger"
+    },
+    {
+      "name": "Alatreon Divinity",
+      "primaryBonusSkill": "Elemental Conversion",
+      "secondaryBonusSkill": "All Elemental Resistance",
+      "primaryReq": 2,
+      "secondaryReq": 3,
+      "primaryBonusDesc": "Increases true element attack by 5% (2% for bowguns) of combined elemental resistances.",
+      "secondaryBonusDesc": "Increases all elemental resistances +20%."
+    },
+    {
+      "name": "Fatalis Legend",
+      "primaryBonusSkill": "Inheritance",
+      "secondaryBonusSkill": "Transcendence",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Removes the skill cap for all skill secrets.",
+      "secondaryBonusDesc": "Grants True Razor Sharp/Spare Shot. Health/Stamina +100 at the start of a quest or after fainting. (Effect doesn't stack)."
+    },
+    {
+      "name": "Power Cell",
+      "primaryBonusSkill": "Power Cell",
+      "primaryBonusDesc": "Increases defense and eliminates damage reactions. Taking several hits knocks it out, but reactivate over time.",
+      "primaryReq": 5
+    },
+    {
+      "name": "Witcher's Knowledge",
+      "primaryBonusSkill": "Igni Intensity",
+      "secondaryBonusSkill": "Super Recovery",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": ".",
+      "secondaryBonusDesc": "."
+    },
+    {
+      "name": "New World",
+      "primaryBonusSkill": "Hasten Recovery",
+      "secondaryBonusSkill": "Great Luck",
+      "primaryReq": 2,
+      "secondaryReq": 4,
+      "primaryBonusDesc": "Regenerates your health as you continually attack a monster. Recovery varies by weapon.",
+      "secondaryBonusDesc": "High chance of increased quest rewards."
+    },
+    {
+      "name": "Appreciation Blessing",
+      "primaryBonusSkill": "???",
+      "secondaryBonusSkill": "???",
+      "primaryReq": 3,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "Increases the odds of getting special Sizzling Spice rewards.",
+      "secondaryBonusDesc": "Greatly increases the odds of getting special Sizzling Spice rewards."
+    },
+    {
+      "name": "Joyful Blessing",
+      "primaryBonusSkill": "Joy's Gift",
+      "secondaryBonusSkill": "???",
+      "primaryReq": 3,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "Increases the odds of getting special Sizzling Spice rewards.",
+      "secondaryBonusDesc": "Greatly increases the odds of getting special Sizzling Spice rewards."
+    },
+    {
+      "name": "Fun Fright Blessing",
+      "primaryBonusSkill": "Fun Fright's Gift",
+      "secondaryBonusSkill": "Fun Fright's Gratitude",
+      "primaryReq": 3,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "Increases the odds of getting special Fun Fright's rewards.",
+      "secondaryBonusDesc": "Greatly increases the odds of getting special Fun Fright's rewards."
+    },
+    {
+      "name": "Sizzling Blessing",
+      "primaryBonusSkill": "Sizzling Gift",
+      "secondaryBonusSkill": "Sizzling Gratitude",
+      "primaryReq": 3,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "Increases the odds of getting special Sizzling Spice rewards.",
+      "secondaryBonusDesc": "Greatly increases the odds of getting special Sizzling Spice rewards."
+    },
+    {
+      "name": "Full Bloom Blessing",
+      "primaryBonusSkill": "Full Bloom's Gift",
+      "secondaryBonusSkill": "Full Bloom's Gratitude",
+      "primaryReq": 3,
+      "secondaryReq": 5,
+      "primaryBonusDesc": "Increases odds of getting special holiday Joy rewards.",
+      "secondaryBonusDesc": "Greatly increases the odds of getting special holiday Joy rewards."
+    },
+    {
+      "name": "Astera Blessing",
+      "primaryBonusSkill": "Great Luck",
+      "primaryBonusDesc": "Often increases the number of rewards received at the end of a quest.",
+      "primaryReq": 5
+    }
+  ]
+}

@@ -1,0 +1,3144 @@
+{
+  "data": [
+    {
+      "name": "Artillery Charm I",
+      "rarity": 0,
+      "primary": "Artillery",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Artillery Charm II",
+      "rarity": 0,
+      "primary": "Artillery",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Artillery Charm III",
+      "rarity": 0,
+      "primary": "Artillery",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Attack Charm I",
+      "rarity": 0,
+      "primary": "Attack Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Attack Charm II",
+      "rarity": 0,
+      "primary": "Attack Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Attack Charm III",
+      "rarity": 0,
+      "primary": "Attack Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Attack Charm IV",
+      "rarity": 0,
+      "primary": "Attack Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Attack Charm V",
+      "rarity": 0,
+      "primary": "Attack Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Awakening Charm I",
+      "rarity": 0,
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Awakening Charm II",
+      "rarity": 0,
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Awakening Charm III",
+      "rarity": 0,
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blast Charm I",
+      "rarity": 0,
+      "primary": "Blast Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blast Charm II",
+      "rarity": 0,
+      "primary": "Blast Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blast Charm III",
+      "rarity": 0,
+      "primary": "Blast Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blast Coating Charm",
+      "rarity": 0,
+      "primary": "Blast Functionality",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blaze Charm I ",
+      "rarity": 0,
+      "primary": "Fire Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blaze Charm II",
+      "rarity": 0,
+      "primary": "Fire Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blaze Charm III",
+      "rarity": 0,
+      "primary": "Fire Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blaze Charm IV",
+      "rarity": 0,
+      "primary": "Fire Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blaze Charm V",
+      "rarity": 0,
+      "primary": "Fire Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bleed Charm I",
+      "rarity": 0,
+      "primary": "Bleeding Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bleed Charm II",
+      "rarity": 0,
+      "primary": "Bleeding Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bleed Charm III",
+      "rarity": 0,
+      "primary": "Bleeding Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blessing Charm I",
+      "rarity": 0,
+      "primary": "Divine Blessing",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blessing Charm II",
+      "rarity": 0,
+      "primary": "Divine Blessing",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blessing Charm III",
+      "rarity": 0,
+      "primary": "Divine Blessing",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blight Charm I",
+      "rarity": 0,
+      "primary": "Blight Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blight Charm II",
+      "rarity": 0,
+      "primary": "Blight Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Blight Charm III",
+      "rarity": 0,
+      "primary": "Blight Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Breaker Charm I",
+      "rarity": 0,
+      "primary": "Partbreaker",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Breaker Charm II",
+      "rarity": 0,
+      "primary": "Partbreaker",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Breaker Charm III",
+      "rarity": 0,
+      "primary": "Partbreaker",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bulwark Charm",
+      "rarity": 0,
+      "primary": "Guard Up",
+      "secondary": "Resuscitate",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Botany Charm I",
+      "rarity": 0,
+      "primary": "Botanist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Botany Charm II",
+      "rarity": 0,
+      "primary": "Botanist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Botany Charm III",
+      "rarity": 0,
+      "primary": "Botanist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Botany Charm IV",
+      "rarity": 0,
+      "primary": "Botanist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bombardier Charm I",
+      "rarity": 0,
+      "primary": "Bombardier",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bombardier Charm II",
+      "rarity": 0,
+      "primary": "Bombardier",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Bombardier Charm III",
+      "rarity": 0,
+      "primary": "Bombardier",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Capacity Charm",
+      "rarity": 0,
+      "primary": "Capacity Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Critical Charm I",
+      "rarity": 0,
+      "primary": "Critical Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Critical Charm II",
+      "rarity": 0,
+      "primary": "Critical Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Critical Charm III",
+      "rarity": 0,
+      "primary": "Critical Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Challenger Charm I ",
+      "rarity": 0,
+      "primary": "Agitator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Challenger Charm II",
+      "rarity": 0,
+      "primary": "Agitator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Challenger Charm III",
+      "rarity": 0,
+      "primary": "Agitator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Challenger Charm IV",
+      "rarity": 0,
+      "primary": "Agitator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Challenger Charm V",
+      "rarity": 0,
+      "primary": "Agitator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Clearmind Charm",
+      "rarity": 0,
+      "primary": "Heat Guard",
+      "secondary": "Effluvial Expert",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Defense Charm I",
+      "rarity": 0,
+      "primary": "Defense Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Defense Charm II",
+      "rarity": 0,
+      "primary": "Defense Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Defense Charm III",
+      "rarity": 0,
+      "primary": "Defense Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Defense Charm IV",
+      "rarity": 0,
+      "primary": "Defense Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Defense Charm V",
+      "rarity": 0,
+      "primary": "Defense Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Demolition Charm I",
+      "rarity": 0,
+      "primary": "Blast Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Demolition Charm II",
+      "rarity": 0,
+      "primary": "Blast Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Demolition Charm III",
+      "rarity": 0,
+      "primary": "Blast Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Demolition Charm IV",
+      "rarity": 0,
+      "primary": "Blast Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Dispersal Charm",
+      "rarity": 0,
+      "primary": "Spread/Power Shots",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Dispersal Charm II",
+      "rarity": 0,
+      "primary": "Spread/Power Shots",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Dragon Charm I",
+      "rarity": 0,
+      "primary": "Dragon Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Dragon Charm II",
+      "rarity": 0,
+      "primary": "Dragon Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Dragon Charm III",
+      "rarity": 0,
+      "primary": "Dragon Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Draw Charm I",
+      "rarity": 0,
+      "primary": "Critical Draw",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Draw Charm II",
+      "rarity": 0,
+      "primary": "Critical Draw",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Draw Charm III",
+      "rarity": 0,
+      "primary": "Critical Draw",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Earplugs Charm I",
+      "rarity": 0,
+      "primary": "Earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Earplugs Charm II",
+      "rarity": 0,
+      "primary": "Earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Earplugs Charm III",
+      "rarity": 0,
+      "primary": "Earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Earplugs Charm IV",
+      "rarity": 0,
+      "primary": "Earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Earplugs Charm V",
+      "rarity": 0,
+      "primary": "Earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Enervate Charm I",
+      "rarity": 0,
+      "primary": "Stamina Thief",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Enervate Charm II",
+      "rarity": 0,
+      "primary": "Stamina Thief",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Enervate Charm III",
+      "rarity": 0,
+      "primary": "Stamina Thief",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Evasion Charm I",
+      "rarity": 0,
+      "primary": "Evade Window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Evasion Charm II",
+      "rarity": 0,
+      "primary": "Evade Window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Evasion Charm III",
+      "rarity": 0,
+      "primary": "Evade Window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Evasion Charm IV",
+      "rarity": 0,
+      "primary": "Evade Window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Evasion Charm V",
+      "rarity": 0,
+      "primary": "Evade Window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Exploiter Charm I ",
+      "rarity": 0,
+      "primary": "Weakness Exploit",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Exploiter Charm II",
+      "rarity": 0,
+      "primary": "Weakness Exploit",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Exploiter Charm III",
+      "rarity": 0,
+      "primary": "Weakness Exploit",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Extension Charm I",
+      "rarity": 0,
+      "primary": "Item Prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Extension Charm II",
+      "rarity": 0,
+      "primary": "Item Prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Extension Charm III",
+      "rarity": 0,
+      "primary": "Item Prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fair Wind Charm",
+      "rarity": 0,
+      "primary": "Attack Boost",
+      "secondary": "Divine Blessing",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fire Charm I ",
+      "rarity": 0,
+      "primary": "Fire Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fire Charm II",
+      "rarity": 0,
+      "primary": "Fire Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fire Charm III",
+      "rarity": 0,
+      "primary": "Fire Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fitness Charm I",
+      "rarity": 0,
+      "primary": "Constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fitness Charm II",
+      "rarity": 0,
+      "primary": "Constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fitness Charm III",
+      "rarity": 0,
+      "primary": "Constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fitness Charm IV",
+      "rarity": 0,
+      "primary": "Constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fitness Charm V",
+      "rarity": 0,
+      "primary": "Constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Friendship Charm I",
+      "rarity": 0,
+      "primary": "Wide Range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Friendship Charm II",
+      "rarity": 0,
+      "primary": "Wide Range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Friendship Charm III",
+      "rarity": 0,
+      "primary": "Wide Range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Friendship Charm IV",
+      "rarity": 0,
+      "primary": "Wide Range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Friendship Charm V",
+      "rarity": 0,
+      "primary": "Wide Range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Frost Charm I",
+      "rarity": 0,
+      "primary": "Ice Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Frost Charm II",
+      "rarity": 0,
+      "primary": "Ice Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Frost Charm III",
+      "rarity": 0,
+      "primary": "Ice Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Frost Charm IV",
+      "rarity": 0,
+      "primary": "Ice Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Frost Charm V",
+      "rarity": 0,
+      "primary": "Ice Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fortification Charm",
+      "rarity": 0,
+      "primary": "Fortify",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Flood Charm I",
+      "rarity": 0,
+      "primary": "Water Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Flood Charm II",
+      "rarity": 0,
+      "primary": "Water Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Flood Charm III",
+      "rarity": 0,
+      "primary": "Water Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Flood Charm IV",
+      "rarity": 0,
+      "primary": "Water Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Flood Charm V",
+      "rarity": 0,
+      "primary": "Water Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Focus Charm I",
+      "rarity": 0,
+      "primary": "Focus",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Focus Charm II",
+      "rarity": 0,
+      "primary": "Focus",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Focus Charm III",
+      "rarity": 0,
+      "primary": "Focus",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fury Charm I",
+      "rarity": 0,
+      "primary": "Resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fury Charm II",
+      "rarity": 0,
+      "primary": "Resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fury Charm III",
+      "rarity": 0,
+      "primary": "Resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fury Charm IV",
+      "rarity": 0,
+      "primary": "Resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Fury Charm V",
+      "rarity": 0,
+      "primary": "Resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Gale Charm",
+      "rarity": 0,
+      "primary": "Affinity Sliding",
+      "secondary": "Airborne",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Gatherer's Charm",
+      "rarity": 0,
+      "primary": "Master Gatherer",
+      "secondary": "Carving Pro",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Geomancy Charm",
+      "rarity": 0,
+      "primary": "Forager's Luck",
+      "secondary": "Detector",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Geology Charm I",
+      "rarity": 0,
+      "primary": "Geologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Geology Charm II",
+      "rarity": 0,
+      "primary": "Geologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Geology Charm III",
+      "rarity": 0,
+      "primary": "Geologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Glutton's Charm I",
+      "rarity": 0,
+      "primary": "Speed Eating",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Glutton's Charm II",
+      "rarity": 0,
+      "primary": "Speed Eating",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Glutton's Charm III",
+      "rarity": 0,
+      "primary": "Speed Eating",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Guard Charm I",
+      "rarity": 0,
+      "primary": "Iron Skin",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "",
+      "rarity": 0,
+      "primary": "Iron Skin",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "",
+      "rarity": 0,
+      "primary": "Iron Skin",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Guardian Charm",
+      "rarity": 0,
+      "primary": "Offensive Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Guardian Charm II",
+      "rarity": 0,
+      "primary": "Offensive Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Guardian Charm III",
+      "rarity": 0,
+      "primary": "Offensive Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Handicraft Charm I",
+      "rarity": 0,
+      "primary": "Handicraft",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Handicraft Charm II",
+      "rarity": 0,
+      "primary": "Handicraft",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Handicraft Charm III",
+      "rarity": 0,
+      "primary": "Handicraft",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Handicraft Charm IV",
+      "rarity": 0,
+      "primary": "Handicraft",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Handicraft Charm V",
+      "rarity": 0,
+      "primary": "Handicraft",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Health Charm I",
+      "rarity": 0,
+      "primary": "Health Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Health Charm II",
+      "rarity": 0,
+      "primary": "Health Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Health Charm III",
+      "rarity": 0,
+      "primary": "Health Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Hungerless Charm I",
+      "rarity": 0,
+      "primary": "Hunger Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Hungerless Charm II",
+      "rarity": 0,
+      "primary": "Hunger Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Hungerless Charm III",
+      "rarity": 0,
+      "primary": "Hunger Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Heavy Artillery Charm I",
+      "rarity": 0,
+      "primary": "Heavy Artillery",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Heavy Artillery Charm II",
+      "rarity": 0,
+      "primary": "Heavy Artillery",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Hunter's Life Charm",
+      "rarity": 0,
+      "primary": "BBQ Master",
+      "secondary": "Master Fisher",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Invigorate Charm I",
+      "rarity": 0,
+      "primary": "Power Prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Invigorate Charm II",
+      "rarity": 0,
+      "primary": "Power Prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Invigorate Charm III",
+      "rarity": 0,
+      "primary": "Power Prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Insect Charm I ",
+      "rarity": 0,
+      "primary": "Entomologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Insect Charm II",
+      "rarity": 0,
+      "primary": "Entomologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Insect Charm III",
+      "rarity": 0,
+      "primary": "Entomologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Intimidator Charm I ",
+      "rarity": 0,
+      "primary": "Intimidator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Intimidator Charm II",
+      "rarity": 0,
+      "primary": "Intimidator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Intimidator Charm III",
+      "rarity": 0,
+      "primary": "Intimidator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ice Charm I",
+      "rarity": 0,
+      "primary": "Ice Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ice Charm II",
+      "rarity": 0,
+      "primary": "Ice Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ice Charm III",
+      "rarity": 0,
+      "primary": "Ice Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Impact Charm I ",
+      "rarity": 0,
+      "primary": "Flinch Free",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Impact Charm II",
+      "rarity": 0,
+      "primary": "Flinch Free",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Impact Charm III",
+      "rarity": 0,
+      "primary": "Flinch Free",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Immobilize Charm I",
+      "rarity": 0,
+      "primary": "Paralysis Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Immobilize Charm II",
+      "rarity": 0,
+      "primary": "Paralysis Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Immobilize Charm III",
+      "rarity": 0,
+      "primary": "Paralysis Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Immobilize Charm IV",
+      "rarity": 0,
+      "primary": "Paralysis Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ironside Charm I",
+      "rarity": 0,
+      "primary": "Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ironside Charm II",
+      "rarity": 0,
+      "primary": "Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ironside Charm III",
+      "rarity": 0,
+      "primary": "Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ironside Charm IV",
+      "rarity": 0,
+      "primary": "Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Ironside Charm V",
+      "rarity": 0,
+      "primary": "Guard",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Grit Charm I ",
+      "rarity": 0,
+      "primary": "Heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Grit Charm II",
+      "rarity": 0,
+      "primary": "Heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Grit Charm III",
+      "rarity": 0,
+      "primary": "Heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Grit Charm IV",
+      "rarity": 0,
+      "primary": "Heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Grit Charm V",
+      "rarity": 0,
+      "primary": "Heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "KO Charm I",
+      "rarity": 0,
+      "primary": "Slugger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "KO Charm II",
+      "rarity": 0,
+      "primary": "Slugger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "KO Charm III",
+      "rarity": 0,
+      "primary": "Slugger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Leaping Charm I",
+      "rarity": 0,
+      "primary": "Evade Extender",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Leaping Charm II",
+      "rarity": 0,
+      "primary": "Evade Extender",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Leaping Charm III",
+      "rarity": 0,
+      "primary": "Evade Extender",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Light Eater's Charm",
+      "rarity": 0,
+      "primary": "Free Meal",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Marathon Charm I",
+      "rarity": 0,
+      "primary": "Marathon Runner",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Marathon Charm II",
+      "rarity": 0,
+      "primary": "Marathon Runner",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Marathon Charm III",
+      "rarity": 0,
+      "primary": "Marathon Runner",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Master's Charm I",
+      "rarity": 0,
+      "primary": "Critical Eye",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Master's Charm II",
+      "rarity": 0,
+      "primary": "Critical Eye",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Master's Charm III",
+      "rarity": 0,
+      "primary": "Critical Eye",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Master's Charm IV",
+      "rarity": 0,
+      "primary": "Critical Eye",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Master's Charm V",
+      "rarity": 0,
+      "primary": "Critical Eye",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Maintenance Charm I",
+      "rarity": 0,
+      "primary": "Tool Specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Maintenance Charm II",
+      "rarity": 0,
+      "primary": "Tool Specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Maintenance Charm III",
+      "rarity": 0,
+      "primary": "Tool Specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Miasma Charm I",
+      "rarity": 0,
+      "primary": "Effluvia Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Miasma Charm II",
+      "rarity": 0,
+      "primary": "Effluvia Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Miasma Charm III",
+      "rarity": 0,
+      "primary": "Effluvia Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mighty Charm I ",
+      "rarity": 0,
+      "primary": "Maximum Might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mighty Charm II",
+      "rarity": 0,
+      "primary": "Maximum Might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mighty Charm III",
+      "rarity": 0,
+      "primary": "Maximum Might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mud Puppy Charm",
+      "rarity": 0,
+      "primary": "Muck Resistance",
+      "secondary": "Leap of Faith",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mushroom Charm I",
+      "rarity": 0,
+      "primary": "Mushroomancer",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mushroom Charm II",
+      "rarity": 0,
+      "primary": "Mushroomancer",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mushroom Charm III",
+      "rarity": 0,
+      "primary": "Mushroomancer",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mirewalker Charm I ",
+      "rarity": 0,
+      "primary": "Aquatic Expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mirewalker Charm II",
+      "rarity": 0,
+      "primary": "Aquatic Expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Mirewalker Charm III",
+      "rarity": 0,
+      "primary": "Aquatic Expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Normal Shots Charm",
+      "rarity": 0,
+      "primary": "Normal Shots",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Normal Shots Charm II",
+      "rarity": 0,
+      "primary": "Normal Shots",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Para Coating Charm",
+      "rarity": 0,
+      "primary": "Para Functionality",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Paralysis Charm I",
+      "rarity": 0,
+      "primary": "Paralysis Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Paralysis Charm II",
+      "rarity": 0,
+      "primary": "Paralysis Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Paralysis Charm III",
+      "rarity": 0,
+      "primary": "Paralysis Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Penetration Charm",
+      "rarity": 0,
+      "primary": "Piercing Shots",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Penetration Charm II",
+      "rarity": 0,
+      "primary": "Piercing Shots",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Phoenix Charm I",
+      "rarity": 0,
+      "primary": "Coalescence",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Phoenix Charm II",
+      "rarity": 0,
+      "primary": "Coalescence",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Phoenix Charm III",
+      "rarity": 0,
+      "primary": "Coalescence",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Poison Coating Charm",
+      "rarity": 0,
+      "primary": "Poison Functionality",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Poison Charm I",
+      "rarity": 0,
+      "primary": "Poison Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Poison Charm II",
+      "rarity": 0,
+      "primary": "Poison Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Poison Charm III",
+      "rarity": 0,
+      "primary": "Poison Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Power Charm I ",
+      "rarity": 0,
+      "primary": "Latent Power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Power Charm II",
+      "rarity": 0,
+      "primary": "Latent Power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Power Charm III",
+      "rarity": 0,
+      "primary": "Latent Power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Power Charm IV",
+      "rarity": 0,
+      "primary": "Latent Power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Power Charm V",
+      "rarity": 0,
+      "primary": "Latent Power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Procurer's Charm",
+      "rarity": 0,
+      "primary": "Pro Transporter",
+      "secondary": "Honey Hunter",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Performer's Charm",
+      "rarity": 0,
+      "primary": "Horn Maestro",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Performer's Charm II",
+      "rarity": 0,
+      "primary": "Horn Maestro",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Rally Charm I",
+      "rarity": 0,
+      "primary": "Palico Rally",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Rally Charm II",
+      "rarity": 0,
+      "primary": "Palico Rally",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Rally Charm III",
+      "rarity": 0,
+      "primary": "Palico Rally",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Rally Charm IV",
+      "rarity": 0,
+      "primary": "Palico Rally",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Rally Charm V",
+      "rarity": 0,
+      "primary": "Palico Rally",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Recovery Charm I",
+      "rarity": 0,
+      "primary": "Recovery Up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Recovery Charm II",
+      "rarity": 0,
+      "primary": "Recovery Up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Recovery Charm III",
+      "rarity": 0,
+      "primary": "Recovery Up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Rider's Charm",
+      "rarity": 0,
+      "primary": "Master Mounter",
+      "secondary": "Jump Master",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Shock Charm I",
+      "rarity": 0,
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Shock Charm II",
+      "rarity": 0,
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Shock Charm III",
+      "rarity": 0,
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Shock Charm IV",
+      "rarity": 0,
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Shock Charm V",
+      "rarity": 0,
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sheath Charm I",
+      "rarity": 0,
+      "primary": "Quick Sheath",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sheath Charm II",
+      "rarity": 0,
+      "primary": "Quick Sheath",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sheath Charm III",
+      "rarity": 0,
+      "primary": "Quick Sheath",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sleep Charm I",
+      "rarity": 0,
+      "primary": "Sleep Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sleep Charm II",
+      "rarity": 0,
+      "primary": "Sleep Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sleep Charm III",
+      "rarity": 0,
+      "primary": "Sleep Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sleep Coating Charm",
+      "rarity": 0,
+      "primary": "Sleep Functionality",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Slinger Charm I",
+      "rarity": 0,
+      "primary": "Slinger Capacity",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Slinger Charm II",
+      "rarity": 0,
+      "primary": "Slinger Capacity",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Slinger Charm III",
+      "rarity": 0,
+      "primary": "Slinger Capacity",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Speed Heal Charm I",
+      "rarity": 0,
+      "primary": "Recovery Speed",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Speed Heal Charm II",
+      "rarity": 0,
+      "primary": "Recovery Speed",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Speed Heal Charm III",
+      "rarity": 0,
+      "primary": "Recovery Speed",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Special Shot Charm",
+      "rarity": 0,
+      "primary": "Special Ammo Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Special Shot Charm II",
+      "rarity": 0,
+      "primary": "Special Ammo Boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Stealth Charm I",
+      "rarity": 0,
+      "primary": "Stealth",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Stealth Charm II",
+      "rarity": 0,
+      "primary": "Stealth",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Stealth Charm III",
+      "rarity": 0,
+      "primary": "Stealth",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Smoke Charm I",
+      "rarity": 0,
+      "primary": "Survival Expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Smoke Charm II",
+      "rarity": 0,
+      "primary": "Survival Expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Smoke Charm III",
+      "rarity": 0,
+      "primary": "Survival Expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Stun Charm I",
+      "rarity": 0,
+      "primary": "Stun Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Stun Charm II",
+      "rarity": 0,
+      "primary": "Stun Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Stun Charm III",
+      "rarity": 0,
+      "primary": "Stun Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Surveyor's Charm",
+      "rarity": 0,
+      "primary": "Scoutfly Range Up",
+      "secondary": "Scholar",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Surge Charm I",
+      "rarity": 0,
+      "primary": "Stamina Surge",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Surge Charm II",
+      "rarity": 0,
+      "primary": "Stamina Surge",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Surge Charm III",
+      "rarity": 0,
+      "primary": "Stamina Surge",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tranq Charm I",
+      "rarity": 0,
+      "primary": "Sleep Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tranq Charm II",
+      "rarity": 0,
+      "primary": "Sleep Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tranq Charm III",
+      "rarity": 0,
+      "primary": "Sleep Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tranq Charm IV",
+      "rarity": 0,
+      "primary": "Sleep Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tremor Charm I ",
+      "rarity": 0,
+      "primary": "Tremor Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tremor Charm II",
+      "rarity": 0,
+      "primary": "Tremor Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tremor Charm III",
+      "rarity": 0,
+      "primary": "Tremor Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Tracker Charm ",
+      "rarity": 0,
+      "primary": "Scenthound",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Trickshot Charm",
+      "rarity": 0,
+      "primary": "Dungmaster",
+      "secondary": "Blindsider",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Thunder Charm I",
+      "rarity": 0,
+      "primary": "Thunder Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Thunder Charm II",
+      "rarity": 0,
+      "primary": "Thunder Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Thunder Charm III",
+      "rarity": 0,
+      "primary": "Thunder Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Unscathed Charm I ",
+      "rarity": 0,
+      "primary": "Peak Performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Unscathed Charm II",
+      "rarity": 0,
+      "primary": "Peak Performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Unscathed Charm III",
+      "rarity": 0,
+      "primary": "Peak Performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Venom Charm I",
+      "rarity": 0,
+      "primary": "Poison Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Venom Charm II",
+      "rarity": 0,
+      "primary": "Poison Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Venom Charm III",
+      "rarity": 0,
+      "primary": "Poison Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Venom Charm IV",
+      "rarity": 0,
+      "primary": "Poison Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Water Charm I ",
+      "rarity": 0,
+      "primary": "Water Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Water Charm II",
+      "rarity": 0,
+      "primary": "Water Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Water Charm III",
+      "rarity": 0,
+      "primary": "Water Resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Whetstone Charm I",
+      "rarity": 0,
+      "primary": "Speed Sharpening",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Whetstone Charm II",
+      "rarity": 0,
+      "primary": "Speed Sharpening",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Whetstone Charm III",
+      "rarity": 0,
+      "primary": "Speed Sharpening",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Windproof Charm I",
+      "rarity": 0,
+      "primary": "Windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Windproof Charm II",
+      "rarity": 0,
+      "primary": "Windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Windproof Charm III",
+      "rarity": 0,
+      "primary": "Windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Windproof Charm IV",
+      "rarity": 0,
+      "primary": "Windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Windproof Charm V",
+      "rarity": 0,
+      "primary": "Windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Wyrmsbane Charm I",
+      "rarity": 0,
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Wyrmsbane Charm II",
+      "rarity": 0,
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Wyrmsbane Charm III",
+      "rarity": 0,
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Wyrmsbane Charm IV",
+      "rarity": 0,
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Wyrmsbane Charm V",
+      "rarity": 0,
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Wyrmslayer Charm",
+      "rarity": 0,
+      "primary": "Elderseal Boost",
+      "secondary": "Dragon Attack",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Razor Sharp Charm",
+      "rarity": 0,
+      "primary": "Razor Sharp/Spare Shot",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Adamantine Charm",
+      "rarity": 0,
+      "primary": "Non-Elemental Boost",
+      "secondary": "Bludgeoner",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Sealer's Charm",
+      "rarity": 0,
+      "primary": "Elderseal Boost",
+      "secondary": "Adrenaline",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Gutsy Charm",
+      "rarity": 0,
+      "primary": "Guts",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "Shaver Charm",
+      "rarity": 0,
+      "primary": "Clutch Claw Boost",
+      "secondary": "Cliffhanger",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    }
+  ]
+}

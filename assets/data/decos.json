@@ -1,0 +1,2804 @@
+{
+  "data": [
+    {
+      "name": "Antidote Jewel 1",
+      "primary": "Poison Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Antipara Jewel 1",
+      "primary": "Paralysis Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Pep Jewel 1",
+      "primary": "Sleep Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Steadfast Jewel 1",
+      "primary": "Stun Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Antiblast Jewel 1",
+      "primary": "Blast Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Suture Jewel 1",
+      "primary": "Bleeding Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Def Lock Jewel 1",
+      "primary": "Iron Skin",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Earplug Jewel 3",
+      "primary": "Earplugs",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Wind Resist Jewel 2",
+      "primary": "Windproof",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Footing Jewel 2",
+      "primary": "Tremor Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Attack Jewel 1",
+      "primary": "Attack Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Defense Jewel 1",
+      "primary": "Defense Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Vitality Jewel 1",
+      "primary": "Health Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Recovery Jewel 1",
+      "primary": "Recovery Speed",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Fire Res Jewel 1",
+      "primary": "Fire Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Water Res Jewel 1",
+      "primary": "Water Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Ice Res Jewel 1",
+      "primary": "Ice Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Thunder Res Jewel 1",
+      "primary": "Thunder Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Dragon Res Jewel 1",
+      "primary": "Dragon Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Resistor Jewel 1",
+      "primary": "Blight Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Blaze Jewel 1",
+      "primary": "Fire Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Stream Jewel 1",
+      "primary": "Water Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Frost Jewel 1",
+      "primary": "Ice Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Bolt Jewel 1",
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Dragon Jewel 1",
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Venom Jewel 1",
+      "primary": "Poison Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Paralyzer Jewel 1",
+      "primary": "Paralysis Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Sleep Jewel 1",
+      "primary": "Sleep Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Blast Jewel 1",
+      "primary": "Blast Attack",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Poisoncoat Jewel 3",
+      "primary": "Poison Functionality",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Paracoat Jewel 3",
+      "primary": "Para Functionality",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Sleepcoat Jewel 3",
+      "primary": "Sleep Functionality",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Blastcoat Jewel 3",
+      "primary": "Blast Functionality",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Release Jewel 3",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Expert Jewel 1",
+      "primary": "Critical Eye",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Critical Jewel 2",
+      "primary": "Critical Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Tenderizer Jewel 2",
+      "primary": "Weakness Exploit",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Charger Jewel 2",
+      "primary": "Focus",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Handicraft Jewel 3",
+      "primary": "Handicraft",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Draw Jewel 2",
+      "primary": "Critical Draw",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Destroyer Jewel 2",
+      "primary": "Partbreaker",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "KO Jewel 2",
+      "primary": "Slugger",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Drain Jewel 1",
+      "primary": "Stamina Thief",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Flight Jewel 2",
+      "primary": "Airborne",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Throttle Jewel 2",
+      "primary": "Latent Power",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Challenger Jewel 2",
+      "primary": "Agitator",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Flawless Jewel 2",
+      "primary": "Peak Performance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Potential Jewel 2",
+      "primary": "Heroics",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Fortitude Jewel 1",
+      "primary": "Fortify",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Furor Jewel 2",
+      "primary": "Resentment",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Sonorous Jewel 1",
+      "primary": "Horn Maestro",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Magazine Jewel 2",
+      "primary": "Capacity Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Trueshot Jewel 1",
+      "primary": "Special Ammo Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Artillery Jewel 1",
+      "primary": "Artillery",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Heavy Artillery Jewel 1",
+      "primary": "Heavy Artillery",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Sprinter Jewel 2",
+      "primary": "Marathon Runner",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Physique Jewel 2",
+      "primary": "Constitution",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Refresh Jewel 2",
+      "primary": "Stamina Surge",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Hungerless Jewel 1",
+      "primary": "Hunger Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Evasion Jewel 2",
+      "primary": "Evade Window",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Jumping Jewel 2",
+      "primary": "Evade Extender",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Ironwall Jewel 1",
+      "primary": "Guard",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Sheath Jewel 1",
+      "primary": "Quick Sheath",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Friendship Jewel 1",
+      "primary": "Wide Range",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Enduring Jewel 1",
+      "primary": "Item Prolonger",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Satiated Jewel 1",
+      "primary": "Free Meal",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Gobbler Jewel 1",
+      "primary": "Speed Eating",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Grinder Jewel 1",
+      "primary": "Speed Sharpening",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Bomber Jewel 1",
+      "primary": "Bombardier",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Fungiform Jewel 1",
+      "primary": "Mushroomancer",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Protection Jewel 1",
+      "primary": "Divine Blessing",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Meowster Jewel 1",
+      "primary": "Palico Rally",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Botany Jewel 1",
+      "primary": "Botanist",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Geology Jewel 1",
+      "primary": "Geologist",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Mighty Jewel 2",
+      "primary": "Maximum Might",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Stonethrower Jewel 1",
+      "primary": "Slinger Capacity",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Tip Toe Jewel 1",
+      "primary": "Stealth",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Brace Jewel 3",
+      "primary": "Flinch Free",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Smoke Jewel 1",
+      "primary": "Survival Expert",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Mirewalker Jewel 1",
+      "primary": "Aquatic Expert",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Specimen Jewel 1",
+      "primary": "Entomologist",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Scent Jewel 1",
+      "primary": "Scenthound",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Intimidator Jewel 1",
+      "primary": "Intimidator",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Slider Jewel 2",
+      "primary": "Affinity Sliding",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Medicine Jewel 1",
+      "primary": "Recovery Up",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Forceshot Jewel 3",
+      "primary": "Normal Shots",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Pierce Jewel 3",
+      "primary": "Piercing Shots",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Spread Jewel 3",
+      "primary": "Spread/Power Shots",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Enhancer Jewel 2",
+      "primary": "Power Prolonger",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Crisis Jewel 1",
+      "primary": "Resuscitate",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Dragonseal Jewel 3",
+      "primary": "Elderseal Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Maintenance Jewel 1",
+      "primary": "Tool Specialist",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Mighty Bow Jewel 2",
+      "primary": "Bow Charge Plus",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Mind's Eye Jewel 2",
+      "primary": "Mind's Eye/Ballistics",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Shield Jewel 2",
+      "primary": "Guard Up",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Sharp Jewel 2",
+      "primary": "Protective Polish",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Elementless Jewel 2",
+      "primary": "Non-Elemental Boost",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Miasma Jewel 1",
+      "primary": "Effluvia Resistance",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 1
+    },
+    {
+      "name": "Phoenix Jewel 3",
+      "primary": "Coalescence",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 3
+    },
+    {
+      "name": "Guardian Jewel 2",
+      "primary": "Offensive Guard",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Cooling Jewel 2",
+      "primary": "Heat Guard",
+      "secondary": "",
+      "primaryLvl": 1,
+      "size": 2
+    },
+    {
+      "name": "Fire Res Jewel+ 4",
+      "primary": "Fire Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Water Res Jewel+ 4",
+      "primary": "Water Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Ice Res Jewel+ 4",
+      "primary": "Ice Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Thunder Res Jewel+ 4",
+      "primary": "Thunder Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Dragon Res Jewel+ 4",
+      "primary": "Dragon Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Blaze Jewel+ 4",
+      "primary": "Fire Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Stream Jewel+ 4",
+      "primary": "Water Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Frost Jewel+ 4",
+      "primary": "Ice Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Bolt Jewel+ 4",
+      "primary": "Thunder Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Dragon Jewel+ 4",
+      "primary": "Dragon Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Venom Jewel+ 4",
+      "primary": "Poison Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Paralyzer Jewel+ 4",
+      "primary": "Paralysis Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Sleep Jewel+ 4",
+      "primary": "Sleep Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Blast Jewel+ 4",
+      "primary": "Blast Attack",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Hard Fire Res Jewel 4",
+      "primary": "Fire Resistance",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Water Res Jewel 4",
+      "primary": "Water Resistance",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Ice Res Jewel 4",
+      "primary": "Ice Resistance",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Thunder Res Jewel 4",
+      "primary": "Thunder Resistance",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Dragon Res Jewel 4",
+      "primary": "Dragon Resistance",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Antidote Jewel+ 4",
+      "primary": "Poison Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Antipara Jewel+ 4",
+      "primary": "Paralysis Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Pep Jewel+ 4",
+      "primary": "Sleep Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Steadfast Jewel+ 4",
+      "primary": "Stun Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Antiblast Jewel+ 4",
+      "primary": "Blast Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Suture Jewel+ 4",
+      "primary": "Bleeding Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Def Lock Jewel+ 4",
+      "primary": "Iron Skin",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Miasma Jewel+ 4",
+      "primary": "Effluvia Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Hungerless Jewel+ 4",
+      "primary": "Hunger Resistance",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Recovery Jewel+ 4",
+      "primary": "Recovery Speed",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Tip Toe Jewel+ 4",
+      "primary": "Stealth",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Intimidator Jewel+ 4",
+      "primary": "Intimidator",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Meowster Jewel+ 4",
+      "primary": "Palico Rally",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Hard Tip Toe Jewel 4",
+      "primary": "Stealth",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Intimidator Jewel 4",
+      "primary": "Intimidator",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Meowster Jewel 4",
+      "primary": "Palico Rally",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Trueshot Jewel+ 4",
+      "primary": "Special Ammo Boost",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Heavy Artillery Jewel+ 4",
+      "primary": "Heavy Artillery",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Botany Jewel+ 4",
+      "primary": "Botanist",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Geology Jewel+ 4",
+      "primary": "Geologist",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Survival Jewel+ 4",
+      "primary": "Survival Expert",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Mirewalker Jewel+ 4",
+      "primary": "Aquatic Expert",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Specimen Jewel+ 4",
+      "primary": "Entomologist",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Sonorous Jewel+ 4",
+      "primary": "Horn Maestro",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Hard Botany Jewel+ 4",
+      "primary": "Botanist",
+      "secondary": "",
+      "primaryLvl": 4,
+      "size": 4
+    },
+    {
+      "name": "Hard Geology Jewel 4",
+      "primary": "Geologist",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Survival Jewel 4",
+      "primary": "Survival Expert",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Specimen Jewel 4",
+      "primary": "Entomologist",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Enduring Jewel+ 4",
+      "primary": "Item Prolonger",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Defense Jewel+ 4",
+      "primary": "Defense Boost",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Hard Enduring Jewel 4",
+      "primary": "Item Prolonger",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Hard Defense Jewel 4",
+      "primary": "Defense Boost",
+      "secondary": "",
+      "primaryLvl": 3,
+      "size": 4
+    },
+    {
+      "name": "Artillery Jewel+ 4",
+      "primary": "Artillery",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Earplug Jewel+ 4",
+      "primary": "Earplugs",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist Jewel+ 4",
+      "primary": "Windproof",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Attack Jewel+ 4",
+      "primary": "Attack Boost",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Expert Jewel+ 4",
+      "primary": "Critical Eye",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Handicraft Jewel+ 4",
+      "primary": "Handicraft",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Throttle Jewel+ 4",
+      "primary": "Latent Power",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Challenger Jewel+ 4",
+      "primary": "Agitator",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Potential Jewel+ 4",
+      "primary": "Heroics",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Furor Jewel+ 4",
+      "primary": "Resentment",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Physique Jewel+ 4",
+      "primary": "Constitution",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Evasion Jewel+ 4",
+      "primary": "Evade Window",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Ironwall Jewel+ 4",
+      "primary": "Guard",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Friendship Jewel+ 4",
+      "primary": "Wide Range",
+      "secondary": "",
+      "primaryLvl": 2,
+      "size": 4
+    },
+    {
+      "name": "Drain/Physique Jewel 4",
+      "primary": "Stamina Thief",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fortitude/Physique Jewel 4",
+      "primary": "Fortify",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Crisis/Physique Jewel 4",
+      "primary": "Resuscitate",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Ironwall/Physique Jewel 4",
+      "primary": "Guard",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Friendship/Physique Jewel 4",
+      "primary": "Wide Range",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Satiated/Physique Jewel 4",
+      "primary": "Free Meal",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Stonethrower/Physique Jewel 4",
+      "primary": "Slinger Capacity",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Resistor/Physique Jewel 4",
+      "primary": "Blight Resistance",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flight/Physique Jewel 4",
+      "primary": "Airborne",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sprinter/Physique Jewel 4",
+      "primary": "Marathon Runner",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Refresh/Physique Jewel 4",
+      "primary": "Stamina Surge",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Jumping/Physique Jewel 4",
+      "primary": "Evade Extender",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sheath/Physique Jewel 4",
+      "primary": "Quick Sheath",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Gobbler/Physique Jewel 4",
+      "primary": "Speed Eating",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Grinder/Physique Jewel 4",
+      "primary": "Speed Sharpening",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Bomber/Physique Jewel 4",
+      "primary": "Bombardier",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fungiform/Physique Jewel 4",
+      "primary": "Mushroomancer",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Slider/Physique Jewel 4",
+      "primary": "Affinity Sliding",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Guardian/Physique Jewel 4",
+      "primary": "Offensive Guard",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Drain/Evasion Jewel 4",
+      "primary": "Stamina Thief",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fortitude/Evasion Jewel 4",
+      "primary": "Fortify",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Crisis/Evasion Jewel 4",
+      "primary": "Resuscitate",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Ironwall/Evasion Jewel 4",
+      "primary": "Guard",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Friendship/Evasion Jewel 4",
+      "primary": "Wide Range",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Satiated/Evasion Jewel 4",
+      "primary": "Free Meal",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Stonethrower/Evasion Jewel 4",
+      "primary": "Slinger Capacity",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Resistor/Evasion Jewel 4",
+      "primary": "Blight Resistance",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flight/Evasion Jewel 4",
+      "primary": "Airborne",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sprinter/Evasion Jewel 4",
+      "primary": "Marathon Runner",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Refresh/Evasion Jewel 4",
+      "primary": "Stamina Surge",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Jumping/Evasion Jewel 4",
+      "primary": "Evade Extender",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sheath/Evasion Jewel 4",
+      "primary": "Quick Sheath",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Gobbler/Evasion Jewel 4",
+      "primary": "Speed Eating",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Grinder/Evasion Jewel 4",
+      "primary": "Speed Sharpening",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Bomber/Evasion Jewel 4",
+      "primary": "Bombardier",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fungiform/Evasion Jewel 4",
+      "primary": "Mushroomancer",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Slider/Evasion Jewel 4",
+      "primary": "Affinity Sliding",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Guardian/Evasion Jewel 4",
+      "primary": "Offensive Guard",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Drain/Attack Jewel 4",
+      "primary": "Stamina Thief",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fortitude/Attack Jewel 4",
+      "primary": "Fortify",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Crisis/Attack Jewel 4",
+      "primary": "Resuscitate",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Ironwall/Attack Jewel 4",
+      "primary": "Guard",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Friendship/Attack Jewel 4",
+      "primary": "Wide Range",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Satiated/Attack Jewel 4",
+      "primary": "Free Meal",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Stonethrower/Attack Jewel 4",
+      "primary": "Slinger Capacity",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Resistor/Attack Jewel 4",
+      "primary": "Blight Resistance",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flight/Attack Jewel 4",
+      "primary": "Airborne",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sprinter/Attack Jewel 4",
+      "primary": "Marathon Runner",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Refresh/Attack Jewel 4",
+      "primary": "Stamina Surge",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Jumping/Attack Jewel 4",
+      "primary": "Evade Extender",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sheath/Attack Jewel 4",
+      "primary": "Quick Sheath",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Gobbler/Attack Jewel 4",
+      "primary": "Speed Eating",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Grinder/Attack Jewel 4",
+      "primary": "Speed Sharpening",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Bomber/Attack Jewel 4",
+      "primary": "Bombardier",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fungiform/Attack Jewel 4",
+      "primary": "Mushroomancer",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Slider/Attack Jewel 4",
+      "primary": "Affinity Sliding",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Guardian/Attack Jewel 4",
+      "primary": "Offensive Guard",
+      "secondary": "Attack Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Drain/Expert Jewel 4",
+      "primary": "Stamina Thief",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fortitude/Expert Jewel 4",
+      "primary": "Fortify",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Crisis/Expert Jewel 4",
+      "primary": "Resuscitate",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Ironwall/Expert Jewel 4",
+      "primary": "Guard",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Friendship/Expert Jewel 4",
+      "primary": "Wide Range",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Satiated/Expert Jewel 4",
+      "primary": "Free Meal",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Stonethrower/Expert Jewel 4",
+      "primary": "Slinger Capacity",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Resistor/Expert Jewel 4",
+      "primary": "Blight Resistance",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flight/Expert Jewel 4",
+      "primary": "Airborne",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sprinter/Expert Jewel 4",
+      "primary": "Marathon Runner",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Refresh/Expert Jewel 4",
+      "primary": "Stamina Surge",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Jumping/Expert Jewel 4",
+      "primary": "Evade Extender",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sheath/Expert Jewel 4",
+      "primary": "Quick Sheath",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Gobbler/Expert Jewel 4",
+      "primary": "Speed Eating",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Grinder/Expert Jewel 4",
+      "primary": "Speed Sharpening",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Bomber/Expert Jewel 4",
+      "primary": "Bombardier",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fungiform/Expert Jewel 4",
+      "primary": "Mushroomancer",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Slider/Expert Jewel 4",
+      "primary": "Affinity Sliding",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Guardian/Expert Jewel 4",
+      "primary": "Offensive Guard",
+      "secondary": "Critical Eye",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Drain/Release Jewel 4",
+      "primary": "Stamina Thief",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fortitude/Release Jewel 4",
+      "primary": "Fortify",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Crisis/Release Jewel 4",
+      "primary": "Resuscitate",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Ironwall/Release Jewel 4",
+      "primary": "Guard",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Friendship/Release Jewel 4",
+      "primary": "Wide Range",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Satiated/Release Jewel 4",
+      "primary": "Free Meal",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Stonethrower/Release Jewel 4",
+      "primary": "Slinger Capacity",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Resistor/Release Jewel 4",
+      "primary": "Blight Resistance",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flight/Release Jewel 4",
+      "primary": "Airborne",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sprinter/Release Jewel 4",
+      "primary": "Marathon Runner",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Refresh/Release Jewel 4",
+      "primary": "Stamina Surge",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Jumping/Release Jewel 4",
+      "primary": "Evade Extender",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sheath/Release Jewel 4",
+      "primary": "Quick Sheath",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Gobbler/Release Jewel 4",
+      "primary": "Speed Eating",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Grinder/Release Jewel 4",
+      "primary": "Speed Sharpening",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Bomber/Release Jewel 4",
+      "primary": "Bombardier",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fungiform/Release Jewel 4",
+      "primary": "Mushroomancer",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Slider/Release Jewel 4",
+      "primary": "Affinity Sliding",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Guardian/Release Jewel 4",
+      "primary": "Offensive Guard",
+      "secondary": "Free Elem/Ammo Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Drain/Handicraft Jewel 4",
+      "primary": "Stamina Thief",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fortitude/Handicraft Jewel 4",
+      "primary": "Fortify",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Crisis/Handicraft Jewel 4",
+      "primary": "Resuscitate",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Ironwall/Handicraft Jewel 4",
+      "primary": "Guard",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Friendship/Handicraft Jewel 4",
+      "primary": "Wide Range",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Satiated/Handicraft Jewel 4",
+      "primary": "Free Meal",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Stonethrower/Handicraft Jewel 4",
+      "primary": "Slinger Capacity",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Resistor/Handicraft Jewel 4",
+      "primary": "Blight Resistance",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flight/Handicraft Jewel 4",
+      "primary": "Airborne",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sprinter/Handicraft Jewel 4",
+      "primary": "Marathon Runner",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Refresh/Handicraft Jewel 4",
+      "primary": "Stamina Surge",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Jumping/Handicraft Jewel 4",
+      "primary": "Evade Extender",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Sheath/Handicraft Jewel 4",
+      "primary": "Quick Sheath",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Gobbler/Handicraft Jewel 4",
+      "primary": "Speed Eating",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Grinder/Handicraft Jewel 4",
+      "primary": "Speed Sharpening",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Bomber/Handicraft Jewel 4",
+      "primary": "Bombardier",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Fungiform/Handicraft Jewel 4",
+      "primary": "Mushroomancer",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Slider/Handicraft Jewel 4",
+      "primary": "Affinity Sliding",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Guardian/Handicraft Jewel 4",
+      "primary": "Offensive Guard",
+      "secondary": "Handicraft",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Footing/Protection Jewel 4",
+      "primary": "Tremor Resistance",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Charger/Protection Jewel 4",
+      "primary": "Focus",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Enhancer/Protection Jewel 4",
+      "primary": "Power Prolonger",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Destroyer/Protection Jewel 4",
+      "primary": "Partbreaker",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "KO/Protection Jewel 4",
+      "primary": "Slugger",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Potential/Protection Jewel 4",
+      "primary": "Heroics",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist/Protection Jewel 4",
+      "primary": "Windproof",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Draw/Protection Jewel 4",
+      "primary": "Critical Draw",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Throttle/Protection Jewel 4",
+      "primary": "Latent Power",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Challenger/Protection Jewel 4",
+      "primary": "Agitator",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flawless/Protection Jewel 4",
+      "primary": "Peak Performance",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Furor/Protection Jewel 4",
+      "primary": "Resentment",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Mighty/Protection Jewel 4",
+      "primary": "Maximum Might",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Brace/Protection Jewel 4",
+      "primary": "Flinch Free",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Phoenix/Protection Jewel 4",
+      "primary": "Coalescence",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Earplug/Protection Jewel 4",
+      "primary": "Earplugs",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Critical/Protection Jewel 4",
+      "primary": "Critical Boost",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Tenderizer/Protection Jewel 4",
+      "primary": "Weakness Exploit",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Handicraft/Protection Jewel 4",
+      "primary": "Handicraft",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Release/Protection Jewel 4",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "Divine Blessing",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Footing/Medicine Jewel 4",
+      "primary": "Tremor Resistance",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Charger/Medicine Jewel 4",
+      "primary": "Focus",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Enhancer/Medicine Jewel 4",
+      "primary": "Power Prolonger",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Destroyer/Medicine Jewel 4",
+      "primary": "Partbreaker",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "KO/Medicine Jewel 4",
+      "primary": "Slugger",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Potential/Medicine Jewel 4",
+      "primary": "Heroics",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist/Medicine Jewel 4",
+      "primary": "Windproof",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Draw/Medicine Jewel 4",
+      "primary": "Critical Draw",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Throttle/Medicine Jewel 4",
+      "primary": "Latent Power",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Challenger/Medicine Jewel 4",
+      "primary": "Agitator",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flawless/Medicine Jewel 4",
+      "primary": "Peak Performance",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Furor/Medicine Jewel 4",
+      "primary": "Resentment",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Mighty/Medicine Jewel 4",
+      "primary": "Maximum Might",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Brace/Medicine Jewel 4",
+      "primary": "Flinch Free",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Phoenix/Medicine Jewel 4",
+      "primary": "Coalescence",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Earplug/Medicine Jewel 4",
+      "primary": "Earplugs",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Critical/Medicine Jewel 4",
+      "primary": "Critical Boost",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Tenderizer/Medicine Jewel 4",
+      "primary": "Weakness Exploit",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Handicraft/Medicine Jewel 4",
+      "primary": "Handicraft",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Release/Medicine Jewel 4",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "Recovery Up",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Footing/Vitality Jewel 4",
+      "primary": "Tremor Resistance",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Charger/Vitality Jewel 4",
+      "primary": "Focus",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Enhancer/Vitality Jewel 4",
+      "primary": "Power Prolonger",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Destroyer/Vitality Jewel 4",
+      "primary": "Partbreaker",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "KO/Vitality Jewel 4",
+      "primary": "Slugger",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Potential/Vitality Jewel 4",
+      "primary": "Heroics",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist/Vitality Jewel 4",
+      "primary": "Windproof",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Draw/Vitality Jewel 4",
+      "primary": "Critical Draw",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Throttle/Vitality Jewel 4",
+      "primary": "Latent Power",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Challenger/Vitality Jewel 4",
+      "primary": "Agitator",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flawless/Vitality Jewel 4",
+      "primary": "Peak Performance",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Furor/Vitality Jewel 4",
+      "primary": "Resentment",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Mighty/Vitality Jewel 4",
+      "primary": "Maximum Might",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Brace/Vitality Jewel 4",
+      "primary": "Flinch Free",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Phoenix/Vitality Jewel 4",
+      "primary": "Coalescence",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Earplug/Vitality Jewel 4",
+      "primary": "Earplugs",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Critical/Vitality Jewel 4",
+      "primary": "Critical Boost",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Tenderizer/Vitality Jewel 4",
+      "primary": "Weakness Exploit",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Handicraft/Vitality Jewel 4",
+      "primary": "Handicraft",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Release/Vitality Jewel 4",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "Health Boost",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Footing/Maintenance Jewel 4",
+      "primary": "Tremor Resistance",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Charger/Maintenance Jewel 4",
+      "primary": "Focus",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Enhancer/Maintenance Jewel 4",
+      "primary": "Power Prolonger",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Destroyer/Maintenance Jewel 4",
+      "primary": "Partbreaker",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "KO/Maintenance Jewel 4",
+      "primary": "Slugger",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Potential/Maintenance Jewel 4",
+      "primary": "Heroics",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist/Maintenance Jewel 4",
+      "primary": "Windproof",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Draw/Maintenance Jewel 4",
+      "primary": "Critical Draw",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Throttle/Maintenance Jewel 4",
+      "primary": "Latent Power",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Challenger/Maintenance Jewel 4",
+      "primary": "Agitator",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flawless/Maintenance Jewel 4",
+      "primary": "Peak Performance",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Furor/Maintenance Jewel 4",
+      "primary": "Resentment",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Mighty/Maintenance Jewel 4",
+      "primary": "Maximum Might",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Brace/Maintenance Jewel 4",
+      "primary": "Flinch Free",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Phoenix/Maintenance Jewel 4",
+      "primary": "Coalescence",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Earplug/Maintenance Jewel 4",
+      "primary": "Earplugs",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Critical/Maintenance Jewel 4",
+      "primary": "Critical Boost",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Tenderizer/Maintenance Jewel 4",
+      "primary": "Weakness Exploit",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Handicraft/Maintenance Jewel 4",
+      "primary": "Handicraft",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Release/Maintenance Jewel 4",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "Tool Specialist",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Footing/Physique Jewel 4",
+      "primary": "Tremor Resistance",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Charger/Physique Jewel 4",
+      "primary": "Focus",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Enhancer/Physique Jewel 4",
+      "primary": "Power Prolonger",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Destroyer/Physique Jewel 4",
+      "primary": "Partbreaker",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "KO/Physique Jewel 4",
+      "primary": "Slugger",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Potential/Physique Jewel 4",
+      "primary": "Heroics",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist/Physique Jewel 4",
+      "primary": "Windproof",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Draw/Physique Jewel 4",
+      "primary": "Critical Draw",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Throttle/Physique Jewel 4",
+      "primary": "Latent Power",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Challenger/Physique Jewel 4",
+      "primary": "Agitator",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flawless/Physique Jewel 4",
+      "primary": "Peak Performance",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Furor/Physique Jewel 4",
+      "primary": "Resentment",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Mighty/Physique Jewel 4",
+      "primary": "Maximum Might",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Brace/Physique Jewel 4",
+      "primary": "Flinch Free",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Phoenix/Physique Jewel 4",
+      "primary": "Coalescence",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Earplug/Physique Jewel 4",
+      "primary": "Earplugs",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Critical/Physique Jewel 4",
+      "primary": "Critical Boost",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Tenderizer/Physique Jewel 4",
+      "primary": "Weakness Exploit",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Handicraft/Physique Jewel 4",
+      "primary": "Handicraft",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Release/Physique Jewel 4",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "Constitution",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Footing/Evasion Jewel 4",
+      "primary": "Tremor Resistance",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Charger/Evasion Jewel 4",
+      "primary": "Focus",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Enhancer/Evasion Jewel 4",
+      "primary": "Power Prolonger",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Destroyer/Evasion Jewel 4",
+      "primary": "Partbreaker",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "KO/Evasion Jewel 4",
+      "primary": "Slugger",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Potential/Evasion Jewel 4",
+      "primary": "Heroics",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Wind Resist/Evasion Jewel 4",
+      "primary": "Windproof",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Draw/Evasion Jewel 4",
+      "primary": "Critical Draw",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Throttle/Evasion Jewel 4",
+      "primary": "Latent Power",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Challenger/Evasion Jewel 4",
+      "primary": "Agitator",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Flawless/Evasion Jewel 4",
+      "primary": "Peak Performance",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Furor/Evasion Jewel 4",
+      "primary": "Resentment",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Mighty/Evasion Jewel 4",
+      "primary": "Maximum Might",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Brace/Evasion Jewel 4",
+      "primary": "Flinch Free",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Phoenix/Evasion Jewel 4",
+      "primary": "Coalescence",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Earplug/Evasion Jewel 4",
+      "primary": "Earplugs",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Critical/Evasion Jewel 4",
+      "primary": "Critical Boost",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Tenderizer/Evasion Jewel 4",
+      "primary": "Weakness Exploit",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Handicraft/Evasion Jewel 4",
+      "primary": "Handicraft",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    },
+    {
+      "name": "Release/Evasion Jewel 4",
+      "primary": "Free Elem/Ammo Up",
+      "secondary": "Evade Window",
+      "primaryLvl": 1,
+      "size": 4
+    }
+  ]
+}

@@ -1,0 +1,790 @@
+{
+  "data": [
+    {
+      "name": "Poison Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Paralysis Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Sleep Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Stun Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Muck Resistance",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Blast Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Bleeding Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Iron Skin",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Earplugs",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Windproof",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Tremor Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Dungmaster",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Effluvial Expert",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Heat Guard",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Attack Boost",
+      "altName": null,
+      "maxLevel": 7,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Defense Boost",
+      "altName": null,
+      "maxLevel": 7,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Health Boost",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Recovery Up",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Recovery Speed",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Fire Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Water Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Ice Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Thunder Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Dragon Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Blight Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Fire Attack",
+      "altName": null,
+      "maxLevel": 6,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Water Attack",
+      "altName": null,
+      "maxLevel": 6,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Ice Attack",
+      "altName": null,
+      "maxLevel": 6,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Thunder Attack",
+      "altName": null,
+      "maxLevel": 6,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Dragon Attack",
+      "altName": null,
+      "maxLevel": 6,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Poison Attack",
+      "altName": null,
+      "maxLevel": 4,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Paralysis Attack",
+      "altName": null,
+      "maxLevel": 4,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Sleep Attack",
+      "altName": null,
+      "maxLevel": 4,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Blast Attack",
+      "altName": null,
+      "maxLevel": 4,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Normal Shots",
+      "altName": null,
+      "maxLevel": 2,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Piercing Shots",
+      "altName": null,
+      "maxLevel": 2,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Spread/Power Shots",
+      "altName": null,
+      "maxLevel": 2,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Poison Functionality",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Para Functionality",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Sleep Functionality",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Blast Functionality",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Free Elem/Ammo Up",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Critical Eye",
+      "altName": null,
+      "maxLevel": 7,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Critical Boost",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Weakness Exploit",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Focus",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Power Prolonger",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Handicraft",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Critical Draw",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Partbreaker",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Slugger",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Stamina Thief",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Master Mounter",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Airborne",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Latent Power",
+      "altName": null,
+      "maxLevel": 7,
+      "maxSecretLevel": 5
+    },
+    {
+      "name": "Agitator",
+      "altName": null,
+      "maxLevel": 7,
+      "maxSecretLevel": 5
+    },
+    {
+      "name": "Peak Performance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Heroics",
+      "altName": null,
+      "maxLevel": 7,
+      "maxSecretLevel": 5
+    },
+    {
+      "name": "Fortify",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Resentment",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Resuscitate",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Horn Maestro",
+      "altName": null,
+      "maxLevel": 2,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Capacity Boost",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Special Ammo Boost",
+      "altName": null,
+      "maxLevel": 2,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Artillery",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Heavy Artillery",
+      "altName": null,
+      "maxLevel": 2,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Marathon Runner",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Constitution",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Leap of Faith",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Stamina Surge",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Hunger Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Evade Window",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Evade Extender",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Guard",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Quick Sheath",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Wide Range",
+      "altName": "Wide-Range",
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Item Prolonger",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Free Meal",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 1
+    },
+    {
+      "name": "Speed Eating",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Speed Sharpening",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Bombardier",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Mushroomancer",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Master Fisher",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "BBQ Master",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Pro Transporter",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Master Gatherer",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Honey Hunter",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Carving Pro",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Divine Blessing",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Palico Rally",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Botanist",
+      "altName": null,
+      "maxLevel": 4,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Geologist",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Maximum Might",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Slinger Capacity",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Stealth",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Flinch Free",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Scoutfly Range Up",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Speed Crawler",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Jump Master",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Survival Expert",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Aquatic Expert",
+      "altName": "Aquatic/Polar Mobility",
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Cliffhanger",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Blindsider",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Scholar",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Entomologist",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Effluvia Resistance",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Scenthound",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Forager's Luck",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Detector",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Tool Specialist",
+      "altName": null,
+      "maxLevel": 5,
+      "maxSecretLevel": 3
+    },
+    {
+      "name": "Affinity Sliding",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Elderseal Boost",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Intimidator",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Bow Charge Plus",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Mind's Eye/Ballistics",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Guard Up",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Protective Polish",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Non-Elemental Boost",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Guts",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Hasten Recovery",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Razor Sharp/Spare Shot",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Critical Element",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Critical Status",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Provoker",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Offensive Guard",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Coalescence",
+      "altName": null,
+      "maxLevel": 3,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Safe Landing",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Bludgeoner",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Adrenaline",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Coldproof",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    },
+    {
+      "name": "Clutch Claw Boost",
+      "altName": null,
+      "maxLevel": 1,
+      "maxSecretLevel": 0
+    }
+  ]
+}
