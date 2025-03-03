@@ -619,8 +619,10 @@ class Skill with _$Skill, SkillTemplate {
 
   bool get hasSecret => maxSecretLevel > 0;
 
+  /// max level including those unlocked with a secret skill
   int get trueMaxLevel => maxLevel;
 
+  /// max level without secret
   int get cappedMaxLevel => hasSecret ? maxSecretLevel : maxLevel;
 
   @override

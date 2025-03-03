@@ -33,8 +33,12 @@ mixin _$ArmorBonus {
   @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
   Skill? get secondarySkillSecret => throw _privateConstructorUsedError;
 
+  /// Serializes this ArmorBonus to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArmorBonusCopyWith<ArmorBonus> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -73,6 +77,8 @@ class _$ArmorBonusCopyWithImpl<$Res, $Val extends ArmorBonus>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +137,8 @@ class _$ArmorBonusCopyWithImpl<$Res, $Val extends ArmorBonus>
     ) as $Val);
   }
 
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res>? get primarySkillSecret {
@@ -143,6 +151,8 @@ class _$ArmorBonusCopyWithImpl<$Res, $Val extends ArmorBonus>
     });
   }
 
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res>? get secondarySkillSecret {
@@ -192,6 +202,8 @@ class __$$ArmorBonusImplCopyWithImpl<$Res>
       _$ArmorBonusImpl _value, $Res Function(_$ArmorBonusImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -305,7 +317,9 @@ class _$ArmorBonusImpl extends _ArmorBonus {
     return 'ArmorBonus(name: $name, altName: $altName, primaryBonusSkill: $primaryBonusSkill, secondaryBonusSkill: $secondaryBonusSkill, primaryReq: $primaryReq, secondaryReq: $secondaryReq, primaryBonusDesc: $primaryBonusDesc, secondaryBonusDesc: $secondaryBonusDesc, primarySkillSecret: $primarySkillSecret, secondarySkillSecret: $secondarySkillSecret)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArmorBonusImplCopyWith<_$ArmorBonusImpl> get copyWith =>
@@ -360,8 +374,11 @@ abstract class _ArmorBonus extends ArmorBonus {
   @override
   @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
   Skill? get secondarySkillSecret;
+
+  /// Create a copy of ArmorBonus
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArmorBonusImplCopyWith<_$ArmorBonusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -377,8 +394,12 @@ mixin _$Skill {
   int get maxLevel => throw _privateConstructorUsedError;
   int get maxSecretLevel => throw _privateConstructorUsedError;
 
+  /// Serializes this Skill to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Skill
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SkillCopyWith<Skill> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -400,6 +421,8 @@ class _$SkillCopyWithImpl<$Res, $Val extends Skill>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Skill
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -447,6 +470,8 @@ class __$$SkillImplCopyWithImpl<$Res>
       _$SkillImpl _value, $Res Function(_$SkillImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Skill
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -505,7 +530,9 @@ class _$SkillImpl extends _Skill {
     return 'Skill(name: $name, altName: $altName, maxLevel: $maxLevel, maxSecretLevel: $maxSecretLevel)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Skill
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SkillImplCopyWith<_$SkillImpl> get copyWith =>
@@ -537,8 +564,11 @@ abstract class _Skill extends Skill {
   int get maxLevel;
   @override
   int get maxSecretLevel;
+
+  /// Create a copy of Skill
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SkillImplCopyWith<_$SkillImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -571,8 +601,12 @@ mixin _$Armor {
   int get defIce => throw _privateConstructorUsedError;
   int get defDragon => throw _privateConstructorUsedError;
 
+  /// Serializes this Armor to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArmorCopyWith<Armor> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -620,6 +654,8 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -718,6 +754,8 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
     ) as $Val);
   }
 
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res> get primary {
@@ -726,6 +764,8 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
     });
   }
 
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res>? get secondary {
@@ -738,6 +778,8 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
     });
   }
 
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ArmorBonusCopyWith<$Res>? get armorBonus {
@@ -798,6 +840,8 @@ class __$$ArmorImplCopyWithImpl<$Res>
       _$ArmorImpl _value, $Res Function(_$ArmorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1009,7 +1053,7 @@ class _$ArmorImpl extends _Armor {
                 other.defDragon == defDragon));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1032,7 +1076,9 @@ class _$ArmorImpl extends _Armor {
       defIce,
       defDragon);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArmorImplCopyWith<_$ArmorImpl> get copyWith =>
@@ -1113,8 +1159,11 @@ abstract class _Armor extends Armor {
   int get defIce;
   @override
   int get defDragon;
+
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArmorImplCopyWith<_$ArmorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1133,8 +1182,12 @@ mixin _$Deco {
   int get primaryLvl => throw _privateConstructorUsedError;
   int get size => throw _privateConstructorUsedError;
 
+  /// Serializes this Deco to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DecoCopyWith<Deco> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1166,6 +1219,8 @@ class _$DecoCopyWithImpl<$Res, $Val extends Deco>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1199,6 +1254,8 @@ class _$DecoCopyWithImpl<$Res, $Val extends Deco>
     ) as $Val);
   }
 
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res> get primary {
@@ -1207,6 +1264,8 @@ class _$DecoCopyWithImpl<$Res, $Val extends Deco>
     });
   }
 
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res>? get secondary {
@@ -1249,6 +1308,8 @@ class __$$DecoImplCopyWithImpl<$Res>
   __$$DecoImplCopyWithImpl(_$DecoImpl _value, $Res Function(_$DecoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1331,12 +1392,14 @@ class _$DecoImpl extends _Deco {
             (identical(other.size, size) || other.size == size));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, name, primary, secondary, primaryLvl, size);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DecoImplCopyWith<_$DecoImpl> get copyWith =>
@@ -1375,8 +1438,11 @@ abstract class _Deco extends Deco {
   int get primaryLvl;
   @override
   int get size;
+
+  /// Create a copy of Deco
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DecoImplCopyWith<_$DecoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1399,8 +1465,12 @@ mixin _$Charm {
   int get secondaryLv => throw _privateConstructorUsedError;
   int get ternaryLv => throw _privateConstructorUsedError;
 
+  /// Serializes this Charm to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CharmCopyWith<Charm> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1437,6 +1507,8 @@ class _$CharmCopyWithImpl<$Res, $Val extends Charm>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1485,6 +1557,8 @@ class _$CharmCopyWithImpl<$Res, $Val extends Charm>
     ) as $Val);
   }
 
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res> get primary {
@@ -1493,6 +1567,8 @@ class _$CharmCopyWithImpl<$Res, $Val extends Charm>
     });
   }
 
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res>? get secondary {
@@ -1505,6 +1581,8 @@ class _$CharmCopyWithImpl<$Res, $Val extends Charm>
     });
   }
 
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SkillCopyWith<$Res>? get ternary {
@@ -1554,6 +1632,8 @@ class __$$CharmImplCopyWithImpl<$Res>
       _$CharmImpl _value, $Res Function(_$CharmImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1669,12 +1749,14 @@ class _$CharmImpl extends _Charm {
                 other.ternaryLv == ternaryLv));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, rarity, primary, secondary,
       ternary, primaryLv, secondaryLv, ternaryLv);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CharmImplCopyWith<_$CharmImpl> get copyWith =>
@@ -1724,8 +1806,11 @@ abstract class _Charm extends Charm {
   int get secondaryLv;
   @override
   int get ternaryLv;
+
+  /// Create a copy of Charm
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CharmImplCopyWith<_$CharmImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

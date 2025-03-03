@@ -48,10 +48,11 @@ dependencies:
   freezed: ^2.5.2
   freezed_annotation: ^2.4.1
   json_serializable: ^6.7.1
-  json_annotation: ^4.8.1
+  json_annotation: ^4.9.0
   flutter_spinbox: ^0.13.1
   flutter_portal: ^1.1.4
   blurrycontainer: ^2.1.0
+  flutter_bloc: ^9.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/equipment.dart';
 import 'package:brachys_armor_set_searcher/screen/dev/equipment.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:brachys_armor_set_searcher/screen/searcher.dart' hide SkillEditor;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:window_size/window_size.dart';
 
 import 'screen/home.dart';
@@ -43,7 +45,19 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
     return MaterialApp(
       title: appTitleShort,
       theme: ThemeData.dark(useMaterial3: true),
-      home: const ResponsivePage(mobile: HomePageMobile(), tablet: HomePageDesktop(), desktop: HomePageDesktop(), title: appTitle),
+      home: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => HomeCubit()),
+            BlocProvider(create: (_) => SearcherCubit()),
+            BlocProvider(create: (_) => SearcherPageCubit()),
+            BlocProvider(create: (_) => SkillSelectorCubit())
+          ],
+          child: const ResponsivePage(
+              mobile: HomePageMobile(),
+              tablet: HomePageDesktop2(),
+              desktop: HomePageDesktop2(),
+              title: appTitle,
+              drawer: Drawer(child: HomeDrawer(isHome: true),))),
     );
   }
 }
@@ -58,7 +72,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

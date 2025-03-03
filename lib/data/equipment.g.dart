@@ -12,8 +12,8 @@ _$ArmorBonusImpl _$$ArmorBonusImplFromJson(Map<String, dynamic> json) =>
       altName: json['altName'] as String? ?? null,
       primaryBonusSkill: json['primaryBonusSkill'] as String,
       secondaryBonusSkill: json['secondaryBonusSkill'] as String? ?? null,
-      primaryReq: json['primaryReq'] as int,
-      secondaryReq: json['secondaryReq'] as int? ?? 0,
+      primaryReq: (json['primaryReq'] as num).toInt(),
+      secondaryReq: (json['secondaryReq'] as num?)?.toInt() ?? 0,
       primaryBonusDesc: json['primaryBonusDesc'] as String? ?? null,
       secondaryBonusDesc: json['secondaryBonusDesc'] as String? ?? null,
       primarySkillSecret:
@@ -39,8 +39,8 @@ Map<String, dynamic> _$$ArmorBonusImplToJson(_$ArmorBonusImpl instance) =>
 _$SkillImpl _$$SkillImplFromJson(Map<String, dynamic> json) => _$SkillImpl(
       name: json['name'] as String,
       altName: json['altName'] as String? ?? null,
-      maxLevel: json['maxLevel'] as int,
-      maxSecretLevel: json['maxSecretLevel'] as int? ?? 0,
+      maxLevel: (json['maxLevel'] as num).toInt(),
+      maxSecretLevel: (json['maxSecretLevel'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$SkillImplToJson(_$SkillImpl instance) =>
@@ -54,22 +54,22 @@ Map<String, dynamic> _$$SkillImplToJson(_$SkillImpl instance) =>
 _$ArmorImpl _$$ArmorImplFromJson(Map<String, dynamic> json) => _$ArmorImpl(
       name: json['name'] as String,
       part: $enumDecode(_$PartEnumMap, json['part']),
-      rarity: json['rarity'] as int,
+      rarity: (json['rarity'] as num).toInt(),
       primary: Skill.fromString(json['primary'] as String),
       secondary: Skill.fromStringNullable(json['secondary'] as String?),
       armorBonus: ArmorBonus.fromStringNullable(json['armorBonus'] as String?),
-      primaryLv: json['primaryLv'] as int,
-      secondaryLv: json['secondaryLv'] as int? ?? 0,
-      primarySlotSize: json['primarySlotSize'] as int,
-      secondarySlotSize: json['secondarySlotSize'] as int,
-      ternarySlotSize: json['ternarySlotSize'] as int,
-      minDef: json['minDef'] as int,
-      maxDef: json['maxDef'] as int,
-      defFire: json['defFire'] as int,
-      defWater: json['defWater'] as int,
-      defThunder: json['defThunder'] as int,
-      defIce: json['defIce'] as int,
-      defDragon: json['defDragon'] as int,
+      primaryLv: (json['primaryLv'] as num).toInt(),
+      secondaryLv: (json['secondaryLv'] as num?)?.toInt() ?? 0,
+      primarySlotSize: (json['primarySlotSize'] as num).toInt(),
+      secondarySlotSize: (json['secondarySlotSize'] as num).toInt(),
+      ternarySlotSize: (json['ternarySlotSize'] as num).toInt(),
+      minDef: (json['minDef'] as num).toInt(),
+      maxDef: (json['maxDef'] as num).toInt(),
+      defFire: (json['defFire'] as num).toInt(),
+      defWater: (json['defWater'] as num).toInt(),
+      defThunder: (json['defThunder'] as num).toInt(),
+      defIce: (json['defIce'] as num).toInt(),
+      defDragon: (json['defDragon'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ArmorImplToJson(_$ArmorImpl instance) =>
@@ -107,8 +107,8 @@ _$DecoImpl _$$DecoImplFromJson(Map<String, dynamic> json) => _$DecoImpl(
       name: json['name'] as String,
       primary: Skill.fromString(json['primary'] as String),
       secondary: Skill.fromStringNullable(json['secondary'] as String?),
-      primaryLvl: json['primaryLvl'] as int,
-      size: json['size'] as int,
+      primaryLvl: (json['primaryLvl'] as num).toInt(),
+      size: (json['size'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$DecoImplToJson(_$DecoImpl instance) =>
@@ -122,13 +122,13 @@ Map<String, dynamic> _$$DecoImplToJson(_$DecoImpl instance) =>
 
 _$CharmImpl _$$CharmImplFromJson(Map<String, dynamic> json) => _$CharmImpl(
       name: json['name'] as String,
-      rarity: json['rarity'] as int,
+      rarity: (json['rarity'] as num).toInt(),
       primary: Skill.fromString(json['primary'] as String),
       secondary: Skill.fromStringNullable(json['secondary'] as String?),
       ternary: Skill.fromStringNullable(json['ternary'] as String?),
-      primaryLv: json['primaryLv'] as int,
-      secondaryLv: json['secondaryLv'] as int? ?? 0,
-      ternaryLv: json['ternaryLv'] as int? ?? 0,
+      primaryLv: (json['primaryLv'] as num).toInt(),
+      secondaryLv: (json['secondaryLv'] as num?)?.toInt() ?? 0,
+      ternaryLv: (json['ternaryLv'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$CharmImplToJson(_$CharmImpl instance) =>

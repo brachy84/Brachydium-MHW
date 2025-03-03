@@ -164,6 +164,15 @@ class Stack<T> {
   Stack<T> copy([int? newAmount]) {
     return Stack(value: value, amount: newAmount ?? amount);
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Stack && value == other.value && amount == other.amount);
+  }
+
+  @override
+  int get hashCode => Object.hash(value, amount);
+
 }
 
 class DecoStack extends Stack<Deco> {
@@ -214,20 +223,20 @@ class DecoList {
 
 class SkillProp extends DecoList {}
 
-Stream<ArmorSet> searchAllArmorCombinations(SearchConfig config) async* {
+Stream<ArmorSet?> searchAllArmorCombinations(SearchConfig config) async* {
   yield* _ArmorSetTryer.search(config);
 }
 
 class _ArmorSetTryer {
 
-  static Stream<ArmorSet> search(SearchConfig config) async* {
+  static Stream<ArmorSet?> search(SearchConfig config) async* {
     var tryer = _ArmorSetTryer(config: config, decos: config.decos);
     for (var helm in config.helmets) {
       for (var chest in config.chests) {
         for (var arm in config.arms) {
           for (var waist in config.waists) {
             for (var leg in config.legs) {
-              yield* tryer.tryArmor(helm, chest, arm, waist, leg);
+              yield tryer.tryArmor(helm, chest, arm, waist, leg);
             }
           }
         }
@@ -246,7 +255,7 @@ class _ArmorSetTryer {
 
   _ArmorSetTryer({required this.config, required this.decos});
 
-  Stream<ArmorSet> tryArmor(Armor helm, Armor chest, Armor arm, Armor waist, Armor leg) async* {
+  ArmorSet? tryArmor(Armor helm, Armor chest, Armor arm, Armor waist, Armor leg) {
     armor[0] = helm;
     armor[1] = chest;
     armor[2] = arm;
@@ -264,43 +273,52 @@ class _ArmorSetTryer {
       if (armor.armorBonus != null) _skill(skills, armor.armorBonus!, armor.ternaryLv);
     }
     if (skills.isEmpty) {
-      return;
+      return _makeArmorSet(); // requirements are already met before any decos
     }
     if (decos.isEmpty) {
       error = 'No decos provided and armor has not enough';
-      return;
+      return null;
     }
-    yield* tryDecos();
+    return tryDecos();
   }
 
-  Stream<ArmorSet> tryDecos() async* {
+  ArmorSet? tryDecos() {
+    // test map
+    // we simulate inserting every deco we have regardless of space at the same time
+    // if the skill levels dont add to the required levels it is impossible to make this set
     Map<String, Stack<SkillTemplate>> reqSkills = skills.map((key, value) => MapEntry(key, value.copy()));
     skillDecoMap.clear();
     usedDecos.clear();
     for (var deco in decos) {
+      // check if deco skills are still required
       if (!skills.containsKey(deco.primary.name) && (!deco.hasSec || !skills.containsKey(deco.secondary!.name))) continue;
       var decoStack = DecoStack(value: deco, amount: config.getDecoAmount(deco));
       if (deco.size == 4 && (!deco.hasSec || skills[deco.secondary!.name] != null)) {
+        // TODO there are decos with triple value
         decoStack.doubleVal = true;
       }
+      // add primary skill
       _skill(reqSkills, deco.primary, deco.primaryLvl);
       skillDecoMap.putIfAbsent(deco.primary, () => DecoList()).add(decoStack);
       if (deco.hasSec) {
+        // add secondary skill
         _skill(reqSkills, deco.secondary!, 1);
         skillDecoMap.putIfAbsent(deco.secondary!, () => DecoList()).add(decoStack);
       }
     }
     if (reqSkills.isNotEmpty) {
+      // not all skill requirements met
       error = 'Decos cant make required skills';
-      return;
+      return null;
     }
+    // roll back
     reqSkills = skills.map((key, value) => MapEntry(key, value.copy()));
-    yield* _insertDecos(reqSkills);
+    return _insertDecos(reqSkills);
   }
 
-  Stream<ArmorSet> _insertDecos(Map<String, Stack<SkillTemplate>> reqSkills) async* {
+  ArmorSet? _insertDecos(Map<String, Stack<SkillTemplate>> reqSkills) {
     List<Skill> sortedSkills = skillDecoMap.keys.toList(growable: true);
-    bool hasDoubleVal = slots[3] > 0;
+    bool hasDoubleVal = slots[3] > 0; // any level 4 slots
     bool changed = true;
     while (changed && slots.isNotEmpty && reqSkills.isNotEmpty) {
       changed = false;
@@ -329,8 +347,9 @@ class _ArmorSetTryer {
 
     if (reqSkills.isEmpty) {
       // success
-      yield _makeArmorSet();
+      return _makeArmorSet();
     }
+    return null;
   }
 
   ArmorSet _makeArmorSet() {
@@ -362,6 +381,7 @@ class _ArmorSetTryer {
     });
   }
 
+  /// removes a certain amount of required skill levels
   void _skill(Map<String, Stack<SkillTemplate>> skills, SkillTemplate skill, int amount) {
     Stack<SkillTemplate>? lv = skills[skill.name];
     if (lv != null && lv.decr(amount)) {

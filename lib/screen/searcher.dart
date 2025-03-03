@@ -1,9 +1,11 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/equipment.dart';
 import 'package:brachys_armor_set_searcher/data/set_finder.dart' as ass;
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 
 final List<ass.Stack<Skill>> _skills = [];
@@ -21,6 +23,144 @@ bool _useMyDecos = true;
 
   }
 }*/
+
+Widget _option(BuildContext context, String title, Widget page, Widget child, StateSetter setState) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 16),
+    child: MaterialButton(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: Colors.white.withAlpha(20),
+      onPressed: () {
+        Navigator.of(context)
+            .push<void>(MaterialPageRoute(builder: (context) => SimplePage(body: page, title: title)))
+            .then((_) => setState(() {}));
+      },
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              ),
+              const Icon(Icons.chevron_right)
+            ],
+          ),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.all(4),
+            constraints: const BoxConstraints(minWidth: double.infinity),
+            //child: SizedBox(height: 60,),
+            child: child,
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _makeSkillChip(String text) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 4),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.red.shade800),
+    child: Text(
+      text,
+      style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+    ),
+  );
+}
+
+Widget _skillsPreview(BuildContext context) {
+  if (_skills.isEmpty) {
+    return const Padding(
+      padding: EdgeInsets.only(left: 4),
+      child: Text('None selected'),
+    );
+  }
+  List<Widget> skills = _skills.map((skill) => _makeSkillChip("${skill.value.name} ${skill.amount}")).toList();
+  return Wrap(
+    spacing: 4,
+    runSpacing: 4,
+    alignment: WrapAlignment.spaceEvenly,
+    children: skills,
+  );
+}
+
+Widget _decosOption(BuildContext context, StateSetter setState) {
+  return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white.withAlpha(20)
+      ),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(
+              'Decorations',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(30)),
+            margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
+            padding: const EdgeInsets.all(4),
+            constraints: const BoxConstraints(minWidth: double.infinity),
+            //child: SizedBox(height: 60,),
+            child: Column(
+              children: [
+                RadioListTile(
+                  value: false,
+                  groupValue: _useMyDecos,
+                  onChanged: (val) => setState(() => _useMyDecos = val ?? true),
+                  title: const Text('Use all decos'),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: RadioListTile(
+                        value: true,
+                        groupValue: _useMyDecos,
+                        onChanged: (val) => setState(() => _useMyDecos = val ?? true),
+                        title: const Text('Use my decos'),
+                      ),
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        // TODO open edit decos screen
+                      },
+                      color: HSLColor.fromColor(Colors.deepPurple).withSaturation(0.4).toColor(),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 4, top: 8, bottom: 8),
+                        child: Row(
+                          children: [
+                            Text('Edit my deocs'),
+                            Icon(Icons.chevron_right)
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      )
+  );
+}
+
+List<Widget> _makeSearcherOptions(BuildContext context, StateSetter setState) {
+  return [
+    _option(context, 'Edit Skills', const SkillEditor(), _skillsPreview(context), setState),
+    _decosOption(context, setState)
+  ];
+}
 
 abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T> with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
@@ -259,6 +399,8 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     );
   }
 
+
+
   @override
   void dispose() {
     super.dispose();
@@ -268,7 +410,35 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
   }
 }
 
-class SearcherDesktopPage extends StatefulWidget {
+class SearcherDesktopPage extends StatelessWidget {
+  const SearcherDesktopPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<SearcherPageCubit>(
+        create: (_) => SearcherPageCubit(),
+      child: Row(
+        children: [
+          Column(
+            children: [],
+          ),
+          BlocBuilder<SearcherPageCubit, SearcherPageState>(
+            builder: (BuildContext context, state) {
+              switch (state) {
+                case SearcherPageState.editSkills: return const Placeholder();
+                case SearcherPageState.editDecos: return const Placeholder();
+                case SearcherPageState.editArmorFilters: return const Placeholder();
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+/*class SearcherDesktopPage extends StatefulWidget {
   const SearcherDesktopPage({super.key});
 
   @override
@@ -335,7 +505,7 @@ class _SearcherDesktopPageState extends _AbstractSearcherPageState<SearcherDeskt
       ),
     );
   }
-}
+}*/
 
 class SearcherTabletPage extends StatefulWidget {
   const SearcherTabletPage({super.key});
@@ -364,146 +534,14 @@ class SearcherMobilePage extends StatefulWidget {
 }
 
 class _SearcherMobilePageState extends _AbstractSearcherPageState<SearcherMobilePage> {
-  Widget _option(BuildContext context, String title, Widget page, Widget child) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: Colors.white.withAlpha(20),
-        onPressed: () {
-          Navigator.of(context)
-              .push<void>(MaterialPageRoute(builder: (context) => SimplePage(body: page, title: title)))
-              .then((_) => setState(() {}));
-        },
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                ),
-                const Icon(Icons.chevron_right)
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
-              margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.all(4),
-              constraints: const BoxConstraints(minWidth: double.infinity),
-              //child: SizedBox(height: 60,),
-              child: child,
-            )
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _makeSkillChip(String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 4),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.red.shade800),
-      child: Text(
-        text,
-        style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
-      ),
-    );
-  }
-
-  Widget _skillsPreview(BuildContext context) {
-    if (_skills.isEmpty) {
-      return const Padding(
-        padding: EdgeInsets.only(left: 4),
-        child: Text('None selected'),
-      );
-    }
-    List<Widget> skills = _skills.map((skill) => _makeSkillChip("${skill.value.name} ${skill.amount}")).toList();
-    return Wrap(
-      spacing: 4,
-      runSpacing: 4,
-      alignment: WrapAlignment.spaceEvenly,
-      children: skills,
-    );
-  }
-
-  Widget _decosOption(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.white.withAlpha(20)
-        ),
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 8.0),
-              child: Text(
-                'Decorations',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(30)),
-              margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
-              padding: const EdgeInsets.all(4),
-              constraints: const BoxConstraints(minWidth: double.infinity),
-              //child: SizedBox(height: 60,),
-              child: Column(
-                children: [
-                  RadioListTile(
-                      value: false,
-                      groupValue: _useMyDecos,
-                      onChanged: (val) => setState(() => _useMyDecos = val ?? true),
-                    title: const Text('Use all decos'),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: RadioListTile(
-                          value: true,
-                          groupValue: _useMyDecos,
-                          onChanged: (val) => setState(() => _useMyDecos = val ?? true),
-                          title: const Text('Use my decos'),
-                        ),
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          // TODO open edit decos screen
-                        },
-                        color: HSLColor.fromColor(Colors.deepPurple).withSaturation(0.4).toColor(),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 4, top: 8, bottom: 8),
-                          child: Row(
-                            children: [
-                              Text('Edit my deocs'),
-                              Icon(Icons.chevron_right)
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        )
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: ListView(
-        children: [
-          _option(context, 'Edit Skills', const SkillEditor(), _skillsPreview(context)),
-          _decosOption(context)
-        ],
+        children: _makeSearcherOptions(context, setState),
       ),
     );
   }
