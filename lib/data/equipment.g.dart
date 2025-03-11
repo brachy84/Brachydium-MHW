@@ -6,49 +6,52 @@ part of 'equipment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ArmorBonusImpl _$$ArmorBonusImplFromJson(Map<String, dynamic> json) =>
-    _$ArmorBonusImpl(
-      name: json['name'] as String,
-      altName: json['altName'] as String? ?? null,
-      primaryBonusSkill: json['primaryBonusSkill'] as String,
-      secondaryBonusSkill: json['secondaryBonusSkill'] as String? ?? null,
-      primaryReq: (json['primaryReq'] as num).toInt(),
-      secondaryReq: (json['secondaryReq'] as num?)?.toInt() ?? 0,
-      primaryBonusDesc: json['primaryBonusDesc'] as String? ?? null,
-      secondaryBonusDesc: json['secondaryBonusDesc'] as String? ?? null,
-      primarySkillSecret:
-          Skill.fromStringNullable(json['primarySkillSecret'] as String?),
-      secondarySkillSecret:
-          Skill.fromStringNullable(json['secondarySkillSecret'] as String?),
-    );
-
-Map<String, dynamic> _$$ArmorBonusImplToJson(_$ArmorBonusImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'altName': instance.altName,
-      'primaryBonusSkill': instance.primaryBonusSkill,
-      'secondaryBonusSkill': instance.secondaryBonusSkill,
-      'primaryReq': instance.primaryReq,
-      'secondaryReq': instance.secondaryReq,
-      'primaryBonusDesc': instance.primaryBonusDesc,
-      'secondaryBonusDesc': instance.secondaryBonusDesc,
-      'primarySkillSecret': Skill.asString(instance.primarySkillSecret),
-      'secondarySkillSecret': Skill.asString(instance.secondarySkillSecret),
-    };
-
 _$SkillImpl _$$SkillImplFromJson(Map<String, dynamic> json) => _$SkillImpl(
       name: json['name'] as String,
       altName: json['altName'] as String? ?? null,
+      category: $enumDecode(_$SkillCategoryEnumMap, json['category']),
       maxLevel: (json['maxLevel'] as num).toInt(),
-      maxSecretLevel: (json['maxSecretLevel'] as num?)?.toInt() ?? 0,
+      desc: json['desc'] as String,
     );
 
 Map<String, dynamic> _$$SkillImplToJson(_$SkillImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'altName': instance.altName,
+      'category': _$SkillCategoryEnumMap[instance.category]!,
       'maxLevel': instance.maxLevel,
-      'maxSecretLevel': instance.maxSecretLevel,
+      'desc': instance.desc,
+    };
+
+const _$SkillCategoryEnumMap = {
+  SkillCategory.weapon: 'weapon',
+  SkillCategory.armor: 'armor',
+  SkillCategory.groupBonus: 'groupBonus',
+  SkillCategory.setBonus: 'setBonus',
+};
+
+_$BonusSkillImpl _$$BonusSkillImplFromJson(Map<String, dynamic> json) =>
+    _$BonusSkillImpl(
+      name: json['name'] as String,
+      altName: json['altName'] as String? ?? null,
+      category: $enumDecode(_$SkillCategoryEnumMap, json['category']),
+      maxLevel: (json['maxLevel'] as num).toInt(),
+      primaryCount: (json['primaryCount'] as num).toInt(),
+      secondaryCount: (json['secondaryCount'] as num).toInt(),
+      primaryDesc: json['primaryDesc'] as String,
+      secondaryDesc: json['secondaryDesc'] as String,
+    );
+
+Map<String, dynamic> _$$BonusSkillImplToJson(_$BonusSkillImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'altName': instance.altName,
+      'category': _$SkillCategoryEnumMap[instance.category]!,
+      'maxLevel': instance.maxLevel,
+      'primaryCount': instance.primaryCount,
+      'secondaryCount': instance.secondaryCount,
+      'primaryDesc': instance.primaryDesc,
+      'secondaryDesc': instance.secondaryDesc,
     };
 
 _$ArmorImpl _$$ArmorImplFromJson(Map<String, dynamic> json) => _$ArmorImpl(
@@ -57,7 +60,8 @@ _$ArmorImpl _$$ArmorImplFromJson(Map<String, dynamic> json) => _$ArmorImpl(
       rarity: (json['rarity'] as num).toInt(),
       primary: Skill.fromString(json['primary'] as String),
       secondary: Skill.fromStringNullable(json['secondary'] as String?),
-      armorBonus: ArmorBonus.fromStringNullable(json['armorBonus'] as String?),
+      groupBonus: BonusSkill.fromStringNullable(json['groupBonus'] as String?),
+      setBonus: BonusSkill.fromStringNullable(json['setBonus'] as String?),
       primaryLv: (json['primaryLv'] as num).toInt(),
       secondaryLv: (json['secondaryLv'] as num?)?.toInt() ?? 0,
       primarySlotSize: (json['primarySlotSize'] as num).toInt(),
@@ -79,7 +83,8 @@ Map<String, dynamic> _$$ArmorImplToJson(_$ArmorImpl instance) =>
       'rarity': instance.rarity,
       'primary': Skill.asString(instance.primary),
       'secondary': Skill.asString(instance.secondary),
-      'armorBonus': ArmorBonus.asString(instance.armorBonus),
+      'groupBonus': BonusSkill.asString(instance.groupBonus),
+      'setBonus': BonusSkill.asString(instance.setBonus),
       'primaryLv': instance.primaryLv,
       'secondaryLv': instance.secondaryLv,
       'primarySlotSize': instance.primarySlotSize,
@@ -101,6 +106,7 @@ const _$PartEnumMap = {
   Part.waist: 'waist',
   Part.leg: 'leg',
   Part.charm: 'charm',
+  Part.weapon: 'weapon',
 };
 
 _$DecoImpl _$$DecoImplFromJson(Map<String, dynamic> json) => _$DecoImpl(

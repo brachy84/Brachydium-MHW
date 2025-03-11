@@ -39,7 +39,7 @@ class SearcherCubit extends Cubit<SearcherState> {
   }
 
   void addSkill(Skill skill) {
-    update(state.copyWith(skills: [...state.skills, Stack(value: skill, amount: skill.cappedMaxLevel)]));
+    update(state.copyWith(skills: [...state.skills, Stack(value: skill, amount: skill.maxLevel)]));
   }
 
   void updateSkillLevel(Skill skill, int level) {

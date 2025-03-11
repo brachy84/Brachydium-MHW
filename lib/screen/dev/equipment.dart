@@ -51,7 +51,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
               ],
             ),
           ),
-          Expanded(child: armor.armorBonus != null ? Text(armor.armorBonus!.name) : const Text(''))
+          Expanded(child: armor.groupBonus != null ? Text(armor.groupBonus!.name) : const Text('')),
+          Expanded(child: armor.setBonus != null ? Text(armor.setBonus!.name) : const Text(''))
         ],
       ),
     );
@@ -60,12 +61,13 @@ class _ArmorEditorState extends State<ArmorEditor> {
   Dialog openDialog(Armor armor, BuildContext context) {
     Skill? skill1 = armor.primary, skill2 = armor.secondary;
     int level1 = armor.primaryLv, level2 = armor.secondaryLv;
-    ArmorBonus? armorBonus = armor.armorBonus;
+    BonusSkill? groupBonus = armor.setBonus;
+    BonusSkill? setBonus = armor.setBonus;
     return Dialog(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
       child: Container(
         padding: const EdgeInsets.all(16.0),
-        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 400),
+        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 450),
         child: StatefulBuilder(builder: (context, setSubState) {
           return Column(
             children: [
@@ -76,8 +78,10 @@ class _ArmorEditorState extends State<ArmorEditor> {
               const Text("Secondary Skill"),
               _makeTextField(setSubState, () => skill2, (skill) => skill2 = skill, () => level2, (lv) => level2 = lv),
               const Divider(),
-              const Text("Armor Bonus"),
-              _makeArmorBonusTextField(setSubState, () => armorBonus, (skill) => armorBonus = skill),
+              const Text("Group Bonus"),
+              _makeArmorBonusTextField(setSubState, () => groupBonus, (skill) => groupBonus = skill),
+              const Text("Set Bonus"),
+              _makeArmorBonusTextField(setSubState, () => setBonus, (skill) => setBonus = skill),
               const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +107,7 @@ class _ArmorEditorState extends State<ArmorEditor> {
                         }
                       }
                       Armor newArmor = armor.copyWith(
-                          primary: skill1!, secondary: skill2, armorBonus: armorBonus, primaryLv: level1, secondaryLv: level2);
+                          primary: skill1!, secondary: skill2, groupBonus: groupBonus, setBonus: setBonus, primaryLv: level1, secondaryLv: level2);
                       setState(() {
                         All.replaceArmor(armor, newArmor);
                       });
@@ -182,7 +186,7 @@ class _ArmorEditorState extends State<ArmorEditor> {
     );
   }
 
-  Row _makeArmorBonusTextField<T>(StateSetter setState, ArmorBonus? Function() getter, void Function(ArmorBonus?) setter) {
+  Row _makeArmorBonusTextField<T>(StateSetter setState, BonusSkill? Function() getter, void Function(BonusSkill?) setter) {
     var current = getter();
     return Row(
       children: [
@@ -284,7 +288,7 @@ class _SkillEditorState extends State<SkillEditor> {
           children: [
             Expanded(child: Text(skill.name)),
             Expanded(child: Text('${skill.maxLevel}')),
-            if (skill.hasSecret) Expanded(child: Text('${skill.cappedMaxLevel}')) else const Expanded(child: Text(''))
+            //if (skill.hasSecret) Expanded(child: Text('${skill.cappedMaxLevel}')) else const Expanded(child: Text(''))
           ],
         ),
       ));
@@ -294,7 +298,7 @@ class _SkillEditorState extends State<SkillEditor> {
   }
 
   Dialog openDialog(Skill skill, BuildContext context) {
-    int maxSecretLevel = skill.maxSecretLevel;
+    int maxSecretLevel = skill.maxLevel;
     return Dialog(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
       child: Container(
@@ -327,7 +331,7 @@ class _SkillEditorState extends State<SkillEditor> {
                   MaterialButton(
                     color: Colors.green.shade700,
                     onPressed: () {
-                      Skill newSkill = skill.copyWith(maxSecretLevel: maxSecretLevel);
+                      Skill newSkill = skill.copyWith(maxLevel: maxSecretLevel);
                       setState(() {
                         All.replaceSkill(skill, newSkill);
                       });
@@ -358,7 +362,6 @@ class _SkillEditorState extends State<SkillEditor> {
               children: [
                 Expanded(child: Text('Name', style: style)),
                 Expanded(child: Text('Max Lv.', style: style)),
-                Expanded(child: Text('Max Lv. w/o secret', style: style)),
               ],
             ),
           ),

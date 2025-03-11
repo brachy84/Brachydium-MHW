@@ -1,0 +1,274 @@
+{
+  "data": [
+    {
+      "name": "doshagumas-might",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Temporarily grants attack +10 after a successful Power Clash or Offset attack",
+      "secondaryDesc": "Temporarily grants attack +10 after a successful Power Clash or Offset attack"
+    },
+    {
+      "name": "neopteron-alert",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases the amount of honey you gain from gathering points.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "rathaloss-flare",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Chance to deal additional fire damage after landing an attack.",
+      "secondaryDesc": "Chance to deal additional fire damage after landing an attack."
+    },
+    {
+      "name": "neopteron-camouflage",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases movement speed while crouching, and makes it easier to escape large monsters' detection.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "xu-wus-vigor",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Temporarily grants attack +15 after eating items such as well-done steak.",
+      "secondaryDesc": "Temporarily grants attack +15 after eating items such as well-done steak."
+    },
+    {
+      "name": "scaling-prowess",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Makes it easier to mount monsters and to wound them once mounted.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "gravioss-protection",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Reduces the damage you take by 5% when your health is full.",
+      "secondaryDesc": "Reduces the damage you take by 5% when your health is full."
+    },
+    {
+      "name": "scale-layering",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Temporarily reduces stamina depletion when health is at 40% or lower.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "blangongas-spirit",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Using the To Victory! gesture moderately  increases attack temporarily to nearby allies. Greatly effects Palicoes and Support Hunters.",
+      "secondaryDesc": "Using the To Victory! gesture moderately  increases attack temporarily to nearby allies. Greatly effects Palicoes and Support Hunters."
+    },
+    {
+      "name": "flexible-leathercraft",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases gathering speed, and prevents knock back when gathering or carving.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "ebony-odogarons-power",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Extends the duration of the Burst skill and grants attack +3 while Burst is active.",
+      "secondaryDesc": "Extends the duration of the Burst skill and grants attack +3 while Burst is active."
+    },
+    {
+      "name": "buttery-leathercraft",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases your affinity temporarily when sliding on terrain.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "fulgur-anjanaths-will",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Grants an additional Stamina Gauge.",
+      "secondaryDesc": "Grants an additional Stamina Gauge."
+    },
+    {
+      "name": "uth-dunas-cover",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Increases defense temporarily when using a specialized tool.",
+      "secondaryDesc": "Increases defense temporarily when using a specialized tool."
+    },
+    {
+      "name": "fortifying-pelt",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases attack and defense after fainting during a quest. (Can be used twice.)",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "rey-daus-voltage",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Moderately extends the activation time of the Latent Power skill.",
+      "secondaryDesc": "Moderately extends the activation time of the Latent Power skill."
+    },
+    {
+      "name": "alluring-pelt",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases the attention drawn to you when attacking a monster.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "nu-udras-mutiny",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Deals moderate additional damage while the Resentment skill is active.",
+      "secondaryDesc": "Deals moderate additional damage while the Resentment skill is active."
+    },
+    {
+      "name": "lords-favor",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Temporarily increases attack power when using effects like Melody Effects that affect companions in range.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "jin-dahaads-revolt",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Increases attack after recovering from webbed status, frostblight, being pinned, or a Power Clash.",
+      "secondaryDesc": "Increases attack after recovering from webbed status, frostblight, being pinned, or a Power Clash."
+    },
+    {
+      "name": "lords-fury",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases attack when inflicted with ailments.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "gore-magalas-tyranny",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Infects you with Frenzy when against large monsters.",
+      "secondaryDesc": "Infects you with Frenzy when against large monsters."
+    },
+    {
+      "name": "guardians-pulse",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases recovery speed of stamina and red gauge when near Wylkrystals.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "arkvelds-hunger",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Regenerates a small amount of your health as you continually attack a monster. Recovery varies by weapon.",
+      "secondaryDesc": "Regenerates a small amount of your health as you continually attack a monster. Recovery varies by weapon."
+    },
+    {
+      "name": "guardians-protection",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Reduces elemental and unique damage while in the Ruins of Wyveria.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "guardian-arkvelds-vitality",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Restores a moderate amount of health when destroying a wound on a large monster.",
+      "secondaryDesc": "Restores a moderate amount of health when destroying a wound on a large monster."
+    },
+    {
+      "name": "imparted-wisdom",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases the chance of finding rare gathering points.",
+      "secondaryDesc": ""
+    }
+  ]
+}

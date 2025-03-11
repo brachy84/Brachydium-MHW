@@ -12,10 +12,22 @@ import 'package:http/http.dart' as http;
 part 'equipment.freezed.dart';
 part 'equipment.g.dart';
 
-enum Part { helm, chest, arm, waist, leg, charm }
+enum Part { helm, chest, arm, waist, leg, charm, weapon }
+
+enum SkillCategory { weapon, armor, groupBonus, setBonus }
+
+enum WeaponType { gs, ls, sns, db, sa, hammer, hh, lance, gl, ig, cb, lbg, hbg, bow }
 
 class All {
-  static const Skill undefined = Skill(name: "UNDEFINED", maxLevel: 0);
+  static const Skill undefined = Skill(name: "UNDEFINED", maxLevel: 0, category: SkillCategory.weapon, desc: '');
+  static const BonusSkill undefinedBonus = BonusSkill(
+      name: "UNDEFINED",
+      maxLevel: 0,
+      category: SkillCategory.groupBonus,
+      primaryCount: 0,
+      secondaryCount: 0,
+      primaryDesc: '',
+      secondaryDesc: '');
   static const Armor dummyArmor = Armor(
       name: 'dummy',
       part: Part.helm,
@@ -34,8 +46,8 @@ class All {
       defDragon: 0);
   static final List<Skill> skills = [];
   static final Map<String, Skill> skillsMap = {};
-  static final List<ArmorBonus> armorBonuses = [];
-  static final Map<String, ArmorBonus> armorBonusesMap = {};
+  static final List<BonusSkill> armorBonuses = [];
+  static final Map<String, BonusSkill> armorBonusesMap = {};
   static final List<Deco> decos = [];
   static final List<Armor> armorList = [];
   static final Map<Skill, List<Deco>> decosMap = {};
@@ -53,13 +65,35 @@ class All {
     Part.leg: legs
   };
 
-  static void addSkill(String name, int maxLevel, {String? altName}) {
+  static void addSkill(String name, SkillCategory category, int maxLevel, String desc, {String? altName}) {
     String trueName = altName ?? name;
-    Skill skill = Skill(name: trueName, altName: altName, maxLevel: maxLevel);
+    print('Adding skill $trueName');
+    Skill skill = Skill(name: trueName, altName: altName, category: category, maxLevel: maxLevel, desc: desc);
     skills.add(skill);
     skillsMap[name] = skill;
     if (altName != null) {
       skillsMap[altName] = skill;
+    }
+  }
+
+  static void addBonusSkill(
+      String name, SkillCategory category, int maxLevel, int primaryCount, int secondaryCount, String primaryDesc, String secondaryDesc,
+      {String? altName}) {
+    String trueName = altName ?? name;
+    print('Adding bonus skill $trueName');
+    BonusSkill skill = BonusSkill(
+        name: trueName,
+        altName: altName,
+        category: category,
+        maxLevel: maxLevel,
+        primaryCount: primaryCount,
+        secondaryCount: secondaryCount,
+        primaryDesc: primaryDesc,
+        secondaryDesc: secondaryDesc);
+    armorBonuses.add(skill);
+    armorBonusesMap[name] = skill;
+    if (altName != null) {
+      armorBonusesMap[altName] = skill;
     }
   }
 
@@ -70,6 +104,15 @@ class All {
       return skills[0];
     }
     return skillsMap[name]!;
+  }
+
+  static BonusSkill getArmorBonus(String name) {
+    if (!skillsMap.containsKey(name)) {
+      if (name == undefined.name) return undefinedBonus;
+      log("No skill with name $name");
+      return armorBonuses[0];
+    }
+    return armorBonusesMap[name]!;
   }
 
   static int? getArmorIndexByName(String name) {
@@ -114,36 +157,33 @@ class All {
     if (equipment.secondary != null) {
       map.putIfAbsent(equipment.secondary!, () => []).add(equipment);
     }
-    if (equipment.armorBonus != null) {
-      map.putIfAbsent(equipment.armorBonus!, () => []).add(equipment);
+    if (equipment.groupBonus != null) {
+      map.putIfAbsent(equipment.groupBonus!, () => []).add(equipment);
+    }
+    if (equipment.setBonus != null) {
+      map.putIfAbsent(equipment.setBonus!, () => []).add(equipment);
     }
   }
 
   static void saveData() {
-    _writeJsonData("data/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
-    _writeJsonData("data/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
   }
 
   static Future<void> init() async {
-    const bool parseFromWeb = false;
-    if (parseFromWeb) {
-      await parseSkillsFromWeb();
-      await parseDecosFromWeb();
-      await parseCharmsFromWeb();
-      await parseArmorFromHtml();
-    } else {
-      await parseSkillsFromJson();
-      await parseArmorBonusesFromJson();
-      await parseDecosFromJson();
-      await parseCharmsFromJson();
-      await parseArmorsFromJson();
-      //await parseArmorSkillsFromWeb();
-    }
+    //await parseSkillsFromWeb();
+    await parseSkillsFromJson();
+    //await parseDecosFromWeb();
+    await parseDecosFromJson();
+    //await parseCharmsFromWeb();
+    //await parseCharmsFromJson();
+    //await parseArmorFromHtml();
+    //await parseArmorsFromJson();
   }
 
   static parseSkillsFromJson() async {
-    final content = await rootBundle.loadString("assets/data/skills.json");
-    final json = jsonDecode(content)['data'] as List;
+    var content = await rootBundle.loadString("assets/data/wilds/skills.json");
+    var json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
       var skill = Skill.fromJson(element);
       skills.add(skill);
@@ -152,16 +192,28 @@ class All {
         skillsMap[skill.altName!] = skill;
       }
     }
+
+    content = await rootBundle.loadString("assets/data/wilds/bonus_skills.json");
+    json = jsonDecode(content)['data'] as List;
+    for (Map<String, dynamic> element in json) {
+      var skill = BonusSkill.fromJson(element);
+      armorBonuses.add(skill);
+      armorBonusesMap[skill.name] = skill;
+      if (skill.altName != null) {
+        armorBonusesMap[skill.altName!] = skill;
+      }
+    }
   }
 
   static parseArmorBonusesFromJson() async {
-    final content = await rootBundle.loadString("assets/data/armor_bonus.json");
+    final content = await rootBundle.loadString("assets/data/wilds/armor_bonus.json");
     final json = jsonDecode(content)['data'] as List;
     bool modifySkills = false;
     for (Map<String, dynamic> element in json) {
-      var skill = ArmorBonus.fromJson(element);
+      var skill = BonusSkill.fromJson(element);
       armorBonuses.add(skill);
       armorBonusesMap[skill.name] = skill;
+      /* TODO do secrets still exist?
       if (modifySkills) {
         if (skill.primarySkillSecret != null) {
           var s = skill.primarySkillSecret!;
@@ -171,12 +223,12 @@ class All {
           var s = skill.secondarySkillSecret!;
           replaceSkill(s, s.copyWith(maxSecretLevel: max(1, s.maxLevel - 2)));
         }
-      }
+      }*/
     }
   }
 
   static parseDecosFromJson() async {
-    final content = await rootBundle.loadString("assets/data/decos.json");
+    final content = await rootBundle.loadString("assets/data/wilds/decos.json");
     final json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
       var deco = Deco.fromJson(element);
@@ -189,7 +241,7 @@ class All {
   }
 
   static parseCharmsFromJson() async {
-    final content = await rootBundle.loadString("assets/data/charms.json");
+    final content = await rootBundle.loadString("assets/data/wilds/charms.json");
     final json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
       var charm = Charm.fromJson(element);
@@ -232,20 +284,21 @@ class All {
   static final List<String> partNames = [...partNamesU, ...partNamesL];
 
   static parseArmorsFromJson() async {
-    final content = await rootBundle.loadString("assets/data/armor.json");
+    final content = await rootBundle.loadString("assets/data/wilds/armor.json");
     final json = jsonDecode(content)['data'] as List;
     bool applyArmorBonus = true;
     String? bonusPiece;
-    ArmorBonus? bonus;
+    Skill? bonus;
     for (Map<String, dynamic> element in json) {
       var armor = Armor.fromJson(element);
       if (applyArmorBonus) {
-        if (armor.armorBonus != null) {
+        // TODO
+        /*if (armor.armorBonus != null) {
           bonus = armor.armorBonus;
           bonusPiece = armor.name;
         } else if (bonusPiece != null && isSameArmorSet(bonusPiece, armor.name)) {
           armor = armor.copyWith(armorBonus: bonus);
-        }
+        }*/
       }
       _addEquipment(armor);
     }
@@ -263,55 +316,124 @@ class All {
     return false;
   }
 
+  static Element? _findElement(Document doc, String tag, String className) {
+    var list = doc.getElementsByTagName(tag);
+    if (list.isEmpty) return null;
+    for (Element element in list) {
+      if (element.className == className) return element;
+    }
+    return null;
+  }
+
   static parseSkillsFromWeb() async {
-    final response = await http.Client().get(Uri.parse('https://mhworld.kiranico.com/en/skilltrees'));
+    final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/skills'));
     if (response.statusCode == 200) {
-      final remappedNames = {
-        'Wide-Range': 'Wide Range',
-        'Aquatic/Polar Mobility': 'Aquatic Expert',
-        'Non-elemental Boost': 'Non-Elemental Boost'
-      };
       var doc = parse(response.body);
-      var table = doc.getElementsByClassName('table table-lightborder table-sm')[0].children[1];
-      String? name = null;
-      int lvl = 0;
-      for (var el in table.children) {
-        if (el.children.length == 1) {
-          if (name != null && lvl > 0) {
-            addSkill(name, lvl, altName: remappedNames[name]);
-          }
-          name = el.children[0].children[0].innerHtml;
-          lvl = 0;
-        } else if (name != null) {
-          lvl++;
-        }
-      }
-      _writeJsonData("data/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
-    } else {
-      throw Exception();
+      var table = doc.getElementsByClassName('mx-auto h-full w-full max-w-3xl')[0];
+      var list = table.children[1];
+      await Future.wait([
+        _parseSkillList(list.children[0], SkillCategory.weapon),
+        _parseSkillList(list.children[1], SkillCategory.armor),
+        _parseSkillList(list.children[2], SkillCategory.groupBonus),
+        _parseSkillList(list.children[3], SkillCategory.setBonus),
+      ]);
+      _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
+      _writeJsonData("data/wilds/bonus_skills.json", {'data': armorBonuses.map((e) => e.toJson()).toList()});
     }
   }
 
+  static Future<void> _parseSkillList(Element html, SkillCategory category) async {
+    var list = html.children[1].children[0].children[0].children;
+    for (var el in list) {
+      var el1 = el.children[0].children[0];
+      var link = el1.attributes['href']!;
+      var name = el1.text; // TODO translation
+      var regName = _parseRegName(link);
+      int maxLevel = 0;
+
+      final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com$link'));
+
+      if (response.statusCode == 200) {
+        var doc = parse(response.body);
+        var table = _findElement(doc, 'tbody', '[&_tr:last-child]:border-0 text-sm');
+        if (table == null) {
+          print('html element not found');
+          continue;
+        }
+        if (category == SkillCategory.weapon || category == SkillCategory.armor) {
+          maxLevel = table.children.length;
+          String desc = '';
+          addSkill(regName, category, maxLevel, desc);
+        } else {
+          maxLevel = table.children.length;
+          int pL = _parseLv(table.children[0].children[0].text);
+          String pD = table.children[0].children[2].text;
+          int sL = 0;
+          String sD = '';
+          if (table.children.length > 1) {
+            sL = _parseLv(table.children[1].children[0].text);
+            sD = table.children[0].children[2].text;
+          }
+          addBonusSkill(regName, category, max(pL, sL), pL, sL, pD, sD);
+        }
+      } else {
+        print('Could not receive web page for skill $regName');
+      }
+    }
+  }
+
+  static String _parseRegName(String link) {
+    return link.substring(link.lastIndexOf('/') + 1);
+  }
+
+  static int _parseLv(String lv) {
+    return  int.parse(lv.substring(2));
+  }
+
   static parseDecosFromWeb() async {
-    final response = await http.Client().get(Uri.parse('https://mhworld.kiranico.com/en/decorations'));
+    final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/decorations'));
     if (response.statusCode == 200) {
       var doc = parse(response.body);
-      var table = doc.getElementsByClassName('table table-sm')[0].children[1];
-      List<Deco> decos = [];
-      for (var el in table.children) {
-        String name = el.children[0].children[0].children[1].innerHtml;
-        var skills = el.children[1].children[0].children;
-        String prim = skills[0].children[0].innerHtml;
-        String? sec = skills.length > 1 ? skills[1].children[0].innerHtml : null;
-        int size = int.parse(name.substring(name.length - 2));
-        int primLvl = int.parse(skills[0].nodes[1].text!);
-        Skill? primary = All.skillsMap[prim];
-        if (primary == null) {
-          log("Error getting skill $prim");
-        }
-        decos.add(Deco(name: name, primary: primary!, secondary: All.skillsMap[sec], primaryLvl: primLvl, size: size));
+      var table = _findElement(doc, 'tbody', '[&_tr:last-child]:border-0 text-sm');
+      if (table == null) {
+        print('html element not found');
+        return;
       }
-      _writeJsonData("data/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
+      for (var el in table.children) {
+        var el1 = el.children[0].children[0];
+        var link = el1.attributes['href']!;
+        var regName = _parseRegName(link);
+        var name = el1.text;
+        int size = int.parse(regName.substring(regName.length - 1));
+
+        final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com$link'));
+        if (response.statusCode == 200) {
+          var doc1 = parse(response.body);
+          var table1 = _findElement(doc1, 'tbody', '[&_tr:last-child]:border-0 text-sm');
+          if (table1 == null) {
+            print('html element not found');
+            continue;
+          }
+          var el2 = table1.children[0];
+          String pN = _parseRegName(el2.children[0].children[0].attributes['href']!);
+          int pL = _parseLv(el2.children[1].text);
+          Skill pS = Skill.fromString(pN);
+          String? sN;
+          int? sL;
+          Skill? sS;
+          if (table1.children.length > 1) {
+            el2 = table1.children[1];
+            sN = _parseRegName(el2.children[0].children[0].attributes['href']!);
+            sL = _parseLv(el2.children[1].text);
+            sS = Skill.fromString(sN);
+            if (sL != 1) throw Exception('Invalid secondary level');
+          }
+          decos.add(Deco(name: name, primary: pS, primaryLvl: pL, size: size, secondary: sS));
+        } else {
+          print('Could not receive web page for deco $regName');
+        }
+      }
+      _writeJsonData("data/wilds/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
     } else {
       throw Exception();
     }
@@ -377,7 +499,7 @@ class All {
             secondaryLv: skillLevels[1],
             ternaryLv: skillLevels[2]));
       }
-      _writeJsonData("data/charms.json", {'data': allCharms.map((e) => e.toJson()).toList()});
+      _writeJsonData("data/wilds/charms.json", {'data': allCharms.map((e) => e.toJson()).toList()});
     } else {
       throw Exception();
     }
@@ -464,7 +586,7 @@ class All {
             defDragon: defDragon));
       }
     }
-    _writeJsonData("data/armor.json", {'data': allArmors.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/armor.json", {'data': allArmors.map((e) => e.toJson()).toList()});
   }
 
   static Future<Document> parseHtml(String link) async {
@@ -514,12 +636,13 @@ class All {
                 print('Tried adding 3rd skill to armor');
               }
             } else {
-              ArmorBonus? bonus = armorBonusesMap[skillName.replaceAll('\'jiiva', '\'jiva')];
+              BonusSkill? bonus = armorBonusesMap[skillName.replaceAll('\'jiiva', '\'jiva')];
               if (bonus == null) {
                 print('No skill and armor bonus for "$skillName"');
                 continue;
               }
-              armor = armor.copyWith(armorBonus: bonus);
+              // TODO
+              //armor = armor.copyWith(armorBonus: bonus);
             }
             index++;
             //print('Modified ${armor.name} skill $index');
@@ -548,6 +671,8 @@ mixin SkillTemplate {
 
   String? get altName;
 
+  SkillCategory get category;
+
   bool matchesSearch(String searchValue) {
     return name.toLowerCase().contains(searchValue) || (altName?.toLowerCase().contains(searchValue) ?? false);
   }
@@ -561,7 +686,7 @@ mixin SkillTemplate {
   }
 }
 
-@freezed
+/*@freezed
 class ArmorBonus with SkillTemplate, _$ArmorBonus {
   const ArmorBonus._();
 
@@ -594,14 +719,18 @@ class ArmorBonus with SkillTemplate, _$ArmorBonus {
 
   @override
   int get hashCode => name.hashCode;
-}
+}*/
 
 @freezed
 class Skill with _$Skill, SkillTemplate {
   const Skill._();
 
   const factory Skill(
-      {required String name, @Default(null) String? altName, required int maxLevel, @Default(0) int maxSecretLevel}) = _Skill;
+      {required String name,
+      @Default(null) String? altName,
+      required SkillCategory category,
+      required int maxLevel,
+      required String desc}) = _Skill;
 
   static Skill fromString(String name) {
     return All.getSkill(name);
@@ -613,17 +742,46 @@ class Skill with _$Skill, SkillTemplate {
 
   factory Skill.fromJson(Map<String, Object?> json) => _$SkillFromJson(json);
 
-  static String asString(Skill? skill) {
+  static String asString(SkillTemplate? skill) {
     return skill?.name ?? '';
   }
 
-  bool get hasSecret => maxSecretLevel > 0;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _Skill && name == other.name);
+  }
 
-  /// max level including those unlocked with a secret skill
-  int get trueMaxLevel => maxLevel;
+  @override
+  int get hashCode => name.hashCode;
+}
 
-  /// max level without secret
-  int get cappedMaxLevel => hasSecret ? maxSecretLevel : maxLevel;
+@freezed
+class BonusSkill with _$BonusSkill, SkillTemplate {
+  const BonusSkill._();
+
+  const factory BonusSkill(
+      {required String name,
+      @Default(null) String? altName,
+      required SkillCategory category,
+      required int maxLevel,
+      required int primaryCount,
+      required int secondaryCount,
+      required String primaryDesc,
+      required String secondaryDesc}) = _BonusSkill;
+
+  static BonusSkill fromString(String name) {
+    return All.getArmorBonus(name);
+  }
+
+  static BonusSkill? fromStringNullable(String? name) {
+    return name == null || name.isEmpty ? null : All.getArmorBonus(name);
+  }
+
+  factory BonusSkill.fromJson(Map<String, Object?> json) => _$BonusSkillFromJson(json);
+
+  static String asString(SkillTemplate? skill) {
+    return skill?.name ?? '';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -658,7 +816,8 @@ class Armor with _$Armor, Equipment {
       required int rarity,
       @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required Skill primary,
       @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: ArmorBonus.fromStringNullable, toJson: ArmorBonus.asString) ArmorBonus? armorBonus,
+      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? groupBonus,
+      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? setBonus,
       required int primaryLv,
       @Default(0) int secondaryLv,
       required int primarySlotSize,
@@ -710,4 +869,25 @@ class Charm with _$Charm, Equipment {
 
   @override
   Part get part => Part.charm;
+}
+
+@freezed
+class Weapon with _$Weapon, Equipment {
+  const Weapon._();
+
+  const factory Weapon({
+    required String name,
+    required WeaponType type,
+    required int rarity,
+    @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required Skill primary,
+    @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
+    @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
+    required int primaryLv,
+    @Default(0) int secondaryLv,
+    @Default(0) int ternaryLv,
+    /*List<int> sharpness*/
+  }) = _Weapon;
+
+  @override
+  Part get part => Part.weapon;
 }

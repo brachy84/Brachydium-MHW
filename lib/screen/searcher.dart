@@ -190,20 +190,20 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
                   skill.value.name,
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 )),
-            if (skill.value.cappedMaxLevel > 1) ...[
+            if (skill.value.maxLevel > 1) ...[
               Text('Lv: ${skill.amount}'),
               Expanded(
                 flex: 33,
                 child: Slider(
-                  value: clampDouble(skill.amount.toDouble(), 1.0, skill.value.cappedMaxLevel.toDouble()),
+                  value: clampDouble(skill.amount.toDouble(), 1.0, skill.value.maxLevel.toDouble()),
                   onChanged: (val) {
                     innerSetState(() {
                       skill.amount = val.toInt();
                     });
                   },
                   min: 1.0,
-                  max: skill.value.cappedMaxLevel.toDouble(),
-                  divisions: skill.value.cappedMaxLevel - 1,
+                  max: skill.value.maxLevel.toDouble(),
+                  divisions: skill.value.maxLevel - 1,
                 ),
               ),
             ],

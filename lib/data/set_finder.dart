@@ -270,7 +270,8 @@ class _ArmorSetTryer {
       if (armor.ternarySlotSize > 0) slots[armor.ternarySlotSize]++;
       _skill(skills, armor.primary, armor.primaryLv);
       if (armor.secondary != null) _skill(skills, armor.secondary!, armor.secondaryLv);
-      if (armor.armorBonus != null) _skill(skills, armor.armorBonus!, armor.ternaryLv);
+      if (armor.groupBonus != null) _skill(skills, armor.groupBonus!, 1);
+      if (armor.setBonus != null) _skill(skills, armor.setBonus!, 1);
     }
     if (skills.isEmpty) {
       return _makeArmorSet(); // requirements are already met before any decos

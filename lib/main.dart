@@ -34,7 +34,7 @@ void main() async {
     setWindowMinSize(const Size(340, 600));
   }
   // run app
-  runApp(const BrachysArmorSetSearcherApp());
+  //runApp(const BrachysArmorSetSearcherApp());
 }
 
 class BrachysArmorSetSearcherApp extends StatelessWidget {
