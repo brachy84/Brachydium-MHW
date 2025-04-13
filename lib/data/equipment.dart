@@ -65,6 +65,8 @@ class All {
     Part.leg: legs
   };
 
+  static final Map<String, String> langEn = {};
+
   static void addSkill(String name, SkillCategory category, int maxLevel, String desc, {String? altName}) {
     String trueName = altName ?? name;
     print('Adding skill $trueName');
@@ -141,6 +143,7 @@ class All {
 
   static void _addEquipment<T extends Equipment>(T equipment) {
     if (equipment.part == Part.charm) {
+      print('Adding charm ${(equipment as Charm).name}');
       var map = charms;
       map.putIfAbsent(equipment.primary, () => []).add(equipment as Charm);
       if (equipment.secondary != null) {
@@ -151,6 +154,7 @@ class All {
       }
       return;
     }
+    print('Adding armor ${(equipment as Armor).name}');
     var map = _armorBySkillByPart[equipment.part]!;
     map.putIfAbsent(equipment.primary, () => []).add(equipment as Armor);
     armorList.add(equipment);
@@ -171,14 +175,25 @@ class All {
   }
 
   static Future<void> init() async {
+    await parseLangFromJson();
     //await parseSkillsFromWeb();
     await parseSkillsFromJson();
-    //await parseDecosFromWeb();
-    await parseDecosFromJson();
+    await parseDecosFromWeb();
+    //await parseDecosFromJson();
     //await parseCharmsFromWeb();
     //await parseCharmsFromJson();
-    //await parseArmorFromHtml();
+    await parseArmorFromWeb();
     //await parseArmorsFromJson();
+  }
+  
+  static parseLangFromJson() async {
+    var content = await rootBundle.loadString("assets/data/wilds/lang/en_us.json");
+    var json = jsonDecode(content) as Map;
+    json.forEach((k, v) => langEn[k] = v);
+  }
+
+  static _writeLang() {
+    _writeJsonData("data/wilds/lang/en_us.json", langEn);
   }
 
   static parseSkillsFromJson() async {
@@ -339,6 +354,7 @@ class All {
       ]);
       _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
       _writeJsonData("data/wilds/bonus_skills.json", {'data': armorBonuses.map((e) => e.toJson()).toList()});
+      _writeLang();
     }
   }
 
@@ -364,6 +380,7 @@ class All {
           maxLevel = table.children.length;
           String desc = '';
           addSkill(regName, category, maxLevel, desc);
+          langEn['skill:$regName'] = name;
         } else {
           maxLevel = table.children.length;
           int pL = _parseLv(table.children[0].children[0].text);
@@ -374,6 +391,7 @@ class All {
             sL = _parseLv(table.children[1].children[0].text);
             sD = table.children[0].children[2].text;
           }
+          langEn['bskill:$regName'] = name;
           addBonusSkill(regName, category, max(pL, sL), pL, sL, pD, sD);
         }
       } else {
@@ -387,7 +405,7 @@ class All {
   }
 
   static int _parseLv(String lv) {
-    return  int.parse(lv.substring(2));
+    return int.parse(lv.substring(2));
   }
 
   static parseDecosFromWeb() async {
@@ -428,12 +446,15 @@ class All {
             sS = Skill.fromString(sN);
             if (sL != 1) throw Exception('Invalid secondary level');
           }
-          decos.add(Deco(name: name, primary: pS, primaryLvl: pL, size: size, secondary: sS));
+          decos.add(Deco(name: regName, primary: pS, primaryLvl: pL, size: size, secondary: sS));
+          langEn['deco:$regName'] = name;
+
         } else {
           print('Could not receive web page for deco $regName');
         }
       }
       _writeJsonData("data/wilds/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
+      _writeLang();
     } else {
       throw Exception();
     }
@@ -502,6 +523,123 @@ class All {
       _writeJsonData("data/wilds/charms.json", {'data': allCharms.map((e) => e.toJson()).toList()});
     } else {
       throw Exception();
+    }
+  }
+
+  static parseArmorFromWeb() async {
+    final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/armor-series'));
+    if (response.statusCode == 200) {
+      var doc = parse(response.body);
+      var table = _findElement(doc, 'tbody', '[&_tr:last-child]:border-0 text-sm')!;
+
+      var parts = {
+        'Head': Part.helm,
+        'Chest': Part.chest,
+        'Arms': Part.arm,
+        'Waist': Part.waist,
+        'Legs': Part.leg,
+      };
+
+      for (var child in table.children) {
+        var first = child.children[0];
+        if (first.children.isNotEmpty) {
+          String link = first.children[0].attributes['href']!;
+          final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com$link'));
+          if (response.statusCode == 200) {
+            var doc1 = parse(response.body);
+            var table1 = _findElement(doc1, 'div', 'mx-auto h-full w-full max-w-3xl')!.children[1];
+            var defTable = table1.children[3].children[0].children[0].children[0];
+            var skillTable = table1.children[4].children[0].children[0].children[0];
+            var armorRegName = _parseRegName(link);
+
+            for (int i = 1; i < defTable.children.length; i++) {
+              var partElement = defTable.children[i];
+              var part = parts[partElement.children[0].text]!;
+              var name = partElement.children[1].text;
+              var regName = '$armorRegName-${part.name}';
+              var def = int.parse(partElement.children[2].text);
+              var fireDef = int.parse(partElement.children[3].text);
+              var waterDef = int.parse(partElement.children[4].text);
+              var thunderDef = int.parse(partElement.children[5].text);
+              var iceDef = int.parse(partElement.children[6].text);
+              var dragonDef = int.parse(partElement.children[7].text);
+              var skillElement = skillTable.children[i];
+              var slots = skillElement.children[2].text
+                  .replaceAll(']\n[', '\$')
+                  .replaceAll('][', '\$')
+                  .replaceAll('[', '')
+                  .replaceAll(']', '')
+                  .split('\$')
+                  .map((s) => int.parse(s))
+                  .toList();
+              var skillsElement = skillElement.children[3];
+              Skill? p, s;
+              BonusSkill? bonus, group;
+              int pLvl = 0, sLvl = 0;
+              for (var skillElement in skillsElement.children) {
+                var skillName = skillElement.children[0].attributes['href']!.replaceAll('/data/skills/', '');
+                var lvl = int.parse(skillElement.children[0].text.split('+')[1]);
+                Skill? t = Skill.fromStringNullable(skillName);
+                if (t != null) {
+                  if (p == null) {
+                    p = t;
+                    pLvl = lvl;
+                  } else if (s == null) {
+                    s = t;
+                    sLvl = lvl;
+                  } else {
+                    print('Armor piece $name has more than 2 skills: $p, $s, $t');
+                  }
+                } else {
+                  BonusSkill? t2 = BonusSkill.fromStringNullable(skillName);
+                  if (t2 != null) {
+                    if (t2.category == SkillCategory.setBonus) {
+                      if (bonus == null) {
+                        bonus = t2;
+                      } else {
+                        print('Armor piece $name has more than 1 bonus skills: $bonus, $t2');
+                      }
+                    } else if (t2.category == SkillCategory.groupBonus) {
+                      if (group == null) {
+                        group = t2;
+                      } else {
+                        print('Armor piece $name has more than 1 group skills: $group, $t2');
+                      }
+                    }
+                  }
+                }
+              }
+              langEn['armor:$regName'] = name;
+              Armor armor = Armor(
+                  name: regName,
+                  part: part,
+                  rarity: 1,
+                  primary: p!,
+                  primaryLv: pLvl,
+                  secondary: s,
+                  secondaryLv: sLvl,
+                  setBonus: bonus,
+                  groupBonus: group,
+                  primarySlotSize: slots[0],
+                  secondarySlotSize: slots[1],
+                  ternarySlotSize: slots[2],
+                  minDef: def,
+                  maxDef: def,
+                  defFire: fireDef,
+                  defWater: waterDef,
+                  defThunder: thunderDef,
+                  defIce: iceDef,
+                  defDragon: dragonDef);
+              _addEquipment(armor);
+
+            }
+          }
+        }
+      }
+      _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
+      _writeLang();
+    } else {
+      throw Exception(response.statusCode);
     }
   }
 

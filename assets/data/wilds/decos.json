@@ -1,2527 +1,2527 @@
 {
   "data": [
     {
-      "name": "Attack Jewel [1]",
+      "name": "attack-jewel-1",
       "primary": "attack-boost",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Attack Jewel II [2]",
+      "name": "attack-jewel-ii-2",
       "primary": "attack-boost",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Attack Jewel III [3]",
+      "name": "attack-jewel-iii-3",
       "primary": "attack-boost",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Furor Jewel [2]",
+      "name": "furor-jewel-2",
       "primary": "resentment",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Counterattack Jewel [3]",
+      "name": "counterattack-jewel-3",
       "primary": "adrenaline-rush",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Guardian Jewel [1]",
+      "name": "guardian-jewel-1",
       "primary": "offensive-guard",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Guardian Jewel II [2]",
+      "name": "guardian-jewel-ii-2",
       "primary": "offensive-guard",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Guardian Jewel III [3]",
+      "name": "guardian-jewel-iii-3",
       "primary": "offensive-guard",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Blaze Jwl [3]",
+      "name": "guardianblaze-jwl-3",
       "primary": "offensive-guard",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Stream Jwl [3]",
+      "name": "guardianstream-jwl-3",
       "primary": "offensive-guard",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Frost Jwl [3]",
+      "name": "guardianfrost-jwl-3",
       "primary": "offensive-guard",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Bolt Jwl [3]",
+      "name": "guardianbolt-jwl-3",
       "primary": "offensive-guard",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Dragon Jwl [3]",
+      "name": "guardiandragon-jwl-3",
       "primary": "offensive-guard",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Handicraft Jwl [3]",
+      "name": "guardianhandicraft-jwl-3",
       "primary": "offensive-guard",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Guardian/Ironwall Jwl [3]",
+      "name": "guardianironwall-jwl-3",
       "primary": "offensive-guard",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Flawless Jewel [2]",
+      "name": "flawless-jewel-2",
       "primary": "peak-performance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Counter Jewel [2]",
+      "name": "counter-jewel-2",
       "primary": "counterstrike",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Expert Jewel [1]",
+      "name": "expert-jewel-1",
       "primary": "critical-eye",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Expert Jewel II [2]",
+      "name": "expert-jewel-ii-2",
       "primary": "critical-eye",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Expert Jewel III [3]",
+      "name": "expert-jewel-iii-3",
       "primary": "critical-eye",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Critical Jewel [1]",
+      "name": "critical-jewel-1",
       "primary": "critical-boost",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Critical Jewel II [2]",
+      "name": "critical-jewel-ii-2",
       "primary": "critical-boost",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Critical Jewel III [3]",
+      "name": "critical-jewel-iii-3",
       "primary": "critical-boost",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Tenderizer Jewel [3]",
+      "name": "tenderizer-jewel-3",
       "primary": "weakness-exploit",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Draw Jewel [1]",
+      "name": "draw-jewel-1",
       "primary": "critical-draw",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Draw Jewel II [2]",
+      "name": "draw-jewel-ii-2",
       "primary": "critical-draw",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Draw Jewel III [3]",
+      "name": "draw-jewel-iii-3",
       "primary": "critical-draw",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Mighty Jewel [2]",
+      "name": "mighty-jewel-2",
       "primary": "maximum-might",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Blaze Jewel [1]",
+      "name": "blaze-jewel-1",
       "primary": "fire-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Blaze Jewel II [2]",
+      "name": "blaze-jewel-ii-2",
       "primary": "fire-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Blaze Jewel III [3]",
+      "name": "blaze-jewel-iii-3",
       "primary": "fire-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Guardian Jewel [3]",
+      "name": "blazeguardian-jewel-3",
       "primary": "fire-attack",
       "secondary": "offensive-guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Crit Elem Jwl [3]",
+      "name": "blazecrit-elem-jwl-3",
       "primary": "fire-attack",
       "secondary": "critical-element",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Handicraft Jwl [3]",
+      "name": "blazehandicraft-jwl-3",
       "primary": "fire-attack",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Rzr Sharp Jwl [3]",
+      "name": "blazerzr-sharp-jwl-3",
       "primary": "fire-attack",
       "secondary": "razor-sharp",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Precise Jewel [3]",
+      "name": "blazeprecise-jewel-3",
       "primary": "fire-attack",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Opener Jewel [3]",
+      "name": "blazeopener-jewel-3",
       "primary": "fire-attack",
       "secondary": "opening-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Bandolier Jwl [3]",
+      "name": "blazebandolier-jwl-3",
       "primary": "fire-attack",
       "secondary": "tetrad-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Focus Jewel [3]",
+      "name": "blazefocus-jewel-3",
       "primary": "fire-attack",
       "secondary": "focus",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Enhancer Jwl [3]",
+      "name": "blazeenhancer-jwl-3",
       "primary": "fire-attack",
       "secondary": "power-prolonger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/KO Jewel [3]",
+      "name": "blazeko-jewel-3",
       "primary": "fire-attack",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Quickswitch Jwl [3]",
+      "name": "blazequickswitch-jwl-3",
       "primary": "fire-attack",
       "secondary": "rapid-morph",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Ironwall Jwl [3]",
+      "name": "blazeironwall-jwl-3",
       "primary": "fire-attack",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blaze/Shield Jewel [3]",
+      "name": "blazeshield-jewel-3",
       "primary": "fire-attack",
       "secondary": "guard-up",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream Jewel [1]",
+      "name": "stream-jewel-1",
       "primary": "water-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Stream Jewel II [2]",
+      "name": "stream-jewel-ii-2",
       "primary": "water-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Stream Jewel III [3]",
+      "name": "stream-jewel-iii-3",
       "primary": "water-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Guardian Jwl [3]",
+      "name": "streamguardian-jwl-3",
       "primary": "water-attack",
       "secondary": "offensive-guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Crit Elem Jwl [3]",
+      "name": "streamcrit-elem-jwl-3",
       "primary": "water-attack",
       "secondary": "critical-element",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Handicraft Jwl [3]",
+      "name": "streamhandicraft-jwl-3",
       "primary": "water-attack",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Rzr Sharp Jwl [3]",
+      "name": "streamrzr-sharp-jwl-3",
       "primary": "water-attack",
       "secondary": "razor-sharp",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Precise Jewel [3]",
+      "name": "streamprecise-jewel-3",
       "primary": "water-attack",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Opener Jwl [3]",
+      "name": "streamopener-jwl-3",
       "primary": "water-attack",
       "secondary": "opening-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Bandolier Jwl [3]",
+      "name": "streambandolier-jwl-3",
       "primary": "water-attack",
       "secondary": "tetrad-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Focus Jewel [3]",
+      "name": "streamfocus-jewel-3",
       "primary": "water-attack",
       "secondary": "focus",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Enhancer Jwl [3]",
+      "name": "streamenhancer-jwl-3",
       "primary": "water-attack",
       "secondary": "power-prolonger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/KO Jewel [3]",
+      "name": "streamko-jewel-3",
       "primary": "water-attack",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Quickswitch Jwl [3]",
+      "name": "streamquickswitch-jwl-3",
       "primary": "water-attack",
       "secondary": "rapid-morph",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Ironwall Jwl [3]",
+      "name": "streamironwall-jwl-3",
       "primary": "water-attack",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Stream/Shield Jewel [3]",
+      "name": "streamshield-jewel-3",
       "primary": "water-attack",
       "secondary": "guard-up",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost Jewel [1]",
+      "name": "frost-jewel-1",
       "primary": "ice-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Frost Jewel II [2]",
+      "name": "frost-jewel-ii-2",
       "primary": "ice-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Frost Jewel III [3]",
+      "name": "frost-jewel-iii-3",
       "primary": "ice-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Guardian Jwl [3]",
+      "name": "frostguardian-jwl-3",
       "primary": "ice-attack",
       "secondary": "offensive-guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Crit Elem Jwl [3]",
+      "name": "frostcrit-elem-jwl-3",
       "primary": "ice-attack",
       "secondary": "critical-element",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Handicraft Jwl [3]",
+      "name": "frosthandicraft-jwl-3",
       "primary": "ice-attack",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Rzr Sharp Jwl [3]",
+      "name": "frostrzr-sharp-jwl-3",
       "primary": "ice-attack",
       "secondary": "razor-sharp",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Precise Jewel [3]",
+      "name": "frostprecise-jewel-3",
       "primary": "ice-attack",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Opener Jewel [3]",
+      "name": "frostopener-jewel-3",
       "primary": "ice-attack",
       "secondary": "opening-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Bandolier Jwl [3]",
+      "name": "frostbandolier-jwl-3",
       "primary": "ice-attack",
       "secondary": "tetrad-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Focus Jewel [3]",
+      "name": "frostfocus-jewel-3",
       "primary": "ice-attack",
       "secondary": "focus",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Enhancer Jwl [3]",
+      "name": "frostenhancer-jwl-3",
       "primary": "ice-attack",
       "secondary": "power-prolonger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/KO Jewel [3]",
+      "name": "frostko-jewel-3",
       "primary": "ice-attack",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Quickswitch Jwl [3]",
+      "name": "frostquickswitch-jwl-3",
       "primary": "ice-attack",
       "secondary": "rapid-morph",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Ironwall Jwl [3]",
+      "name": "frostironwall-jwl-3",
       "primary": "ice-attack",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Frost/Shield Jewel [3]",
+      "name": "frostshield-jewel-3",
       "primary": "ice-attack",
       "secondary": "guard-up",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt Jewel [1]",
+      "name": "bolt-jewel-1",
       "primary": "thunder-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Bolt Jewel II [2]",
+      "name": "bolt-jewel-ii-2",
       "primary": "thunder-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Bolt Jewel III [3]",
+      "name": "bolt-jewel-iii-3",
       "primary": "thunder-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Guardian Jwl [3]",
+      "name": "boltguardian-jwl-3",
       "primary": "thunder-attack",
       "secondary": "offensive-guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Crit Elem Jwl [3]",
+      "name": "boltcrit-elem-jwl-3",
       "primary": "thunder-attack",
       "secondary": "critical-element",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Handicraft Jwl [3]",
+      "name": "bolthandicraft-jwl-3",
       "primary": "thunder-attack",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Rzr Sharp Jwl [3]",
+      "name": "boltrzr-sharp-jwl-3",
       "primary": "thunder-attack",
       "secondary": "razor-sharp",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Precise Jewel [3]",
+      "name": "boltprecise-jewel-3",
       "primary": "thunder-attack",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Opener Jewel [3]",
+      "name": "boltopener-jewel-3",
       "primary": "thunder-attack",
       "secondary": "opening-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Bandolier Jwl [3]",
+      "name": "boltbandolier-jwl-3",
       "primary": "thunder-attack",
       "secondary": "tetrad-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Focus Jewel [3]",
+      "name": "boltfocus-jewel-3",
       "primary": "thunder-attack",
       "secondary": "focus",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Enhancer Jwl [3]",
+      "name": "boltenhancer-jwl-3",
       "primary": "thunder-attack",
       "secondary": "power-prolonger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/KO Jewel [3]",
+      "name": "boltko-jewel-3",
       "primary": "thunder-attack",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Quickswitch Jwl [3]",
+      "name": "boltquickswitch-jwl-3",
       "primary": "thunder-attack",
       "secondary": "rapid-morph",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Ironwall Jewel [3]",
+      "name": "boltironwall-jewel-3",
       "primary": "thunder-attack",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bolt/Shield Jewel [3]",
+      "name": "boltshield-jewel-3",
       "primary": "thunder-attack",
       "secondary": "guard-up",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon Jewel [1]",
+      "name": "dragon-jewel-1",
       "primary": "dragon-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Dragon Jewel II [2]",
+      "name": "dragon-jewel-ii-2",
       "primary": "dragon-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Dragon Jewel III [3]",
+      "name": "dragon-jewel-iii-3",
       "primary": "dragon-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Guardian Jwl [3]",
+      "name": "dragonguardian-jwl-3",
       "primary": "dragon-attack",
       "secondary": "offensive-guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Crit Elem Jwl [3]",
+      "name": "dragoncrit-elem-jwl-3",
       "primary": "dragon-attack",
       "secondary": "critical-element",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Handicraft Jwl [3]",
+      "name": "dragonhandicraft-jwl-3",
       "primary": "dragon-attack",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Rzr Sharp Jwl [3]",
+      "name": "dragonrzr-sharp-jwl-3",
       "primary": "dragon-attack",
       "secondary": "razor-sharp",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Precise Jewel [3]",
+      "name": "dragonprecise-jewel-3",
       "primary": "dragon-attack",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Opener Jewel [3]",
+      "name": "dragonopener-jewel-3",
       "primary": "dragon-attack",
       "secondary": "opening-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Bandolier Jwl [3]",
+      "name": "dragonbandolier-jwl-3",
       "primary": "dragon-attack",
       "secondary": "tetrad-shot",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Focus Jewel [3]",
+      "name": "dragonfocus-jewel-3",
       "primary": "dragon-attack",
       "secondary": "focus",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Enhancer Jwl [3]",
+      "name": "dragonenhancer-jwl-3",
       "primary": "dragon-attack",
       "secondary": "power-prolonger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/KO Jewel [3]",
+      "name": "dragonko-jewel-3",
       "primary": "dragon-attack",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Quickswitch Jwl [3]",
+      "name": "dragonquickswitch-jwl-3",
       "primary": "dragon-attack",
       "secondary": "rapid-morph",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Ironwall Jwl [3]",
+      "name": "dragonironwall-jwl-3",
       "primary": "dragon-attack",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Dragon/Shield Jewel [3]",
+      "name": "dragonshield-jewel-3",
       "primary": "dragon-attack",
       "secondary": "guard-up",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Venom Jewel [1]",
+      "name": "venom-jewel-1",
       "primary": "poison-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Venom Jewel II [2]",
+      "name": "venom-jewel-ii-2",
       "primary": "poison-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Venom Jewel III [3]",
+      "name": "venom-jewel-iii-3",
       "primary": "poison-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Paralyzer Jewel [1]",
+      "name": "paralyzer-jewel-1",
       "primary": "paralysis-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Paralyzer Jewel II [2]",
+      "name": "paralyzer-jewel-ii-2",
       "primary": "paralysis-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Paralyzer Jwl III [3]",
+      "name": "paralyzer-jwl-iii-3",
       "primary": "paralysis-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Sleep Jewel [1]",
+      "name": "sleep-jewel-1",
       "primary": "sleep-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Sleep Jewel II [2]",
+      "name": "sleep-jewel-ii-2",
       "primary": "sleep-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Sleep Jewel III [3]",
+      "name": "sleep-jewel-iii-3",
       "primary": "sleep-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blast Jewel [1]",
+      "name": "blast-jewel-1",
       "primary": "blast-attack",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Blast Jewel II [2]",
+      "name": "blast-jewel-ii-2",
       "primary": "blast-attack",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Blast Jewel III [3]",
+      "name": "blast-jewel-iii-3",
       "primary": "blast-attack",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Element Jewel [1]",
+      "name": "crit-element-jewel-1",
       "primary": "critical-element",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Crit Element Jewel II [2]",
+      "name": "crit-element-jewel-ii-2",
       "primary": "critical-element",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Crit Elem Jwl III [3]",
+      "name": "crit-elem-jwl-iii-3",
       "primary": "critical-element",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Blaze Jwl [3]",
+      "name": "crit-elemblaze-jwl-3",
       "primary": "critical-element",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Stream Jwl [3]",
+      "name": "crit-elemstream-jwl-3",
       "primary": "critical-element",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Frost Jwl [3]",
+      "name": "crit-elemfrost-jwl-3",
       "primary": "critical-element",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Bolt Jwl [3]",
+      "name": "crit-elembolt-jwl-3",
       "primary": "critical-element",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Dragon Jwl [3]",
+      "name": "crit-elemdragon-jwl-3",
       "primary": "critical-element",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Handicraft Jwl [3]",
+      "name": "crit-elemhandicraft-jwl-3",
       "primary": "critical-element",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Element/Precise Jwl [3]",
+      "name": "crit-elementprecise-jwl-3",
       "primary": "critical-element",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/KO Jewel [3]",
+      "name": "crit-elemko-jewel-3",
       "primary": "critical-element",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Elem/Ironwall Jwl [3]",
+      "name": "crit-elemironwall-jwl-3",
       "primary": "critical-element",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Status Jewel [1]",
+      "name": "crit-status-jewel-1",
       "primary": "critical-status",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Crit Status Jewel II [2]",
+      "name": "crit-status-jewel-ii-2",
       "primary": "critical-status",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Crit Stat Jwl III [3]",
+      "name": "crit-stat-jwl-iii-3",
       "primary": "critical-status",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Stat/Handicraft Jwl [3]",
+      "name": "crit-stathandicraft-jwl-3",
       "primary": "critical-status",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Stat/Precise Jwl [3]",
+      "name": "crit-statprecise-jwl-3",
       "primary": "critical-status",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Status/KO Jwl [3]",
+      "name": "crit-statusko-jwl-3",
       "primary": "critical-status",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Crit Stat/Ironwall Jwl [3]",
+      "name": "crit-statironwall-jwl-3",
       "primary": "critical-status",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Charge Jewel [1]",
+      "name": "charge-jewel-1",
       "primary": "charge-master",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Charge Jewel II [2]",
+      "name": "charge-jewel-ii-2",
       "primary": "charge-master",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Charge Jewel III [3]",
+      "name": "charge-jewel-iii-3",
       "primary": "charge-master",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Charge/Handicraft Jwl [3]",
+      "name": "chargehandicraft-jwl-3",
       "primary": "charge-master",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Charge/KO Jewel [3]",
+      "name": "chargeko-jewel-3",
       "primary": "charge-master",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Handicraft Jewel [1]",
+      "name": "handicraft-jewel-1",
       "primary": "handicraft",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Handicraft Jewel II [2]",
+      "name": "handicraft-jewel-ii-2",
       "primary": "handicraft",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Handicraft Jwl III [3]",
+      "name": "handicraft-jwl-iii-3",
       "primary": "handicraft",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Razor Sharp Jewel [1]",
+      "name": "razor-sharp-jewel-1",
       "primary": "razor-sharp",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Razor Sharp Jewel II [2]",
+      "name": "razor-sharp-jewel-ii-2",
       "primary": "razor-sharp",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Rzr Sharp Jwl III [3]",
+      "name": "rzr-sharp-jwl-iii-3",
       "primary": "razor-sharp",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Blaze Jwl [3]",
+      "name": "rzr-sharpblaze-jwl-3",
       "primary": "razor-sharp",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Stream Jwl [3]",
+      "name": "rzr-sharpstream-jwl-3",
       "primary": "razor-sharp",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Frost Jwl [3]",
+      "name": "rzr-sharpfrost-jwl-3",
       "primary": "razor-sharp",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Bolt Jwl [3]",
+      "name": "rzr-sharpbolt-jwl-3",
       "primary": "razor-sharp",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Dragon Jwl [3]",
+      "name": "rzr-sharpdragon-jwl-3",
       "primary": "razor-sharp",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Handicraft Jwl [3]",
+      "name": "rzr-sharphandicraft-jwl-3",
       "primary": "razor-sharp",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Razor Sharp/KO Jwl [3]",
+      "name": "razor-sharpko-jwl-3",
       "primary": "razor-sharp",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Rzr Sharp/Ironwall Jwl [3]",
+      "name": "rzr-sharpironwall-jwl-3",
       "primary": "razor-sharp",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Sharp Jewel [1]",
+      "name": "sharp-jewel-1",
       "primary": "protective-polish",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Sharp Jewel II [2]",
+      "name": "sharp-jewel-ii-2",
       "primary": "protective-polish",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Sharp Jewel III [3]",
+      "name": "sharp-jewel-iii-3",
       "primary": "protective-polish",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Mind's Eye Jewel [1]",
+      "name": "minds-eye-jewel-1",
       "primary": "minds-eye",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Mind's Eye Jewel II [2]",
+      "name": "minds-eye-jewel-ii-2",
       "primary": "minds-eye",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Mind's Eye Jwl III [3]",
+      "name": "minds-eye-jwl-iii-3",
       "primary": "minds-eye",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Blunt Jewel [1]",
+      "name": "blunt-jewel-1",
       "primary": "bludgeoner",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Blunt Jewel II [2]",
+      "name": "blunt-jewel-ii-2",
       "primary": "bludgeoner",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Blunt Jewel III [3]",
+      "name": "blunt-jewel-iii-3",
       "primary": "bludgeoner",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Mastery Jewel [3]",
+      "name": "mastery-jewel-3",
       "primary": "masters-touch",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Forceshot Jewel [3]",
+      "name": "forceshot-jewel-3",
       "primary": "normal-shots",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Pierce Jewel [3]",
+      "name": "pierce-jewel-3",
       "primary": "piercing-shots",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Spread Jewel [3]",
+      "name": "spread-jewel-3",
       "primary": "spreadpower-shots",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Precise Jewel [1]",
+      "name": "precise-jewel-1",
       "primary": "ballistics",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Precise Jewel II [2]",
+      "name": "precise-jewel-ii-2",
       "primary": "ballistics",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Precise Jewel III [3]",
+      "name": "precise-jewel-iii-3",
       "primary": "ballistics",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Salvo Jewel [3]",
+      "name": "salvo-jewel-3",
       "primary": "rapid-fire-up",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Opener Jewel [1]",
+      "name": "opener-jewel-1",
       "primary": "opening-shot",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Opener Jewel II [2]",
+      "name": "opener-jewel-ii-2",
       "primary": "opening-shot",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Opener Jewel III [3]",
+      "name": "opener-jewel-iii-3",
       "primary": "opening-shot",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Blaze Jewel [3]",
+      "name": "openerblaze-jewel-3",
       "primary": "opening-shot",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Stream Jwl [3]",
+      "name": "openerstream-jwl-3",
       "primary": "opening-shot",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Frost Jewel [3]",
+      "name": "openerfrost-jewel-3",
       "primary": "opening-shot",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Bolt Jewel [3]",
+      "name": "openerbolt-jewel-3",
       "primary": "opening-shot",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Dragon Jewel [3]",
+      "name": "openerdragon-jewel-3",
       "primary": "opening-shot",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Precise Jewel [3]",
+      "name": "openerprecise-jewel-3",
       "primary": "opening-shot",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Opener/Ironwall Jwl [3]",
+      "name": "openerironwall-jwl-3",
       "primary": "opening-shot",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier Jewel [1]",
+      "name": "bandolier-jewel-1",
       "primary": "tetrad-shot",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Bandolier Jewel II [2]",
+      "name": "bandolier-jewel-ii-2",
       "primary": "tetrad-shot",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Bandolier Jewel III [3]",
+      "name": "bandolier-jewel-iii-3",
       "primary": "tetrad-shot",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Blaze Jwl [3]",
+      "name": "bandolierblaze-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Stream Jwl [3]",
+      "name": "bandolierstream-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Frost Jwl [3]",
+      "name": "bandolierfrost-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Bolt Jwl [3]",
+      "name": "bandolierbolt-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Dragon Jwl [3]",
+      "name": "bandolierdragon-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Precise Jwl [3]",
+      "name": "bandolierprecise-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Bandolier/Ironwall Jwl [3]",
+      "name": "bandolierironwall-jwl-3",
       "primary": "tetrad-shot",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Trueshot Jewel [1]",
+      "name": "trueshot-jewel-1",
       "primary": "special-ammo-boost",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Trueshot Jewel II [2]",
+      "name": "trueshot-jewel-ii-2",
       "primary": "special-ammo-boost",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Poisoncoat Jewel [2]",
+      "name": "poisoncoat-jewel-2",
       "primary": "poison-functionality",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Paracoat Jewel [3]",
+      "name": "paracoat-jewel-3",
       "primary": "para-functionality",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Sleepcoat Jewel [3]",
+      "name": "sleepcoat-jewel-3",
       "primary": "sleep-functionality",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Blastcoat Jewel [2]",
+      "name": "blastcoat-jewel-2",
       "primary": "blast-functionality",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Draincoat Jewel [2]",
+      "name": "draincoat-jewel-2",
       "primary": "exhaust-functionality",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Defense Jewel [1]",
+      "name": "defense-jewel-1",
       "primary": "defense-boost",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Protection Jewel [1]",
+      "name": "protection-jewel-1",
       "primary": "divine-blessing",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Fire Res Jewel [1]",
+      "name": "fire-res-jewel-1",
       "primary": "fire-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Water Res Jewel [1]",
+      "name": "water-res-jewel-1",
       "primary": "water-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Thunder Res Jewel [1]",
+      "name": "thunder-res-jewel-1",
       "primary": "thunder-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Ice Res Jewel [1]",
+      "name": "ice-res-jewel-1",
       "primary": "ice-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Dragon Res Jewel [1]",
+      "name": "dragon-res-jewel-1",
       "primary": "dragon-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Antidote Jewel [1]",
+      "name": "antidote-jewel-1",
       "primary": "poison-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Antipara Jewel [1]",
+      "name": "antipara-jewel-1",
       "primary": "paralysis-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Pep Jewel [1]",
+      "name": "pep-jewel-1",
       "primary": "sleep-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Def Lock Jewel [1]",
+      "name": "def-lock-jewel-1",
       "primary": "iron-skin",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Steadfast Jewel [1]",
+      "name": "steadfast-jewel-1",
       "primary": "stun-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Suture Jewel [1]",
+      "name": "suture-jewel-1",
       "primary": "bleeding-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Escape Jewel [1]",
+      "name": "escape-jewel-1",
       "primary": "bind-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Antiblast Jewel [1]",
+      "name": "antiblast-jewel-1",
       "primary": "blast-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Perfume Jewel [1]",
+      "name": "perfume-jewel-1",
       "primary": "stench-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Adapt Jewel [1]",
+      "name": "adapt-jewel-1",
       "primary": "adaptability",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Medicine Jewel [1]",
+      "name": "medicine-jewel-1",
       "primary": "recovery-up",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Recovery Jewel [1]",
+      "name": "recovery-jewel-1",
       "primary": "recovery-speed",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Survival Jewel [1]",
+      "name": "survival-jewel-1",
       "primary": "survival-expert",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Physique Jewel [1]",
+      "name": "physique-jewel-1",
       "primary": "constitution",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Refresh Jewel [2]",
+      "name": "refresh-jewel-2",
       "primary": "stamina-surge",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Sprinter Jewel [1]",
+      "name": "sprinter-jewel-1",
       "primary": "marathon-runner",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Hungerless Jewel [1]",
+      "name": "hungerless-jewel-1",
       "primary": "hunger-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Challenger Jewel [3]",
+      "name": "challenger-jewel-3",
       "primary": "agitator",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Throttle Jewel [3]",
+      "name": "throttle-jewel-3",
       "primary": "latent-power",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Potential Jewel [2]",
+      "name": "potential-jewel-2",
       "primary": "heroics",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Chain Jewel [3]",
+      "name": "chain-jewel-3",
       "primary": "burst",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Foray Jewel [3]",
+      "name": "foray-jewel-3",
       "primary": "foray",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Flayer Jewel [3]",
+      "name": "flayer-jewel-3",
       "primary": "flayer",
       "secondary": "",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Focus Jewel [1]",
+      "name": "focus-jewel-1",
       "primary": "focus",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Focus Jewel II [2]",
+      "name": "focus-jewel-ii-2",
       "primary": "focus",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Focus Jewel III [3]",
+      "name": "focus-jewel-iii-3",
       "primary": "focus",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Blaze Jewel [3]",
+      "name": "focusblaze-jewel-3",
       "primary": "focus",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Stream Jewel [3]",
+      "name": "focusstream-jewel-3",
       "primary": "focus",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Frost Jewel [3]",
+      "name": "focusfrost-jewel-3",
       "primary": "focus",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Bolt Jwl [3]",
+      "name": "focusbolt-jwl-3",
       "primary": "focus",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Dragon Jewel [3]",
+      "name": "focusdragon-jewel-3",
       "primary": "focus",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Handicraft Jewel [3]",
+      "name": "focushandicraft-jewel-3",
       "primary": "focus",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/Precise Jewel [3]",
+      "name": "focusprecise-jewel-3",
       "primary": "focus",
       "secondary": "ballistics",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Focus/KO Jewel [3]",
+      "name": "focusko-jewel-3",
       "primary": "focus",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer Jewel [1]",
+      "name": "enhancer-jewel-1",
       "primary": "power-prolonger",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Enhancer Jewel II [2]",
+      "name": "enhancer-jewel-ii-2",
       "primary": "power-prolonger",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Enhancer Jewel III [3]",
+      "name": "enhancer-jewel-iii-3",
       "primary": "power-prolonger",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer/Blaze Jewel [3]",
+      "name": "enhancerblaze-jewel-3",
       "primary": "power-prolonger",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer/Stream Jwl [3]",
+      "name": "enhancerstream-jwl-3",
       "primary": "power-prolonger",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer/Frost Jwl [3]",
+      "name": "enhancerfrost-jwl-3",
       "primary": "power-prolonger",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer/Bolt Jewel [3]",
+      "name": "enhancerbolt-jewel-3",
       "primary": "power-prolonger",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer/Dragon Jwl [3]",
+      "name": "enhancerdragon-jwl-3",
       "primary": "power-prolonger",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Enhancer/Handicraft Jwl [3]",
+      "name": "enhancerhandicraft-jwl-3",
       "primary": "power-prolonger",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Gambit Jewel [1]",
+      "name": "gambit-jewel-1",
       "primary": "punishing-draw",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Gambit Jewel II [2]",
+      "name": "gambit-jewel-ii-2",
       "primary": "punishing-draw",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Gambit Jewel III [3]",
+      "name": "gambit-jewel-iii-3",
       "primary": "punishing-draw",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Gambit/Handicraft Jwl [3]",
+      "name": "gambithandicraft-jwl-3",
       "primary": "punishing-draw",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Gambit/KO Jewel [3]",
+      "name": "gambitko-jewel-3",
       "primary": "punishing-draw",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Gambit/Ironwall Jwl [3]",
+      "name": "gambitironwall-jwl-3",
       "primary": "punishing-draw",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "KO Jewel [1]",
+      "name": "ko-jewel-1",
       "primary": "slugger",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "KO Jewel II [2]",
+      "name": "ko-jewel-ii-2",
       "primary": "slugger",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "KO Jewel III [3]",
+      "name": "ko-jewel-iii-3",
       "primary": "slugger",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Drain Jewel [1]",
+      "name": "drain-jewel-1",
       "primary": "stamina-thief",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Drain Jewel II [2]",
+      "name": "drain-jewel-ii-2",
       "primary": "stamina-thief",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Drain Jewel III [3]",
+      "name": "drain-jewel-iii-3",
       "primary": "stamina-thief",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Artillery Jewel [1]",
+      "name": "artillery-jewel-1",
       "primary": "artillery",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Artillery Jewel II [2]",
+      "name": "artillery-jewel-ii-2",
       "primary": "artillery",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Artillery Jewel III [3]",
+      "name": "artillery-jewel-iii-3",
       "primary": "artillery",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch Jewel [1]",
+      "name": "quickswitch-jewel-1",
       "primary": "rapid-morph",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Quickswitch Jewel II [2]",
+      "name": "quickswitch-jewel-ii-2",
       "primary": "rapid-morph",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Quickswitch Jewel III [3]",
+      "name": "quickswitch-jewel-iii-3",
       "primary": "rapid-morph",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Blaze Jwl [3]",
+      "name": "quickswitchblaze-jwl-3",
       "primary": "rapid-morph",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Stream Jwl [3]",
+      "name": "quickswitchstream-jwl-3",
       "primary": "rapid-morph",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Frost Jwl [3]",
+      "name": "quickswitchfrost-jwl-3",
       "primary": "rapid-morph",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Bolt Jwl [3]",
+      "name": "quickswitchbolt-jwl-3",
       "primary": "rapid-morph",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Dragon Jwl [3]",
+      "name": "quickswitchdragon-jwl-3",
       "primary": "rapid-morph",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Handicraft Jwl [3]",
+      "name": "quickswitchhandicraft-jwl-3",
       "primary": "rapid-morph",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/KO Jwl [3]",
+      "name": "quickswitchko-jwl-3",
       "primary": "rapid-morph",
       "secondary": "slugger",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Quickswitch/Ironwall Jwl [3]",
+      "name": "quickswitchironwall-jwl-3",
       "primary": "rapid-morph",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Destroyer Jewel [2]",
+      "name": "destroyer-jewel-2",
       "primary": "partbreaker",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Phoenix Jewel [2]",
+      "name": "phoenix-jewel-2",
       "primary": "coalescence",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Ambush Jewel [2]",
+      "name": "ambush-jewel-2",
       "primary": "ambush",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Sane Jewel [1]",
+      "name": "sane-jewel-1",
       "primary": "antivirus",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Sonorous Jewel [2]",
+      "name": "sonorous-jewel-2",
       "primary": "horn-maestro",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Sonorous/Attack Jwl [3]",
+      "name": "sonorousattack-jwl-3",
       "primary": "horn-maestro",
       "secondary": "attack-boost",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Sonorous/Expert Jwl [3]",
+      "name": "sonorousexpert-jwl-3",
       "primary": "horn-maestro",
       "secondary": "critical-eye",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Sonorous/Draw Jwl [3]",
+      "name": "sonorousdraw-jwl-3",
       "primary": "horn-maestro",
       "secondary": "critical-draw",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Sonorous/Handicraft Jwl [3]",
+      "name": "sonoroushandicraft-jwl-3",
       "primary": "horn-maestro",
       "secondary": "handicraft",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Sonorous/KO Jewel [3]",
+      "name": "sonorousko-jewel-3",
       "primary": "horn-maestro",
       "secondary": "slugger",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Charge Up Jewel [2]",
+      "name": "charge-up-jewel-2",
       "primary": "charge-up",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Charge Up/Attack Jwl [3]",
+      "name": "charge-upattack-jwl-3",
       "primary": "charge-up",
       "secondary": "attack-boost",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Charge Up/Expert Jwl [3]",
+      "name": "charge-upexpert-jwl-3",
       "primary": "charge-up",
       "secondary": "critical-eye",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Charge Up/Draw Jwl [3]",
+      "name": "charge-updraw-jwl-3",
       "primary": "charge-up",
       "secondary": "critical-draw",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Charge Up/Handicraft Jwl [3]",
+      "name": "charge-uphandicraft-jwl-3",
       "primary": "charge-up",
       "secondary": "handicraft",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Charge Up/KO Jewel [3]",
+      "name": "charge-upko-jewel-3",
       "primary": "charge-up",
       "secondary": "slugger",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Flight Jewel [2]",
+      "name": "flight-jewel-2",
       "primary": "airborne",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Flight/Attack Jwl [3]",
+      "name": "flightattack-jwl-3",
       "primary": "airborne",
       "secondary": "attack-boost",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Flight/Expert Jewel [3]",
+      "name": "flightexpert-jewel-3",
       "primary": "airborne",
       "secondary": "critical-eye",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Flight/Draw Jewel [3]",
+      "name": "flightdraw-jewel-3",
       "primary": "airborne",
       "secondary": "critical-draw",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Flight/Handicraft Jwl [3]",
+      "name": "flighthandicraft-jwl-3",
       "primary": "airborne",
       "secondary": "handicraft",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Growth Jewel [1]",
+      "name": "growth-jewel-1",
       "primary": "self-improvement",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Poison Jewel [2]",
+      "name": "poison-jewel-2",
       "primary": "poison-duration-up",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Poison/Attack Jewel [3]",
+      "name": "poisonattack-jewel-3",
       "primary": "poison-duration-up",
       "secondary": "attack-boost",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Poison/Expert Jwl [3]",
+      "name": "poisonexpert-jwl-3",
       "primary": "poison-duration-up",
       "secondary": "critical-eye",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Poison/Draw Jewel [3]",
+      "name": "poisondraw-jewel-3",
       "primary": "poison-duration-up",
       "secondary": "critical-draw",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Poison/Handicraft Jwl [3]",
+      "name": "poisonhandicraft-jwl-3",
       "primary": "poison-duration-up",
       "secondary": "handicraft",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Poison/Precise Jwl [3]",
+      "name": "poisonprecise-jwl-3",
       "primary": "poison-duration-up",
       "secondary": "ballistics",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Poison/KO Jewel [3]",
+      "name": "poisonko-jewel-3",
       "primary": "poison-duration-up",
       "secondary": "slugger",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Poison/Ironwall Jwl [3]",
+      "name": "poisonironwall-jwl-3",
       "primary": "poison-duration-up",
       "secondary": "guard",
       "primaryLvl": 1,
       "size": 3
     },
     {
-      "name": "Ironwall Jewel [1]",
+      "name": "ironwall-jewel-1",
       "primary": "guard",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Ironwall Jewel II [2]",
+      "name": "ironwall-jewel-ii-2",
       "primary": "guard",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Ironwall Jewel III [3]",
+      "name": "ironwall-jewel-iii-3",
       "primary": "guard",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Evasion Jewel [2]",
+      "name": "evasion-jewel-2",
       "primary": "evade-window",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Jumping Jewel [2]",
+      "name": "jumping-jewel-2",
       "primary": "evade-extender",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Earplugs Jewel [2]",
+      "name": "earplugs-jewel-2",
       "primary": "earplugs",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Shield Jewel [1]",
+      "name": "shield-jewel-1",
       "primary": "guard-up",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Shield Jewel II [2]",
+      "name": "shield-jewel-ii-2",
       "primary": "guard-up",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Shield Jewel III [3]",
+      "name": "shield-jewel-iii-3",
       "primary": "guard-up",
       "secondary": "",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Blaze Jewel [3]",
+      "name": "shieldblaze-jewel-3",
       "primary": "guard-up",
       "secondary": "fire-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Stream Jewel [3]",
+      "name": "shieldstream-jewel-3",
       "primary": "guard-up",
       "secondary": "water-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Frost Jewel [3]",
+      "name": "shieldfrost-jewel-3",
       "primary": "guard-up",
       "secondary": "ice-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Bolt Jewel [3]",
+      "name": "shieldbolt-jewel-3",
       "primary": "guard-up",
       "secondary": "thunder-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Dragon Jwl [3]",
+      "name": "shielddragon-jwl-3",
       "primary": "guard-up",
       "secondary": "dragon-attack",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Handicraft Jwl [3]",
+      "name": "shieldhandicraft-jwl-3",
       "primary": "guard-up",
       "secondary": "handicraft",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Shield/Ironwall Jwl [3]",
+      "name": "shieldironwall-jwl-3",
       "primary": "guard-up",
       "secondary": "guard",
       "primaryLvl": 3,
       "size": 3
     },
     {
-      "name": "Sheath Jewel [1]",
+      "name": "sheath-jewel-1",
       "primary": "quick-sheathe",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Wind Resist Jewel [1]",
+      "name": "wind-resist-jewel-1",
       "primary": "windproof",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Footing Jewel [1]",
+      "name": "footing-jewel-1",
       "primary": "tremor-resistance",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Brace Jewel [1]",
+      "name": "brace-jewel-1",
       "primary": "flinch-free",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Intimidator Jewel [1]",
+      "name": "intimidator-jewel-1",
       "primary": "intimidator",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Gobbler Jewel [1]",
+      "name": "gobbler-jewel-1",
       "primary": "speed-eating",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Magazine Jewel [1]",
+      "name": "magazine-jewel-1",
       "primary": "load-shells",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Magazine Jewel II [2]",
+      "name": "magazine-jewel-ii-2",
       "primary": "load-shells",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Magazine/Attack Jwl [3]",
+      "name": "magazineattack-jwl-3",
       "primary": "load-shells",
       "secondary": "attack-boost",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Magazine/Expert Jwl [3]",
+      "name": "magazineexpert-jwl-3",
       "primary": "load-shells",
       "secondary": "critical-eye",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Magazine/Draw Jwl [3]",
+      "name": "magazinedraw-jwl-3",
       "primary": "load-shells",
       "secondary": "critical-draw",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Magazine/Handicraft Jwl [3]",
+      "name": "magazinehandicraft-jwl-3",
       "primary": "load-shells",
       "secondary": "handicraft",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Magazine/Ironwall Jwl [3]",
+      "name": "magazineironwall-jwl-3",
       "primary": "load-shells",
       "secondary": "guard",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Mirewalker Jewel [1]",
+      "name": "mirewalker-jewel-1",
       "primary": "aquaticoilsilt-mobility",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Shockproof Jewel [1]",
+      "name": "shockproof-jewel-1",
       "primary": "shock-absorber",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Dive Jewel [1]",
+      "name": "dive-jewel-1",
       "primary": "leap-of-faith",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Leap Jewel [1]",
+      "name": "leap-jewel-1",
       "primary": "jump-master",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Climber Jewel [1]",
+      "name": "climber-jewel-1",
       "primary": "cliffhanger",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Friendship Jewel [1]",
+      "name": "friendship-jewel-1",
       "primary": "wide-range",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Maintenance Jewel [2]",
+      "name": "maintenance-jewel-2",
       "primary": "tool-specialist",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Bomber Jewel [1]",
+      "name": "bomber-jewel-1",
       "primary": "bombardier",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Fungiform Jewel [2]",
+      "name": "fungiform-jewel-2",
       "primary": "mushroomancer",
       "secondary": "",
       "primaryLvl": 1,
       "size": 2
     },
     {
-      "name": "Enduring Jewel [1]",
+      "name": "enduring-jewel-1",
       "primary": "item-prolonger",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Satiated Jewel [1]",
+      "name": "satiated-jewel-1",
       "primary": "free-meal",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Grinder Jewel [1]",
+      "name": "grinder-jewel-1",
       "primary": "speed-sharpening",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Grinder Jewel II [2]",
+      "name": "grinder-jewel-ii-2",
       "primary": "speed-sharpening",
       "secondary": "",
       "primaryLvl": 2,
       "size": 2
     },
     {
-      "name": "Grinder/Attack Jewel [3]",
+      "name": "grinderattack-jewel-3",
       "primary": "speed-sharpening",
       "secondary": "attack-boost",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Grinder/Expert Jewel [3]",
+      "name": "grinderexpert-jewel-3",
       "primary": "speed-sharpening",
       "secondary": "critical-eye",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Grinder/Draw Jewel [3]",
+      "name": "grinderdraw-jewel-3",
       "primary": "speed-sharpening",
       "secondary": "critical-draw",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Grinder/Handicraft Jwl [3]",
+      "name": "grinderhandicraft-jwl-3",
       "primary": "speed-sharpening",
       "secondary": "handicraft",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Grinder/KO Jewel [3]",
+      "name": "grinderko-jewel-3",
       "primary": "speed-sharpening",
       "secondary": "slugger",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Grinder/Ironwall Jewel [3]",
+      "name": "grinderironwall-jewel-3",
       "primary": "speed-sharpening",
       "secondary": "guard",
       "primaryLvl": 2,
       "size": 3
     },
     {
-      "name": "Flash Jewel [1]",
+      "name": "flash-jewel-1",
       "primary": "blindsider",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Botany Jewel [1]",
+      "name": "botany-jewel-1",
       "primary": "botanist",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Geology Jewel [1]",
+      "name": "geology-jewel-1",
       "primary": "geologist",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Specimen Jewel [1]",
+      "name": "specimen-jewel-1",
       "primary": "entomologist",
       "secondary": "",
       "primaryLvl": 1,
       "size": 1
     },
     {
-      "name": "Ranger Jewel [1]",
+      "name": "ranger-jewel-1",
       "primary": "outdoorsman",
       "secondary": "",
       "primaryLvl": 1,

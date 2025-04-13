@@ -21,16 +21,6 @@
       "secondaryDesc": ""
     },
     {
-      "name": "rathaloss-flare",
-      "altName": null,
-      "category": "setBonus",
-      "maxLevel": 4,
-      "primaryCount": 2,
-      "secondaryCount": 4,
-      "primaryDesc": "Chance to deal additional fire damage after landing an attack.",
-      "secondaryDesc": "Chance to deal additional fire damage after landing an attack."
-    },
-    {
       "name": "neopteron-camouflage",
       "altName": null,
       "category": "groupBonus",
@@ -39,6 +29,16 @@
       "secondaryCount": 0,
       "primaryDesc": "Increases movement speed while crouching, and makes it easier to escape large monsters' detection.",
       "secondaryDesc": ""
+    },
+    {
+      "name": "rathaloss-flare",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Chance to deal additional fire damage after landing an attack.",
+      "secondaryDesc": "Chance to deal additional fire damage after landing an attack."
     },
     {
       "name": "xu-wus-vigor",
@@ -268,6 +268,66 @@
       "primaryCount": 3,
       "secondaryCount": 0,
       "primaryDesc": "Increases the chance of finding rare gathering points.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "mizutsunes-prowess",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Prevents major bubbleblight and increases evasion while afflicted with minor bubbleblight.",
+      "secondaryDesc": "Prevents major bubbleblight and increases evasion while afflicted with minor bubbleblight."
+    },
+    {
+      "name": "lords-soul",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Boosts attack and lowers defense but lets you survive one lethal hit. Afterwards, boosts defense and res.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "zoh-shias-pulse",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Allows the Health Gauge to continue to slowly recover up to the max value, even if there is no red portion.",
+      "secondaryDesc": "Allows the Health Gauge to continue to slowly recover up to the max value, even if there is no red portion."
+    },
+    {
+      "name": "festival-spirit",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Lets you carve one additional time from carcasses during quests. (No effect when joining mid-quest.)",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "blossomdance-prayer",
+      "altName": null,
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "During Blossomdance, adds special items to quest rewards. (No effect when joining mid-quest.)",
+      "secondaryDesc": "During Blossomdance, adds special items to quest rewards. (No effect when joining mid-quest.)"
+    },
+    {
+      "name": "glorys-favor",
+      "altName": null,
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases quest target rewards. (No effect when joining mid-quest.)",
       "secondaryDesc": ""
     }
   ]

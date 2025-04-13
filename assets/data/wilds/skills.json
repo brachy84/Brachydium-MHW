@@ -211,16 +211,16 @@
       "desc": ""
     },
     {
-      "name": "critical-status",
+      "name": "paralysis-resistance",
       "altName": null,
-      "category": "weapon",
+      "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
-      "name": "paralysis-resistance",
+      "name": "critical-status",
       "altName": null,
-      "category": "armor",
+      "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
@@ -624,6 +624,13 @@
       "desc": ""
     },
     {
+      "name": "airborne",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
       "name": "self-improvement",
       "altName": null,
       "category": "armor",
@@ -631,7 +638,7 @@
       "desc": ""
     },
     {
-      "name": "airborne",
+      "name": "poison-duration-up",
       "altName": null,
       "category": "weapon",
       "maxLevel": 1,
@@ -642,13 +649,6 @@
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
-      "desc": ""
-    },
-    {
-      "name": "poison-duration-up",
-      "altName": null,
-      "category": "weapon",
-      "maxLevel": 1,
       "desc": ""
     },
     {
@@ -715,10 +715,24 @@
       "desc": ""
     },
     {
+      "name": "slicked-blade",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
       "name": "flinch-free",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "whiteflame-torrent",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 1,
       "desc": ""
     },
     {
