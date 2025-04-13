@@ -178,15 +178,16 @@ class All {
     await parseLangFromJson();
     //await parseSkillsFromWeb();
     await parseSkillsFromJson();
-    await parseDecosFromWeb();
-    //await parseDecosFromJson();
+    //await parseDecosFromWeb();
+    await parseDecosFromJson();
     //await parseCharmsFromWeb();
-    //await parseCharmsFromJson();
+    await parseCharmsFromJson();
     await parseArmorFromWeb();
     //await parseArmorsFromJson();
   }
-  
+
   static parseLangFromJson() async {
+    print('Parsing lang from json');
     var content = await rootBundle.loadString("assets/data/wilds/lang/en_us.json");
     var json = jsonDecode(content) as Map;
     json.forEach((k, v) => langEn[k] = v);
@@ -197,6 +198,7 @@ class All {
   }
 
   static parseSkillsFromJson() async {
+    print('Parsing skills from json');
     var content = await rootBundle.loadString("assets/data/wilds/skills.json");
     var json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
@@ -221,6 +223,7 @@ class All {
   }
 
   static parseArmorBonusesFromJson() async {
+    print('Parsing armor bonuses from json');
     final content = await rootBundle.loadString("assets/data/wilds/armor_bonus.json");
     final json = jsonDecode(content)['data'] as List;
     bool modifySkills = false;
@@ -256,6 +259,7 @@ class All {
   }
 
   static parseCharmsFromJson() async {
+    print('Parsing charms from json');
     final content = await rootBundle.loadString("assets/data/wilds/charms.json");
     final json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
@@ -299,6 +303,7 @@ class All {
   static final List<String> partNames = [...partNamesU, ...partNamesL];
 
   static parseArmorsFromJson() async {
+    print('Parsing armor from json');
     final content = await rootBundle.loadString("assets/data/wilds/armor.json");
     final json = jsonDecode(content)['data'] as List;
     bool applyArmorBonus = true;
@@ -341,6 +346,7 @@ class All {
   }
 
   static parseSkillsFromWeb() async {
+    print('Parsing skills from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/skills'));
     if (response.statusCode == 200) {
       var doc = parse(response.body);
@@ -409,6 +415,7 @@ class All {
   }
 
   static parseDecosFromWeb() async {
+    print('Parsing decos from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/decorations'));
     if (response.statusCode == 200) {
       var doc = parse(response.body);
@@ -448,7 +455,6 @@ class All {
           }
           decos.add(Deco(name: regName, primary: pS, primaryLvl: pL, size: size, secondary: sS));
           langEn['deco:$regName'] = name;
-
         } else {
           print('Could not receive web page for deco $regName');
         }
@@ -461,72 +467,55 @@ class All {
   }
 
   static parseCharmsFromWeb() async {
-    final response = await http.Client().get(Uri.parse('https://monsterhunterworld.wiki.fextralife.com/Charms'));
+    print('Parsing charms from web');
+    final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/charms'));
     if (response.statusCode == 200) {
       var doc = parse(response.body);
-      var table = doc.getElementsByClassName('sortable wiki_table')[0].children[1];
+      var table = _findElement(doc, 'tbody', '[&_tr:last-child]:border-0 text-sm')!;
       var romeToNum = {'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5};
       List<Charm> allCharms = [];
-      for (var el in table.children) {
-        String name = el.children[2].children[0].innerHtml;
-        String trueName = name;
-        if (romeToNum.containsKey(name.substring(name.lastIndexOf(' ') + 1))) {
-          trueName = name.substring(0, name.lastIndexOf(' '));
-        }
-        List<Skill?> skills = [];
-        List<int> skillLevels = [];
-        for (var node in el.children[3].nodes) {
-          if (node.text != null) {
-            String t = node.text!.trim();
-            if (t.isEmpty) continue;
-            if (t.startsWith('+') || t.startsWith('x')) {
-              skillLevels.add(int.parse(t.substring(1)));
-            } else if (t.contains('+')) {
-              List<String> parts = t.split('+');
-              skills.add(All.skillsMap[parts[0].trim()]);
-              if (skills.length == 1 && skills[0] == null) {
-                log("Error getting skill ${parts[0]}");
+
+      for (var child in table.children) {
+        var link = child.children[0].children[0].attributes['href']!;
+        var regName = _parseRegName(link);
+        langEn['charm:$regName'] = child.children[0].text;
+        final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com$link'));
+        if (response.statusCode == 200) {
+          var doc1 = parse(response.body);
+          var table1 = _findElement(doc1, 'div', 'mx-auto h-full w-full max-w-3xl')!.children[1].children[2].children[0].children[0].children[0];
+          Skill? p, s;
+          int pLvl = 0, sLvl = 0;
+          for (var skillElement in table1.children) {
+            var skillName = _parseRegName(skillElement.children[0].children[0].attributes['href']!);
+            var lvl = int.parse(skillElement.children[1].text.replaceAll('Lv', ''));
+            Skill? t = All.skillsMap[skillName];
+            if (t != null) {
+              if (p == null) {
+                p = t;
+                pLvl = lvl;
+              } else if (s == null) {
+                s = t;
+                sLvl = lvl;
+              } else {
+                print('Charm $regName has more than 2 skills: $p, $s, $t');
               }
-              int? lv = int.tryParse(parts[1].trim());
-              if (lv == null) {
-                log("Failed to parse level ${parts[1]} of skill ${parts[0]} of charm $name");
-                lv = 1;
-              }
-              skillLevels.add(lv);
             } else {
-              skills.add(All.skillsMap[t]);
-              if (skills.length == 1 && skills[0] == null) {
-                log("Error getting skill $t");
-              }
+              print(' - no charm skill $skillName found');
             }
           }
+          print('Adding charm $regName');
+          allCharms.add(Charm(name: regName, rarity: 1, primary: p!, primaryLv: pLvl, secondary: s, secondaryLv: sLvl));
         }
-        while (skills.length != skillLevels.length) {
-          skillLevels.add(1);
-          /*throw Exception(
-              "Charm $name could not be parsed. ${skills.length} skills and ${skillLevels.length} skill levels found!");*/
-        }
-        while (skills.length < 3) {
-          skills.add(null);
-          skillLevels.add(0);
-        }
-        allCharms.add(Charm(
-            name: name,
-            rarity: 0,
-            primary: skills[0]!,
-            secondary: skills[1],
-            ternary: skills[2],
-            primaryLv: skillLevels[0],
-            secondaryLv: skillLevels[1],
-            ternaryLv: skillLevels[2]));
       }
       _writeJsonData("data/wilds/charms.json", {'data': allCharms.map((e) => e.toJson()).toList()});
+      _writeLang();
     } else {
       throw Exception();
     }
   }
 
   static parseArmorFromWeb() async {
+    print('Parsing armor from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/armor-series'));
     if (response.statusCode == 200) {
       var doc = parse(response.body);
@@ -573,25 +562,28 @@ class All {
                   .map((s) => int.parse(s))
                   .toList();
               var skillsElement = skillElement.children[3];
-              Skill? p, s;
+              Skill? p, s, t;
               BonusSkill? bonus, group;
-              int pLvl = 0, sLvl = 0;
+              int pLvl = 0, sLvl = 0, tLvl = 0;
               for (var skillElement in skillsElement.children) {
                 var skillName = skillElement.children[0].attributes['href']!.replaceAll('/data/skills/', '');
                 var lvl = int.parse(skillElement.children[0].text.split('+')[1]);
-                Skill? t = Skill.fromStringNullable(skillName);
-                if (t != null) {
+                Skill? temp = All.skillsMap[skillName];
+                if (temp != null) {
                   if (p == null) {
-                    p = t;
+                    p = temp;
                     pLvl = lvl;
                   } else if (s == null) {
-                    s = t;
+                    s = temp;
                     sLvl = lvl;
+                  } else if (t == null) {
+                    t = temp;
+                    tLvl = lvl;
                   } else {
-                    print('Armor piece $name has more than 2 skills: $p, $s, $t');
+                    print('Armor piece $name has more than 3 skills: ${p.name}, ${s.name}, ${t.name}, ${temp.name}');
                   }
                 } else {
-                  BonusSkill? t2 = BonusSkill.fromStringNullable(skillName);
+                  BonusSkill? t2 = All.armorBonusesMap[skillName];
                   if (t2 != null) {
                     if (t2.category == SkillCategory.setBonus) {
                       if (bonus == null) {
@@ -618,6 +610,8 @@ class All {
                   primaryLv: pLvl,
                   secondary: s,
                   secondaryLv: sLvl,
+                  ternary: t,
+                  ternaryLv: tLvl,
                   setBonus: bonus,
                   groupBonus: group,
                   primarySlotSize: slots[0],
@@ -631,7 +625,6 @@ class All {
                   defIce: iceDef,
                   defDragon: dragonDef);
               _addEquipment(armor);
-
             }
           }
         }
@@ -954,10 +947,12 @@ class Armor with _$Armor, Equipment {
       required int rarity,
       @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required Skill primary,
       @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
       @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? groupBonus,
       @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? setBonus,
       required int primaryLv,
       @Default(0) int secondaryLv,
+      @Default(0) int ternaryLv,
       required int primarySlotSize,
       required int secondarySlotSize,
       required int ternarySlotSize,

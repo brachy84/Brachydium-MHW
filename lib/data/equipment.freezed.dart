@@ -520,12 +520,15 @@ mixin _$Armor {
   Skill get primary => throw _privateConstructorUsedError;
   @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
   Skill? get secondary => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+  Skill? get ternary => throw _privateConstructorUsedError;
   @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
   BonusSkill? get groupBonus => throw _privateConstructorUsedError;
   @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
   BonusSkill? get setBonus => throw _privateConstructorUsedError;
   int get primaryLv => throw _privateConstructorUsedError;
   int get secondaryLv => throw _privateConstructorUsedError;
+  int get ternaryLv => throw _privateConstructorUsedError;
   int get primarySlotSize => throw _privateConstructorUsedError;
   int get secondarySlotSize => throw _privateConstructorUsedError;
   int get ternarySlotSize => throw _privateConstructorUsedError;
@@ -559,6 +562,8 @@ abstract class $ArmorCopyWith<$Res> {
       Skill primary,
       @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
       Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
       @JsonKey(
           fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
       BonusSkill? groupBonus,
@@ -567,6 +572,7 @@ abstract class $ArmorCopyWith<$Res> {
       BonusSkill? setBonus,
       int primaryLv,
       int secondaryLv,
+      int ternaryLv,
       int primarySlotSize,
       int secondarySlotSize,
       int ternarySlotSize,
@@ -580,6 +586,7 @@ abstract class $ArmorCopyWith<$Res> {
 
   $SkillCopyWith<$Res> get primary;
   $SkillCopyWith<$Res>? get secondary;
+  $SkillCopyWith<$Res>? get ternary;
   $BonusSkillCopyWith<$Res>? get groupBonus;
   $BonusSkillCopyWith<$Res>? get setBonus;
 }
@@ -604,10 +611,12 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
     Object? rarity = null,
     Object? primary = null,
     Object? secondary = freezed,
+    Object? ternary = freezed,
     Object? groupBonus = freezed,
     Object? setBonus = freezed,
     Object? primaryLv = null,
     Object? secondaryLv = null,
+    Object? ternaryLv = null,
     Object? primarySlotSize = null,
     Object? secondarySlotSize = null,
     Object? ternarySlotSize = null,
@@ -640,6 +649,10 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
           ? _value.secondary
           : secondary // ignore: cast_nullable_to_non_nullable
               as Skill?,
+      ternary: freezed == ternary
+          ? _value.ternary
+          : ternary // ignore: cast_nullable_to_non_nullable
+              as Skill?,
       groupBonus: freezed == groupBonus
           ? _value.groupBonus
           : groupBonus // ignore: cast_nullable_to_non_nullable
@@ -655,6 +668,10 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
       secondaryLv: null == secondaryLv
           ? _value.secondaryLv
           : secondaryLv // ignore: cast_nullable_to_non_nullable
+              as int,
+      ternaryLv: null == ternaryLv
+          ? _value.ternaryLv
+          : ternaryLv // ignore: cast_nullable_to_non_nullable
               as int,
       primarySlotSize: null == primarySlotSize
           ? _value.primarySlotSize
@@ -727,6 +744,20 @@ class _$ArmorCopyWithImpl<$Res, $Val extends Armor>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $SkillCopyWith<$Res>? get ternary {
+    if (_value.ternary == null) {
+      return null;
+    }
+
+    return $SkillCopyWith<$Res>(_value.ternary!, (value) {
+      return _then(_value.copyWith(ternary: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Armor
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $BonusSkillCopyWith<$Res>? get groupBonus {
     if (_value.groupBonus == null) {
       return null;
@@ -767,6 +798,8 @@ abstract class _$$ArmorImplCopyWith<$Res> implements $ArmorCopyWith<$Res> {
       Skill primary,
       @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
       Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
       @JsonKey(
           fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
       BonusSkill? groupBonus,
@@ -775,6 +808,7 @@ abstract class _$$ArmorImplCopyWith<$Res> implements $ArmorCopyWith<$Res> {
       BonusSkill? setBonus,
       int primaryLv,
       int secondaryLv,
+      int ternaryLv,
       int primarySlotSize,
       int secondarySlotSize,
       int ternarySlotSize,
@@ -790,6 +824,8 @@ abstract class _$$ArmorImplCopyWith<$Res> implements $ArmorCopyWith<$Res> {
   $SkillCopyWith<$Res> get primary;
   @override
   $SkillCopyWith<$Res>? get secondary;
+  @override
+  $SkillCopyWith<$Res>? get ternary;
   @override
   $BonusSkillCopyWith<$Res>? get groupBonus;
   @override
@@ -814,10 +850,12 @@ class __$$ArmorImplCopyWithImpl<$Res>
     Object? rarity = null,
     Object? primary = null,
     Object? secondary = freezed,
+    Object? ternary = freezed,
     Object? groupBonus = freezed,
     Object? setBonus = freezed,
     Object? primaryLv = null,
     Object? secondaryLv = null,
+    Object? ternaryLv = null,
     Object? primarySlotSize = null,
     Object? secondarySlotSize = null,
     Object? ternarySlotSize = null,
@@ -850,6 +888,10 @@ class __$$ArmorImplCopyWithImpl<$Res>
           ? _value.secondary
           : secondary // ignore: cast_nullable_to_non_nullable
               as Skill?,
+      ternary: freezed == ternary
+          ? _value.ternary
+          : ternary // ignore: cast_nullable_to_non_nullable
+              as Skill?,
       groupBonus: freezed == groupBonus
           ? _value.groupBonus
           : groupBonus // ignore: cast_nullable_to_non_nullable
@@ -865,6 +907,10 @@ class __$$ArmorImplCopyWithImpl<$Res>
       secondaryLv: null == secondaryLv
           ? _value.secondaryLv
           : secondaryLv // ignore: cast_nullable_to_non_nullable
+              as int,
+      ternaryLv: null == ternaryLv
+          ? _value.ternaryLv
+          : ternaryLv // ignore: cast_nullable_to_non_nullable
               as int,
       primarySlotSize: null == primarySlotSize
           ? _value.primarySlotSize
@@ -921,6 +967,8 @@ class _$ArmorImpl extends _Armor {
       required this.primary,
       @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
       this.secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.ternary,
       @JsonKey(
           fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
       this.groupBonus,
@@ -929,6 +977,7 @@ class _$ArmorImpl extends _Armor {
       this.setBonus,
       required this.primaryLv,
       this.secondaryLv = 0,
+      this.ternaryLv = 0,
       required this.primarySlotSize,
       required this.secondarySlotSize,
       required this.ternarySlotSize,
@@ -957,6 +1006,9 @@ class _$ArmorImpl extends _Armor {
   @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
   final Skill? secondary;
   @override
+  @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+  final Skill? ternary;
+  @override
   @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
   final BonusSkill? groupBonus;
   @override
@@ -967,6 +1019,9 @@ class _$ArmorImpl extends _Armor {
   @override
   @JsonKey()
   final int secondaryLv;
+  @override
+  @JsonKey()
+  final int ternaryLv;
   @override
   final int primarySlotSize;
   @override
@@ -990,7 +1045,7 @@ class _$ArmorImpl extends _Armor {
 
   @override
   String toString() {
-    return 'Armor(name: $name, part: $part, rarity: $rarity, primary: $primary, secondary: $secondary, groupBonus: $groupBonus, setBonus: $setBonus, primaryLv: $primaryLv, secondaryLv: $secondaryLv, primarySlotSize: $primarySlotSize, secondarySlotSize: $secondarySlotSize, ternarySlotSize: $ternarySlotSize, minDef: $minDef, maxDef: $maxDef, defFire: $defFire, defWater: $defWater, defThunder: $defThunder, defIce: $defIce, defDragon: $defDragon)';
+    return 'Armor(name: $name, part: $part, rarity: $rarity, primary: $primary, secondary: $secondary, ternary: $ternary, groupBonus: $groupBonus, setBonus: $setBonus, primaryLv: $primaryLv, secondaryLv: $secondaryLv, ternaryLv: $ternaryLv, primarySlotSize: $primarySlotSize, secondarySlotSize: $secondarySlotSize, ternarySlotSize: $ternarySlotSize, minDef: $minDef, maxDef: $maxDef, defFire: $defFire, defWater: $defWater, defThunder: $defThunder, defIce: $defIce, defDragon: $defDragon)';
   }
 
   @override
@@ -1004,6 +1059,7 @@ class _$ArmorImpl extends _Armor {
             (identical(other.primary, primary) || other.primary == primary) &&
             (identical(other.secondary, secondary) ||
                 other.secondary == secondary) &&
+            (identical(other.ternary, ternary) || other.ternary == ternary) &&
             (identical(other.groupBonus, groupBonus) ||
                 other.groupBonus == groupBonus) &&
             (identical(other.setBonus, setBonus) ||
@@ -1012,6 +1068,8 @@ class _$ArmorImpl extends _Armor {
                 other.primaryLv == primaryLv) &&
             (identical(other.secondaryLv, secondaryLv) ||
                 other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv) &&
             (identical(other.primarySlotSize, primarySlotSize) ||
                 other.primarySlotSize == primarySlotSize) &&
             (identical(other.secondarySlotSize, secondarySlotSize) ||
@@ -1039,10 +1097,12 @@ class _$ArmorImpl extends _Armor {
         rarity,
         primary,
         secondary,
+        ternary,
         groupBonus,
         setBonus,
         primaryLv,
         secondaryLv,
+        ternaryLv,
         primarySlotSize,
         secondarySlotSize,
         ternarySlotSize,
@@ -1080,6 +1140,8 @@ abstract class _Armor extends Armor {
       required final Skill primary,
       @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
       final Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      final Skill? ternary,
       @JsonKey(
           fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
       final BonusSkill? groupBonus,
@@ -1088,6 +1150,7 @@ abstract class _Armor extends Armor {
       final BonusSkill? setBonus,
       required final int primaryLv,
       final int secondaryLv,
+      final int ternaryLv,
       required final int primarySlotSize,
       required final int secondarySlotSize,
       required final int ternarySlotSize,
@@ -1115,6 +1178,9 @@ abstract class _Armor extends Armor {
   @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
   Skill? get secondary;
   @override
+  @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+  Skill? get ternary;
+  @override
   @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
   BonusSkill? get groupBonus;
   @override
@@ -1124,6 +1190,8 @@ abstract class _Armor extends Armor {
   int get primaryLv;
   @override
   int get secondaryLv;
+  @override
+  int get ternaryLv;
   @override
   int get primarySlotSize;
   @override
