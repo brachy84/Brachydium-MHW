@@ -34,7 +34,7 @@ void main() async {
     setWindowMinSize(const Size(340, 600));
   }
   // run app
-  //runApp(const BrachysArmorSetSearcherApp());
+  runApp(const BrachysArmorSetSearcherApp());
 }
 
 class BrachysArmorSetSearcherApp extends StatelessWidget {
@@ -50,7 +50,8 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
             BlocProvider(create: (_) => HomeCubit()),
             BlocProvider(create: (_) => SearcherCubit()),
             BlocProvider(create: (_) => SearcherPageCubit()),
-            BlocProvider(create: (_) => SkillSelectorCubit())
+            BlocProvider(create: (_) => SkillSelectorCubit()),
+            BlocProvider(create: (_) => SearchResultCubit())
           ],
           child: const ResponsivePage(
               mobile: HomePageMobile(),

@@ -2,7 +2,7 @@
   "data": [
     {
       "name": "hope-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stun-resistance",
       "secondary": "",
@@ -117,7 +117,7 @@
     },
     {
       "name": "leather-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "botanist",
       "secondary": "",
@@ -232,7 +232,7 @@
     },
     {
       "name": "chainmail-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "geologist",
       "secondary": "",
@@ -347,7 +347,7 @@
     },
     {
       "name": "bone-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "marathon-runner",
       "secondary": "",
@@ -462,7 +462,7 @@
     },
     {
       "name": "bulaqchi-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "entomologist",
       "secondary": "",
@@ -508,7 +508,7 @@
     },
     {
       "name": "chatacabra-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "speed-eating",
       "secondary": "",
@@ -623,7 +623,7 @@
     },
     {
       "name": "quematrice-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "flinch-free",
       "secondary": "",
@@ -738,7 +738,7 @@
     },
     {
       "name": "alloy-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "quick-sheathe",
       "secondary": "",
@@ -876,7 +876,7 @@
     },
     {
       "name": "vespoid-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "survival-expert",
       "secondary": "",
@@ -1014,7 +1014,7 @@
     },
     {
       "name": "lala-barina-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "paralysis-resistance",
       "secondary": "",
@@ -1129,7 +1129,7 @@
     },
     {
       "name": "conga-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "mushroomancer",
       "secondary": "",
@@ -1244,7 +1244,7 @@
     },
     {
       "name": "balahara-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "hunger-resistance",
       "secondary": "",
@@ -1359,7 +1359,7 @@
     },
     {
       "name": "doshaguma-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "free-meal",
       "secondary": "",
@@ -1474,7 +1474,7 @@
     },
     {
       "name": "ingot-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "divine-blessing",
       "secondary": "",
@@ -1612,7 +1612,7 @@
     },
     {
       "name": "comaqchi-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "sleep-resistance",
       "secondary": "",
@@ -1635,7 +1635,7 @@
     },
     {
       "name": "rompopolo-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "",
@@ -1750,7 +1750,7 @@
     },
     {
       "name": "nerscylla-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "ambush",
       "secondary": "",
@@ -1865,7 +1865,7 @@
     },
     {
       "name": "hirabami-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "recovery-speed",
@@ -1980,7 +1980,7 @@
     },
     {
       "name": "ajarakan-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "partbreaker",
       "secondary": "bombardier",
@@ -2118,7 +2118,7 @@
     },
     {
       "name": "uth-duna-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "peak-performance",
       "secondary": "tool-specialist",
@@ -2233,7 +2233,7 @@
     },
     {
       "name": "rey-dau-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "latent-power",
       "secondary": "",
@@ -2348,7 +2348,7 @@
     },
     {
       "name": "nu-udra-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "",
@@ -2463,7 +2463,7 @@
     },
     {
       "name": "guardian-doshaguma-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "heroics",
       "secondary": "",
@@ -2578,7 +2578,7 @@
     },
     {
       "name": "guardian-rathalos-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "weakness-exploit",
       "secondary": "intimidator",
@@ -2693,7 +2693,7 @@
     },
     {
       "name": "guardian-ebony-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "burst",
       "secondary": "",
@@ -2808,7 +2808,7 @@
     },
     {
       "name": "xu-wu-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "maximum-might",
       "secondary": "",
@@ -2923,7 +2923,7 @@
     },
     {
       "name": "guardian-arkveld-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "flayer",
       "secondary": "",
@@ -3038,7 +3038,7 @@
     },
     {
       "name": "hope-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "divine-blessing",
       "secondary": "",
@@ -3153,7 +3153,7 @@
     },
     {
       "name": "leather-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "botanist",
       "secondary": "",
@@ -3268,7 +3268,7 @@
     },
     {
       "name": "chainmail-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "geologist",
       "secondary": "",
@@ -3383,7 +3383,7 @@
     },
     {
       "name": "bone-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stun-resistance",
       "secondary": "speed-eating",
@@ -3498,7 +3498,7 @@
     },
     {
       "name": "alloy-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "quick-sheathe",
       "secondary": "",
@@ -3613,7 +3613,7 @@
     },
     {
       "name": "bulaqchi-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "entomologist",
       "secondary": "weakness-exploit",
@@ -3636,7 +3636,7 @@
     },
     {
       "name": "bulaqchi-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "entomologist",
       "secondary": "",
@@ -3751,7 +3751,7 @@
     },
     {
       "name": "vespoid-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "survival-expert",
       "secondary": "ambush",
@@ -3866,7 +3866,7 @@
     },
     {
       "name": "vespoid-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "survival-expert",
       "secondary": "",
@@ -4027,7 +4027,7 @@
     },
     {
       "name": "comaqchi-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "sleep-resistance",
       "secondary": "foray",
@@ -4050,7 +4050,7 @@
     },
     {
       "name": "comaqchi-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "sleep-resistance",
       "secondary": "",
@@ -4073,7 +4073,7 @@
     },
     {
       "name": "kut-ku-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "constitution",
       "secondary": "fire-resistance",
@@ -4188,7 +4188,7 @@
     },
     {
       "name": "kut-ku-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "constitution",
       "secondary": "",
@@ -4303,7 +4303,7 @@
     },
     {
       "name": "chatacabra-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "speed-eating",
       "secondary": "wide-range",
@@ -4418,7 +4418,7 @@
     },
     {
       "name": "chatacabra-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "speed-eating",
       "secondary": "",
@@ -4533,7 +4533,7 @@
     },
     {
       "name": "quematrice-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "flinch-free",
       "secondary": "latent-power",
@@ -4648,7 +4648,7 @@
     },
     {
       "name": "quematrice-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "latent-power",
       "secondary": "",
@@ -4763,7 +4763,7 @@
     },
     {
       "name": "lala-barina-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "paralysis-resistance",
       "secondary": "foray",
@@ -4878,7 +4878,7 @@
     },
     {
       "name": "lala-barina-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "foray",
       "secondary": "",
@@ -4993,7 +4993,7 @@
     },
     {
       "name": "conga-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "intimidator",
       "secondary": "free-meal",
@@ -5108,7 +5108,7 @@
     },
     {
       "name": "conga-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "intimidator",
       "secondary": "",
@@ -5223,7 +5223,7 @@
     },
     {
       "name": "rompopolo-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "",
@@ -5338,7 +5338,7 @@
     },
     {
       "name": "rompopolo-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "",
@@ -5453,7 +5453,7 @@
     },
     {
       "name": "gypceros-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stamina-surge",
       "secondary": "blindsider",
@@ -5568,7 +5568,7 @@
     },
     {
       "name": "gypceros-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stamina-surge",
       "secondary": "",
@@ -5683,7 +5683,7 @@
     },
     {
       "name": "nerscylla-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "bind-resistance",
       "secondary": "poison-resistance",
@@ -5798,7 +5798,7 @@
     },
     {
       "name": "nerscylla-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "bind-resistance",
       "secondary": "",
@@ -5913,7 +5913,7 @@
     },
     {
       "name": "balahara-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "geologist",
       "secondary": "evade-window",
@@ -6028,7 +6028,7 @@
     },
     {
       "name": "balahara-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "",
@@ -6143,7 +6143,7 @@
     },
     {
       "name": "hirabami-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "evade-extender",
@@ -6258,7 +6258,7 @@
     },
     {
       "name": "hirabami-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "",
@@ -6373,7 +6373,7 @@
     },
     {
       "name": "rathian-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "divine-blessing",
       "secondary": "recovery-speed",
@@ -6488,7 +6488,7 @@
     },
     {
       "name": "rathian-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "divine-blessing",
       "secondary": "",
@@ -6603,7 +6603,7 @@
     },
     {
       "name": "ingot-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "divine-blessing",
       "secondary": "resentment",
@@ -6787,7 +6787,7 @@
     },
     {
       "name": "guardian-fulgur-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "coalescence",
@@ -6902,7 +6902,7 @@
     },
     {
       "name": "guardian-fulgur-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "",
@@ -7017,7 +7017,7 @@
     },
     {
       "name": "doshaguma-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "free-meal",
       "secondary": "stun-resistance",
@@ -7132,7 +7132,7 @@
     },
     {
       "name": "doshaguma-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "free-meal",
       "secondary": "stun-resistance",
@@ -7247,7 +7247,7 @@
     },
     {
       "name": "guardian-doshaguma-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "heroics",
       "secondary": "hunger-resistance",
@@ -7362,7 +7362,7 @@
     },
     {
       "name": "guardian-doshaguma-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "heroics",
       "secondary": "",
@@ -7477,7 +7477,7 @@
     },
     {
       "name": "ajarakan-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "bombardier",
@@ -7592,7 +7592,7 @@
     },
     {
       "name": "ajarakan-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "bombardier",
@@ -7707,7 +7707,7 @@
     },
     {
       "name": "guardian-ebony-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "burst",
       "secondary": "earplugs",
@@ -7822,7 +7822,7 @@
     },
     {
       "name": "guardian-ebony-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "burst",
       "secondary": "",
@@ -7937,7 +7937,7 @@
     },
     {
       "name": "xu-wu-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "adrenaline-rush",
       "secondary": "ambush",
@@ -8052,7 +8052,7 @@
     },
     {
       "name": "xu-wu-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "adrenaline-rush",
       "secondary": "",
@@ -8167,7 +8167,7 @@
     },
     {
       "name": "rathalos-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "constitution",
@@ -8282,7 +8282,7 @@
     },
     {
       "name": "rathalos-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "constitution",
@@ -8397,7 +8397,7 @@
     },
     {
       "name": "guardian-rathalos-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "weakness-exploit",
       "secondary": "survival-expert",
@@ -8512,7 +8512,7 @@
     },
     {
       "name": "guardian-rathalos-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "weakness-exploit",
       "secondary": "",
@@ -8627,7 +8627,7 @@
     },
     {
       "name": "gravios-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "peak-performance",
       "secondary": "tremor-resistance",
@@ -8742,7 +8742,7 @@
     },
     {
       "name": "gravios-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "peak-performance",
       "secondary": "",
@@ -8857,7 +8857,7 @@
     },
     {
       "name": "blango-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "counterstrike",
@@ -8972,7 +8972,7 @@
     },
     {
       "name": "blango-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "",
@@ -9087,7 +9087,7 @@
     },
     {
       "name": "commission-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "maximum-might",
@@ -9202,7 +9202,7 @@
     },
     {
       "name": "kunafa-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "palico-rally",
@@ -9294,7 +9294,7 @@
     },
     {
       "name": "azuz-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "maximum-might",
       "secondary": "",
@@ -9386,7 +9386,7 @@
     },
     {
       "name": "sild-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "botanist",
       "secondary": "",
@@ -9432,7 +9432,7 @@
     },
     {
       "name": "death-stench-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "ambush",
@@ -9547,7 +9547,7 @@
     },
     {
       "name": "butterfly-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "constitution",
       "secondary": "evade-window",
@@ -9662,7 +9662,7 @@
     },
     {
       "name": "king-beetle-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "heroics",
       "secondary": "foray",
@@ -9777,7 +9777,7 @@
     },
     {
       "name": "high-metal-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stun-resistance",
       "secondary": "partbreaker",
@@ -9892,7 +9892,7 @@
     },
     {
       "name": "battle-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stamina-surge",
       "secondary": "",
@@ -10007,7 +10007,7 @@
     },
     {
       "name": "melahoa-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "survival-expert",
       "secondary": "poison-resistance",
@@ -10122,7 +10122,7 @@
     },
     {
       "name": "artian-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "flayer",
       "secondary": "earplugs",
@@ -10237,7 +10237,7 @@
     },
     {
       "name": "dober-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "constitution",
       "secondary": "stamina-surge",
@@ -10352,7 +10352,7 @@
     },
     {
       "name": "damascus-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "divine-blessing",
@@ -10467,7 +10467,7 @@
     },
     {
       "name": "dahaad-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "weakness-exploit",
@@ -10582,7 +10582,7 @@
     },
     {
       "name": "dahaad-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "",
@@ -10697,7 +10697,7 @@
     },
     {
       "name": "uth-duna-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "tool-specialist",
       "secondary": "earplugs",
@@ -10812,7 +10812,7 @@
     },
     {
       "name": "uth-duna-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "tool-specialist",
       "secondary": "earplugs",
@@ -10927,7 +10927,7 @@
     },
     {
       "name": "rey-dau-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "latent-power",
       "secondary": "evade-extender",
@@ -11042,7 +11042,7 @@
     },
     {
       "name": "rey-dau-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "latent-power",
       "secondary": "evade-extender",
@@ -11157,7 +11157,7 @@
     },
     {
       "name": "nu-udra-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "counterstrike",
@@ -11272,7 +11272,7 @@
     },
     {
       "name": "nu-udra-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "counterstrike",
@@ -11387,7 +11387,7 @@
     },
     {
       "name": "gore-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "coalescence",
@@ -11502,7 +11502,7 @@
     },
     {
       "name": "gore-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-window",
       "secondary": "coalescence",
@@ -11617,7 +11617,7 @@
     },
     {
       "name": "arkveld-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "convert-element",
       "secondary": "elemental-absorption",
@@ -11732,7 +11732,7 @@
     },
     {
       "name": "arkveld-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "convert-element",
       "secondary": "",
@@ -11847,7 +11847,7 @@
     },
     {
       "name": "guardian-arkveld-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "flayer",
       "secondary": "partbreaker",
@@ -11962,7 +11962,7 @@
     },
     {
       "name": "guardian-arkveld-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "flayer",
       "secondary": "partbreaker",
@@ -12077,7 +12077,7 @@
     },
     {
       "name": "guild-ace-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "peak-performance",
       "secondary": "foray",
@@ -12192,7 +12192,7 @@
     },
     {
       "name": "dragonking-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "counterstrike",
       "secondary": "",
@@ -12215,7 +12215,7 @@
     },
     {
       "name": "guild-cross-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "earplugs",
       "secondary": "flinch-free",
@@ -12330,7 +12330,7 @@
     },
     {
       "name": "clerk-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "divine-blessing",
       "secondary": "recovery-up",
@@ -12445,7 +12445,7 @@
     },
     {
       "name": "gourmands-earring-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "speed-eating",
       "secondary": "free-meal",
@@ -12468,7 +12468,7 @@
     },
     {
       "name": "earrings-of-dedication-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "",
@@ -12491,7 +12491,7 @@
     },
     {
       "name": "mizutsune-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "evade-extender",
       "secondary": "aquaticoilsilt-mobility",
@@ -12606,7 +12606,7 @@
     },
     {
       "name": "mizutsune-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "aquaticoilsilt-mobility",
       "secondary": "",
@@ -12721,7 +12721,7 @@
     },
     {
       "name": "numinous-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "recovery-speed",
@@ -12836,7 +12836,7 @@
     },
     {
       "name": "numinous-b-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "agitator",
       "secondary": "recovery-speed",
@@ -12951,7 +12951,7 @@
     },
     {
       "name": "rey-dau-g-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "weakness-exploit",
       "secondary": "maximum-might",
@@ -13066,7 +13066,7 @@
     },
     {
       "name": "sakuratide-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "foray",
       "secondary": "adaptability",
@@ -13181,7 +13181,7 @@
     },
     {
       "name": "blossom-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "paralysis-resistance",
       "secondary": "",
@@ -13296,7 +13296,7 @@
     },
     {
       "name": "mimiphyta-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "entomologist",
       "secondary": "ambush",
@@ -13319,7 +13319,7 @@
     },
     {
       "name": "expedition-headgear-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "blight-resistance",
       "secondary": "coalescence",
@@ -13342,7 +13342,7 @@
     },
     {
       "name": "amstrigian-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "wide-range",
       "secondary": "evade-extender",
@@ -13365,7 +13365,7 @@
     },
     {
       "name": "sealed-dragon-cloth-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "resentment",
       "secondary": "dragon-resistance",
@@ -13388,7 +13388,7 @@
     },
     {
       "name": "strategist-spectacles-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "geologist",
       "secondary": "",
@@ -13411,7 +13411,7 @@
     },
     {
       "name": "square-glasses-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "botanist",
       "secondary": "outdoorsman",
@@ -13434,7 +13434,7 @@
     },
     {
       "name": "sealed-eyepatch-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "fire-resistance",
       "secondary": "",
@@ -13457,7 +13457,7 @@
     },
     {
       "name": "shadow-shades-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "stun-resistance",
       "secondary": "blindsider",
@@ -13480,7 +13480,7 @@
     },
     {
       "name": "round-glasses-a-helm",
-      "part": "helm",
+      "part": "head",
       "rarity": 1,
       "primary": "blight-resistance",
       "secondary": "",

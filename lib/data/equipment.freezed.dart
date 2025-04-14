@@ -21,7 +21,6 @@ Skill _$SkillFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Skill {
   String get name => throw _privateConstructorUsedError;
-  String? get altName => throw _privateConstructorUsedError;
   SkillCategory get category => throw _privateConstructorUsedError;
   int get maxLevel => throw _privateConstructorUsedError;
   String get desc => throw _privateConstructorUsedError;
@@ -40,12 +39,7 @@ abstract class $SkillCopyWith<$Res> {
   factory $SkillCopyWith(Skill value, $Res Function(Skill) then) =
       _$SkillCopyWithImpl<$Res, Skill>;
   @useResult
-  $Res call(
-      {String name,
-      String? altName,
-      SkillCategory category,
-      int maxLevel,
-      String desc});
+  $Res call({String name, SkillCategory category, int maxLevel, String desc});
 }
 
 /// @nodoc
@@ -64,7 +58,6 @@ class _$SkillCopyWithImpl<$Res, $Val extends Skill>
   @override
   $Res call({
     Object? name = null,
-    Object? altName = freezed,
     Object? category = null,
     Object? maxLevel = null,
     Object? desc = null,
@@ -74,10 +67,6 @@ class _$SkillCopyWithImpl<$Res, $Val extends Skill>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      altName: freezed == altName
-          ? _value.altName
-          : altName // ignore: cast_nullable_to_non_nullable
-              as String?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -101,12 +90,7 @@ abstract class _$$SkillImplCopyWith<$Res> implements $SkillCopyWith<$Res> {
       __$$SkillImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String name,
-      String? altName,
-      SkillCategory category,
-      int maxLevel,
-      String desc});
+  $Res call({String name, SkillCategory category, int maxLevel, String desc});
 }
 
 /// @nodoc
@@ -123,7 +107,6 @@ class __$$SkillImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? altName = freezed,
     Object? category = null,
     Object? maxLevel = null,
     Object? desc = null,
@@ -133,10 +116,6 @@ class __$$SkillImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      altName: freezed == altName
-          ? _value.altName
-          : altName // ignore: cast_nullable_to_non_nullable
-              as String?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -158,7 +137,6 @@ class __$$SkillImplCopyWithImpl<$Res>
 class _$SkillImpl extends _Skill {
   const _$SkillImpl(
       {required this.name,
-      this.altName = null,
       required this.category,
       required this.maxLevel,
       required this.desc})
@@ -170,9 +148,6 @@ class _$SkillImpl extends _Skill {
   @override
   final String name;
   @override
-  @JsonKey()
-  final String? altName;
-  @override
   final SkillCategory category;
   @override
   final int maxLevel;
@@ -181,7 +156,7 @@ class _$SkillImpl extends _Skill {
 
   @override
   String toString() {
-    return 'Skill(name: $name, altName: $altName, category: $category, maxLevel: $maxLevel, desc: $desc)';
+    return 'Skill(name: $name, category: $category, maxLevel: $maxLevel, desc: $desc)';
   }
 
   /// Create a copy of Skill
@@ -203,7 +178,6 @@ class _$SkillImpl extends _Skill {
 abstract class _Skill extends Skill {
   const factory _Skill(
       {required final String name,
-      final String? altName,
       required final SkillCategory category,
       required final int maxLevel,
       required final String desc}) = _$SkillImpl;
@@ -213,8 +187,6 @@ abstract class _Skill extends Skill {
 
   @override
   String get name;
-  @override
-  String? get altName;
   @override
   SkillCategory get category;
   @override
@@ -237,7 +209,6 @@ BonusSkill _$BonusSkillFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BonusSkill {
   String get name => throw _privateConstructorUsedError;
-  String? get altName => throw _privateConstructorUsedError;
   SkillCategory get category => throw _privateConstructorUsedError;
   int get maxLevel => throw _privateConstructorUsedError;
   int get primaryCount => throw _privateConstructorUsedError;
@@ -263,7 +234,6 @@ abstract class $BonusSkillCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      String? altName,
       SkillCategory category,
       int maxLevel,
       int primaryCount,
@@ -288,7 +258,6 @@ class _$BonusSkillCopyWithImpl<$Res, $Val extends BonusSkill>
   @override
   $Res call({
     Object? name = null,
-    Object? altName = freezed,
     Object? category = null,
     Object? maxLevel = null,
     Object? primaryCount = null,
@@ -301,10 +270,6 @@ class _$BonusSkillCopyWithImpl<$Res, $Val extends BonusSkill>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      altName: freezed == altName
-          ? _value.altName
-          : altName // ignore: cast_nullable_to_non_nullable
-              as String?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -343,7 +308,6 @@ abstract class _$$BonusSkillImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
-      String? altName,
       SkillCategory category,
       int maxLevel,
       int primaryCount,
@@ -366,7 +330,6 @@ class __$$BonusSkillImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? altName = freezed,
     Object? category = null,
     Object? maxLevel = null,
     Object? primaryCount = null,
@@ -379,10 +342,6 @@ class __$$BonusSkillImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      altName: freezed == altName
-          ? _value.altName
-          : altName // ignore: cast_nullable_to_non_nullable
-              as String?,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -416,7 +375,6 @@ class __$$BonusSkillImplCopyWithImpl<$Res>
 class _$BonusSkillImpl extends _BonusSkill {
   const _$BonusSkillImpl(
       {required this.name,
-      this.altName = null,
       required this.category,
       required this.maxLevel,
       required this.primaryCount,
@@ -430,9 +388,6 @@ class _$BonusSkillImpl extends _BonusSkill {
 
   @override
   final String name;
-  @override
-  @JsonKey()
-  final String? altName;
   @override
   final SkillCategory category;
   @override
@@ -448,7 +403,7 @@ class _$BonusSkillImpl extends _BonusSkill {
 
   @override
   String toString() {
-    return 'BonusSkill(name: $name, altName: $altName, category: $category, maxLevel: $maxLevel, primaryCount: $primaryCount, secondaryCount: $secondaryCount, primaryDesc: $primaryDesc, secondaryDesc: $secondaryDesc)';
+    return 'BonusSkill(name: $name, category: $category, maxLevel: $maxLevel, primaryCount: $primaryCount, secondaryCount: $secondaryCount, primaryDesc: $primaryDesc, secondaryDesc: $secondaryDesc)';
   }
 
   /// Create a copy of BonusSkill
@@ -470,7 +425,6 @@ class _$BonusSkillImpl extends _BonusSkill {
 abstract class _BonusSkill extends BonusSkill {
   const factory _BonusSkill(
       {required final String name,
-      final String? altName,
       required final SkillCategory category,
       required final int maxLevel,
       required final int primaryCount,
@@ -484,8 +438,6 @@ abstract class _BonusSkill extends BonusSkill {
 
   @override
   String get name;
-  @override
-  String? get altName;
   @override
   SkillCategory get category;
   @override
@@ -2233,5 +2185,453 @@ abstract class _Weapon extends Weapon {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WeaponImplCopyWith<_$WeaponImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EquipmentPiece _$EquipmentPieceFromJson(Map<String, dynamic> json) {
+  return _EquipmentPiece.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EquipmentPiece {
+  @JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+  Equipment get equipment => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+  List<Deco?> get decorations => throw _privateConstructorUsedError;
+
+  /// Serializes this EquipmentPiece to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of EquipmentPiece
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $EquipmentPieceCopyWith<EquipmentPiece> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EquipmentPieceCopyWith<$Res> {
+  factory $EquipmentPieceCopyWith(
+          EquipmentPiece value, $Res Function(EquipmentPiece) then) =
+      _$EquipmentPieceCopyWithImpl<$Res, EquipmentPiece>;
+  @useResult
+  $Res call(
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      Equipment equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> decorations});
+}
+
+/// @nodoc
+class _$EquipmentPieceCopyWithImpl<$Res, $Val extends EquipmentPiece>
+    implements $EquipmentPieceCopyWith<$Res> {
+  _$EquipmentPieceCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of EquipmentPiece
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+    Object? decorations = null,
+  }) {
+    return _then(_value.copyWith(
+      equipment: null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as Equipment,
+      decorations: null == decorations
+          ? _value.decorations
+          : decorations // ignore: cast_nullable_to_non_nullable
+              as List<Deco?>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EquipmentPieceImplCopyWith<$Res>
+    implements $EquipmentPieceCopyWith<$Res> {
+  factory _$$EquipmentPieceImplCopyWith(_$EquipmentPieceImpl value,
+          $Res Function(_$EquipmentPieceImpl) then) =
+      __$$EquipmentPieceImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      Equipment equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> decorations});
+}
+
+/// @nodoc
+class __$$EquipmentPieceImplCopyWithImpl<$Res>
+    extends _$EquipmentPieceCopyWithImpl<$Res, _$EquipmentPieceImpl>
+    implements _$$EquipmentPieceImplCopyWith<$Res> {
+  __$$EquipmentPieceImplCopyWithImpl(
+      _$EquipmentPieceImpl _value, $Res Function(_$EquipmentPieceImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of EquipmentPiece
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? equipment = null,
+    Object? decorations = null,
+  }) {
+    return _then(_$EquipmentPieceImpl(
+      equipment: null == equipment
+          ? _value.equipment
+          : equipment // ignore: cast_nullable_to_non_nullable
+              as Equipment,
+      decorations: null == decorations
+          ? _value._decorations
+          : decorations // ignore: cast_nullable_to_non_nullable
+              as List<Deco?>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EquipmentPieceImpl extends _EquipmentPiece {
+  const _$EquipmentPieceImpl(
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      required this.equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      required final List<Deco?> decorations})
+      : _decorations = decorations,
+        super._();
+
+  factory _$EquipmentPieceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EquipmentPieceImplFromJson(json);
+
+  @override
+  @JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+  final Equipment equipment;
+  final List<Deco?> _decorations;
+  @override
+  @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+  List<Deco?> get decorations {
+    if (_decorations is EqualUnmodifiableListView) return _decorations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_decorations);
+  }
+
+  @override
+  String toString() {
+    return 'EquipmentPiece(equipment: $equipment, decorations: $decorations)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EquipmentPieceImpl &&
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment) &&
+            const DeepCollectionEquality()
+                .equals(other._decorations, _decorations));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, equipment,
+      const DeepCollectionEquality().hash(_decorations));
+
+  /// Create a copy of EquipmentPiece
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EquipmentPieceImplCopyWith<_$EquipmentPieceImpl> get copyWith =>
+      __$$EquipmentPieceImplCopyWithImpl<_$EquipmentPieceImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EquipmentPieceImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EquipmentPiece extends EquipmentPiece {
+  const factory _EquipmentPiece(
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      required final Equipment equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      required final List<Deco?> decorations}) = _$EquipmentPieceImpl;
+  const _EquipmentPiece._() : super._();
+
+  factory _EquipmentPiece.fromJson(Map<String, dynamic> json) =
+      _$EquipmentPieceImpl.fromJson;
+
+  @override
+  @JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+  Equipment get equipment;
+  @override
+  @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+  List<Deco?> get decorations;
+
+  /// Create a copy of EquipmentPiece
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EquipmentPieceImplCopyWith<_$EquipmentPieceImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ArmorSet _$ArmorSetFromJson(Map<String, dynamic> json) {
+  return _ArmorSet.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ArmorSet {
+  @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+  List<Deco?> get weaponDecos => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+  List<EquipmentPiece> get pieces => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+  Charm get charm => throw _privateConstructorUsedError;
+
+  /// Serializes this ArmorSet to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of ArmorSet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ArmorSetCopyWith<ArmorSet> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ArmorSetCopyWith<$Res> {
+  factory $ArmorSetCopyWith(ArmorSet value, $Res Function(ArmorSet) then) =
+      _$ArmorSetCopyWithImpl<$Res, ArmorSet>;
+  @useResult
+  $Res call(
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      Charm charm});
+
+  $CharmCopyWith<$Res> get charm;
+}
+
+/// @nodoc
+class _$ArmorSetCopyWithImpl<$Res, $Val extends ArmorSet>
+    implements $ArmorSetCopyWith<$Res> {
+  _$ArmorSetCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of ArmorSet
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? weaponDecos = null,
+    Object? pieces = null,
+    Object? charm = null,
+  }) {
+    return _then(_value.copyWith(
+      weaponDecos: null == weaponDecos
+          ? _value.weaponDecos
+          : weaponDecos // ignore: cast_nullable_to_non_nullable
+              as List<Deco?>,
+      pieces: null == pieces
+          ? _value.pieces
+          : pieces // ignore: cast_nullable_to_non_nullable
+              as List<EquipmentPiece>,
+      charm: null == charm
+          ? _value.charm
+          : charm // ignore: cast_nullable_to_non_nullable
+              as Charm,
+    ) as $Val);
+  }
+
+  /// Create a copy of ArmorSet
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CharmCopyWith<$Res> get charm {
+    return $CharmCopyWith<$Res>(_value.charm, (value) {
+      return _then(_value.copyWith(charm: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ArmorSetImplCopyWith<$Res>
+    implements $ArmorSetCopyWith<$Res> {
+  factory _$$ArmorSetImplCopyWith(
+          _$ArmorSetImpl value, $Res Function(_$ArmorSetImpl) then) =
+      __$$ArmorSetImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      Charm charm});
+
+  @override
+  $CharmCopyWith<$Res> get charm;
+}
+
+/// @nodoc
+class __$$ArmorSetImplCopyWithImpl<$Res>
+    extends _$ArmorSetCopyWithImpl<$Res, _$ArmorSetImpl>
+    implements _$$ArmorSetImplCopyWith<$Res> {
+  __$$ArmorSetImplCopyWithImpl(
+      _$ArmorSetImpl _value, $Res Function(_$ArmorSetImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ArmorSet
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? weaponDecos = null,
+    Object? pieces = null,
+    Object? charm = null,
+  }) {
+    return _then(_$ArmorSetImpl(
+      weaponDecos: null == weaponDecos
+          ? _value._weaponDecos
+          : weaponDecos // ignore: cast_nullable_to_non_nullable
+              as List<Deco?>,
+      pieces: null == pieces
+          ? _value._pieces
+          : pieces // ignore: cast_nullable_to_non_nullable
+              as List<EquipmentPiece>,
+      charm: null == charm
+          ? _value.charm
+          : charm // ignore: cast_nullable_to_non_nullable
+              as Charm,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ArmorSetImpl extends _ArmorSet {
+  const _$ArmorSetImpl(
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      required final List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      required final List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      required this.charm})
+      : _weaponDecos = weaponDecos,
+        _pieces = pieces,
+        super._();
+
+  factory _$ArmorSetImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArmorSetImplFromJson(json);
+
+  final List<Deco?> _weaponDecos;
+  @override
+  @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+  List<Deco?> get weaponDecos {
+    if (_weaponDecos is EqualUnmodifiableListView) return _weaponDecos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_weaponDecos);
+  }
+
+  final List<EquipmentPiece> _pieces;
+  @override
+  @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+  List<EquipmentPiece> get pieces {
+    if (_pieces is EqualUnmodifiableListView) return _pieces;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pieces);
+  }
+
+  @override
+  @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+  final Charm charm;
+
+  @override
+  String toString() {
+    return 'ArmorSet(weaponDecos: $weaponDecos, pieces: $pieces, charm: $charm)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ArmorSetImpl &&
+            const DeepCollectionEquality()
+                .equals(other._weaponDecos, _weaponDecos) &&
+            const DeepCollectionEquality().equals(other._pieces, _pieces) &&
+            (identical(other.charm, charm) || other.charm == charm));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_weaponDecos),
+      const DeepCollectionEquality().hash(_pieces),
+      charm);
+
+  /// Create a copy of ArmorSet
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ArmorSetImplCopyWith<_$ArmorSetImpl> get copyWith =>
+      __$$ArmorSetImplCopyWithImpl<_$ArmorSetImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ArmorSetImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ArmorSet extends ArmorSet {
+  const factory _ArmorSet(
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      required final List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      required final List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      required final Charm charm}) = _$ArmorSetImpl;
+  const _ArmorSet._() : super._();
+
+  factory _ArmorSet.fromJson(Map<String, dynamic> json) =
+      _$ArmorSetImpl.fromJson;
+
+  @override
+  @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+  List<Deco?> get weaponDecos;
+  @override
+  @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+  List<EquipmentPiece> get pieces;
+  @override
+  @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+  Charm get charm;
+
+  /// Create a copy of ArmorSet
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ArmorSetImplCopyWith<_$ArmorSetImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

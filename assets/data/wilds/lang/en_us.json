@@ -1,4 +1,11 @@
 {
+  "part:head": "Head",
+  "part:chest": "Chest",
+  "part:arm": "Arms",
+  "part:waist": "Waist",
+  "part:leg": "Legs",
+  "part:charm": "Charm",
+  "part:weapon": "Weapon",
   "skill:resentment": "Resentment",
   "bskill:doshagumas-might": "Doshaguma's Might",
   "bskill:neopteron-alert": "Neopteron Alert",

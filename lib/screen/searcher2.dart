@@ -1,11 +1,10 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
-import 'package:brachys_armor_set_searcher/screen/responsive.dart';
+import 'package:brachys_armor_set_searcher/data/set_finder.dart' as ass;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
-import 'package:brachys_armor_set_searcher/data/set_finder.dart' as ass;
 
 import '../data/equipment.dart';
 
@@ -63,7 +62,7 @@ Widget _skillsPreview(BuildContext context, SearcherState state) {
       child: Text('None selected'),
     );
   }
-  List<Widget> skills = state.skills.map((skill) => _makeSkillChip("${skill.value.name} ${skill.amount}")).toList();
+  List<Widget> skills = state.skills.map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.amount}")).toList();
   return Wrap(
     spacing: 4,
     runSpacing: 4,
@@ -74,10 +73,7 @@ Widget _skillsPreview(BuildContext context, SearcherState state) {
 
 Widget _decosOption(BuildContext context) {
   return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.white.withAlpha(20)
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(20)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,10 +119,7 @@ Widget _decosOption(BuildContext context) {
                           child: const Padding(
                             padding: EdgeInsets.only(left: 4, top: 8, bottom: 8),
                             child: Row(
-                              children: [
-                                Text('Edit my deocs'),
-                                Icon(Icons.chevron_right)
-                              ],
+                              children: [Text('Edit my deocs'), Icon(Icons.chevron_right)],
                             ),
                           ),
                         )
@@ -138,33 +131,36 @@ Widget _decosOption(BuildContext context) {
             ),
           )
         ],
-      )
-  );
+      ));
 }
 
 List<Widget> _makeSearcherOptions(BuildContext context) {
   return [
-    _option(context, 'Edit Skills', SearcherPageState.editSkills, BlocBuilder<SearcherCubit, SearcherState>(
-      buildWhen: (a, b) => !listEquals(a.skills, b.skills),
-      builder: (context, state) {
-        return _skillsPreview(context, state);
-      },
-    )),
+    _option(
+        context,
+        'Edit Skills',
+        SearcherPageState.editSkills,
+        BlocBuilder<SearcherCubit, SearcherState>(
+          buildWhen: (a, b) => !listEquals(a.skills, b.skills),
+          builder: (context, state) {
+            return _skillsPreview(context, state);
+          },
+        )),
     _decosOption(context)
   ];
 }
 
 Widget _skillTile(BuildContext context, ass.Stack<Skill> skill, bool mobile) {
   Widget tile = Container(
-    margin: const EdgeInsets.symmetric(vertical: 4),
-    padding: const EdgeInsets.all(4),
-    decoration: BoxDecoration(color: Colors.white.withAlpha(20), borderRadius: BorderRadius.circular(8)),
-    child: Row(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(color: Colors.white.withAlpha(20), borderRadius: BorderRadius.circular(8)),
+      child: Row(
         children: [
           Expanded(
               flex: 66,
               child: Text(
-                skill.value.name,
+                skill.value.localizedName,
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               )),
           Text('Lv: ${skill.amount}'),
@@ -193,17 +189,13 @@ Widget _skillTile(BuildContext context, ass.Stack<Skill> skill, bool mobile) {
                   color: Colors.red.shade700,
                 ))
         ],
-      )
-  );
+      ));
   if (mobile) {
     return Dismissible(
-        key: Key(skill.value.name),
-        onDismissed: (dir) => context.read<SearcherCubit>().removeSkill(skill.value),
-        child: tile);
+        key: Key(skill.value.name), onDismissed: (dir) => context.read<SearcherCubit>().removeSkill(skill.value), child: tile);
   }
   return tile;
 }
-
 
 class SearcherDesktop extends StatelessWidget {
   const SearcherDesktop({super.key});
@@ -215,25 +207,251 @@ class SearcherDesktop extends StatelessWidget {
         Container(
           constraints: const BoxConstraints(maxWidth: 400),
           padding: const EdgeInsets.all(8),
-          child: Column(
-            children: _makeSearcherOptions(context),
-          ),
+          child: Column(children: [
+            ..._makeSearcherOptions(context),
+            const Spacer(),
+            MaterialButton(
+              onPressed: () {
+                context.read<SearchResultCubit>().startSearch(context.read<SearcherCubit>().state);
+              },
+              color: Colors.green,
+              minWidth: double.infinity,
+              height: 64,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: const Text(
+                'Start Search',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              ),
+            )
+          ]),
         ),
-        const VerticalDivider(thickness: 4,),
+        const VerticalDivider(
+          thickness: 4,
+        ),
         Expanded(
-          child: BlocBuilder<SearcherPageCubit, SearcherPageState> (
-              builder: (context, state) {
-                switch (state) {
-                  case SearcherPageState.editSkills: return const SkillEditor(doneButton: false);
-                  case SearcherPageState.editDecos: return const DecoEditor();
-                  case SearcherPageState.editArmorFilters: return const Placeholder();
-                }
-              }
-          ),
+          child: BlocBuilder<SearcherPageCubit, SearcherPageState>(builder: (context, state) {
+            switch (state) {
+              case SearcherPageState.editSkills:
+                return const SkillEditor(doneButton: false);
+              case SearcherPageState.editDecos:
+                return const DecoEditor();
+              case SearcherPageState.editArmorFilters:
+                return const Placeholder();
+            }
+          }),
         ),
-        const Expanded(child: Placeholder())
+        const Expanded(child: SearchResultPage())
       ],
     );
+  }
+}
+
+class SearchResultPage extends StatelessWidget {
+  const SearchResultPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: BlocBuilder<SearchResultCubit, SearchResultState>(builder: (context, state) {
+        if (!state.hasResult) {
+          return const Center(
+            child: Text(
+              'No Results yet',
+              style: TextStyle(fontSize: 24),
+            ),
+          );
+        }
+        int totalCombionations = state.searchResult!.totalArmorSets;
+        return StreamBuilder<List<ArmorSet>>(
+            stream: state.searchResult!.armorSetStream.stream,
+            builder: (context, snapshot) {
+              List<ArmorSet> sets = snapshot.hasData ? snapshot.data! : List.empty();
+              return Column(children: [
+                Container(
+                    height: 32,
+                    constraints: const BoxConstraints(minWidth: double.infinity),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white.withAlpha(40)),
+                    child: StreamBuilder<int>(
+                        stream: state.searchResult!.processedArmorSets.stream,
+                        builder: (context, snapshot1) {
+                          int progress = snapshot1.hasData ? snapshot1.data! : 0;
+                          return Stack(
+                            children: [
+                              if (totalCombionations > 0 && progress > 0)
+                                FractionallySizedBox(
+                                  widthFactor: progress / totalCombionations,
+                                  child: Container(
+                                    height: 32,
+                                    constraints: const BoxConstraints(minWidth: double.infinity),
+                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.red.shade800),
+                                  ),
+                                ),
+                              Center(
+                                child: Text('$progress / $totalCombionations  -  ${sets.length}'),
+                              )
+                            ],
+                          );
+                        })),
+                Expanded(
+                    child: Container(
+                  child: ListView(
+                    children: _buildArmorSets(context, sets),
+                  ),
+                ))
+              ]);
+            });
+      }),
+    );
+  }
+
+  List<Widget> _buildArmorSets(BuildContext context, List<ArmorSet> sets) {
+    List<Widget> widgets = [];
+    int i = 0;
+    for (ArmorSet set in sets) {
+      if (i == 200) break;
+      String display = '${set.pieces[0].equipment.localizedName}, ${set.pieces[3].equipment.localizedName},\n${set.pieces[1].equipment.localizedName}, ${set.pieces[4].equipment.localizedName},\n${set.pieces[2].equipment.localizedName}, ${set.charm.localizedName}';
+      widgets.add(Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: MaterialButton(
+            height: 32,
+            color: Colors.white.withAlpha(40),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            padding: const EdgeInsets.all(4),
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (ctx) {
+                    return Dialog(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            maxWidth: 750,
+                            maxHeight: 400,
+                            minWidth: 400,
+                            minHeight: 200
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 10,
+                                child: Column(
+                                  children: [
+                                    _equipment(context, set.pieces[0]),
+                                    _equipment(context, set.pieces[1]),
+                                    _equipment(context, set.pieces[2]),
+                                    _equipment(context, set.pieces[3]),
+                                    _equipment(context, set.pieces[4]),
+                                    _charm(context, set.charm)
+                                  ],
+                                ),
+                              ),
+                              Expanded(flex: 4, child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.white.withAlpha(40)
+                                  ),
+                                  padding: const EdgeInsets.all(8),
+                                  child: ListView(
+                                    children: _buildSkills(set),
+                                  ),
+                                ),
+                              ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  });
+            },
+        child: Center(child: Text(display)),),
+      ));
+
+      i++;
+    }
+
+    return widgets;
+  }
+
+  Widget _equipment(BuildContext context, EquipmentPiece eq) {
+    return Container(
+      height: 64,
+      padding: const EdgeInsets.all(4),
+      margin: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.white.withAlpha(40)
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(flex: 10, child: Text(eq.equipment.part.localizedName)),
+          Expanded(flex: 15, child: Text(eq.equipment.localizedName)),
+          Expanded(flex: 1, child: _slotSizes(eq.equipment)),
+          Expanded(flex: 15, child: _decos(eq.equipment, eq.decorations))
+        ],
+      ),
+    );
+  }
+
+  Widget _slotSizes(Equipment eq) {
+    if (eq is Armor) {
+      TextStyle style = const TextStyle(fontSize: 12);
+      return Column(
+        children: [
+          Text(eq.primarySlotSize == 0 ? '-' : eq.primarySlotSize.toString(), style: style,),
+          Text(eq.secondarySlotSize == 0 ? '-' : eq.secondarySlotSize.toString(), style: style,),
+          Text(eq.ternarySlotSize == 0 ? '-' : eq.ternarySlotSize.toString(), style: style,),
+        ],
+      );
+    }
+    return const Text('-');
+  }
+
+  Widget _decos(Equipment eq, List<Deco?> decos) {
+    if (eq is Armor) {
+      TextStyle style = const TextStyle(fontSize: 12);
+      return Column(
+        children: [
+          Text(decos[0] == null ? '-' : decos[0]!.localizedName, style: style),
+          Text(decos[1] == null ? '-' : decos[1]!.localizedName, style: style),
+          Text(decos[2] == null ? '-' : decos[2]!.localizedName, style: style),
+        ],
+      );
+    }
+    return const Text('-');
+  }
+
+  Widget _charm(BuildContext context, Charm charm) {
+    return Container(
+      height: 32,
+      padding: const EdgeInsets.all(4),
+      margin: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white.withAlpha(40)
+      ),
+      child: Row(
+        children: [
+          Expanded(flex: 10, child: Text(charm.part.localizedName)),
+          Expanded(flex: 15, child: Text(charm.localizedName)),
+          const Spacer(flex: 1,),
+          const Spacer(flex: 15,)
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _buildSkills(ArmorSet armorSet) {
+    return armorSet.calculateSkills(removeNonFullBonus: false, removeOverlevel: false).map((skill) {
+      return Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Text(skill.value.localize(skill.amount, capAtMax: false), style: TextStyle(color: skill.value.getColor(skill.amount)),),
+      );
+    }).toList();
   }
 }
 
@@ -286,7 +504,7 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
             child: Container(
               padding: const EdgeInsets.all(4),
               child: Text(
-                skill.name,
+                skill.localizedName,
                 style: const TextStyle(fontSize: 15),
               ),
             )));
@@ -405,7 +623,6 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     );
   }
 
-
   @override
   void dispose() {
     super.dispose();
@@ -458,16 +675,14 @@ class _SkillEditorState extends _AbstractSearcherPageState<SkillEditor> {
             ),
             Expanded(
                 child: BlocBuilder<SearcherCubit, SearcherState>(
-                  buildWhen: (a, b) => !listEquals(a.skills, b.skills),
-                  builder: (context, state) {
-                    return ListView(
-                      children: _buildSkillList(context, state, true),
-                    );
-                  },
-                )),
-            _skillSelector(context
-                .read<SearcherCubit>()
-                .state, 250),
+              buildWhen: (a, b) => !listEquals(a.skills, b.skills),
+              builder: (context, state) {
+                return ListView(
+                  children: _buildSkillList(context, state, true),
+                );
+              },
+            )),
+            _skillSelector(context.read<SearcherCubit>().state, 250),
             const SizedBox(
               height: 8,
             ),

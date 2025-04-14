@@ -28,7 +28,7 @@ class SearcherPageCubit extends Cubit<SearcherPageState> {
 enum SearcherPageState { editSkills, editDecos, editArmorFilters }
 
 class SearcherCubit extends Cubit<SearcherState> {
-  SearcherCubit() : super(const SearcherState(skills: [], armorFilters: [], useMyDeco: true));
+  SearcherCubit() : super(SearcherState.initial());
 
   void update(SearcherState state) {
     emit(state);
@@ -66,6 +66,15 @@ class SearcherState with _$SearcherState {
 
   const SearcherState._();
 
+  factory SearcherState.initial() {
+    return SearcherState(skills: [
+      Stack(value: All.skillsMap['critical-boost']!, amount: 5),
+      Stack(value: All.skillsMap['burst']!, amount: 5),
+      Stack(value: All.skillsMap['antivirus']!, amount: 3),
+      Stack(value: All.skillsMap['weakness-exploit']!, amount: 5)
+    ], armorFilters: [], useMyDeco: true);
+  }
+
   const factory SearcherState({
     required List<Stack<Skill>> skills,
     required List<Stack<ArmorFilter>> armorFilters,
@@ -101,4 +110,26 @@ class SkillSelectorState {
 
   SkillSelectorState copyWith({String? searchValue, bool? shown}) =>
       SkillSelectorState(searchValue: searchValue ?? this.searchValue, shown: shown ?? this.shown);
+}
+
+class SearchResultCubit extends Cubit<SearchResultState> {
+  SearchResultCubit() : super(SearchResultState(null));
+
+  void startSearch(SearcherState searcherState) async {
+    emit(SearchResultState(await searchAllArmorCombinations(SearchArguments(
+        requiredSkills: {for (var s in searcherState.skills) s.value: s},
+        decorations: null,
+        minRarity: 0,
+        maxRarity: 12,
+        blacklistedArmor: {},
+        weaponSlots: [3, 3, 3]))));
+  }
+}
+
+class SearchResultState {
+  final SearchResult? searchResult;
+
+  SearchResultState(this.searchResult);
+
+  bool get hasResult => searchResult != null;
 }

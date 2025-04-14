@@ -1,6 +1,7 @@
 
-import 'package:brachys_armor_set_searcher/data/set_finder.dart';
 import 'package:flutter/material.dart';
+
+import '../data/equipment.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage({super.key});
