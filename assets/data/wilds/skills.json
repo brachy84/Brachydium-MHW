@@ -113,16 +113,16 @@
       "desc": ""
     },
     {
-      "name": "divine-blessing",
+      "name": "thunder-attack",
       "altName": null,
-      "category": "armor",
+      "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
-      "name": "thunder-attack",
+      "name": "divine-blessing",
       "altName": null,
-      "category": "weapon",
+      "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
@@ -176,16 +176,16 @@
       "desc": ""
     },
     {
-      "name": "ice-resistance",
+      "name": "blast-attack",
       "altName": null,
-      "category": "armor",
+      "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
-      "name": "blast-attack",
+      "name": "ice-resistance",
       "altName": null,
-      "category": "weapon",
+      "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
@@ -211,13 +211,6 @@
       "desc": ""
     },
     {
-      "name": "paralysis-resistance",
-      "altName": null,
-      "category": "armor",
-      "maxLevel": 3,
-      "desc": ""
-    },
-    {
       "name": "critical-status",
       "altName": null,
       "category": "weapon",
@@ -225,7 +218,7 @@
       "desc": ""
     },
     {
-      "name": "sleep-resistance",
+      "name": "paralysis-resistance",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -239,6 +232,20 @@
       "desc": ""
     },
     {
+      "name": "sleep-resistance",
+      "altName": null,
+      "category": "armor",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "iron-skin",
+      "altName": null,
+      "category": "armor",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
       "name": "handicraft",
       "altName": null,
       "category": "weapon",
@@ -246,7 +253,7 @@
       "desc": ""
     },
     {
-      "name": "iron-skin",
+      "name": "blight-resistance",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -260,7 +267,14 @@
       "desc": ""
     },
     {
-      "name": "blight-resistance",
+      "name": "stun-resistance",
+      "altName": null,
+      "category": "armor",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "bleeding-resistance",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -274,28 +288,7 @@
       "desc": ""
     },
     {
-      "name": "stun-resistance",
-      "altName": null,
-      "category": "armor",
-      "maxLevel": 3,
-      "desc": ""
-    },
-    {
       "name": "minds-eye",
-      "altName": null,
-      "category": "weapon",
-      "maxLevel": 3,
-      "desc": ""
-    },
-    {
-      "name": "bleeding-resistance",
-      "altName": null,
-      "category": "armor",
-      "maxLevel": 3,
-      "desc": ""
-    },
-    {
-      "name": "bludgeoner",
       "altName": null,
       "category": "weapon",
       "maxLevel": 3,
@@ -309,17 +302,10 @@
       "desc": ""
     },
     {
-      "name": "masters-touch",
+      "name": "bludgeoner",
       "altName": null,
       "category": "weapon",
-      "maxLevel": 1,
-      "desc": ""
-    },
-    {
-      "name": "normal-shots",
-      "altName": null,
-      "category": "weapon",
-      "maxLevel": 1,
+      "maxLevel": 3,
       "desc": ""
     },
     {
@@ -330,7 +316,7 @@
       "desc": ""
     },
     {
-      "name": "piercing-shots",
+      "name": "masters-touch",
       "altName": null,
       "category": "weapon",
       "maxLevel": 1,
@@ -344,7 +330,7 @@
       "desc": ""
     },
     {
-      "name": "spreadpower-shots",
+      "name": "normal-shots",
       "altName": null,
       "category": "weapon",
       "maxLevel": 1,
@@ -358,10 +344,10 @@
       "desc": ""
     },
     {
-      "name": "ballistics",
+      "name": "piercing-shots",
       "altName": null,
       "category": "weapon",
-      "maxLevel": 3,
+      "maxLevel": 1,
       "desc": ""
     },
     {
@@ -372,7 +358,7 @@
       "desc": ""
     },
     {
-      "name": "rapid-fire-up",
+      "name": "spreadpower-shots",
       "altName": null,
       "category": "weapon",
       "maxLevel": 1,
@@ -386,10 +372,17 @@
       "desc": ""
     },
     {
-      "name": "opening-shot",
+      "name": "ballistics",
       "altName": null,
       "category": "weapon",
       "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "rapid-fire-up",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 1,
       "desc": ""
     },
     {
@@ -400,7 +393,7 @@
       "desc": ""
     },
     {
-      "name": "tetrad-shot",
+      "name": "opening-shot",
       "altName": null,
       "category": "weapon",
       "maxLevel": 3,
@@ -414,17 +407,31 @@
       "desc": ""
     },
     {
-      "name": "special-ammo-boost",
-      "altName": null,
-      "category": "weapon",
-      "maxLevel": 2,
-      "desc": ""
-    },
-    {
       "name": "stamina-surge",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "tetrad-shot",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "marathon-runner",
+      "altName": null,
+      "category": "armor",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "special-ammo-boost",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 2,
       "desc": ""
     },
     {
@@ -435,7 +442,7 @@
       "desc": ""
     },
     {
-      "name": "marathon-runner",
+      "name": "hunger-resistance",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -449,10 +456,10 @@
       "desc": ""
     },
     {
-      "name": "hunger-resistance",
+      "name": "agitator",
       "altName": null,
       "category": "armor",
-      "maxLevel": 3,
+      "maxLevel": 5,
       "desc": ""
     },
     {
@@ -470,7 +477,7 @@
       "desc": ""
     },
     {
-      "name": "agitator",
+      "name": "latent-power",
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
@@ -484,14 +491,14 @@
       "desc": ""
     },
     {
-      "name": "latent-power",
+      "name": "heroics",
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
-      "name": "heroics",
+      "name": "burst",
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
@@ -505,7 +512,7 @@
       "desc": ""
     },
     {
-      "name": "burst",
+      "name": "foray",
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
@@ -519,7 +526,7 @@
       "desc": ""
     },
     {
-      "name": "foray",
+      "name": "flayer",
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
@@ -533,7 +540,7 @@
       "desc": ""
     },
     {
-      "name": "flayer",
+      "name": "palico-rally",
       "altName": null,
       "category": "armor",
       "maxLevel": 5,
@@ -547,20 +554,6 @@
       "desc": ""
     },
     {
-      "name": "palico-rally",
-      "altName": null,
-      "category": "armor",
-      "maxLevel": 5,
-      "desc": ""
-    },
-    {
-      "name": "stamina-thief",
-      "altName": null,
-      "category": "weapon",
-      "maxLevel": 3,
-      "desc": ""
-    },
-    {
       "name": "partbreaker",
       "altName": null,
       "category": "armor",
@@ -568,7 +561,7 @@
       "desc": ""
     },
     {
-      "name": "artillery",
+      "name": "stamina-thief",
       "altName": null,
       "category": "weapon",
       "maxLevel": 3,
@@ -582,7 +575,7 @@
       "desc": ""
     },
     {
-      "name": "rapid-morph",
+      "name": "artillery",
       "altName": null,
       "category": "weapon",
       "maxLevel": 3,
@@ -596,6 +589,20 @@
       "desc": ""
     },
     {
+      "name": "rapid-morph",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "antivirus",
+      "altName": null,
+      "category": "armor",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
       "name": "horn-maestro",
       "altName": null,
       "category": "weapon",
@@ -603,7 +610,7 @@
       "desc": ""
     },
     {
-      "name": "antivirus",
+      "name": "elemental-absorption",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -617,20 +624,6 @@
       "desc": ""
     },
     {
-      "name": "elemental-absorption",
-      "altName": null,
-      "category": "armor",
-      "maxLevel": 3,
-      "desc": ""
-    },
-    {
-      "name": "airborne",
-      "altName": null,
-      "category": "weapon",
-      "maxLevel": 1,
-      "desc": ""
-    },
-    {
       "name": "self-improvement",
       "altName": null,
       "category": "armor",
@@ -638,7 +631,7 @@
       "desc": ""
     },
     {
-      "name": "poison-duration-up",
+      "name": "airborne",
       "altName": null,
       "category": "weapon",
       "maxLevel": 1,
@@ -652,7 +645,21 @@
       "desc": ""
     },
     {
+      "name": "poison-duration-up",
+      "altName": null,
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
       "name": "evade-extender",
+      "altName": null,
+      "category": "armor",
+      "maxLevel": 3,
+      "desc": ""
+    },
+    {
+      "name": "earplugs",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -666,7 +673,7 @@
       "desc": ""
     },
     {
-      "name": "earplugs",
+      "name": "quick-sheathe",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -680,7 +687,7 @@
       "desc": ""
     },
     {
-      "name": "quick-sheathe",
+      "name": "windproof",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -694,7 +701,7 @@
       "desc": ""
     },
     {
-      "name": "windproof",
+      "name": "tremor-resistance",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -708,7 +715,7 @@
       "desc": ""
     },
     {
-      "name": "tremor-resistance",
+      "name": "flinch-free",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -722,7 +729,7 @@
       "desc": ""
     },
     {
-      "name": "flinch-free",
+      "name": "intimidator",
       "altName": null,
       "category": "armor",
       "maxLevel": 3,
@@ -733,13 +740,6 @@
       "altName": null,
       "category": "weapon",
       "maxLevel": 1,
-      "desc": ""
-    },
-    {
-      "name": "intimidator",
-      "altName": null,
-      "category": "armor",
-      "maxLevel": 3,
       "desc": ""
     },
     {

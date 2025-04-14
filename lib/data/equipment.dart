@@ -18,6 +18,8 @@ enum SkillCategory { weapon, armor, groupBonus, setBonus }
 
 enum WeaponType { gs, ls, sns, db, sa, hammer, hh, lance, gl, ig, cb, lbg, hbg, bow }
 
+enum DecorationType { weapon, armor }
+
 class All {
   static const Skill undefined = Skill(name: "UNDEFINED", maxLevel: 0, category: SkillCategory.weapon, desc: '');
   static const BonusSkill undefinedBonus = BonusSkill(
@@ -44,6 +46,7 @@ class All {
       defThunder: 0,
       defIce: 0,
       defDragon: 0);
+  static const Charm dummyCharm = Charm(name: 'dummy', rarity: 1, primary: undefined, primaryLv: 0);
   static final List<Skill> skills = [];
   static final Map<String, Skill> skillsMap = {};
   static final List<BonusSkill> armorBonuses = [];
@@ -109,9 +112,9 @@ class All {
   }
 
   static BonusSkill getArmorBonus(String name) {
-    if (!skillsMap.containsKey(name)) {
+    if (!armorBonusesMap.containsKey(name)) {
       if (name == undefined.name) return undefinedBonus;
-      log("No skill with name $name");
+      log("No bonus skill with name $name");
       return armorBonuses[0];
     }
     return armorBonusesMap[name]!;
@@ -141,9 +144,9 @@ class All {
     skills[index] = now;
   }
 
-  static void _addEquipment<T extends Equipment>(T equipment) {
+  static void _addEquipment<T extends Equipment>(T equipment, bool fromWeb) {
     if (equipment.part == Part.charm) {
-      print('Adding charm ${(equipment as Charm).name}');
+      if (fromWeb) print('Adding charm ${(equipment as Charm).name}');
       var map = charms;
       map.putIfAbsent(equipment.primary, () => []).add(equipment as Charm);
       if (equipment.secondary != null) {
@@ -154,7 +157,7 @@ class All {
       }
       return;
     }
-    print('Adding armor ${(equipment as Armor).name}');
+    if (fromWeb) print('Adding armor ${(equipment as Armor).name}');
     var map = _armorBySkillByPart[equipment.part]!;
     map.putIfAbsent(equipment.primary, () => []).add(equipment as Armor);
     armorList.add(equipment);
@@ -182,8 +185,8 @@ class All {
     await parseDecosFromJson();
     //await parseCharmsFromWeb();
     await parseCharmsFromJson();
-    await parseArmorFromWeb();
-    //await parseArmorsFromJson();
+    //await parseArmorFromWeb();
+    await parseArmorsFromJson();
   }
 
   static parseLangFromJson() async {
@@ -250,6 +253,7 @@ class All {
     final json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
       var deco = Deco.fromJson(element);
+      deco.category;
       decos.add(deco);
       decosMap.putIfAbsent(deco.primary, () => []).add(deco);
       if (deco.hasSec) {
@@ -264,7 +268,7 @@ class All {
     final json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
       var charm = Charm.fromJson(element);
-      _addEquipment(charm);
+      _addEquipment(charm, false);
     }
   }
 
@@ -320,7 +324,7 @@ class All {
           armor = armor.copyWith(armorBonus: bonus);
         }*/
       }
-      _addEquipment(armor);
+      _addEquipment(armor, false);
     }
   }
 
@@ -482,7 +486,8 @@ class All {
         final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com$link'));
         if (response.statusCode == 200) {
           var doc1 = parse(response.body);
-          var table1 = _findElement(doc1, 'div', 'mx-auto h-full w-full max-w-3xl')!.children[1].children[2].children[0].children[0].children[0];
+          var table1 =
+              _findElement(doc1, 'div', 'mx-auto h-full w-full max-w-3xl')!.children[1].children[2].children[0].children[0].children[0];
           Skill? p, s;
           int pLvl = 0, sLvl = 0;
           for (var skillElement in table1.children) {
@@ -624,7 +629,7 @@ class All {
                   defThunder: thunderDef,
                   defIce: iceDef,
                   defDragon: dragonDef);
-              _addEquipment(armor);
+              _addEquipment(armor, true);
             }
           }
         }
@@ -980,6 +985,16 @@ class Deco with _$Deco {
   }) = _Deco;
 
   bool get hasSec => secondary != null;
+
+  int get totalSkillPoints => hasSec ? primaryLvl + 1 : primaryLvl;
+
+  SkillCategory get category {
+    if (hasSec && primary.category != secondary!.category) {
+      throw Exception(
+          'Deco $name skills (${primary.name}, ${secondary!.name}) have different categories (${primary.category.name}, ${secondary!.category.name}');
+    }
+    return primary.category;
+  }
 
   factory Deco.fromJson(Map<String, Object?> json) => _$DecoFromJson(json);
 }
