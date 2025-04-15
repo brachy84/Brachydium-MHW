@@ -2,10 +2,9 @@ import 'dart:async';
 import 'dart:isolate';
 import 'dart:math';
 
+import 'package:async/async.dart';
 import 'package:brachys_armor_set_searcher/main.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'equipment.dart';
 
@@ -19,10 +18,30 @@ class SearchArguments {
   SearchArguments(
       {required this.requiredSkills,
       required this.decorations,
-      required this.minRarity,
-      required this.maxRarity,
+      this.minRarity = 0,
+      this.maxRarity = 12,
       required this.blacklistedArmor,
       required this.weaponSlots});
+
+  factory SearchArguments.of({
+    required List<Stack<SkillTemplate>> requiredSkills,
+    required Map<Deco, int>? decorations,
+    int minRarity = 0,
+    int maxRarity = 12,
+    required Set<Armor> blacklistedArmor,
+    required List<int> weaponSlots,
+  }) {
+    Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+    for (var s in requiredSkills) {
+      skills[s.value] = s;
+    }
+    return SearchArguments(
+        requiredSkills: skills,
+        decorations: decorations,
+        minRarity: minRarity,
+        blacklistedArmor: blacklistedArmor,
+        weaponSlots: weaponSlots);
+  }
 }
 
 class _ValueArmor implements Comparable<_ValueArmor> {
@@ -256,17 +275,29 @@ class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
   }
 }
 
+void testSearch() {
+  var skills = ['burst', 'antivirus', 'weakness-exploit'].map((s) => Skill.fromString(s)).map((s) => Stack(value: s, amount: s.maxLevel));
+  SearchArguments args =
+      SearchArguments.of(requiredSkills: skills.toList(), decorations: null, blacklistedArmor: {}, weaponSlots: [3, 3, 3]);
+  _SearchConfig cfg = _SearchConfig(args);
+  var tryer = _ArmorSetTryer(config: cfg, decos: cfg.decos);
+  ArmorSet? set = tryer.tryArmor(cfg.helmets[0], cfg.chests[0], cfg.arms[0], cfg.waists[0], cfg.legs[0], cfg.charms[0]);
+  print(set != null);
+}
+
+SendPort? _controlPort;
+
+void cancelArmorSearch() {
+  print('Try canceling search. Current port: $_controlPort');
+  _controlPort?.send('cancel');
+  _controlPort = null;
+}
+
 Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async {
   SearchResult result = SearchResult._();
   _SearchConfig config = _SearchConfig(arguments);
   result.totalArmorSets = config.estimatedCombinations;
   final receivePort = ReceivePort();
-
-  await Isolate.spawn((SendPort sendPort) {
-    var t = DateTime.now().millisecondsSinceEpoch;
-    _ArmorSetTryer.search(config, sendPort);
-    print('Time to search: ${DateTime.now().millisecondsSinceEpoch - t} ms');
-  }, receivePort.sendPort, debugName: 'set_searcher_isolate');
 
   List<ArmorSet> allSets = [];
   int count = 0;
@@ -287,38 +318,81 @@ Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async
       }
     } else if (msg is Map<String, dynamic>) {
       allSets.add(ArmorSet.fromJson(msg));
+    } else if (msg is SendPort) {
+      print('Got control Port');
+      _controlPort = msg;
     } else if (msg == 'done') {
+      print('Isolate done');
       result.processedArmorSets.add(count);
       result.armorSetStream.add(allSets);
       result.processedArmorSets.close();
       result.armorSetStream.close();
+    } else if (msg is String) {
+      print('Msg from Isolate: $msg');
     }
   });
+  //CancellationToken
+
+  //cancellableCompute(callback, message, cancellationToken)
+  await Isolate.spawn((SendPort sendPort) async {
+    ReceivePort controlReceivePort = ReceivePort('Control port isolate side');
+    sendPort.send(controlReceivePort.sendPort);
+
+    var t = DateTime.now().millisecondsSinceEpoch;
+    await _ArmorSetTryer.search(config, sendPort, controlReceivePort);
+    print('Time to search: ${DateTime.now().millisecondsSinceEpoch - t} ms');
+  }, receivePort.sendPort, debugName: 'set_searcher_isolate');
   return result;
 }
 
 // everything here runs in an isolate
 class _ArmorSetTryer {
-  static void search(_SearchConfig config, SendPort sendPort) async {
+  static search(_SearchConfig config, SendPort sendPort, ReceivePort controlPort) async {
+    final controlQueue = StreamQueue(controlPort);
     var tryer = _ArmorSetTryer(config: config, decos: config.decos);
+    sendPort.send('Searching');
+    bool canceled = false;
     for (var helm in config.helmets) {
       for (var chest in config.chests) {
         for (var arm in config.arms) {
           for (var waist in config.waists) {
             for (var leg in config.legs) {
-              for (var charm in config.charms) {
-                ArmorSet? set = tryer.tryArmor(helm, chest, arm, waist, leg, charm);
-                sendPort.send(1);
-                if (set != null) {
-                  sendPort.send(set.toJson());
-                }
+              if (canceled) {
+                sendPort.send('done');
+                return;
               }
+              await _searchInner(sendPort, config, tryer, helm, chest, arm, waist, leg);
+              isCanceled(sendPort, controlQueue).then((c) => canceled = c); // must use then to not block computation
+              await Future.delayed(Duration.zero); // give the async canceled check time to compute
             }
           }
         }
       }
     }
     sendPort.send('done');
+  }
+
+  static Future _searchInner(
+      SendPort sendPort, _SearchConfig config, _ArmorSetTryer tryer, Armor helm, Armor chest, Armor arm, Armor waist, Armor leg) async {
+    for (var charm in config.charms) {
+      ArmorSet? set = tryer.tryArmor(helm, chest, arm, waist, leg, charm);
+      sendPort.send(1);
+      if (set != null) {
+        sendPort.send(set.toJson());
+      }
+    }
+  }
+
+  static Future<bool> isCanceled(SendPort sendPort, StreamQueue queue) async {
+    // if we use while here it will empty the stream completely and therefore close the communication and the isolate
+    if (await queue.hasNext) {
+      var msg = await queue.next;
+      sendPort.send('Got Control msg $msg');
+      if (msg == 'cancel') {
+        return true;
+      }
+    }
+    return false;
   }
 
   final _SearchConfig config;
@@ -381,15 +455,15 @@ class _ArmorSetTryer {
     usedDecos.clear();
     for (var deco in decos) {
       // check if deco skills are still required
-      if (!skills.containsKey(deco.primary.name) && (!deco.hasSec || !skills.containsKey(deco.secondary!.name))) continue;
+      if (!skills.containsKey(deco.primary) && (!deco.hasSec || !skills.containsKey(deco.secondary!))) continue;
       var decoStack = DecoStack(value: deco, amount: config.getDecoAmount(deco));
       decoStack.checkTotalPoints(skills);
       // add primary skill
-      _skill(reqSkills, deco.primary, deco.primaryLvl);
+      _skill(reqSkills, deco.primary, deco.primaryLvl * decoStack.amount);
       skillDecoMap.putIfAbsent(deco.primary, () => []).add(decoStack);
       if (deco.hasSec) {
         // add secondary skill
-        _skill(reqSkills, deco.secondary!, 1);
+        _skill(reqSkills, deco.secondary!, decoStack.amount);
         skillDecoMap.putIfAbsent(deco.secondary!, () => []).add(decoStack);
       }
     }
@@ -493,6 +567,7 @@ class _ArmorSetTryer {
       int i = b.size.compareTo(a.size);
       return i != 0 ? i : a.name.compareTo(b.name);
     });
+    List<Deco?> weaponDecos = List.filled(3, null);
     Map<Armor, List<Deco?>> pieces = {
       armor[0]: List.filled(3, null),
       armor[1]: List.filled(3, null),
@@ -504,6 +579,20 @@ class _ArmorSetTryer {
       int size = deco.size;
       outer:
       while (size <= 3) {
+        if (size == 3) {
+          if (weaponDecos[0] == null) {
+            weaponDecos[0] = deco;
+            break outer;
+          }
+          if (weaponDecos[1] == null) {
+            weaponDecos[1] = deco;
+            break outer;
+          }
+          if (weaponDecos[2] == null) {
+            weaponDecos[2] = deco;
+            break outer;
+          }
+        }
         for (Armor armor in this.armor) {
           if (armor.primarySlotSize == size && pieces[armor]![0] == null) {
             pieces[armor]![0] = deco;
@@ -525,7 +614,7 @@ class _ArmorSetTryer {
     List<EquipmentPiece> piecesList = [];
     pieces.forEach((k, v) => piecesList.add(EquipmentPiece(equipment: k, decorations: v)));
     piecesList.sort();
-    return ArmorSet(weaponDecos: [], pieces: piecesList, charm: charm);
+    return ArmorSet(weaponDecos: weaponDecos, pieces: piecesList, charm: charm);
   }
 
   void _cleanDecoList(Map<SkillTemplate, Stack<SkillTemplate>> reqSkills) {

@@ -210,6 +210,22 @@ class SearcherDesktop extends StatelessWidget {
           child: Column(children: [
             ..._makeSearcherOptions(context),
             const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: MaterialButton(
+                onPressed: () {
+                  ass.cancelArmorSearch();
+                },
+                color: Colors.red.shade700,
+                minWidth: double.infinity,
+                height: 64,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: const Text(
+                  'Cancel Search',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
             MaterialButton(
               onPressed: () {
                 context.read<SearchResultCubit>().startSearch(context.read<SearcherCubit>().state);
@@ -328,7 +344,7 @@ class SearchResultPage extends StatelessWidget {
                         child: ConstrainedBox(
                           constraints: const BoxConstraints(
                             maxWidth: 750,
-                            maxHeight: 400,
+                            maxHeight: 500,
                             minWidth: 400,
                             minHeight: 200
                           ),
@@ -338,6 +354,7 @@ class SearchResultPage extends StatelessWidget {
                                 flex: 10,
                                 child: Column(
                                   children: [
+                                    _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
                                     _equipment(context, set.pieces[0]),
                                     _equipment(context, set.pieces[1]),
                                     _equipment(context, set.pieces[2]),
@@ -398,13 +415,14 @@ class SearchResultPage extends StatelessWidget {
   }
 
   Widget _slotSizes(Equipment eq) {
-    if (eq is Armor) {
+    if (eq is SlottedEquipment) {
+      var seq = eq as SlottedEquipment;
       TextStyle style = const TextStyle(fontSize: 12);
       return Column(
         children: [
-          Text(eq.primarySlotSize == 0 ? '-' : eq.primarySlotSize.toString(), style: style,),
-          Text(eq.secondarySlotSize == 0 ? '-' : eq.secondarySlotSize.toString(), style: style,),
-          Text(eq.ternarySlotSize == 0 ? '-' : eq.ternarySlotSize.toString(), style: style,),
+          Text(seq.primarySlotSize == 0 ? '-' : seq.primarySlotSize.toString(), style: style,),
+          Text(seq.secondarySlotSize == 0 ? '-' : seq.secondarySlotSize.toString(), style: style,),
+          Text(seq.ternarySlotSize == 0 ? '-' : seq.ternarySlotSize.toString(), style: style,),
         ],
       );
     }

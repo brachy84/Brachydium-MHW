@@ -27,6 +27,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // init armor data
   await All.init();
+  //testSearch();
   // init window size
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle(appTitle);
@@ -58,7 +59,9 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
               tablet: HomePageDesktop2(),
               desktop: HomePageDesktop2(),
               title: appTitle,
-              drawer: Drawer(child: HomeDrawer(isHome: true),))),
+              drawer: Drawer(
+                child: HomeDrawer(isHome: true),
+              ))),
     );
   }
 }

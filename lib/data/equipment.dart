@@ -54,6 +54,7 @@ class All {
       defIce: 0,
       defDragon: 0);
   static const Charm dummyCharm = Charm(name: 'dummy', rarity: 1, primary: undefined, primaryLv: 0);
+  static const Weapon dummyWeapon = Weapon(name: 'dummy', type: WeaponType.gs, rarity: 1, primary: undefined, primaryLv: 0, primarySlotSize: 3, secondarySlotSize: 3, ternarySlotSize: 3);
   static final List<Skill> skills = [];
   static final Map<String, Skill> skillsMap = {};
   static final List<BonusSkill> armorBonuses = [];
@@ -850,8 +851,15 @@ mixin Equipment implements Localized {
   }
 }
 
+mixin SlottedEquipment {
+
+  int get primarySlotSize => throw UnsupportedError("Unimplemented getter");
+  int get secondarySlotSize => throw UnsupportedError("Unimplemented getter");
+  int get ternarySlotSize => throw UnsupportedError("Unimplemented getter");
+}
+
 @freezed
-class Armor with _$Armor, Equipment, Localized {
+class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
   const Armor._();
 
   const factory Armor(
@@ -951,7 +959,7 @@ class Charm with _$Charm, Equipment, Localized {
 }
 
 @freezed
-class Weapon with _$Weapon, Equipment, Localized {
+class Weapon with _$Weapon, Equipment, SlottedEquipment, Localized {
   const Weapon._();
 
   const factory Weapon({
@@ -964,6 +972,9 @@ class Weapon with _$Weapon, Equipment, Localized {
     required int primaryLv,
     @Default(0) int secondaryLv,
     @Default(0) int ternaryLv,
+    required int primarySlotSize,
+    required int secondarySlotSize,
+    required int ternarySlotSize,
     /*List<int> sharpness*/
   }) = _Weapon;
 

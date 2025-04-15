@@ -1834,6 +1834,9 @@ mixin _$Weapon {
   int get primaryLv => throw _privateConstructorUsedError;
   int get secondaryLv => throw _privateConstructorUsedError;
   int get ternaryLv => throw _privateConstructorUsedError;
+  int get primarySlotSize => throw _privateConstructorUsedError;
+  int get secondarySlotSize => throw _privateConstructorUsedError;
+  int get ternarySlotSize => throw _privateConstructorUsedError;
 
   /// Create a copy of Weapon
   /// with the given fields replaced by the non-null parameter values.
@@ -1858,7 +1861,10 @@ abstract class $WeaponCopyWith<$Res> {
       Skill? ternary,
       int primaryLv,
       int secondaryLv,
-      int ternaryLv});
+      int ternaryLv,
+      int primarySlotSize,
+      int secondarySlotSize,
+      int ternarySlotSize});
 
   $SkillCopyWith<$Res> get primary;
   $SkillCopyWith<$Res>? get secondary;
@@ -1889,6 +1895,9 @@ class _$WeaponCopyWithImpl<$Res, $Val extends Weapon>
     Object? primaryLv = null,
     Object? secondaryLv = null,
     Object? ternaryLv = null,
+    Object? primarySlotSize = null,
+    Object? secondarySlotSize = null,
+    Object? ternarySlotSize = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -1926,6 +1935,18 @@ class _$WeaponCopyWithImpl<$Res, $Val extends Weapon>
       ternaryLv: null == ternaryLv
           ? _value.ternaryLv
           : ternaryLv // ignore: cast_nullable_to_non_nullable
+              as int,
+      primarySlotSize: null == primarySlotSize
+          ? _value.primarySlotSize
+          : primarySlotSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      secondarySlotSize: null == secondarySlotSize
+          ? _value.secondarySlotSize
+          : secondarySlotSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      ternarySlotSize: null == ternarySlotSize
+          ? _value.ternarySlotSize
+          : ternarySlotSize // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -1988,7 +2009,10 @@ abstract class _$$WeaponImplCopyWith<$Res> implements $WeaponCopyWith<$Res> {
       Skill? ternary,
       int primaryLv,
       int secondaryLv,
-      int ternaryLv});
+      int ternaryLv,
+      int primarySlotSize,
+      int secondarySlotSize,
+      int ternarySlotSize});
 
   @override
   $SkillCopyWith<$Res> get primary;
@@ -2020,6 +2044,9 @@ class __$$WeaponImplCopyWithImpl<$Res>
     Object? primaryLv = null,
     Object? secondaryLv = null,
     Object? ternaryLv = null,
+    Object? primarySlotSize = null,
+    Object? secondarySlotSize = null,
+    Object? ternarySlotSize = null,
   }) {
     return _then(_$WeaponImpl(
       name: null == name
@@ -2058,6 +2085,18 @@ class __$$WeaponImplCopyWithImpl<$Res>
           ? _value.ternaryLv
           : ternaryLv // ignore: cast_nullable_to_non_nullable
               as int,
+      primarySlotSize: null == primarySlotSize
+          ? _value.primarySlotSize
+          : primarySlotSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      secondarySlotSize: null == secondarySlotSize
+          ? _value.secondarySlotSize
+          : secondarySlotSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      ternarySlotSize: null == ternarySlotSize
+          ? _value.ternarySlotSize
+          : ternarySlotSize // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -2077,7 +2116,10 @@ class _$WeaponImpl extends _Weapon {
       this.ternary,
       required this.primaryLv,
       this.secondaryLv = 0,
-      this.ternaryLv = 0})
+      this.ternaryLv = 0,
+      required this.primarySlotSize,
+      required this.secondarySlotSize,
+      required this.ternarySlotSize})
       : super._();
 
   @override
@@ -2103,10 +2145,16 @@ class _$WeaponImpl extends _Weapon {
   @override
   @JsonKey()
   final int ternaryLv;
+  @override
+  final int primarySlotSize;
+  @override
+  final int secondarySlotSize;
+  @override
+  final int ternarySlotSize;
 
   @override
   String toString() {
-    return 'Weapon(name: $name, type: $type, rarity: $rarity, primary: $primary, secondary: $secondary, ternary: $ternary, primaryLv: $primaryLv, secondaryLv: $secondaryLv, ternaryLv: $ternaryLv)';
+    return 'Weapon(name: $name, type: $type, rarity: $rarity, primary: $primary, secondary: $secondary, ternary: $ternary, primaryLv: $primaryLv, secondaryLv: $secondaryLv, ternaryLv: $ternaryLv, primarySlotSize: $primarySlotSize, secondarySlotSize: $secondarySlotSize, ternarySlotSize: $ternarySlotSize)';
   }
 
   @override
@@ -2126,12 +2174,30 @@ class _$WeaponImpl extends _Weapon {
             (identical(other.secondaryLv, secondaryLv) ||
                 other.secondaryLv == secondaryLv) &&
             (identical(other.ternaryLv, ternaryLv) ||
-                other.ternaryLv == ternaryLv));
+                other.ternaryLv == ternaryLv) &&
+            (identical(other.primarySlotSize, primarySlotSize) ||
+                other.primarySlotSize == primarySlotSize) &&
+            (identical(other.secondarySlotSize, secondarySlotSize) ||
+                other.secondarySlotSize == secondarySlotSize) &&
+            (identical(other.ternarySlotSize, ternarySlotSize) ||
+                other.ternarySlotSize == ternarySlotSize));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, type, rarity, primary,
-      secondary, ternary, primaryLv, secondaryLv, ternaryLv);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      type,
+      rarity,
+      primary,
+      secondary,
+      ternary,
+      primaryLv,
+      secondaryLv,
+      ternaryLv,
+      primarySlotSize,
+      secondarySlotSize,
+      ternarySlotSize);
 
   /// Create a copy of Weapon
   /// with the given fields replaced by the non-null parameter values.
@@ -2155,7 +2221,10 @@ abstract class _Weapon extends Weapon {
       final Skill? ternary,
       required final int primaryLv,
       final int secondaryLv,
-      final int ternaryLv}) = _$WeaponImpl;
+      final int ternaryLv,
+      required final int primarySlotSize,
+      required final int secondarySlotSize,
+      required final int ternarySlotSize}) = _$WeaponImpl;
   const _Weapon._() : super._();
 
   @override
@@ -2179,6 +2248,12 @@ abstract class _Weapon extends Weapon {
   int get secondaryLv;
   @override
   int get ternaryLv;
+  @override
+  int get primarySlotSize;
+  @override
+  int get secondarySlotSize;
+  @override
+  int get ternarySlotSize;
 
   /// Create a copy of Weapon
   /// with the given fields replaced by the non-null parameter values.
