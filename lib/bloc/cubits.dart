@@ -116,10 +116,11 @@ class SearchResultCubit extends Cubit<SearchResultState> {
   SearchResultCubit() : super(SearchResultState(null));
 
   void startSearch(SearcherState searcherState) async {
-    emit(SearchResultState(await searchAllArmorCombinations(SearchArguments(
+    emit(SearchResultState(await searchAllArmorCombinations(SearchArguments.of(
         weapon: All.dummyWeapon,
-        requiredSkills: {for (var s in searcherState.skills) s.value: s},
+        requiredSkills: searcherState.skills,
         decorations: null,
+        charms: null,
         minRarity: 0,
         maxRarity: 12,
         blacklistedArmor: {},
