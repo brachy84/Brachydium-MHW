@@ -255,6 +255,7 @@ class All {
       var deco = Deco.fromJson(element);
       deco.category;
       decos.add(deco);
+      decosByString[deco.name] = deco;
       decosMap.putIfAbsent(deco.primary, () => []).add(deco);
       if (deco.hasSec) {
         decosMap.putIfAbsent(deco.secondary!, () => []).add(deco);
