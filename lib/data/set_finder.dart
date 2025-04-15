@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'equipment.dart';
 
 class SearchArguments {
+  final Weapon weapon;
   final Map<SkillTemplate, Stack<SkillTemplate>> requiredSkills;
   final Map<Deco, int>? decorations;
   final int minRarity, maxRarity;
@@ -16,7 +17,8 @@ class SearchArguments {
   final List<int> weaponSlots;
 
   SearchArguments(
-      {required this.requiredSkills,
+      {required this.weapon,
+      required this.requiredSkills,
       required this.decorations,
       this.minRarity = 0,
       this.maxRarity = 12,
@@ -24,6 +26,7 @@ class SearchArguments {
       required this.weaponSlots});
 
   factory SearchArguments.of({
+    required Weapon weapon,
     required List<Stack<SkillTemplate>> requiredSkills,
     required Map<Deco, int>? decorations,
     int minRarity = 0,
@@ -36,6 +39,7 @@ class SearchArguments {
       skills[s.value] = s;
     }
     return SearchArguments(
+        weapon: weapon,
         requiredSkills: skills,
         decorations: decorations,
         minRarity: minRarity,
@@ -276,11 +280,11 @@ class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
 }
 
 void testSearch() {
-  var skills = ['burst', 'antivirus', 'weakness-exploit'].map((s) => Skill.fromString(s)).map((s) => Stack(value: s, amount: s.maxLevel));
-  SearchArguments args =
-      SearchArguments.of(requiredSkills: skills.toList(), decorations: null, blacklistedArmor: {}, weaponSlots: [3, 3, 3]);
+  var skills = ['burst', 'antivirus', 'weakness-exploit', 'critical-boost'].map((s) => Skill.fromString(s)).map((s) => Stack(value: s, amount: s.maxLevel));
+  SearchArguments args = SearchArguments.of(
+      weapon: All.dummyWeapon, requiredSkills: skills.toList(), decorations: null, blacklistedArmor: {}, weaponSlots: [3, 3, 3]);
   _SearchConfig cfg = _SearchConfig(args);
-  var tryer = _ArmorSetTryer(config: cfg, decos: cfg.decos);
+  var tryer = _ArmorSetTryer.of(config: cfg, decos: cfg.decos);
   ArmorSet? set = tryer.tryArmor(cfg.helmets[0], cfg.chests[0], cfg.arms[0], cfg.waists[0], cfg.legs[0], cfg.charms[0]);
   print(set != null);
 }
@@ -349,7 +353,7 @@ Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async
 class _ArmorSetTryer {
   static search(_SearchConfig config, SendPort sendPort, ReceivePort controlPort) async {
     final controlQueue = StreamQueue(controlPort);
-    var tryer = _ArmorSetTryer(config: config, decos: config.decos);
+    var tryer = _ArmorSetTryer.of(config: config, decos: config.decos);
     sendPort.send('Searching');
     bool canceled = false;
     for (var helm in config.helmets) {
@@ -395,17 +399,36 @@ class _ArmorSetTryer {
     return false;
   }
 
+  static final List<Deco> emptyDecos = List.empty();
+
   final _SearchConfig config;
   final List<Armor> armor = List.filled(5, All.dummyArmor);
   Charm charm = All.dummyCharm;
   final List<Deco> decos;
-  final List<int> slots = List.filled(4, 0);
   final Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
-  final Map<SkillTemplate, List<DecoStack>> skillDecoMap = {};
-  final List<Deco> usedDecos = [];
+  final _DecoTryer weaponTryer;
+  final _DecoTryer armorTryer;
+  final _DecoTryer setBonusTryer;
+  final _DecoTryer groupBonusTryer;
   String? error;
 
-  _ArmorSetTryer({required this.config, required this.decos});
+  _ArmorSetTryer(
+      {required this.config,
+      required this.decos,
+      required this.weaponTryer,
+      required this.armorTryer,
+      required this.setBonusTryer,
+      required this.groupBonusTryer});
+
+  factory _ArmorSetTryer.of({required _SearchConfig config, required List<Deco> decos}) {
+    return _ArmorSetTryer(
+        config: config,
+        decos: decos,
+        weaponTryer: _DecoTryer(SkillCategory.weapon, config),
+        armorTryer: _DecoTryer(SkillCategory.armor, config),
+        groupBonusTryer: _DecoTryer(SkillCategory.groupBonus, config),
+        setBonusTryer: _DecoTryer(SkillCategory.setBonus, config));
+  }
 
   ArmorSet? tryArmor(Armor helm, Armor chest, Armor arm, Armor waist, Armor leg, Charm charm) {
     armor[0] = helm;
@@ -414,38 +437,166 @@ class _ArmorSetTryer {
     armor[3] = waist;
     armor[4] = leg;
     this.charm = charm;
-    slots.fillRange(0, 4, 0);
     skills.clear();
     for (Stack<SkillTemplate> skill in config.args.requiredSkills.values) {
       skills[skill.value] = skill.copy();
     }
-    if (config.args.weaponSlots[0] > 0) slots[config.args.weaponSlots[0]]++;
-    if (config.args.weaponSlots[1] > 0) slots[config.args.weaponSlots[1]]++;
-    if (config.args.weaponSlots[2] > 0) slots[config.args.weaponSlots[2]]++;
-    for (var armor in armor) {
-      if (armor.primarySlotSize > 0) slots[armor.primarySlotSize]++;
-      if (armor.secondarySlotSize > 0) slots[armor.secondarySlotSize]++;
-      if (armor.ternarySlotSize > 0) slots[armor.ternarySlotSize]++;
-      _skill(skills, armor.primary, armor.primaryLv);
-      if (armor.secondary != null) _skill(skills, armor.secondary!, armor.secondaryLv);
-      if (armor.ternary != null) _skill(skills, armor.ternary!, armor.ternaryLv);
-      if (armor.groupBonus != null) _skill(skills, armor.groupBonus!, 1);
-      if (armor.setBonus != null) _skill(skills, armor.setBonus!, 1);
-    }
-    _skill(skills, charm.primary, charm.primaryLv);
-    if (charm.secondary != null) _skill(skills, charm.secondary!, charm.secondaryLv);
-    if (charm.ternary != null) _skill(skills, charm.ternary!, charm.ternaryLv);
+    addEquipmentSkills(config.args.weapon);
+    addEquipmentSkills(helm);
+    addEquipmentSkills(chest);
+    addEquipmentSkills(arm);
+    addEquipmentSkills(waist);
+    addEquipmentSkills(leg);
+    addEquipmentSkills(charm);
     if (skills.isEmpty) {
+      // clear decos used before for new set
+      weaponTryer.usedDecos.clear();
+      armorTryer.usedDecos.clear();
       return _makeArmorSet(); // requirements are already met before any decos
     }
     if (decos.isEmpty) {
       error = 'No decos provided and armor has not enough';
       return null;
     }
-    return tryDecos();
+    setBonusTryer.init(emptyDecos, skills.values);
+    groupBonusTryer.init(emptyDecos, skills.values);
+    if (!setBonusTryer.tryDecos() || !groupBonusTryer.tryDecos()) return null; // fast early check
+    weaponTryer.init(decos, skills.values);
+    armorTryer.init(decos, skills.values);
+    weaponTryer.addEquipmentSlots(config.args.weapon);
+    armorTryer.addEquipmentSlots(helm);
+    armorTryer.addEquipmentSlots(chest);
+    armorTryer.addEquipmentSlots(arm);
+    armorTryer.addEquipmentSlots(waist);
+    armorTryer.addEquipmentSlots(leg);
+    if (weaponTryer.tryDecos() && armorTryer.tryDecos()) {
+      return _makeArmorSet();
+    }
+    return null;
   }
 
-  ArmorSet? tryDecos() {
+  addEquipmentSkills(Equipment eq) {
+    _skill(skills, eq.primary, eq.primaryLv);
+    if (eq.secondary != null) _skill(skills, eq.secondary!, eq.secondaryLv);
+    if (eq.ternary != null) _skill(skills, eq.ternary!, eq.ternaryLv);
+    if (eq is Armor) {
+      if (eq.groupBonus != null) _skill(skills, eq.groupBonus!, 1);
+      if (eq.setBonus != null) _skill(skills, eq.setBonus!, 1);
+    }
+  }
+
+  int _compareDeco(Deco a, Deco b) {
+    int i = b.size.compareTo(a.size);
+    return i != 0 ? i : a.name.compareTo(b.name);
+  }
+
+  ArmorSet _makeArmorSet() {
+    weaponTryer.usedDecos.sort(_compareDeco);
+    armorTryer.usedDecos.sort(_compareDeco);
+    List<Deco?> weaponDecos = List.filled(3, null);
+    for (Deco deco in weaponTryer.usedDecos) {
+      int size = deco.size;
+      while (size <= 3) {
+        // try inserting in matching size first
+        if (_insertDeco(config.args.weapon, weaponDecos, deco, size)) {
+          break;
+        }
+        size++; // no empty slot found, try bigger size
+      }
+      if (size == 4) print('Decos was inserted before, but no fitting slot in weapon was found');
+    }
+    Map<Armor, List<Deco?>> pieces = {
+      armor[0]: List.filled(3, null),
+      armor[1]: List.filled(3, null),
+      armor[2]: List.filled(3, null),
+      armor[3]: List.filled(3, null),
+      armor[4]: List.filled(3, null)
+    };
+    for (Deco deco in armorTryer.usedDecos) {
+      int size = deco.size;
+      outer:
+      while (size <= 3) {
+        for (Armor armor in this.armor) {
+          if (_insertDeco(armor, pieces[armor]!, deco, size)) {
+            break outer;
+          }
+        }
+        size++;
+      }
+      if (size == 4) print('Decos was inserted before, but no fitting slot in armor was found');
+    }
+    List<EquipmentPiece> piecesList = [];
+    pieces.forEach((k, v) => piecesList.add(EquipmentPiece(equipment: k, decorations: v)));
+    piecesList.sort();
+    return ArmorSet(weaponDecos: weaponDecos, pieces: piecesList, charm: charm);
+  }
+
+  bool _insertDeco(SlottedEquipment eq, List<Deco?> slots, Deco deco, int size) {
+    if (eq.primarySlotSize == size && slots[0] == null) {
+      slots[0] = deco;
+      return true;
+    }
+    if (eq.secondarySlotSize == size && slots[1] == null) {
+      slots[1] = deco;
+      return true;
+    }
+    if (eq.ternarySlotSize == size && slots[2] == null) {
+      slots[2] = deco;
+      return true;
+    }
+    return false;
+  }
+
+  /// removes a certain amount of required skill levels
+  static _skill(Map<SkillTemplate, Stack<SkillTemplate>> skills, SkillTemplate skill, int amount) {
+    Stack<SkillTemplate>? lv = skills[skill];
+    if (lv != null && lv.decr(amount)) {
+      skills.remove(skill);
+    }
+  }
+
+  bool isValid() {
+    return armor[0] != All.dummyArmor && skills.isEmpty;
+  }
+}
+
+class _DecoTryer {
+  final SkillCategory type;
+  final _SearchConfig config;
+  final List<Deco> decos = [];
+  final List<int> slots = List.filled(4, 0);
+  final Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+  final Map<SkillTemplate, List<DecoStack>> skillDecoMap = {};
+  final List<Deco> usedDecos = [];
+  String? error;
+
+  _DecoTryer(this.type, this.config);
+
+  init(List<Deco> decos, Iterable<Stack<SkillTemplate>> skills) {
+    slots[0] = 0;
+    slots[1] = 0;
+    slots[2] = 0;
+    slots[3] = 0;
+    this.decos.clear();
+    this.decos.addAll(decos.where((d) => d.category == type));
+    this.skills.clear();
+    for (var skill in skills) {
+      if (skill.value.category == type) {
+        this.skills[skill.value] = skill;
+      }
+    }
+  }
+
+  addEquipmentSlots(SlottedEquipment eq) {
+    if (eq.primarySlotSize > 0) slots[eq.primarySlotSize]++;
+    if (eq.secondarySlotSize > 0) slots[eq.secondarySlotSize]++;
+    if (eq.ternarySlotSize > 0) slots[eq.ternarySlotSize]++;
+  }
+
+  bool tryDecos() {
+    if (decos.isEmpty || !hasAnySlots) {
+      return skills.isEmpty;
+    }
     // TODO rewrite this
     // test map
     // we simulate inserting every deco we have regardless of space at the same time
@@ -459,25 +610,25 @@ class _ArmorSetTryer {
       var decoStack = DecoStack(value: deco, amount: config.getDecoAmount(deco));
       decoStack.checkTotalPoints(skills);
       // add primary skill
-      _skill(reqSkills, deco.primary, deco.primaryLvl * decoStack.amount);
+      _ArmorSetTryer._skill(reqSkills, deco.primary, deco.primaryLvl * decoStack.amount);
       skillDecoMap.putIfAbsent(deco.primary, () => []).add(decoStack);
       if (deco.hasSec) {
         // add secondary skill
-        _skill(reqSkills, deco.secondary!, decoStack.amount);
+        _ArmorSetTryer._skill(reqSkills, deco.secondary!, decoStack.amount);
         skillDecoMap.putIfAbsent(deco.secondary!, () => []).add(decoStack);
       }
     }
     if (reqSkills.isNotEmpty) {
       // not all skill requirements met
       error = 'Decos cant make required skills';
-      return null;
+      return false;
     }
-    // roll back
-    reqSkills = skills.map((key, value) => MapEntry(key, value.copy()));
-    _cleanDecoList(reqSkills);
-    if (skillDecoMap.isEmpty) return null;
-    return _insertDecos(reqSkills);
+    _cleanDecoList();
+    if (skillDecoMap.isEmpty) return false;
+    return _insertDecos();
   }
+
+  bool get hasAnySlots => slots[1] > 0 || slots[2] > 0 || slots[3] > 0;
 
   bool canInsert(DecoStack deco) {
     return deco.amount > 0 && slots[deco.value.size] > 0;
@@ -491,7 +642,7 @@ class _ArmorSetTryer {
     return false;
   }
 
-  bool _insertDefiniteDecos(Map<SkillTemplate, Stack<SkillTemplate>> reqSkills) {
+  bool _insertDefiniteDecos() {
     // inserts any deco for which skills we only have one deco available
     // so in order to get this skill this deco must be inserted
     while (true) {
@@ -503,8 +654,8 @@ class _ArmorSetTryer {
         }
       }
       if (deco == null) return false;
-      _insertDeco(reqSkills, deco);
-      if (reqSkills.isEmpty || skillDecoMap.isEmpty) return true;
+      _insertDeco(deco);
+      if (skills.isEmpty || skillDecoMap.isEmpty) return true;
     }
   }
 
@@ -512,10 +663,10 @@ class _ArmorSetTryer {
     return skillDecoMap[skill]![0].totalPoints;
   }
 
-  Stack<SkillTemplate> _findBestSkill(Map<SkillTemplate, Stack<SkillTemplate>> reqSkills) {
+  Stack<SkillTemplate> _findBestSkill() {
     Stack<SkillTemplate>? highestReqSkill;
     int bestDecoValueForSkill = 0;
-    for (Stack<SkillTemplate> skill in reqSkills.values) {
+    for (Stack<SkillTemplate> skill in skills.values) {
       if (highestReqSkill == null) {
         highestReqSkill = skill;
         bestDecoValueForSkill = _getBestDecoValue(skill.value);
@@ -531,15 +682,15 @@ class _ArmorSetTryer {
     return highestReqSkill!;
   }
 
-  bool _insertBestDeco(Map<SkillTemplate, Stack<SkillTemplate>> reqSkills) {
-    Stack<SkillTemplate> highestReqSkill = _findBestSkill(reqSkills);
-    _insertDeco(reqSkills, skillDecoMap[highestReqSkill.value]![0]);
-    return reqSkills.isEmpty || skillDecoMap.isEmpty;
+  bool _insertBestDeco() {
+    Stack<SkillTemplate> highestReqSkill = _findBestSkill();
+    _insertDeco(skillDecoMap[highestReqSkill.value]![0]);
+    return skills.isEmpty || skillDecoMap.isEmpty;
   }
 
-  void _insertDeco(Map<SkillTemplate, Stack<SkillTemplate>> skills, DecoStack deco) {
-    _skill(skills, deco.value.primary, deco.value.primaryLvl);
-    if (deco.value.hasSec) _skill(skills, deco.value.secondary!, 1);
+  void _insertDeco(DecoStack deco) {
+    _ArmorSetTryer._skill(skills, deco.value.primary, deco.value.primaryLvl);
+    if (deco.value.hasSec) _ArmorSetTryer._skill(skills, deco.value.secondary!, 1);
     usedDecos.add(deco.value);
     deco.decr();
     int size = deco.value.size;
@@ -551,100 +702,33 @@ class _ArmorSetTryer {
       size++;
     }
     if (size > 3) print('Before inserting there was space for deco, but now there isn\'t anymore!');
-    _cleanDecoList(skills);
+    _cleanDecoList();
   }
 
-  ArmorSet? _insertDecos(Map<SkillTemplate, Stack<SkillTemplate>> reqSkills) {
+  bool _insertDecos() {
     while (true) {
-      if (_insertDefiniteDecos(reqSkills) || _insertBestDeco(reqSkills)) {
-        return reqSkills.isEmpty ? _makeArmorSet() : null;
+      if (_insertDefiniteDecos() || _insertBestDeco()) {
+        return skills.isEmpty; // all skills matched, success
       }
     }
   }
 
-  ArmorSet _makeArmorSet() {
-    usedDecos.sort((a, b) {
-      int i = b.size.compareTo(a.size);
-      return i != 0 ? i : a.name.compareTo(b.name);
-    });
-    List<Deco?> weaponDecos = List.filled(3, null);
-    Map<Armor, List<Deco?>> pieces = {
-      armor[0]: List.filled(3, null),
-      armor[1]: List.filled(3, null),
-      armor[2]: List.filled(3, null),
-      armor[3]: List.filled(3, null),
-      armor[4]: List.filled(3, null)
-    };
-    for (Deco deco in usedDecos) {
-      int size = deco.size;
-      outer:
-      while (size <= 3) {
-        if (size == 3) {
-          if (weaponDecos[0] == null) {
-            weaponDecos[0] = deco;
-            break outer;
-          }
-          if (weaponDecos[1] == null) {
-            weaponDecos[1] = deco;
-            break outer;
-          }
-          if (weaponDecos[2] == null) {
-            weaponDecos[2] = deco;
-            break outer;
-          }
-        }
-        for (Armor armor in this.armor) {
-          if (armor.primarySlotSize == size && pieces[armor]![0] == null) {
-            pieces[armor]![0] = deco;
-            break outer;
-          }
-          if (armor.secondarySlotSize == size && pieces[armor]![1] == null) {
-            pieces[armor]![1] = deco;
-            break outer;
-          }
-          if (armor.ternarySlotSize == size && pieces[armor]![2] == null) {
-            pieces[armor]![2] = deco;
-            break outer;
-          }
-        }
-        size++;
-      }
-      if (size == 4) print('Decos was inserted before, but no fitting slot in armor was found');
-    }
-    List<EquipmentPiece> piecesList = [];
-    pieces.forEach((k, v) => piecesList.add(EquipmentPiece(equipment: k, decorations: v)));
-    piecesList.sort();
-    return ArmorSet(weaponDecos: weaponDecos, pieces: piecesList, charm: charm);
-  }
-
-  void _cleanDecoList(Map<SkillTemplate, Stack<SkillTemplate>> reqSkills) {
+  void _cleanDecoList() {
     skillDecoMap.removeWhere((key, value) {
       value.removeWhere((deco) {
-        deco.checkTotalPoints(reqSkills);
+        deco.checkTotalPoints(skills);
         return deco.totalPoints == 0 || deco.amount <= 0 || !hasSlotForDecoSize(deco.value.size);
       });
       if (value.isEmpty) return true;
       value.sort();
       return false;
     });
-    for (Stack<SkillTemplate> skill in reqSkills.values) {
+    for (Stack<SkillTemplate> skill in skills.values) {
       if (skillDecoMap[skill.value] == null) {
         // no decos available for a skill
         skillDecoMap.clear();
         return;
       }
     }
-  }
-
-  /// removes a certain amount of required skill levels
-  void _skill(Map<SkillTemplate, Stack<SkillTemplate>> skills, SkillTemplate skill, int amount) {
-    Stack<SkillTemplate>? lv = skills[skill];
-    if (lv != null && lv.decr(amount)) {
-      skills.remove(skill);
-    }
-  }
-
-  bool isValid() {
-    return armor[0] != All.dummyArmor && skills.isEmpty;
   }
 }

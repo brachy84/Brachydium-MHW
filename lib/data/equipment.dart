@@ -253,7 +253,7 @@ class All {
     final json = jsonDecode(content)['data'] as List;
     for (Map<String, dynamic> element in json) {
       var deco = Deco.fromJson(element);
-      deco.category;
+      // deco.category; // validates deco categories
       decos.add(deco);
       decosByString[deco.name] = deco;
       decosMap.putIfAbsent(deco.primary, () => []).add(deco);
@@ -909,10 +909,10 @@ class Deco with _$Deco, Localized {
   int get totalSkillPoints => hasSec ? primaryLvl + 1 : primaryLvl;
 
   SkillCategory get category {
-    if (hasSec && primary.category != secondary!.category) {
+    /*if (hasSec && primary.category != secondary!.category) {
       throw Exception(
           'Deco $name skills (${primary.name}, ${secondary!.name}) have different categories (${primary.category.name}, ${secondary!.category.name}');
-    }
+    }*/
     return primary.category;
   }
 
