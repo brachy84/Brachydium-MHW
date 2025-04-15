@@ -326,65 +326,61 @@ class SearchResultPage extends StatelessWidget {
     int i = 0;
     for (ArmorSet set in sets) {
       if (i == 200) break;
-      String display = '${set.pieces[0].equipment.localizedName}, ${set.pieces[3].equipment.localizedName},\n${set.pieces[1].equipment.localizedName}, ${set.pieces[4].equipment.localizedName},\n${set.pieces[2].equipment.localizedName}, ${set.charm.localizedName}';
+      String display =
+          '${set.pieces[0].equipment.localizedName}, ${set.pieces[3].equipment.localizedName},\n${set.pieces[1].equipment.localizedName}, ${set.pieces[4].equipment.localizedName},\n${set.pieces[2].equipment.localizedName}, ${set.charm.localizedName}';
       widgets.add(Padding(
         padding: const EdgeInsets.all(4.0),
         child: MaterialButton(
-            height: 32,
-            color: Colors.white.withAlpha(40),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            padding: const EdgeInsets.all(4),
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (ctx) {
-                    return Dialog(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(
-                            maxWidth: 750,
-                            maxHeight: 500,
-                            minWidth: 400,
-                            minHeight: 200
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 10,
-                                child: Column(
-                                  children: [
-                                    _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
-                                    _equipment(context, set.pieces[0]),
-                                    _equipment(context, set.pieces[1]),
-                                    _equipment(context, set.pieces[2]),
-                                    _equipment(context, set.pieces[3]),
-                                    _equipment(context, set.pieces[4]),
-                                    _charm(context, set.charm)
-                                  ],
-                                ),
+          height: 32,
+          color: Colors.white.withAlpha(40),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          padding: const EdgeInsets.all(4),
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (ctx) {
+                  return Dialog(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 750, maxHeight: 500, minWidth: 400, minHeight: 200),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 10,
+                              child: Column(
+                                children: [
+                                  _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
+                                  _equipment(context, set.pieces[0]),
+                                  _equipment(context, set.pieces[1]),
+                                  _equipment(context, set.pieces[2]),
+                                  _equipment(context, set.pieces[3]),
+                                  _equipment(context, set.pieces[4]),
+                                  _charm(context, set.charm)
+                                ],
                               ),
-                              Expanded(flex: 4, child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Colors.white.withAlpha(40)
+                            ),
+                            Expanded(
+                                flex: 4,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+                                    padding: const EdgeInsets.all(8),
+                                    child: ListView(
+                                      children: _buildSkills(set),
+                                    ),
                                   ),
-                                  padding: const EdgeInsets.all(8),
-                                  child: ListView(
-                                    children: _buildSkills(set),
-                                  ),
-                                ),
-                              ))
-                            ],
-                          ),
+                                ))
+                          ],
                         ),
                       ),
-                    );
-                  });
-            },
-        child: Center(child: Text(display)),),
+                    ),
+                  );
+                });
+          },
+          child: Center(child: Text(display)),
+        ),
       ));
 
       i++;
@@ -398,10 +394,7 @@ class SearchResultPage extends StatelessWidget {
       height: 64,
       padding: const EdgeInsets.all(4),
       margin: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.white.withAlpha(40)
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -420,9 +413,18 @@ class SearchResultPage extends StatelessWidget {
       TextStyle style = const TextStyle(fontSize: 12);
       return Column(
         children: [
-          Text(seq.primarySlotSize == 0 ? '-' : seq.primarySlotSize.toString(), style: style,),
-          Text(seq.secondarySlotSize == 0 ? '-' : seq.secondarySlotSize.toString(), style: style,),
-          Text(seq.ternarySlotSize == 0 ? '-' : seq.ternarySlotSize.toString(), style: style,),
+          Text(
+            seq.primarySlotSize == 0 ? '-' : seq.primarySlotSize.toString(),
+            style: style,
+          ),
+          Text(
+            seq.secondarySlotSize == 0 ? '-' : seq.secondarySlotSize.toString(),
+            style: style,
+          ),
+          Text(
+            seq.ternarySlotSize == 0 ? '-' : seq.ternarySlotSize.toString(),
+            style: style,
+          ),
         ],
       );
     }
@@ -430,17 +432,14 @@ class SearchResultPage extends StatelessWidget {
   }
 
   Widget _decos(Equipment eq, List<Deco?> decos) {
-    if (eq is Armor) {
-      TextStyle style = const TextStyle(fontSize: 12);
-      return Column(
-        children: [
-          Text(decos[0] == null ? '-' : decos[0]!.localizedName, style: style),
-          Text(decos[1] == null ? '-' : decos[1]!.localizedName, style: style),
-          Text(decos[2] == null ? '-' : decos[2]!.localizedName, style: style),
-        ],
-      );
-    }
-    return const Text('-');
+    TextStyle style = const TextStyle(fontSize: 12);
+    return Column(
+      children: [
+        Text(decos[0] == null ? '-' : decos[0]!.localizedName, style: style),
+        Text(decos[1] == null ? '-' : decos[1]!.localizedName, style: style),
+        Text(decos[2] == null ? '-' : decos[2]!.localizedName, style: style),
+      ],
+    );
   }
 
   Widget _charm(BuildContext context, Charm charm) {
@@ -448,16 +447,17 @@ class SearchResultPage extends StatelessWidget {
       height: 32,
       padding: const EdgeInsets.all(4),
       margin: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.white.withAlpha(40)
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
       child: Row(
         children: [
           Expanded(flex: 10, child: Text(charm.part.localizedName)),
           Expanded(flex: 15, child: Text(charm.localizedName)),
-          const Spacer(flex: 1,),
-          const Spacer(flex: 15,)
+          const Spacer(
+            flex: 1,
+          ),
+          const Spacer(
+            flex: 15,
+          )
         ],
       ),
     );
@@ -467,7 +467,10 @@ class SearchResultPage extends StatelessWidget {
     return armorSet.calculateSkills(removeNonFullBonus: false, removeOverlevel: false).map((skill) {
       return Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Text(skill.value.localize(skill.amount, capAtMax: false), style: TextStyle(color: skill.value.getColor(skill.amount)),),
+        child: Text(
+          skill.value.localize(skill.amount, capAtMax: false),
+          style: TextStyle(color: skill.value.getColor(skill.amount)),
+        ),
       );
     }).toList();
   }

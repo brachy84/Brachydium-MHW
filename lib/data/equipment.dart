@@ -1031,6 +1031,9 @@ class ArmorSet with _$ArmorSet {
 
   List<Stack<SkillTemplate>> calculateSkills({bool removeOverlevel = true, bool removeNonFullBonus = true}) {
     Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+    if (weaponDecos[0] != null) _putDecoSkills(weaponDecos[0]!, skills);
+    if (weaponDecos[1] != null) _putDecoSkills(weaponDecos[1]!, skills);
+    if (weaponDecos[2] != null) _putDecoSkills(weaponDecos[2]!, skills);
     for (EquipmentPiece piece in pieces) {
       _putEquipmentSkills(piece.equipment, skills);
       if (piece.decorations[0] != null) _putDecoSkills(piece.decorations[0]!, skills);
