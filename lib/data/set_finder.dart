@@ -12,6 +12,7 @@ class SearchArguments {
   final Weapon weapon;
   final Map<SkillTemplate, Stack<SkillTemplate>> requiredSkills;
   final Map<Deco, int>? decorations;
+  final Map<Charm, List<Charm>>? charms;
   final int minRarity, maxRarity;
   final Set<Armor> blacklistedArmor;
   final List<int> weaponSlots;
@@ -20,6 +21,7 @@ class SearchArguments {
       {required this.weapon,
       required this.requiredSkills,
       required this.decorations,
+      required this.charms,
       this.minRarity = 0,
       this.maxRarity = 12,
       required this.blacklistedArmor,
@@ -29,6 +31,7 @@ class SearchArguments {
     required Weapon weapon,
     required List<Stack<SkillTemplate>> requiredSkills,
     required Map<Deco, int>? decorations,
+    required Map<Charm, List<Charm>>? charms,
     int minRarity = 0,
     int maxRarity = 12,
     required Set<Armor> blacklistedArmor,
@@ -42,6 +45,7 @@ class SearchArguments {
         weapon: weapon,
         requiredSkills: skills,
         decorations: decorations,
+        charms: charms,
         minRarity: minRarity,
         blacklistedArmor: blacklistedArmor,
         weaponSlots: weaponSlots);
@@ -93,7 +97,18 @@ class _SearchConfig {
       _addArmor(waists, All.waists[skill.value]);
       _addArmor(legs, All.legs[skill.value]);
       var charms1 = All.charms[skill.value];
-      if (charms1 != null) charms.addAll(charms1);
+      if (charms1 != null) {
+        if (args.charms != null) {
+          for (var charm in charms1) {
+            var fam = args.charms![charm];
+            if (fam != null && fam.isNotEmpty) {
+              charms.add(fam.last);
+            }
+          }
+        } else {
+          charms.addAll(charms1);
+        }
+      }
       Set<Deco> decoSet = {};
       for (var deco in All.decosMap[skill.value] ?? []) {
         if (hasDeco(deco)) {
@@ -149,7 +164,7 @@ class SearchResult {
 
   int totalArmorSets = 0;
   StreamController<int> processedArmorSets = StreamController();
-  StreamController<List<ArmorSet>> armorSetStream = StreamController();
+  StreamController<ArmorSet> armorSetStream = StreamController();
 }
 
 abstract class ArmorFilter {
@@ -280,9 +295,11 @@ class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
 }
 
 void testSearch() {
-  var skills = ['burst', 'antivirus', 'weakness-exploit', 'critical-boost'].map((s) => Skill.fromString(s)).map((s) => Stack(value: s, amount: s.maxLevel));
+  var skills = ['burst', 'antivirus', 'weakness-exploit', 'critical-boost']
+      .map((s) => Skill.fromString(s))
+      .map((s) => Stack(value: s, amount: s.maxLevel));
   SearchArguments args = SearchArguments.of(
-      weapon: All.dummyWeapon, requiredSkills: skills.toList(), decorations: null, blacklistedArmor: {}, weaponSlots: [3, 3, 3]);
+      weapon: All.dummyWeapon, requiredSkills: skills.toList(), decorations: null, charms: null, blacklistedArmor: {}, weaponSlots: [3, 3, 3]);
   _SearchConfig cfg = _SearchConfig(args);
   var tryer = _ArmorSetTryer.of(config: cfg, decos: cfg.decos);
   ArmorSet? set = tryer.tryArmor(cfg.helmets[0], cfg.chests[0], cfg.arms[0], cfg.waists[0], cfg.legs[0], cfg.charms[0]);
@@ -303,10 +320,8 @@ Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async
   result.totalArmorSets = config.estimatedCombinations;
   final receivePort = ReceivePort();
 
-  List<ArmorSet> allSets = [];
   int count = 0;
   //double lastProg = 0.0;
-  int lastSetsSize = 0;
   receivePort.listen((msg) {
     if (msg == 1) {
       count++;
@@ -315,20 +330,15 @@ Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async
       if (count % 1000 == 0) {
         //lastProg = prog;
         result.processedArmorSets.add(count);
-        if (allSets.length - lastSetsSize > 10 && lastSetsSize < 200) {
-          lastSetsSize = allSets.length;
-          result.armorSetStream.add(allSets);
-        }
       }
     } else if (msg is Map<String, dynamic>) {
-      allSets.add(ArmorSet.fromJson(msg));
+      result.armorSetStream.add(ArmorSet.fromJson(msg));
     } else if (msg is SendPort) {
       print('Got control Port');
       _controlPort = msg;
     } else if (msg == 'done') {
       print('Isolate done');
       result.processedArmorSets.add(count);
-      result.armorSetStream.add(allSets);
       result.processedArmorSets.close();
       result.armorSetStream.close();
     } else if (msg is String) {

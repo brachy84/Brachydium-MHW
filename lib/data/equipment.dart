@@ -70,6 +70,7 @@ class All {
   static final Map<SkillTemplate, List<Armor>> waists = {};
   static final Map<SkillTemplate, List<Armor>> legs = {};
   static final Map<SkillTemplate, List<Charm>> charms = {};
+  static final Map<Charm, List<Charm>> charmFamilies = {};
   static final Map<Part, Map<SkillTemplate, List<Armor>>> _armorBySkillByPart = {
     Part.head: helmets,
     Part.chest: chests,
@@ -148,16 +149,10 @@ class All {
 
   static void _addEquipment<T extends Equipment>(T equipment, bool fromWeb) {
     All.equipment[equipment.name] = equipment;
-    if (equipment.part == Part.charm) {
-      if (fromWeb) print('Adding charm ${(equipment as Charm).name}');
-      var map = charms;
-      map.putIfAbsent(equipment.primary, () => []).add(equipment as Charm);
-      if (equipment.secondary != null) {
-        map.putIfAbsent(equipment.secondary!, () => []).add(equipment);
-      }
-      if (equipment.ternary != null) {
-        map.putIfAbsent(equipment.ternary!, () => []).add(equipment);
-      }
+    if (equipment is Charm) {
+      if (fromWeb) print('Adding charm ${equipment.name}');
+      // only fully upgraded charms should be mapped from skills
+      // this is done after everything is loaded
       return;
     }
     if (fromWeb) print('Adding armor ${(equipment as Armor).name}');
@@ -193,6 +188,34 @@ class All {
     await parseCharmsFromJson();
     //await parseArmorFromWeb();
     await parseArmorsFromJson();
+    _initCharms();
+  }
+
+  static void _initCharms() {
+    Map<String, List<Charm>> charmFamiliesByString = {};
+    // collect charm families
+    for (Equipment eq in equipment.values) {
+      if (eq is Charm) {
+        charmFamiliesByString.putIfAbsent(eq.baseName, () => []).add(eq);
+      }
+    }
+    for (var charms in charmFamiliesByString.values) {
+      charms.sort((a, b) => a.name.compareTo(b.name));
+      // map charms to families
+      for (var charm in charms) {
+        charmFamilies[charm] = charms;
+      }
+      var map = All.charms;
+      var charm = charms.last;
+      // map skills to best charm of family
+      map.putIfAbsent(charm.primary, () => []).add(charm);
+      if (charm.secondary != null) {
+        map.putIfAbsent(charm.secondary!, () => []).add(charm);
+      }
+      if (charm.ternary != null) {
+        map.putIfAbsent(charm.ternary!, () => []).add(charm);
+      }
+    }
   }
 
   static parseLangFromJson() async {
@@ -930,6 +953,12 @@ class Deco with _$Deco, Localized {
   }
 }
 
+extension CharGetter on String {
+  String lastChar([int index = 0]) {
+    return this[length - 1 - index];
+  }
+}
+
 @freezed
 class Charm with _$Charm, Equipment, Localized {
   const Charm._();
@@ -951,6 +980,29 @@ class Charm with _$Charm, Equipment, Localized {
 
   @override
   String get localizedName => All.langEn['charm:$name']!;
+
+  String get baseName {
+    int i = 0;
+    String n = name;
+    if (n.lastChar(0) == 'i') {
+      if (n.lastChar(1) == 'i') {
+        if (n.lastChar(2) == 'i') {
+          if (n.lastChar(3) == '-') {
+            i = 4;
+          }
+        } else {
+          if (n.lastChar(2) == '-') {
+            i = 3;
+          }
+        }
+      } else {
+        if (n.lastChar(1) == '-') {
+          i = 2;
+        }
+      }
+    }
+    return i > 0 ? n.substring(0, n.length - i) : n;
+  }
 
   static Charm fromString(String name) {
     Equipment? eq = All.equipment[name]!;
