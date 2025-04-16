@@ -16,7 +16,13 @@ part 'equipment.freezed.dart';
 part 'equipment.g.dart';
 
 enum Part {
-  head, chest, arm, waist, leg, charm, weapon;
+  head,
+  chest,
+  arm,
+  waist,
+  leg,
+  charm,
+  weapon;
 
   String get localizedName => All.langEn['part:$name']!;
 }
@@ -28,9 +34,9 @@ enum WeaponType { gs, ls, sns, db, sa, hammer, hh, lance, gl, ig, cb, lbg, hbg, 
 enum DecorationType { weapon, armor }
 
 class All {
-  static const Skill undefined = Skill(name: "UNDEFINED", maxLevel: 0, category: SkillCategory.weapon, desc: '');
+  static const Skill undefined = Skill(name: "dummy", maxLevel: 0, category: SkillCategory.weapon, desc: '');
   static const BonusSkill undefinedBonus = BonusSkill(
-      name: "UNDEFINED",
+      name: "dummy",
       maxLevel: 0,
       category: SkillCategory.groupBonus,
       primaryCount: 0,
@@ -54,7 +60,15 @@ class All {
       defIce: 0,
       defDragon: 0);
   static const Charm dummyCharm = Charm(name: 'dummy', rarity: 1, primary: undefined, primaryLv: 0);
-  static const Weapon dummyWeapon = Weapon(name: 'dummy', type: WeaponType.gs, rarity: 1, primary: undefined, primaryLv: 0, primarySlotSize: 3, secondarySlotSize: 3, ternarySlotSize: 3);
+  static const Weapon dummyWeapon = Weapon(
+      name: 'dummy',
+      type: WeaponType.gs,
+      rarity: 1,
+      primary: undefined,
+      primaryLv: 0,
+      primarySlotSize: 3,
+      secondarySlotSize: 3,
+      ternarySlotSize: 3);
   static final List<Skill> skills = [];
   static final Map<String, Skill> skillsMap = {};
   static final List<BonusSkill> armorBonuses = [];
@@ -674,7 +688,6 @@ void _writeJsonData(String path, Map<String, dynamic> json) async {
 }
 
 mixin SkillTemplate implements Localized {
-
   String get name => throw UnimplementedError();
 
   SkillCategory get category => throw UnimplementedError();
@@ -747,11 +760,7 @@ class ArmorBonus with SkillTemplate, _$ArmorBonus {
 abstract class Skill with _$Skill, SkillTemplate, Localized {
   const Skill._();
 
-  const factory Skill(
-      {required String name,
-      required SkillCategory category,
-      required int maxLevel,
-      required String desc}) = _Skill;
+  const factory Skill({required String name, required SkillCategory category, required int maxLevel, required String desc}) = _Skill;
 
   static Skill fromString(String name) {
     return All.getSkill(name);
@@ -924,9 +933,10 @@ mixin Equipment implements Localized {
 }
 
 mixin SlottedEquipment {
-
   int get primarySlotSize => throw UnsupportedError("Unimplemented getter");
+
   int get secondarySlotSize => throw UnsupportedError("Unimplemented getter");
+
   int get ternarySlotSize => throw UnsupportedError("Unimplemented getter");
 }
 
@@ -1098,7 +1108,7 @@ abstract class Weapon with _$Weapon, Equipment, SlottedEquipment, Localized {
   Part get part => Part.weapon;
 
   @override
-  String get localizedName => name;//All.langEn['weapon:$name']!;
+  String get localizedName => name; //All.langEn['weapon:$name']!;
 
   @override
   String toString() {
@@ -1140,6 +1150,18 @@ abstract class EquipmentPiece with _$EquipmentPiece implements Comparable<Equipm
 
 @freezed
 abstract class ArmorSet with _$ArmorSet {
+  static final ArmorSet dummy = ArmorSet(weaponDecos: [
+    null,
+    null,
+    null
+  ], pieces: [
+    EquipmentPiece(equipment: All.dummyArmor, decorations: [null, null, null]),
+    EquipmentPiece(equipment: All.dummyArmor, decorations: [null, null, null]),
+    EquipmentPiece(equipment: All.dummyArmor, decorations: [null, null, null]),
+    EquipmentPiece(equipment: All.dummyArmor, decorations: [null, null, null]),
+    EquipmentPiece(equipment: All.dummyArmor, decorations: [null, null, null])
+  ], charm: All.dummyCharm);
+
   const ArmorSet._();
 
   const factory ArmorSet(

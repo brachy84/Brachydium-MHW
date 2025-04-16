@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_portal/flutter_portal.dart';
 
 import '../bloc/cubits.dart';
 import '../data/equipment.dart';
@@ -64,8 +62,6 @@ class SearchResultPage extends StatelessWidget {
         })
     );
   }
-
-
 }
 
 class ArmorSetList extends StatefulWidget {
@@ -111,6 +107,7 @@ class _ArmorSetListState extends State<ArmorSetList> {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: armorSets.length,
+        prototypeItem: _buildArmorSetTile(context, ArmorSet.dummy),
         itemBuilder: (ctx, index) {
           return _buildArmorSetTile(context, armorSets[index]);
         });

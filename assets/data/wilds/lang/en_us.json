@@ -1,4 +1,9 @@
 {
+  "armor:dummy": "Dummy Armor",
+  "charm:dummy": "Dummy Charm",
+  "weapon:dummy": "Dummy Weapon",
+  "skill:dummy": "Dummy Skill",
+  "bskill:dummy": "Dummy Bonus Skill",
   "part:head": "Head",
   "part:chest": "Chest",
   "part:arm": "Arms",
