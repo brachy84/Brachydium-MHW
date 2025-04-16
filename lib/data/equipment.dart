@@ -674,9 +674,22 @@ void _writeJsonData(String path, Map<String, dynamic> json) async {
 }
 
 mixin SkillTemplate implements Localized {
-  String get name;
 
-  SkillCategory get category;
+  String get name => throw UnimplementedError();
+
+  SkillCategory get category => throw UnimplementedError();
+
+  int get maxLevel => throw UnimplementedError();
+
+  // for bonus skills the normal level is the amount of armor pieces required
+  // the actual level is the activated level of the bonus skill (1 or 2)
+  // for normal skills this is equal to normal levels
+  int getActualLevel(int requiredLevel);
+
+  // returns the required normal levels for a given amount of actual levels
+  int getRequiredLevels(int actualLevel);
+
+  int get actualMaxLevel => getActualLevel(maxLevel);
 
   bool matchesSearch(String searchValue) {
     return localizedName.toLowerCase().contains(searchValue);
@@ -731,7 +744,7 @@ class ArmorBonus with SkillTemplate, _$ArmorBonus {
 }*/
 
 @freezed
-class Skill with _$Skill, SkillTemplate, Localized {
+abstract class Skill with _$Skill, SkillTemplate, Localized {
   const Skill._();
 
   const factory Skill(
@@ -752,6 +765,16 @@ class Skill with _$Skill, SkillTemplate, Localized {
 
   static String asString(SkillTemplate? skill) {
     return skill?.name ?? '';
+  }
+
+  @override
+  int getActualLevel(int requiredLevel) {
+    return requiredLevel;
+  }
+
+  @override
+  int getRequiredLevels(int actualLevel) {
+    return actualLevel;
   }
 
   @override
@@ -782,10 +805,15 @@ class Skill with _$Skill, SkillTemplate, Localized {
 
   @override
   int get hashCode => name.hashCode;
+
+  @override
+  String toString() {
+    return name;
+  }
 }
 
 @freezed
-class BonusSkill with _$BonusSkill, SkillTemplate, Localized {
+abstract class BonusSkill with _$BonusSkill, SkillTemplate, Localized {
   const BonusSkill._();
 
   const factory BonusSkill(
@@ -816,6 +844,21 @@ class BonusSkill with _$BonusSkill, SkillTemplate, Localized {
   }
 
   @override
+  int getActualLevel(int requiredLevel) {
+    if (secondaryCount > 0 && requiredLevel >= secondaryCount) {
+      return 2;
+    }
+    return requiredLevel >= primaryCount ? 1 : 0;
+  }
+
+  @override
+  int getRequiredLevels(int actualLevel) {
+    if (actualLevel == 1) return primaryCount;
+    if (actualLevel == 2) return secondaryCount;
+    throw Exception();
+  }
+
+  @override
   String get localizedName => All.langEn['bskill:$name']!;
 
   @override
@@ -839,11 +882,16 @@ class BonusSkill with _$BonusSkill, SkillTemplate, Localized {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _Skill && name == other.name);
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _BonusSkill && name == other.name);
   }
 
   @override
   int get hashCode => name.hashCode;
+
+  @override
+  String toString() {
+    return name;
+  }
 }
 
 mixin Equipment implements Localized {
@@ -883,7 +931,7 @@ mixin SlottedEquipment {
 }
 
 @freezed
-class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
+abstract class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
   const Armor._();
 
   const factory Armor(
@@ -913,10 +961,15 @@ class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
 
   @override
   String get localizedName => All.langEn['armor:$name']!;
+
+  @override
+  String toString() {
+    return name;
+  }
 }
 
 @freezed
-class Deco with _$Deco, Localized {
+abstract class Deco with _$Deco, Localized {
   const Deco._();
 
   const factory Deco({
@@ -944,6 +997,11 @@ class Deco with _$Deco, Localized {
   @override
   String get localizedName => All.langEn['deco:$name']!;
 
+  @override
+  String toString() {
+    return name;
+  }
+
   static String asString(Deco? deco) {
     return deco?.name ?? '';
   }
@@ -960,7 +1018,7 @@ extension CharGetter on String {
 }
 
 @freezed
-class Charm with _$Charm, Equipment, Localized {
+abstract class Charm with _$Charm, Equipment, Localized {
   const Charm._();
 
   const factory Charm(
@@ -1009,10 +1067,15 @@ class Charm with _$Charm, Equipment, Localized {
     if (eq is Charm) return eq;
     throw Exception('No charm for name $name');
   }
+
+  @override
+  String toString() {
+    return name;
+  }
 }
 
 @freezed
-class Weapon with _$Weapon, Equipment, SlottedEquipment, Localized {
+abstract class Weapon with _$Weapon, Equipment, SlottedEquipment, Localized {
   const Weapon._();
 
   const factory Weapon({
@@ -1036,6 +1099,11 @@ class Weapon with _$Weapon, Equipment, SlottedEquipment, Localized {
 
   @override
   String get localizedName => name;//All.langEn['weapon:$name']!;
+
+  @override
+  String toString() {
+    return name;
+  }
 }
 
 List<String> _decoListToJson(List<Deco?> decos) {
@@ -1055,7 +1123,7 @@ List<EquipmentPiece> _jsonToEquipmentList(List<Map<String, dynamic>> json) {
 }
 
 @freezed
-class EquipmentPiece with _$EquipmentPiece implements Comparable<EquipmentPiece> {
+abstract class EquipmentPiece with _$EquipmentPiece implements Comparable<EquipmentPiece> {
   const EquipmentPiece._();
 
   const factory EquipmentPiece(
@@ -1071,7 +1139,7 @@ class EquipmentPiece with _$EquipmentPiece implements Comparable<EquipmentPiece>
 }
 
 @freezed
-class ArmorSet with _$ArmorSet {
+abstract class ArmorSet with _$ArmorSet {
   const ArmorSet._();
 
   const factory ArmorSet(

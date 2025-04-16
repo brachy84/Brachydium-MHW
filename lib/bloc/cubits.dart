@@ -38,18 +38,18 @@ class SearcherCubit extends Cubit<SearcherState> {
     update(state.copyWith(skills: []));
   }
 
-  void addSkill(Skill skill) {
+  void addSkill(SkillTemplate skill) {
     update(state.copyWith(skills: [...state.skills, Stack(value: skill, amount: skill.maxLevel)]));
   }
 
-  void updateSkillLevel(Skill skill, int level) {
+  void updateSkillLevel(SkillTemplate skill, int level) {
     int i = state.skills.indexWhere((s) => s.value == skill);
     var skills = List.of(state.skills);
     skills[i] = Stack(value: skill, amount: level);
     update(state.copyWith(skills: skills));
   }
 
-  void removeSkill(Skill skill) {
+  void removeSkill(SkillTemplate skill) {
     var skills = List.of(state.skills);
     skills.removeAt(skills.indexWhere((skill1) => skill1.value == skill));
     update(state.copyWith(skills: skills));
@@ -61,7 +61,7 @@ class SearcherCubit extends Cubit<SearcherState> {
 }
 
 @freezed
-class SearcherState with _$SearcherState {
+abstract class SearcherState with _$SearcherState {
   //const factory SearcherState.initial() = _Initial;
 
   const SearcherState._();
@@ -76,12 +76,12 @@ class SearcherState with _$SearcherState {
   }
 
   const factory SearcherState({
-    required List<Stack<Skill>> skills,
+    required List<Stack<SkillTemplate>> skills,
     required List<Stack<ArmorFilter>> armorFilters,
     required bool useMyDeco,
   }) = _SearcherState;
 
-  bool hasSkill(Skill skill) {
+  bool hasSkill(SkillTemplate skill) {
     return skills.any((s) => s.value == skill);
   }
 }

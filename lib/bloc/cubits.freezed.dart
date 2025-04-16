@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,94 +10,67 @@ part of 'cubits.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearcherState {
-  List<Stack<Skill>> get skills => throw _privateConstructorUsedError;
-  List<Stack<ArmorFilter>> get armorFilters =>
-      throw _privateConstructorUsedError;
-  bool get useMyDeco => throw _privateConstructorUsedError;
+  List<Stack<SkillTemplate>> get skills;
+  List<Stack<ArmorFilter>> get armorFilters;
+  bool get useMyDeco;
 
   /// Create a copy of SearcherState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SearcherStateCopyWith<SearcherState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SearcherStateCopyWith<$Res> {
-  factory $SearcherStateCopyWith(
-          SearcherState value, $Res Function(SearcherState) then) =
-      _$SearcherStateCopyWithImpl<$Res, SearcherState>;
-  @useResult
-  $Res call(
-      {List<Stack<Skill>> skills,
-      List<Stack<ArmorFilter>> armorFilters,
-      bool useMyDeco});
-}
-
-/// @nodoc
-class _$SearcherStateCopyWithImpl<$Res, $Val extends SearcherState>
-    implements $SearcherStateCopyWith<$Res> {
-  _$SearcherStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SearcherState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $SearcherStateCopyWith<SearcherState> get copyWith =>
+      _$SearcherStateCopyWithImpl<SearcherState>(
+          this as SearcherState, _$identity);
+
   @override
-  $Res call({
-    Object? skills = null,
-    Object? armorFilters = null,
-    Object? useMyDeco = null,
-  }) {
-    return _then(_value.copyWith(
-      skills: null == skills
-          ? _value.skills
-          : skills // ignore: cast_nullable_to_non_nullable
-              as List<Stack<Skill>>,
-      armorFilters: null == armorFilters
-          ? _value.armorFilters
-          : armorFilters // ignore: cast_nullable_to_non_nullable
-              as List<Stack<ArmorFilter>>,
-      useMyDeco: null == useMyDeco
-          ? _value.useMyDeco
-          : useMyDeco // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SearcherState &&
+            const DeepCollectionEquality().equals(other.skills, skills) &&
+            const DeepCollectionEquality()
+                .equals(other.armorFilters, armorFilters) &&
+            (identical(other.useMyDeco, useMyDeco) ||
+                other.useMyDeco == useMyDeco));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(skills),
+      const DeepCollectionEquality().hash(armorFilters),
+      useMyDeco);
+
+  @override
+  String toString() {
+    return 'SearcherState(skills: $skills, armorFilters: $armorFilters, useMyDeco: $useMyDeco)';
   }
 }
 
 /// @nodoc
-abstract class _$$SearcherStateImplCopyWith<$Res>
-    implements $SearcherStateCopyWith<$Res> {
-  factory _$$SearcherStateImplCopyWith(
-          _$SearcherStateImpl value, $Res Function(_$SearcherStateImpl) then) =
-      __$$SearcherStateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $SearcherStateCopyWith<$Res> {
+  factory $SearcherStateCopyWith(
+          SearcherState value, $Res Function(SearcherState) _then) =
+      _$SearcherStateCopyWithImpl;
   @useResult
   $Res call(
-      {List<Stack<Skill>> skills,
+      {List<Stack<SkillTemplate>> skills,
       List<Stack<ArmorFilter>> armorFilters,
       bool useMyDeco});
 }
 
 /// @nodoc
-class __$$SearcherStateImplCopyWithImpl<$Res>
-    extends _$SearcherStateCopyWithImpl<$Res, _$SearcherStateImpl>
-    implements _$$SearcherStateImplCopyWith<$Res> {
-  __$$SearcherStateImplCopyWithImpl(
-      _$SearcherStateImpl _value, $Res Function(_$SearcherStateImpl) _then)
-      : super(_value, _then);
+class _$SearcherStateCopyWithImpl<$Res>
+    implements $SearcherStateCopyWith<$Res> {
+  _$SearcherStateCopyWithImpl(this._self, this._then);
+
+  final SearcherState _self;
+  final $Res Function(SearcherState) _then;
 
   /// Create a copy of SearcherState
   /// with the given fields replaced by the non-null parameter values.
@@ -107,17 +81,17 @@ class __$$SearcherStateImplCopyWithImpl<$Res>
     Object? armorFilters = null,
     Object? useMyDeco = null,
   }) {
-    return _then(_$SearcherStateImpl(
+    return _then(_self.copyWith(
       skills: null == skills
-          ? _value._skills
+          ? _self.skills
           : skills // ignore: cast_nullable_to_non_nullable
-              as List<Stack<Skill>>,
+              as List<Stack<SkillTemplate>>,
       armorFilters: null == armorFilters
-          ? _value._armorFilters
+          ? _self.armorFilters
           : armorFilters // ignore: cast_nullable_to_non_nullable
               as List<Stack<ArmorFilter>>,
       useMyDeco: null == useMyDeco
-          ? _value.useMyDeco
+          ? _self.useMyDeco
           : useMyDeco // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -126,18 +100,18 @@ class __$$SearcherStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SearcherStateImpl extends _SearcherState {
-  const _$SearcherStateImpl(
-      {required final List<Stack<Skill>> skills,
+class _SearcherState extends SearcherState {
+  const _SearcherState(
+      {required final List<Stack<SkillTemplate>> skills,
       required final List<Stack<ArmorFilter>> armorFilters,
       required this.useMyDeco})
       : _skills = skills,
         _armorFilters = armorFilters,
         super._();
 
-  final List<Stack<Skill>> _skills;
+  final List<Stack<SkillTemplate>> _skills;
   @override
-  List<Stack<Skill>> get skills {
+  List<Stack<SkillTemplate>> get skills {
     if (_skills is EqualUnmodifiableListView) return _skills;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_skills);
@@ -154,16 +128,19 @@ class _$SearcherStateImpl extends _SearcherState {
   @override
   final bool useMyDeco;
 
+  /// Create a copy of SearcherState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SearcherState(skills: $skills, armorFilters: $armorFilters, useMyDeco: $useMyDeco)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SearcherStateCopyWith<_SearcherState> get copyWith =>
+      __$SearcherStateCopyWithImpl<_SearcherState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SearcherStateImpl &&
+            other is _SearcherState &&
             const DeepCollectionEquality().equals(other._skills, _skills) &&
             const DeepCollectionEquality()
                 .equals(other._armorFilters, _armorFilters) &&
@@ -178,33 +155,58 @@ class _$SearcherStateImpl extends _SearcherState {
       const DeepCollectionEquality().hash(_armorFilters),
       useMyDeco);
 
+  @override
+  String toString() {
+    return 'SearcherState(skills: $skills, armorFilters: $armorFilters, useMyDeco: $useMyDeco)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SearcherStateCopyWith<$Res>
+    implements $SearcherStateCopyWith<$Res> {
+  factory _$SearcherStateCopyWith(
+          _SearcherState value, $Res Function(_SearcherState) _then) =
+      __$SearcherStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<Stack<SkillTemplate>> skills,
+      List<Stack<ArmorFilter>> armorFilters,
+      bool useMyDeco});
+}
+
+/// @nodoc
+class __$SearcherStateCopyWithImpl<$Res>
+    implements _$SearcherStateCopyWith<$Res> {
+  __$SearcherStateCopyWithImpl(this._self, this._then);
+
+  final _SearcherState _self;
+  final $Res Function(_SearcherState) _then;
+
   /// Create a copy of SearcherState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SearcherStateImplCopyWith<_$SearcherStateImpl> get copyWith =>
-      __$$SearcherStateImplCopyWithImpl<_$SearcherStateImpl>(this, _$identity);
+  $Res call({
+    Object? skills = null,
+    Object? armorFilters = null,
+    Object? useMyDeco = null,
+  }) {
+    return _then(_SearcherState(
+      skills: null == skills
+          ? _self._skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as List<Stack<SkillTemplate>>,
+      armorFilters: null == armorFilters
+          ? _self._armorFilters
+          : armorFilters // ignore: cast_nullable_to_non_nullable
+              as List<Stack<ArmorFilter>>,
+      useMyDeco: null == useMyDeco
+          ? _self.useMyDeco
+          : useMyDeco // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
-abstract class _SearcherState extends SearcherState {
-  const factory _SearcherState(
-      {required final List<Stack<Skill>> skills,
-      required final List<Stack<ArmorFilter>> armorFilters,
-      required final bool useMyDeco}) = _$SearcherStateImpl;
-  const _SearcherState._() : super._();
-
-  @override
-  List<Stack<Skill>> get skills;
-  @override
-  List<Stack<ArmorFilter>> get armorFilters;
-  @override
-  bool get useMyDeco;
-
-  /// Create a copy of SearcherState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SearcherStateImplCopyWith<_$SearcherStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

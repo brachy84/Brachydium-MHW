@@ -6,15 +6,14 @@ part of 'equipment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SkillImpl _$$SkillImplFromJson(Map<String, dynamic> json) => _$SkillImpl(
+_Skill _$SkillFromJson(Map<String, dynamic> json) => _Skill(
       name: json['name'] as String,
       category: $enumDecode(_$SkillCategoryEnumMap, json['category']),
       maxLevel: (json['maxLevel'] as num).toInt(),
       desc: json['desc'] as String,
     );
 
-Map<String, dynamic> _$$SkillImplToJson(_$SkillImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$SkillToJson(_Skill instance) => <String, dynamic>{
       'name': instance.name,
       'category': _$SkillCategoryEnumMap[instance.category]!,
       'maxLevel': instance.maxLevel,
@@ -28,8 +27,7 @@ const _$SkillCategoryEnumMap = {
   SkillCategory.setBonus: 'setBonus',
 };
 
-_$BonusSkillImpl _$$BonusSkillImplFromJson(Map<String, dynamic> json) =>
-    _$BonusSkillImpl(
+_BonusSkill _$BonusSkillFromJson(Map<String, dynamic> json) => _BonusSkill(
       name: json['name'] as String,
       category: $enumDecode(_$SkillCategoryEnumMap, json['category']),
       maxLevel: (json['maxLevel'] as num).toInt(),
@@ -39,7 +37,7 @@ _$BonusSkillImpl _$$BonusSkillImplFromJson(Map<String, dynamic> json) =>
       secondaryDesc: json['secondaryDesc'] as String,
     );
 
-Map<String, dynamic> _$$BonusSkillImplToJson(_$BonusSkillImpl instance) =>
+Map<String, dynamic> _$BonusSkillToJson(_BonusSkill instance) =>
     <String, dynamic>{
       'name': instance.name,
       'category': _$SkillCategoryEnumMap[instance.category]!,
@@ -50,7 +48,7 @@ Map<String, dynamic> _$$BonusSkillImplToJson(_$BonusSkillImpl instance) =>
       'secondaryDesc': instance.secondaryDesc,
     };
 
-_$ArmorImpl _$$ArmorImplFromJson(Map<String, dynamic> json) => _$ArmorImpl(
+_Armor _$ArmorFromJson(Map<String, dynamic> json) => _Armor(
       name: json['name'] as String,
       part: $enumDecode(_$PartEnumMap, json['part']),
       rarity: (json['rarity'] as num).toInt(),
@@ -74,8 +72,7 @@ _$ArmorImpl _$$ArmorImplFromJson(Map<String, dynamic> json) => _$ArmorImpl(
       defDragon: (json['defDragon'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$ArmorImplToJson(_$ArmorImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ArmorToJson(_Armor instance) => <String, dynamic>{
       'name': instance.name,
       'part': _$PartEnumMap[instance.part]!,
       'rarity': instance.rarity,
@@ -109,7 +106,7 @@ const _$PartEnumMap = {
   Part.weapon: 'weapon',
 };
 
-_$DecoImpl _$$DecoImplFromJson(Map<String, dynamic> json) => _$DecoImpl(
+_Deco _$DecoFromJson(Map<String, dynamic> json) => _Deco(
       name: json['name'] as String,
       primary: Skill.fromString(json['primary'] as String),
       secondary: Skill.fromStringNullable(json['secondary'] as String?),
@@ -117,8 +114,7 @@ _$DecoImpl _$$DecoImplFromJson(Map<String, dynamic> json) => _$DecoImpl(
       size: (json['size'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$DecoImplToJson(_$DecoImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DecoToJson(_Deco instance) => <String, dynamic>{
       'name': instance.name,
       'primary': Skill.asString(instance.primary),
       'secondary': Skill.asString(instance.secondary),
@@ -126,7 +122,7 @@ Map<String, dynamic> _$$DecoImplToJson(_$DecoImpl instance) =>
       'size': instance.size,
     };
 
-_$CharmImpl _$$CharmImplFromJson(Map<String, dynamic> json) => _$CharmImpl(
+_Charm _$CharmFromJson(Map<String, dynamic> json) => _Charm(
       name: json['name'] as String,
       rarity: (json['rarity'] as num).toInt(),
       primary: Skill.fromString(json['primary'] as String),
@@ -137,8 +133,7 @@ _$CharmImpl _$$CharmImplFromJson(Map<String, dynamic> json) => _$CharmImpl(
       ternaryLv: (json['ternaryLv'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$CharmImplToJson(_$CharmImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$CharmToJson(_Charm instance) => <String, dynamic>{
       'name': instance.name,
       'rarity': instance.rarity,
       'primary': Skill.asString(instance.primary),
@@ -149,29 +144,26 @@ Map<String, dynamic> _$$CharmImplToJson(_$CharmImpl instance) =>
       'ternaryLv': instance.ternaryLv,
     };
 
-_$EquipmentPieceImpl _$$EquipmentPieceImplFromJson(Map<String, dynamic> json) =>
-    _$EquipmentPieceImpl(
+_EquipmentPiece _$EquipmentPieceFromJson(Map<String, dynamic> json) =>
+    _EquipmentPiece(
       equipment: Equipment.fromString(json['equipment'] as String),
       decorations: _jsonToDecoList(json['decorations'] as List<String>),
     );
 
-Map<String, dynamic> _$$EquipmentPieceImplToJson(
-        _$EquipmentPieceImpl instance) =>
+Map<String, dynamic> _$EquipmentPieceToJson(_EquipmentPiece instance) =>
     <String, dynamic>{
       'equipment': Equipment.asString(instance.equipment),
       'decorations': _decoListToJson(instance.decorations),
     };
 
-_$ArmorSetImpl _$$ArmorSetImplFromJson(Map<String, dynamic> json) =>
-    _$ArmorSetImpl(
+_ArmorSet _$ArmorSetFromJson(Map<String, dynamic> json) => _ArmorSet(
       weaponDecos: _jsonToDecoList(json['weaponDecos'] as List<String>),
       pieces:
           _jsonToEquipmentList(json['pieces'] as List<Map<String, dynamic>>),
       charm: Charm.fromString(json['charm'] as String),
     );
 
-Map<String, dynamic> _$$ArmorSetImplToJson(_$ArmorSetImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ArmorSetToJson(_ArmorSet instance) => <String, dynamic>{
       'weaponDecos': _decoListToJson(instance.weaponDecos),
       'pieces': _equipmentListToJson(instance.pieces),
       'charm': Equipment.asString(instance.charm),

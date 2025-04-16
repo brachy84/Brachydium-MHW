@@ -79,16 +79,32 @@ class ArmorSetList extends StatefulWidget {
 
 class _ArmorSetListState extends State<ArmorSetList> {
 
+  StreamSubscription<ArmorSet>? _subscription;
   final List<ArmorSet> armorSets = [];
 
-  @override
-  void initState() {
-    super.initState();
-    widget.armorSetStream.listen((set) {
+  void _listenStream() {
+    _subscription?.cancel();
+    armorSets.clear();
+    _subscription = widget.armorSetStream.listen((set) {
       setState(() {
         armorSets.add(set);
       });
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _listenStream();
+  }
+
+  @override
+  void didUpdateWidget(covariant ArmorSetList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.armorSetStream != oldWidget.armorSetStream) {
+      // ensures that the armor set list is updated when a new search is happening
+      _listenStream();
+    }
   }
 
   @override

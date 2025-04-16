@@ -63,7 +63,7 @@ Widget _skillsPreview(BuildContext context, SearcherState state) {
       child: Text('None selected'),
     );
   }
-  List<Widget> skills = state.skills.map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.amount}")).toList();
+  List<Widget> skills = state.skills.map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.value.getActualLevel(skill.amount)}")).toList();
   return Wrap(
     spacing: 4,
     runSpacing: 4,
@@ -151,7 +151,11 @@ List<Widget> _makeSearcherOptions(BuildContext context) {
   ];
 }
 
-Widget _skillTile(BuildContext context, ass.Stack<Skill> skill, bool mobile) {
+Widget _skillTile(BuildContext context, ass.Stack<SkillTemplate> skill, bool mobile) {
+  int max = skill.value.actualMaxLevel;
+  int level = skill.value.getActualLevel(skill.amount);
+  double sliderMax = max.toDouble();
+  double sliderMin = 1.0;
   Widget tile = Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       padding: const EdgeInsets.all(4),
@@ -164,20 +168,21 @@ Widget _skillTile(BuildContext context, ass.Stack<Skill> skill, bool mobile) {
                 skill.value.localizedName,
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
               )),
-          Text('Lv: ${skill.amount}'),
-          if (skill.value.maxLevel > 1)
+          Text('Lv: $level'),
+          if (max > 1)
             Expanded(
               flex: 33,
               child: Slider(
-                value: clampDouble(skill.amount.toDouble(), 1.0, skill.value.maxLevel.toDouble()),
+                value: clampDouble(level.toDouble(), sliderMin, sliderMax),
                 onChanged: (val) {
-                  if (skill.amount != val.toInt()) {
-                    context.read<SearcherCubit>().updateSkillLevel(skill.value, val.toInt());
+                  int newLevel = skill.value.getRequiredLevels(val.toInt());
+                  if (skill.amount != newLevel) {
+                    context.read<SearcherCubit>().updateSkillLevel(skill.value, newLevel);
                   }
                 },
-                min: 1.0,
-                max: skill.value.maxLevel.toDouble(),
-                divisions: skill.value.maxLevel - 1,
+                min: sliderMin,
+                max: sliderMax,
+                divisions: max - 1,
               ),
             )
           else
@@ -277,13 +282,14 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
   Widget _optionsList(BuildContext context, SearcherState state, SkillSelectorState selectorState, double maxHeight) {
     if (!selectorState.shown) return const SizedBox.shrink();
     List<Widget> options = [];
-    List<Skill> skills = List.of(All.skills);
+    List<SkillTemplate> skills = List.of(All.skills);
+    skills.addAll(All.armorBonuses);
     if (selectorState.searchValue.isEmpty) {
       if (state.skills.isNotEmpty) {
-        skills = All.skills.where((skill) => !state.hasSkill(skill)).toList();
+        skills = skills.where((skill) => !state.hasSkill(skill)).toList();
       }
     } else {
-      skills = All.skills.where((skill) => skill.matchesSearch(selectorState.searchValue) && !state.hasSkill(skill)).toList();
+      skills = skills.where((skill) => skill.matchesSearch(selectorState.searchValue) && !state.hasSkill(skill)).toList();
     }
     if (skills.isEmpty) {
       options.add(const Padding(
@@ -304,7 +310,7 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
       ));
     } else {
       skills.sort((a, b) => a.compareForSearch(b, selectorState.searchValue));
-      for (Skill skill in skills) {
+      for (SkillTemplate skill in skills) {
         options.add(InkWell(
             onTap: () {
               context.read<SearcherCubit>().addSkill(skill);
@@ -377,7 +383,7 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     /*_skills.sort((a, b) {
       return b.amount.compareTo(a.amount);
     });*/
-    for (ass.Stack<Skill> skill in state.skills) {
+    for (ass.Stack<SkillTemplate> skill in state.skills) {
       skills.add(_skillTile(context, skill, true));
     }
     return skills;
