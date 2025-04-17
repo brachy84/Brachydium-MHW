@@ -5,7 +5,52 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/cubits.dart';
 import '../data/equipment.dart';
-import '../data/set_finder.dart' as ass;
+
+class DataStream<T> {
+  final StreamController<T> controller;
+  Stream<T> _stream;
+  final List<StreamSubscription<T>> _subsciptions = [];
+
+  DataStream._(this.controller, this._stream);
+
+  factory DataStream(StreamController<T> controller) {
+    return DataStream._(controller, controller.stream);
+  }
+
+  void add(T data) {
+    controller.add(data);
+  }
+
+  Future close() async {
+    return controller.close();
+  }
+
+  //Stream<T> get stream => _stream;
+
+  bool get isClosed => controller.isClosed;
+
+  Future<StreamSubscription<T>?> listen(void Function(T)? onData) async {
+    if (isClosed) return null;
+    if (!_stream.isBroadcast) await cancelSubscriptions();
+    return _stream.listen(onData);
+  }
+
+  bool get hasSubscriptions => _subsciptions.isNotEmpty;
+
+  Future<void> cancelSubscriptions() async {
+    for (var sub in _subsciptions) {
+      await sub.cancel();
+    }
+    _subsciptions.clear();
+  }
+
+  void asBroadcastStream() {
+    if (!_stream.isBroadcast) {
+      cancelSubscriptions();
+      _stream = _stream.asBroadcastStream();
+    }
+  }
+}
 
 class SearchResultPage extends StatelessWidget {
   const SearchResultPage({super.key});
@@ -24,66 +69,150 @@ class SearchResultPage extends StatelessWidget {
             );
           }
           // broadcast so we can listen here for total set amount and in list for the sets
-          Stream<ArmorSet> armorSetStream = state.searchResult!.armorSetStream.stream.asBroadcastStream();
-          int foundSets = 0;
-          armorSetStream.listen((_) => foundSets++);
-          int totalCombionations = state.searchResult!.totalArmorSets;
+          state.searchResult!.armorSetStream.asBroadcastStream();
           return Column(children: [
-            Container(
-                height: 32,
-                constraints: const BoxConstraints(minWidth: double.infinity),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white.withAlpha(40)),
-                child: StreamBuilder<int>(
-                    stream: state.searchResult!.processedArmorSets.stream,
-                    builder: (context, snapshot1) {
-                      int progress = snapshot1.hasData ? snapshot1.data! : 0;
-                      return Stack(
-                        children: [
-                          if (totalCombionations > 0 && progress > 0)
-                            FractionallySizedBox(
-                              widthFactor: progress / totalCombionations,
-                              child: Container(
-                                height: 32,
-                                constraints: const BoxConstraints(minWidth: double.infinity),
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.red.shade800),
-                              ),
-                            ),
-                          Center(
-                            child: Text('$progress / $totalCombionations  -  $foundSets'),
-                          )
-                        ],
-                      );
-                    })),
+            ProgressBar(
+                progressStream: state.searchResult!.processedArmorSets,
+                armorSetStream: state.searchResult!.armorSetStream,
+                totalCount: state.searchResult!.totalArmorSets),
             Expanded(
                 child: Container(
-                  child: ArmorSetList(armorSetStream: armorSetStream),
-                ))
+              child: ArmorSetList(armorSetStream: state.searchResult!.armorSetStream),
+            ))
           ]);
-        })
-    );
+        }));
+  }
+}
+
+class ProgressBar extends StatefulWidget {
+  const ProgressBar({super.key, required this.progressStream, required this.armorSetStream, required this.totalCount});
+
+  final int totalCount;
+  final DataStream<int> progressStream;
+  final DataStream<ArmorSet> armorSetStream;
+
+  @override
+  State<ProgressBar> createState() => _ProgressBarState();
+}
+
+class _ProgressBarState extends State<ProgressBar> {
+  int progress = 0;
+  int foundSets = 0;
+
+  void _listenStream([bool resetData = true]) async {
+    await widget.progressStream.cancelSubscriptions();
+    await widget.armorSetStream.cancelSubscriptions();
+    if (resetData) {
+      progress = 0;
+      foundSets = 0;
+    }
+    widget.progressStream.listen((p) {
+      setState(() {
+        progress = p;
+      });
+    });
+    widget.armorSetStream.listen((_) {
+      setState(() {
+        foundSets++;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _listenStream();
+  }
+
+  @override
+  void didUpdateWidget(covariant ProgressBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // ensures that the armor set list is updated when a new search is happening
+    _listenStream(widget.progressStream != oldWidget.progressStream || widget.armorSetStream != oldWidget.armorSetStream);
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    //_listenStream(false);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.armorSetStream.cancelSubscriptions();
+    widget.progressStream.cancelSubscriptions();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 32,
+        constraints: const BoxConstraints(minWidth: double.infinity),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white.withAlpha(40)),
+        child: Stack(
+          children: [
+            if (widget.totalCount > 0 && progress > 0)
+              FractionallySizedBox(
+                widthFactor: progress / widget.totalCount,
+                child: Container(
+                  height: 32,
+                  constraints: const BoxConstraints(minWidth: double.infinity),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.red.shade800),
+                ),
+              ),
+            Center(
+              child: Text('$progress / ${widget.totalCount}  -  $foundSets'),
+            )
+          ],
+        ));
+  }
+}
+
+extension InsertSorted<T> on List<T> {
+  // finds a position in the list so that the new list is sorted
+  // assumes that before inserting the list is sorted
+  // this is much faster than sorting after inserting
+  void addSorted(T t, [int Function(T a, T b)? compare]) {
+    int low = 0;
+    int high = length;
+
+    compare ??= (a, b) => (a as Comparable<T>).compareTo(b);
+
+    // binary search index
+    while (low < high) {
+      int mid = (low + high) >> 1;
+      if (compare(t, this[mid]) < 0) {
+        high = mid;
+      } else {
+        low = mid + 1;
+      }
+    }
+
+    insert(low, t);
   }
 }
 
 class ArmorSetList extends StatefulWidget {
   const ArmorSetList({super.key, required this.armorSetStream});
 
-  final Stream<ArmorSet> armorSetStream;
+  final DataStream<ArmorSet> armorSetStream;
 
   @override
   State<ArmorSetList> createState() => _ArmorSetListState();
 }
 
 class _ArmorSetListState extends State<ArmorSetList> {
+  final List<ArmorSetProperties> armorSets = [];
 
-  StreamSubscription<ArmorSet>? _subscription;
-  final List<ArmorSet> armorSets = [];
-
-  void _listenStream() {
-    _subscription?.cancel();
-    armorSets.clear();
-    _subscription = widget.armorSetStream.listen((set) {
+  void _listenStream([bool resetData = true]) async {
+    await widget.armorSetStream.cancelSubscriptions();
+    if (resetData) {
+      armorSets.clear();
+    }
+    widget.armorSetStream.listen((set) {
       setState(() {
-        armorSets.add(set);
+        armorSets.addSorted(ArmorSetProperties(set), (a, b) => a.compareEmptyTotalWeightedSlots(b));
       });
     });
   }
@@ -97,78 +226,115 @@ class _ArmorSetListState extends State<ArmorSetList> {
   @override
   void didUpdateWidget(covariant ArmorSetList oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.armorSetStream != oldWidget.armorSetStream) {
-      // ensures that the armor set list is updated when a new search is happening
-      _listenStream();
-    }
+    // ensures that the armor set list is updated when a new search is happening
+    _listenStream(widget.armorSetStream != oldWidget.armorSetStream);
+  }
+
+  @override
+  void reassemble() {
+    super.reassemble();
+    //_listenStream(false);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.armorSetStream.cancelSubscriptions();
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: armorSets.length,
-        prototypeItem: _buildArmorSetTile(context, ArmorSet.dummy),
+        prototypeItem: _buildArmorSetTile(context, ArmorSetProperties.dummy, 0),
         itemBuilder: (ctx, index) {
-          return _buildArmorSetTile(context, armorSets[index]);
+          return _buildArmorSetTile(context, armorSets[index], index);
         });
   }
 
-  Widget _buildArmorSetTile(BuildContext context, ArmorSet set) {
-    String display =
-        '${set.pieces[0].equipment.localizedName}, ${set.pieces[3].equipment.localizedName},\n${set.pieces[1].equipment
-        .localizedName}, ${set.pieces[4].equipment.localizedName},\n${set.pieces[2].equipment.localizedName}, ${set.charm.localizedName}';
+  Widget _buildArmorSetTile(BuildContext context, ArmorSetProperties prop, int index) {
+    ArmorSet set = prop.armorSet;
+    List<String> display1 = [
+      set.pieces[0].equipment.localizedName,
+      set.pieces[1].equipment.localizedName,
+      set.pieces[2].equipment.localizedName
+    ];
+    List<String> display2 = [set.pieces[3].equipment.localizedName, set.pieces[4].equipment.localizedName, set.charm.localizedName];
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: MaterialButton(
-        height: 32,
-        color: Colors.white.withAlpha(40),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding: const EdgeInsets.all(4),
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (ctx) {
-                return Dialog(
+      child: InkWell(
+        onTap: () {
+          showDialog(context: context, builder: (ctx) => _armorSetDialog(ctx, set));
+        },
+        child: Container(
+          //height: 32,
+          decoration: BoxDecoration(
+            color: Colors.white.withAlpha(40),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 5,
+                child: Text(
+                  '#${index + 1}',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Column(
+                children: display1.map((s) => Text(s)).toList(),
+              ),
+              Column(
+                children: display2.map((s) => Text(s)).toList(),
+              ),
+              Spacer(
+                flex: 5,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Dialog _armorSetDialog(BuildContext context, ArmorSet set) {
+    return Dialog(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 750, maxHeight: 500, minWidth: 400, minHeight: 200),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 10,
+                child: Column(
+                  children: [
+                    _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
+                    _equipment(context, set.pieces[0]),
+                    _equipment(context, set.pieces[1]),
+                    _equipment(context, set.pieces[2]),
+                    _equipment(context, set.pieces[3]),
+                    _equipment(context, set.pieces[4]),
+                    _charm(context, set.charm)
+                  ],
+                ),
+              ),
+              Expanded(
+                  flex: 4,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 750, maxHeight: 500, minWidth: 400, minHeight: 200),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 10,
-                            child: Column(
-                              children: [
-                                _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
-                                _equipment(context, set.pieces[0]),
-                                _equipment(context, set.pieces[1]),
-                                _equipment(context, set.pieces[2]),
-                                _equipment(context, set.pieces[3]),
-                                _equipment(context, set.pieces[4]),
-                                _charm(context, set.charm)
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                              flex: 4,
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
-                                  padding: const EdgeInsets.all(8),
-                                  child: ListView(
-                                    children: _buildSkills(set),
-                                  ),
-                                ),
-                              ))
-                        ],
+                    padding: const EdgeInsets.all(4.0),
+                    child: Container(
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+                      padding: const EdgeInsets.all(8),
+                      child: ListView(
+                        children: _buildSkills(set),
                       ),
                     ),
-                  ),
-                );
-              });
-        },
-        child: Center(child: Text(display)),
+                  ))
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -259,4 +425,3 @@ class _ArmorSetListState extends State<ArmorSetList> {
     }).toList();
   }
 }
-

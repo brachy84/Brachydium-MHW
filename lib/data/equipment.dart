@@ -73,6 +73,7 @@ class All {
   static final Map<String, Skill> skillsMap = {};
   static final List<BonusSkill> armorBonuses = [];
   static final Map<String, BonusSkill> armorBonusesMap = {};
+  static final Map<String, SkillTemplate> allSkills = {};
   static final List<Deco> decos = [];
   static final Map<String, Deco> decosByString = {};
   static final List<Armor> armorList = [];
@@ -251,6 +252,7 @@ class All {
       var skill = Skill.fromJson(element);
       skills.add(skill);
       skillsMap[skill.name] = skill;
+      allSkills[skill.name] = skill;
     }
 
     content = await rootBundle.loadString("assets/data/wilds/bonus_skills.json");
@@ -259,6 +261,7 @@ class All {
       var skill = BonusSkill.fromJson(element);
       armorBonuses.add(skill);
       armorBonusesMap[skill.name] = skill;
+      allSkills[skill.name] = skill;
     }
   }
 
@@ -1223,5 +1226,90 @@ abstract class ArmorSet with _$ArmorSet {
   void _putDecoSkills(Deco deco, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
     skills.putIfAbsent(deco.primary, () => Stack(value: deco.primary, amount: 0)).incr(deco.primaryLvl);
     if (deco.secondary != null) skills.putIfAbsent(deco.secondary!, () => Stack(value: deco.secondary!, amount: 0)).incr(1);
+  }
+}
+
+class ArmorSetProperties {
+
+  static final ArmorSetProperties dummy = ArmorSetProperties(ArmorSet.dummy);
+
+  final ArmorSet armorSet;
+  final List<Stack<SkillTemplate>> skills;
+  final int totalSkillLevels;
+  final int empty1Slots;
+  final int empty2Slots;
+  final int empty3Slots;
+  final int def;
+  final int defFire;
+  final int defWater;
+  final int defIce;
+  final int defThunder;
+  final int defDragon;
+
+  ArmorSetProperties._(
+      {required this.armorSet,
+      required this.skills,
+      required this.totalSkillLevels,
+      required this.empty1Slots,
+      required this.empty2Slots,
+      required this.empty3Slots,
+      required this.def,
+      required this.defFire,
+      required this.defWater,
+      required this.defIce,
+      required this.defThunder,
+      required this.defDragon});
+
+  factory ArmorSetProperties(ArmorSet set) {
+    List<int> emptySlots = [0, 0, 0, 0];
+    int def = 0;
+    int defFire = 0;
+    int defWater = 0;
+    int defIce = 0;
+    int defThunder = 0;
+    int defDragon = 0;
+    for (var eq in set.pieces) {
+      var armor = eq.equipment as Armor;
+      if (armor.primarySlotSize > 0 && eq.decorations[0] == null) emptySlots[armor.primarySlotSize]++;
+      if (armor.secondarySlotSize > 0 && eq.decorations[1] == null) emptySlots[armor.primarySlotSize]++;
+      if (armor.ternarySlotSize > 0 && eq.decorations[2] == null) emptySlots[armor.primarySlotSize]++;
+      def += armor.maxDef;
+      defFire += armor.defFire;
+      defWater += armor.defWater;
+      defIce += armor.defIce;
+      defThunder += armor.defThunder;
+      defDragon += armor.defDragon;
+    }
+    List<Stack<SkillTemplate>> skills = set.calculateSkills();
+    int totalSkillLevels = skills.map((skill) => skill.value.getActualLevel(skill.amount)).reduce((a, b) => a + b);
+    return ArmorSetProperties._(
+        armorSet: set,
+        skills: skills,
+        empty1Slots: emptySlots[1],
+        empty2Slots: emptySlots[2],
+        empty3Slots: emptySlots[3],
+        totalSkillLevels: totalSkillLevels,
+        def: def,
+        defFire: defFire,
+        defWater: defWater,
+        defIce: defIce,
+        defThunder: defThunder,
+        defDragon: defDragon);
+  }
+
+  int compareDef(ArmorSetProperties prop) {
+    return prop.def.compareTo(def);
+  }
+
+  int compareEmptyTotalSlots(ArmorSetProperties prop) {
+    return (prop.empty1Slots + prop.empty2Slots + prop.empty3Slots).compareTo(empty1Slots + empty2Slots + empty3Slots);
+  }
+
+  int compareEmptyTotalWeightedSlots(ArmorSetProperties prop) {
+    return (prop.empty1Slots + prop.empty2Slots * 2 + prop.empty3Slots * 3).compareTo(empty1Slots + empty2Slots * 2 + empty3Slots * 3);
+  }
+
+  int compareTotalSkills(ArmorSetProperties prop) {
+    return prop.totalSkillLevels.compareTo(totalSkillLevels);
   }
 }

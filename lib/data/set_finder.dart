@@ -3,7 +3,9 @@ import 'dart:isolate';
 import 'dart:math';
 
 import 'package:async/async.dart';
+import 'package:brachys_armor_set_searcher/data/isolate.dart';
 import 'package:brachys_armor_set_searcher/main.dart';
+import 'package:brachys_armor_set_searcher/screen/search_results.dart';
 import 'package:flutter/material.dart';
 
 import 'equipment.dart';
@@ -49,6 +51,32 @@ class SearchArguments {
         minRarity: minRarity,
         blacklistedArmor: blacklistedArmor,
         weaponSlots: weaponSlots);
+  }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> json = {};
+    json['skills'] = requiredSkills.map((s, stack) => MapEntry(s.name, stack.amount));
+    json['decorations'] = decorations?.map((d, i) => MapEntry(d.name, i));
+    json['charms'] = charms?.map((c, l) => MapEntry(c.name, l.map((c1) => c1.name).toList()));
+    json['minRarity'] = minRarity;
+    json['maxRarity'] = maxRarity;
+    json['blacklistedArmor'] = blacklistedArmor.map((a) => a.name).toList();
+    json['weaponSlots'] = weaponSlots;
+    return json;
+  }
+
+  factory SearchArguments.fromJson(Map<String, dynamic> json) {
+    return SearchArguments.of(
+        weapon: All.dummyWeapon,
+        requiredSkills:
+            (json['skills'] as Map<String, int>).entries.map((e) => Stack(value: All.allSkills[e.key]!, amount: e.value)).toList(),
+        decorations: (json['decorations'] as Map<String, int>?)?.map((d, i) => MapEntry(All.decosByString[d]!, i)),
+        charms: (json['charms'] as Map<String, List<String>>?)
+            ?.map((c, l) => MapEntry(All.equipment[c] as Charm, l.map((c1) => All.equipment[c] as Charm).toList())),
+        minRarity: json['minRarity'],
+        maxRarity: json['maxRarity'],
+        blacklistedArmor: (json['blacklistedArmor'] as List<String>).map((a) => All.equipment[a] as Armor).toSet(),
+        weaponSlots: json['weaponSlots']);
   }
 }
 
@@ -160,11 +188,12 @@ class _SearchConfig {
 }
 
 class SearchResult {
-  SearchResult._();
+  SearchResult();
 
   int totalArmorSets = 0;
-  StreamController<int> processedArmorSets = StreamController();
-  StreamController<ArmorSet> armorSetStream = StreamController();
+
+  DataStream<int> processedArmorSets = DataStream(StreamController());
+  DataStream<ArmorSet> armorSetStream = DataStream(StreamController());
 }
 
 abstract class ArmorFilter {
@@ -299,14 +328,17 @@ void testSearch() {
       .map((s) => Skill.fromString(s))
       .map((s) => Stack(value: s, amount: s.maxLevel));
   SearchArguments args = SearchArguments.of(
-      weapon: All.dummyWeapon, requiredSkills: skills.toList(), decorations: null, charms: null, blacklistedArmor: {}, weaponSlots: [3, 3, 3]);
+      weapon: All.dummyWeapon,
+      requiredSkills: skills.toList(),
+      decorations: null,
+      charms: null,
+      blacklistedArmor: {},
+      weaponSlots: [3, 3, 3]);
   _SearchConfig cfg = _SearchConfig(args);
   var tryer = _ArmorSetTryer.of(config: cfg, decos: cfg.decos);
   ArmorSet? set = tryer.tryArmor(cfg.helmets[0], cfg.chests[0], cfg.arms[0], cfg.waists[0], cfg.legs[0], cfg.charms[0]);
   print(set != null);
 }
-
-SendPort? _controlPort;
 
 void cancelArmorSearch() {
   print('Try canceling search. Current port: $_controlPort');
@@ -314,22 +346,25 @@ void cancelArmorSearch() {
   _controlPort = null;
 }
 
-Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async {
+Future<SearchResult> searchAllArmorCombinations2(SearchArguments arguments) async {
   SearchResult result = SearchResult._();
-  _SearchConfig config = _SearchConfig(arguments);
-  result.totalArmorSets = config.estimatedCombinations;
+
   final receivePort = ReceivePort();
 
   int count = 0;
   //double lastProg = 0.0;
   receivePort.listen((msg) {
-    if (msg == 1) {
-      count++;
-      //double prog = count / result.totalArmorSets;
-      //if (prog - lastProg >= 0.01) { // this makes the ui lag a lot more than the line below and i have no idea why
-      if (count % 1000 == 0) {
-        //lastProg = prog;
-        result.processedArmorSets.add(count);
+    if (msg is int) {
+      if (msg == -1) {
+        count++;
+        //double prog = count / result.totalArmorSets;
+        //if (prog - lastProg >= 0.01) { // this makes the ui lag a lot more than the line below and i have no idea why
+        if (count % 1000 == 0) {
+          //lastProg = prog;
+          result.processedArmorSets.add(count);
+        }
+      } else {
+        result.totalArmorSets = msg;
       }
     } else if (msg is Map<String, dynamic>) {
       result.armorSetStream.add(ArmorSet.fromJson(msg));
@@ -348,15 +383,20 @@ Future<SearchResult> searchAllArmorCombinations(SearchArguments arguments) async
   //CancellationToken
 
   //cancellableCompute(callback, message, cancellationToken)
-  await Isolate.spawn((SendPort sendPort) async {
-    ReceivePort controlReceivePort = ReceivePort('Control port isolate side');
-    sendPort.send(controlReceivePort.sendPort);
-
-    var t = DateTime.now().millisecondsSinceEpoch;
-    await _ArmorSetTryer.search(config, sendPort, controlReceivePort);
-    print('Time to search: ${DateTime.now().millisecondsSinceEpoch - t} ms');
-  }, receivePort.sendPort, debugName: 'set_searcher_isolate');
+  await Isolate.spawn((SendPort sendPort) async {}, receivePort.sendPort, debugName: 'set_searcher_isolate');
   return result;
+}
+
+void _doSearch(SendPort sendPort) {
+  ReceivePort controlReceivePort = ReceivePort('Control port isolate side');
+  sendPort.send(controlReceivePort.sendPort);
+
+  _SearchConfig config = _SearchConfig(arguments);
+  sendPort.send(config.estimatedCombinations);
+
+  var t = DateTime.now().millisecondsSinceEpoch;
+  await _ArmorSetTryer.search(config, sendPort, controlReceivePort);
+  print('Time to search: ${DateTime.now().millisecondsSinceEpoch - t} ms');
 }
 
 // everything here runs in an isolate
@@ -390,7 +430,7 @@ class _ArmorSetTryer {
       SendPort sendPort, _SearchConfig config, _ArmorSetTryer tryer, Armor helm, Armor chest, Armor arm, Armor waist, Armor leg) async {
     for (var charm in config.charms) {
       ArmorSet? set = tryer.tryArmor(helm, chest, arm, waist, leg, charm);
-      sendPort.send(1);
+      sendPort.send(-1);
       if (set != null) {
         sendPort.send(set.toJson());
       }
@@ -401,9 +441,11 @@ class _ArmorSetTryer {
     // if we use while here it will empty the stream completely and therefore close the communication and the isolate
     if (await queue.hasNext) {
       var msg = await queue.next;
-      sendPort.send('Got Control msg $msg');
-      if (msg == 'cancel') {
-        return true;
+      if (msg is String) {
+        sendPort.send('Got Control msg $msg');
+        if (msg == 'cancel') {
+          return true;
+        }
       }
     }
     return false;
