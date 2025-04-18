@@ -220,7 +220,7 @@ class SearcherDesktop extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 4),
               child: MaterialButton(
                 onPressed: () {
-                  ass.cancelArmorSearch();
+                  ass.SearchManager.cancelArmorSearch();
                 },
                 color: Colors.red.shade700,
                 minWidth: double.infinity,

@@ -39,7 +39,10 @@ class SearcherCubit extends Cubit<SearcherState> {
   }
 
   void addSkill(SkillTemplate skill) {
-    update(state.copyWith(skills: [...state.skills, Stack(value: skill, amount: skill.maxLevel)]));
+    update(state.copyWith(skills: [
+      ...state.skills,
+      Stack(value: skill, amount: skill.maxLevel)
+    ]));
   }
 
   void updateSkillLevel(SkillTemplate skill, int level) {
@@ -87,7 +90,8 @@ abstract class SearcherState with _$SearcherState {
 }
 
 class SkillSelectorCubit extends Cubit<SkillSelectorState> {
-  SkillSelectorCubit() : super(const SkillSelectorState(searchValue: '', shown: false));
+  SkillSelectorCubit()
+      : super(const SkillSelectorState(searchValue: '', shown: false));
 
   void updateShown(bool shown) {
     emit(state.copyWith(shown: shown));
@@ -109,22 +113,24 @@ class SkillSelectorState {
   const SkillSelectorState({required this.searchValue, required this.shown});
 
   SkillSelectorState copyWith({String? searchValue, bool? shown}) =>
-      SkillSelectorState(searchValue: searchValue ?? this.searchValue, shown: shown ?? this.shown);
+      SkillSelectorState(
+          searchValue: searchValue ?? this.searchValue,
+          shown: shown ?? this.shown);
 }
 
 class SearchResultCubit extends Cubit<SearchResultState> {
   SearchResultCubit() : super(SearchResultState(null));
 
   void startSearch(SearcherState searcherState) async {
-    emit(SearchResultState(await searchAllArmorCombinations(SearchArguments.of(
-        weapon: All.dummyWeapon,
-        requiredSkills: searcherState.skills,
-        decorations: null,
-        charms: null,
-        minRarity: 0,
-        maxRarity: 12,
-        blacklistedArmor: {},
-        weaponSlots: [3, 3, 3]))));
+    emit(SearchResultState(SearchManager.searchAllArmorCombinations(
+        SearchArguments.of(
+            weapon: All.dummyWeapon,
+            requiredSkills: searcherState.skills,
+            decorations: null,
+            charms: null,
+            minRarity: 0,
+            maxRarity: 12,
+            blacklistedArmor: {}))));
   }
 }
 

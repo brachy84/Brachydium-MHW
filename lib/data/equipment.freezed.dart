@@ -1781,6 +1781,9 @@ mixin _$Weapon {
   $WeaponCopyWith<Weapon> get copyWith =>
       _$WeaponCopyWithImpl<Weapon>(this as Weapon, _$identity);
 
+  /// Serializes this Weapon to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -1807,6 +1810,7 @@ mixin _$Weapon {
                 other.ternarySlotSize == ternarySlotSize));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -1968,7 +1972,7 @@ class _$WeaponCopyWithImpl<$Res> implements $WeaponCopyWith<$Res> {
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _Weapon extends Weapon {
   const _Weapon(
       {required this.name,
@@ -1987,6 +1991,7 @@ class _Weapon extends Weapon {
       required this.secondarySlotSize,
       required this.ternarySlotSize})
       : super._();
+  factory _Weapon.fromJson(Map<String, dynamic> json) => _$WeaponFromJson(json);
 
   @override
   final String name;
@@ -2027,6 +2032,13 @@ class _Weapon extends Weapon {
       __$WeaponCopyWithImpl<_Weapon>(this, _$identity);
 
   @override
+  Map<String, dynamic> toJson() {
+    return _$WeaponToJson(
+      this,
+    );
+  }
+
+  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2052,6 +2064,7 @@ class _Weapon extends Weapon {
                 other.ternarySlotSize == ternarySlotSize));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,

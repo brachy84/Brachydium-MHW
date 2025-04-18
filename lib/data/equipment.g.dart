@@ -144,6 +144,53 @@ Map<String, dynamic> _$CharmToJson(_Charm instance) => <String, dynamic>{
       'ternaryLv': instance.ternaryLv,
     };
 
+_Weapon _$WeaponFromJson(Map<String, dynamic> json) => _Weapon(
+      name: json['name'] as String,
+      type: $enumDecode(_$WeaponTypeEnumMap, json['type']),
+      rarity: (json['rarity'] as num).toInt(),
+      primary: Skill.fromString(json['primary'] as String),
+      secondary: Skill.fromStringNullable(json['secondary'] as String?),
+      ternary: Skill.fromStringNullable(json['ternary'] as String?),
+      primaryLv: (json['primaryLv'] as num).toInt(),
+      secondaryLv: (json['secondaryLv'] as num?)?.toInt() ?? 0,
+      ternaryLv: (json['ternaryLv'] as num?)?.toInt() ?? 0,
+      primarySlotSize: (json['primarySlotSize'] as num).toInt(),
+      secondarySlotSize: (json['secondarySlotSize'] as num).toInt(),
+      ternarySlotSize: (json['ternarySlotSize'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$WeaponToJson(_Weapon instance) => <String, dynamic>{
+      'name': instance.name,
+      'type': _$WeaponTypeEnumMap[instance.type]!,
+      'rarity': instance.rarity,
+      'primary': Skill.asString(instance.primary),
+      'secondary': Skill.asString(instance.secondary),
+      'ternary': Skill.asString(instance.ternary),
+      'primaryLv': instance.primaryLv,
+      'secondaryLv': instance.secondaryLv,
+      'ternaryLv': instance.ternaryLv,
+      'primarySlotSize': instance.primarySlotSize,
+      'secondarySlotSize': instance.secondarySlotSize,
+      'ternarySlotSize': instance.ternarySlotSize,
+    };
+
+const _$WeaponTypeEnumMap = {
+  WeaponType.gs: 'gs',
+  WeaponType.ls: 'ls',
+  WeaponType.sns: 'sns',
+  WeaponType.db: 'db',
+  WeaponType.sa: 'sa',
+  WeaponType.hammer: 'hammer',
+  WeaponType.hh: 'hh',
+  WeaponType.lance: 'lance',
+  WeaponType.gl: 'gl',
+  WeaponType.ig: 'ig',
+  WeaponType.cb: 'cb',
+  WeaponType.lbg: 'lbg',
+  WeaponType.hbg: 'hbg',
+  WeaponType.bow: 'bow',
+};
+
 _EquipmentPiece _$EquipmentPieceFromJson(Map<String, dynamic> json) =>
     _EquipmentPiece(
       equipment: Equipment.fromString(json['equipment'] as String),

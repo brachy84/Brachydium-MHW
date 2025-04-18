@@ -1,12 +1,13 @@
 import 'dart:async';
+import 'dart:core';
 import 'dart:isolate';
 import 'dart:math';
 
-import 'package:async/async.dart';
-import 'package:brachys_armor_set_searcher/data/isolate.dart';
+import 'package:brachys_armor_set_searcher/data/util.dart';
 import 'package:brachys_armor_set_searcher/main.dart';
 import 'package:brachys_armor_set_searcher/screen/search_results.dart';
 import 'package:flutter/material.dart';
+import 'package:talker/talker.dart';
 
 import 'equipment.dart';
 
@@ -17,7 +18,6 @@ class SearchArguments {
   final Map<Charm, List<Charm>>? charms;
   final int minRarity, maxRarity;
   final Set<Armor> blacklistedArmor;
-  final List<int> weaponSlots;
 
   SearchArguments(
       {required this.weapon,
@@ -26,19 +26,16 @@ class SearchArguments {
       required this.charms,
       this.minRarity = 0,
       this.maxRarity = 12,
-      required this.blacklistedArmor,
-      required this.weaponSlots});
+      required this.blacklistedArmor});
 
-  factory SearchArguments.of({
-    required Weapon weapon,
-    required List<Stack<SkillTemplate>> requiredSkills,
-    required Map<Deco, int>? decorations,
-    required Map<Charm, List<Charm>>? charms,
-    int minRarity = 0,
-    int maxRarity = 12,
-    required Set<Armor> blacklistedArmor,
-    required List<int> weaponSlots,
-  }) {
+  factory SearchArguments.of(
+      {required Weapon weapon,
+      required List<Stack<SkillTemplate>> requiredSkills,
+      required Map<Deco, int>? decorations,
+      required Map<Charm, List<Charm>>? charms,
+      int minRarity = 0,
+      int maxRarity = 12,
+      required Set<Armor> blacklistedArmor}) {
     Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
     for (var s in requiredSkills) {
       skills[s.value] = s;
@@ -49,34 +46,7 @@ class SearchArguments {
         decorations: decorations,
         charms: charms,
         minRarity: minRarity,
-        blacklistedArmor: blacklistedArmor,
-        weaponSlots: weaponSlots);
-  }
-
-  Map<String, dynamic> toJson() {
-    Map<String, dynamic> json = {};
-    json['skills'] = requiredSkills.map((s, stack) => MapEntry(s.name, stack.amount));
-    json['decorations'] = decorations?.map((d, i) => MapEntry(d.name, i));
-    json['charms'] = charms?.map((c, l) => MapEntry(c.name, l.map((c1) => c1.name).toList()));
-    json['minRarity'] = minRarity;
-    json['maxRarity'] = maxRarity;
-    json['blacklistedArmor'] = blacklistedArmor.map((a) => a.name).toList();
-    json['weaponSlots'] = weaponSlots;
-    return json;
-  }
-
-  factory SearchArguments.fromJson(Map<String, dynamic> json) {
-    return SearchArguments.of(
-        weapon: All.dummyWeapon,
-        requiredSkills:
-            (json['skills'] as Map<String, int>).entries.map((e) => Stack(value: All.allSkills[e.key]!, amount: e.value)).toList(),
-        decorations: (json['decorations'] as Map<String, int>?)?.map((d, i) => MapEntry(All.decosByString[d]!, i)),
-        charms: (json['charms'] as Map<String, List<String>>?)
-            ?.map((c, l) => MapEntry(All.equipment[c] as Charm, l.map((c1) => All.equipment[c] as Charm).toList())),
-        minRarity: json['minRarity'],
-        maxRarity: json['maxRarity'],
-        blacklistedArmor: (json['blacklistedArmor'] as List<String>).map((a) => All.equipment[a] as Armor).toSet(),
-        weaponSlots: json['weaponSlots']);
+        blacklistedArmor: blacklistedArmor);
   }
 }
 
@@ -86,17 +56,22 @@ class _ValueArmor implements Comparable<_ValueArmor> {
 
   _ValueArmor(this.armor, this.value);
 
-  factory _ValueArmor.create(Armor armor, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
-    int skillValue = _evaluateSkillValue(armor.primary, armor.primaryLv, skills);
-    skillValue += _evaluateSkillValue(armor.secondary, armor.secondaryLv, skills);
+  factory _ValueArmor.create(
+      Armor armor, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
+    int skillValue =
+        _evaluateSkillValue(armor.primary, armor.primaryLv, skills);
+    skillValue +=
+        _evaluateSkillValue(armor.secondary, armor.secondaryLv, skills);
     skillValue += _evaluateSkillValue(armor.ternary, armor.ternaryLv, skills);
     skillValue += _evaluateSkillValue(armor.setBonus, 1, skills);
     skillValue += _evaluateSkillValue(armor.groupBonus, 1, skills);
-    int slotValue = armor.primarySlotSize + armor.secondarySlotSize + armor.ternarySlotSize;
+    int slotValue =
+        armor.primarySlotSize + armor.secondarySlotSize + armor.ternarySlotSize;
     return _ValueArmor(armor, skillValue * 12 + slotValue * 10);
   }
 
-  static int _evaluateSkillValue(SkillTemplate? skill, int lvl, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
+  static int _evaluateSkillValue(SkillTemplate? skill, int lvl,
+      Map<SkillTemplate, Stack<SkillTemplate>> skills) {
     return skill != null && skills.containsKey(skill) ? lvl : 0;
   }
 
@@ -107,23 +82,45 @@ class _ValueArmor implements Comparable<_ValueArmor> {
 }
 
 class _SearchConfig {
-  final SearchArguments args;
-  late final int estimatedCombinations;
-  final List<Armor> helmets = [];
-  final List<Armor> chests = [];
-  final List<Armor> arms = [];
-  final List<Armor> waists = [];
-  final List<Armor> legs = [];
-  final List<Charm> charms = [];
-  final List<Deco> decos = [];
+  final Weapon weapon;
+  final Map<SkillTemplate, Stack<SkillTemplate>> requiredSkills;
+  final Map<Deco, int>? decorations;
+  final int estimatedCombinations;
+  final List<Armor> helmets;
+  final List<Armor> chests;
+  final List<Armor> arms;
+  final List<Armor> waists;
+  final List<Armor> legs;
+  final List<Charm> charms;
+  final List<Deco> decos;
 
-  _SearchConfig(this.args) {
+  _SearchConfig._(
+      this.weapon,
+      this.requiredSkills,
+      this.decorations,
+      this.estimatedCombinations,
+      this.helmets,
+      this.chests,
+      this.arms,
+      this.waists,
+      this.legs,
+      this.charms,
+      this.decos);
+
+  factory _SearchConfig(SearchArguments args) {
+    final List<Armor> helmets = [];
+    final List<Armor> chests = [];
+    final List<Armor> arms = [];
+    final List<Armor> waists = [];
+    final List<Armor> legs = [];
+    final List<Charm> charms = [];
+    final List<Deco> decos = [];
     for (Stack<SkillTemplate> skill in args.requiredSkills.values) {
-      _addArmor(helmets, All.helmets[skill.value]);
-      _addArmor(chests, All.chests[skill.value]);
-      _addArmor(arms, All.arms[skill.value]);
-      _addArmor(waists, All.waists[skill.value]);
-      _addArmor(legs, All.legs[skill.value]);
+      _addArmor(args, helmets, All.helmets[skill.value]);
+      _addArmor(args, chests, All.chests[skill.value]);
+      _addArmor(args, arms, All.arms[skill.value]);
+      _addArmor(args, waists, All.waists[skill.value]);
+      _addArmor(args, legs, All.legs[skill.value]);
       var charms1 = All.charms[skill.value];
       if (charms1 != null) {
         if (args.charms != null) {
@@ -139,47 +136,134 @@ class _SearchConfig {
       }
       Set<Deco> decoSet = {};
       for (var deco in All.decosMap[skill.value] ?? []) {
-        if (hasDeco(deco)) {
+        if (_hasDeco(args.decorations, deco)) {
           decoSet.add(deco);
         }
       }
       decos.addAll(decoSet);
       decos.sort((d1, d2) => d2.size.compareTo(d1.size));
     }
-    _sortList(helmets);
-    _sortList(chests);
-    _sortList(arms);
-    _sortList(waists);
-    _sortList(legs);
-    estimatedCombinations = helmets.length * chests.length * arms.length * waists.length * legs.length * charms.length;
-    log('Searching $estimatedCombinations combinations');
+    _sortList(args, helmets);
+    _sortList(args, chests);
+    _sortList(args, arms);
+    _sortList(args, waists);
+    _sortList(args, legs);
+    int estimatedCombinations = helmets.length *
+        chests.length *
+        arms.length *
+        waists.length *
+        legs.length *
+        charms.length;
+    log.info('Searching $estimatedCombinations combinations');
+    return _SearchConfig._(
+        args.weapon,
+        args.requiredSkills,
+        args.decorations,
+        estimatedCombinations,
+        helmets,
+        chests,
+        arms,
+        waists,
+        legs,
+        charms,
+        decos);
   }
 
-  void _sortList(List<Armor> list) {
-    var copy = list.map((a) => _ValueArmor.create(a, args.requiredSkills)).toList(growable: false);
+  Json toJson() {
+    Json json = {};
+    json['skills'] =
+        requiredSkills.map((k, v) => MapEntry(v.value.name, v.amount));
+    json['decorations'] = decorations?.map((k, v) => MapEntry(k.name, v));
+    json['weapon'] = weapon.toJson();
+    json['count'] = estimatedCombinations;
+    json['helmets'] = helmets.map((t) => t.name).toList();
+    json['chests'] = chests.map((t) => t.name).toList();
+    json['arms'] = arms.map((t) => t.name).toList();
+    json['waists'] = waists.map((t) => t.name).toList();
+    json['legs'] = legs.map((t) => t.name).toList();
+    json['charms'] = charms.map((t) => t.name).toList();
+    json['decos'] = decos.map((t) => t.name).toList();
+    return json;
+  }
+
+  factory _SearchConfig.fromJson(Json json) {
+    List<Stack<SkillTemplate>> requiredSkills = (json['skills'] as Json)
+        .entries
+        .map((e) => Stack(value: All.allSkills[e.key]!, amount: e.value))
+        .toList();
+    Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+    for (var s in requiredSkills) {
+      skills[s.value] = s;
+    }
+    Map<Deco, int>? decos = (json['decorations'] as Json?)
+        ?.map((k, v) => MapEntry(All.decosByString[k]!, v));
+    return _SearchConfig._(
+      Weapon.fromJson(json['weapon']),
+      skills,
+      decos,
+      json['count'],
+      (json['helmets'] as List<String>)
+          .map((j) => All.equipment[j] as Armor)
+          .toList(),
+      (json['chests'] as List<String>)
+          .map((j) => All.equipment[j] as Armor)
+          .toList(),
+      (json['arms'] as List<String>)
+          .map((j) => All.equipment[j] as Armor)
+          .toList(),
+      (json['waists'] as List<String>)
+          .map((j) => All.equipment[j] as Armor)
+          .toList(),
+      (json['legs'] as List<String>)
+          .map((j) => All.equipment[j] as Armor)
+          .toList(),
+      (json['charms'] as List<String>)
+          .map((j) => All.equipment[j] as Charm)
+          .toList(),
+      (json['decos'] as List<String>)
+          .map((j) => All.decosByString[j]!)
+          .toList(),
+    );
+  }
+
+  static void _sortList(SearchArguments args, List<Armor> list) {
+    var copy = list
+        .map((a) => _ValueArmor.create(a, args.requiredSkills))
+        .toList(growable: false);
     copy.sort();
     list.clear();
     list.addAll(copy.map((as) => as.armor));
   }
 
-  bool hasDeco(Deco deco) {
-    return getDecoAmount(deco) > 0;
+  static bool _hasDeco(Map<Deco, int>? decorations, Deco deco) {
+    return _getDecoAmount(decorations, deco) > 0;
   }
 
-  int getDecoAmount(Deco deco) {
-    if (args.decorations == null) {
+  static int _getDecoAmount(Map<Deco, int>? decorations, Deco deco) {
+    if (decorations == null) {
       if (deco.secondary != null) {
         return max(deco.primary.maxLevel, deco.secondary!.maxLevel);
       }
       return deco.primary.maxLevel;
     }
-    return args.decorations![deco] ?? 0;
+    return decorations[deco] ?? 0;
   }
 
-  void _addArmor(List<Armor> validArmor, List<Armor>? allArmor) {
+  bool hasDeco(Deco deco) {
+    return _hasDeco(decorations, deco);
+  }
+
+  int getDecoAmount(Deco deco) {
+    return _getDecoAmount(decorations, deco);
+  }
+
+  static void _addArmor(
+      SearchArguments args, List<Armor> validArmor, List<Armor>? allArmor) {
     if (allArmor != null) {
       for (var armor in allArmor) {
-        if (armor.rarity >= args.minRarity && armor.rarity <= args.maxRarity && !args.blacklistedArmor.contains(armor)) {
+        if (armor.rarity >= args.minRarity &&
+            armor.rarity <= args.maxRarity &&
+            !args.blacklistedArmor.contains(armor)) {
           validArmor.add(armor);
         }
       }
@@ -281,11 +365,25 @@ class Stack<T> {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is Stack && value == other.value && amount == other.amount);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Stack &&
+            value == other.value &&
+            amount == other.amount);
   }
 
   @override
   int get hashCode => Object.hash(value, amount);
+
+  Json toJson(ToJson<T> toJson) {
+    Json json = toJson(value);
+    json['\$stack'] = amount;
+    return json;
+  }
+
+  static Stack<T> fromJson<T>(Json json, FromJson<T> fromJson) {
+    return Stack(value: fromJson(json), amount: json['\$stack'] ?? 1);
+  }
 }
 
 class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
@@ -310,7 +408,10 @@ class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (runtimeType == other.runtimeType && other is DecoStack && value.name == other.value.name);
+    return identical(this, other) ||
+        (runtimeType == other.runtimeType &&
+            other is DecoStack &&
+            value.name == other.value.name);
   }
 
   @override
@@ -318,8 +419,11 @@ class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
 
   @override
   int compareTo(DecoStack other) {
-    int i = other.totalPoints.compareTo(totalPoints); // higher total skill points first
-    return i != 0 ? i : value.size.compareTo(other.value.size); // lower size first
+    int i = other.totalPoints
+        .compareTo(totalPoints); // higher total skill points first
+    return i != 0
+        ? i
+        : value.size.compareTo(other.value.size); // lower size first
   }
 }
 
@@ -332,79 +436,206 @@ void testSearch() {
       requiredSkills: skills.toList(),
       decorations: null,
       charms: null,
-      blacklistedArmor: {},
-      weaponSlots: [3, 3, 3]);
+      blacklistedArmor: {});
   _SearchConfig cfg = _SearchConfig(args);
   var tryer = _ArmorSetTryer.of(config: cfg, decos: cfg.decos);
-  ArmorSet? set = tryer.tryArmor(cfg.helmets[0], cfg.chests[0], cfg.arms[0], cfg.waists[0], cfg.legs[0], cfg.charms[0]);
-  print(set != null);
+  ArmorSet? set = tryer.tryArmor(cfg.helmets[0], cfg.chests[0], cfg.arms[0],
+      cfg.waists[0], cfg.legs[0], cfg.charms[0]);
+  log.info(set?.toJson());
 }
 
-void cancelArmorSearch() {
-  print('Try canceling search. Current port: $_controlPort');
-  _controlPort?.send('cancel');
-  _controlPort = null;
-}
+typedef DataReceiver = void Function(Object?);
 
-Future<SearchResult> searchAllArmorCombinations2(SearchArguments arguments) async {
-  SearchResult result = SearchResult._();
+Thread? _currentThread;
 
-  final receivePort = ReceivePort();
+class Thread {
+  final int id;
+  final Isolate isolate;
+  final ReceivePort receivePort;
+  final SendPort sendPort;
 
-  int count = 0;
-  //double lastProg = 0.0;
-  receivePort.listen((msg) {
-    if (msg is int) {
-      if (msg == -1) {
-        count++;
-        //double prog = count / result.totalArmorSets;
-        //if (prog - lastProg >= 0.01) { // this makes the ui lag a lot more than the line below and i have no idea why
-        if (count % 1000 == 0) {
-          //lastProg = prog;
-          result.processedArmorSets.add(count);
-        }
-      } else {
-        result.totalArmorSets = msg;
+  Thread._(this.id, this.isolate, this.receivePort, this.sendPort);
+
+  static Future<Thread> create(int id, DataReceiver receiver) async {
+    final ReceivePort receivePort = ReceivePort();
+    var sub = receivePort.listen((_) {});
+    var futSendPort = _receiveSendPort(sub);
+    Isolate isolate = await Isolate.spawn(_entry, receivePort.sendPort);
+    SendPort sendPort = await futSendPort;
+    sub.onData(receiver);
+    return Thread._(id, isolate, receivePort, sendPort);
+  }
+
+  static Future<SendPort> _receiveSendPort(
+      StreamSubscription<dynamic> sub) async {
+    final completer = Completer<SendPort>();
+    sub.onData((d) {
+      if (d is SendPort) {
+        completer.complete(d);
       }
-    } else if (msg is Map<String, dynamic>) {
-      result.armorSetStream.add(ArmorSet.fromJson(msg));
-    } else if (msg is SendPort) {
-      print('Got control Port');
-      _controlPort = msg;
-    } else if (msg == 'done') {
-      print('Isolate done');
-      result.processedArmorSets.add(count);
-      result.processedArmorSets.close();
-      result.armorSetStream.close();
-    } else if (msg is String) {
-      print('Msg from Isolate: $msg');
-    }
-  });
-  //CancellationToken
+    });
+    return completer.future;
+  }
 
-  //cancellableCompute(callback, message, cancellationToken)
-  await Isolate.spawn((SendPort sendPort) async {}, receivePort.sendPort, debugName: 'set_searcher_isolate');
-  return result;
+  @pragma('vm:entry-point')
+  static _entry(SendPort port) async {
+    final log = Talker();
+    var eventQueue = [];
+    var processMsgQueue = [];
+    ReceivePort receivePort = ReceivePort();
+    var sub = receivePort.listen((_) {});
+    port.send(receivePort.sendPort);
+    int id = await _initPort(sub);
+    _currentThread = Thread._(id, Isolate.current, receivePort, port);
+    log.info('Started isolate $id');
+    sub.onData((msg) {
+      if (msg is Map) {
+        if (msg.containsKey('StartSearch')) {
+          eventQueue.add(msg);
+          return;
+        }
+      }
+      processMsgQueue.add(msg);
+    });
+    // event loop
+    while (true) {
+      // wait 50 ms
+      await Future.delayed(Duration(milliseconds: 50));
+      // check any events (currently only start search)
+      while (eventQueue.isNotEmpty) {
+        var msg = eventQueue.removeAt(0);
+        var data = msg['StartSearch'];
+        if (data is Json) {
+          log.info('Received search command');
+          _SearchConfig config = _SearchConfig.fromJson(data);
+          _ArmorSetTryer.search(config, port, processMsgQueue, id);
+        }
+      }
+    }
+  }
+
+  static Future<int> _initPort(StreamSubscription sub) async {
+    // called in isolate
+    var completer = Completer<int>();
+    int id = -1;
+    bool gotData = false;
+    sub.onData((msg) {
+      if (msg is Map) {
+        var data = msg['allData'];
+        if (data is Json) {
+          All.allFromJson(data);
+          gotData = true;
+          if (id >= 0) {
+            completer.complete(id);
+          }
+          return;
+        }
+        data = msg['id'];
+        if (data is int) {
+          id = data;
+          if (gotData) {
+            completer.complete(id);
+          }
+          return;
+        }
+        log.error('Received MSG before init');
+      }
+    });
+    return completer.future;
+  }
 }
 
-void _doSearch(SendPort sendPort) {
-  ReceivePort controlReceivePort = ReceivePort('Control port isolate side');
-  sendPort.send(controlReceivePort.sendPort);
+// class to handle multiple isolates for searching armor sets
+class SearchManager {
+  static final List<Thread> _threads = [];
+  static final List<bool> _processState = [];
+  static SearchResult? result;
+  static int count = 0;
 
-  _SearchConfig config = _SearchConfig(arguments);
-  sendPort.send(config.estimatedCombinations);
+  static init() async {
+    int maxProcesses = 1;
+    Json allData = All.allToJson();
+    for (int id = 0; id < maxProcesses; id++) {
+      Thread thread = await Thread.create(id, (msg) {
+        if (msg is int) {
+          if (msg == -1) {
+            count++;
+            //double prog = count / result.totalArmorSets;
+            //if (prog - lastProg >= 0.01) { // this makes the ui lag a lot more than the line below and i have no idea why
+            if (count % 1000 == 0) {
+              //lastProg = prog;
+              result!.processedArmorSets.add(count);
+            }
+          }
+        } else if (msg is Map<String, dynamic>) {
+          result!.armorSetStream.add(ArmorSet.fromJson(msg));
+        } else if (msg is String) {
+          if (msg.startsWith('done')) {
+            log.info('Isolate $id done');
+            _processState[id] = false;
+            if (_processState.every((s) => !s)) {
+              log.info('All isolates done');
+              _finalizeProcess();
+            }
+            return;
+          }
+          log.info('Msg from Isolate: $msg');
+        }
+      });
+      thread.sendPort.send({'id': id});
+      thread.sendPort.send({'allData': allData});
+      _threads.add(thread);
+      _processState.add(false);
+    }
+  }
 
-  var t = DateTime.now().millisecondsSinceEpoch;
-  await _ArmorSetTryer.search(config, sendPort, controlReceivePort);
-  print('Time to search: ${DateTime.now().millisecondsSinceEpoch - t} ms');
+  static void dispose() {
+    for (Thread thread in _threads) {
+      thread.isolate.kill();
+    }
+    _threads.clear();
+    _processState.clear();
+  }
+
+  static void cancelArmorSearch() {
+    if (result == null) return;
+    log.info('Try canceling search.');
+    for (Thread thread in _threads) {
+      thread.sendPort.send('cancel');
+    }
+  }
+
+  static void _finalizeProcess() {
+    result?.processedArmorSets.close();
+    result?.armorSetStream.close();
+    result = null;
+    count = 0;
+  }
+
+  static bool get isProcessActive => _processState.any((b) => b);
+
+  static SearchResult searchAllArmorCombinations(SearchArguments arguments) {
+    if (isProcessActive) throw Exception('Process is already active');
+    result = SearchResult();
+    count = 0;
+    _SearchConfig cfg = _SearchConfig(arguments);
+    Object msg = {'StartSearch': cfg.toJson()};
+    result!.totalArmorSets = cfg.estimatedCombinations;
+    for (int i = 0; i < _threads.length; i++) {
+      _processState[i] = true;
+      _threads[i].sendPort.send(msg);
+    }
+    return result!;
+  }
 }
 
 // everything here runs in an isolate
+// an instance can try out an armor set to see if it has the required armor skills
 class _ArmorSetTryer {
-  static search(_SearchConfig config, SendPort sendPort, ReceivePort controlPort) async {
-    final controlQueue = StreamQueue(controlPort);
+  static search(_SearchConfig config, SendPort sendPort,
+      List msgQueue, int id) async {
     var tryer = _ArmorSetTryer.of(config: config, decos: config.decos);
-    sendPort.send('Searching');
+    sendPort.send('Searching on Isolate $id');
     bool canceled = false;
     for (var helm in config.helmets) {
       for (var chest in config.chests) {
@@ -415,9 +646,12 @@ class _ArmorSetTryer {
                 sendPort.send('done');
                 return;
               }
-              await _searchInner(sendPort, config, tryer, helm, chest, arm, waist, leg);
-              isCanceled(sendPort, controlQueue).then((c) => canceled = c); // must use then to not block computation
-              await Future.delayed(Duration.zero); // give the async canceled check time to compute
+              await _searchInner(
+                  sendPort, config, tryer, helm, chest, arm, waist, leg);
+              isCanceled(sendPort, msgQueue).then((c) =>
+                  canceled = c); // must use then to not block computation
+              await Future.delayed(Duration
+                  .zero); // give the async canceled check time to compute
             }
           }
         }
@@ -427,7 +661,14 @@ class _ArmorSetTryer {
   }
 
   static Future _searchInner(
-      SendPort sendPort, _SearchConfig config, _ArmorSetTryer tryer, Armor helm, Armor chest, Armor arm, Armor waist, Armor leg) async {
+      SendPort sendPort,
+      _SearchConfig config,
+      _ArmorSetTryer tryer,
+      Armor helm,
+      Armor chest,
+      Armor arm,
+      Armor waist,
+      Armor leg) async {
     for (var charm in config.charms) {
       ArmorSet? set = tryer.tryArmor(helm, chest, arm, waist, leg, charm);
       sendPort.send(-1);
@@ -437,10 +678,10 @@ class _ArmorSetTryer {
     }
   }
 
-  static Future<bool> isCanceled(SendPort sendPort, StreamQueue queue) async {
+  static Future<bool> isCanceled(SendPort sendPort, List queue) async {
     // if we use while here it will empty the stream completely and therefore close the communication and the isolate
-    if (await queue.hasNext) {
-      var msg = await queue.next;
+    while (queue.isNotEmpty) {
+      var msg = queue.removeAt(0);
       if (msg is String) {
         sendPort.send('Got Control msg $msg');
         if (msg == 'cancel') {
@@ -472,7 +713,8 @@ class _ArmorSetTryer {
       required this.setBonusTryer,
       required this.groupBonusTryer});
 
-  factory _ArmorSetTryer.of({required _SearchConfig config, required List<Deco> decos}) {
+  factory _ArmorSetTryer.of(
+      {required _SearchConfig config, required List<Deco> decos}) {
     return _ArmorSetTryer(
         config: config,
         decos: decos,
@@ -482,7 +724,8 @@ class _ArmorSetTryer {
         setBonusTryer: _DecoTryer(SkillCategory.setBonus, config));
   }
 
-  ArmorSet? tryArmor(Armor helm, Armor chest, Armor arm, Armor waist, Armor leg, Charm charm) {
+  ArmorSet? tryArmor(
+      Armor helm, Armor chest, Armor arm, Armor waist, Armor leg, Charm charm) {
     armor[0] = helm;
     armor[1] = chest;
     armor[2] = arm;
@@ -490,10 +733,10 @@ class _ArmorSetTryer {
     armor[4] = leg;
     this.charm = charm;
     skills.clear();
-    for (Stack<SkillTemplate> skill in config.args.requiredSkills.values) {
+    for (Stack<SkillTemplate> skill in config.requiredSkills.values) {
       skills[skill.value] = skill.copy();
     }
-    addEquipmentSkills(config.args.weapon);
+    addEquipmentSkills(config.weapon);
     addEquipmentSkills(helm);
     addEquipmentSkills(chest);
     addEquipmentSkills(arm);
@@ -512,10 +755,12 @@ class _ArmorSetTryer {
     }
     setBonusTryer.init(emptyDecos, skills.values);
     groupBonusTryer.init(emptyDecos, skills.values);
-    if (!setBonusTryer.tryDecos() || !groupBonusTryer.tryDecos()) return null; // fast early check
+    if (!setBonusTryer.tryDecos() || !groupBonusTryer.tryDecos()) {
+      return null; // fast early check
+    }
     weaponTryer.init(decos, skills.values);
     armorTryer.init(decos, skills.values);
-    weaponTryer.addEquipmentSlots(config.args.weapon);
+    weaponTryer.addEquipmentSlots(config.weapon);
     armorTryer.addEquipmentSlots(helm);
     armorTryer.addEquipmentSlots(chest);
     armorTryer.addEquipmentSlots(arm);
@@ -550,12 +795,15 @@ class _ArmorSetTryer {
       int size = deco.size;
       while (size <= 3) {
         // try inserting in matching size first
-        if (_insertDeco(config.args.weapon, weaponDecos, deco, size)) {
+        if (_insertDeco(config.weapon, weaponDecos, deco, size)) {
           break;
         }
         size++; // no empty slot found, try bigger size
       }
-      if (size == 4) print('Decos was inserted before, but no fitting slot in weapon was found');
+      if (size == 4) {
+        log.error(
+            'Decos was inserted before, but no fitting slot in weapon was found');
+      }
     }
     Map<Armor, List<Deco?>> pieces = {
       armor[0]: List.filled(3, null),
@@ -575,15 +823,20 @@ class _ArmorSetTryer {
         }
         size++;
       }
-      if (size == 4) print('Decos was inserted before, but no fitting slot in armor was found');
+      if (size == 4) {
+        log.error(
+            'Decos was inserted before, but no fitting slot in armor was found');
+      }
     }
     List<EquipmentPiece> piecesList = [];
-    pieces.forEach((k, v) => piecesList.add(EquipmentPiece(equipment: k, decorations: v)));
+    pieces.forEach(
+        (k, v) => piecesList.add(EquipmentPiece(equipment: k, decorations: v)));
     piecesList.sort();
     return ArmorSet(weaponDecos: weaponDecos, pieces: piecesList, charm: charm);
   }
 
-  bool _insertDeco(SlottedEquipment eq, List<Deco?> slots, Deco deco, int size) {
+  bool _insertDeco(
+      SlottedEquipment eq, List<Deco?> slots, Deco deco, int size) {
     if (eq.primarySlotSize == size && slots[0] == null) {
       slots[0] = deco;
       return true;
@@ -600,7 +853,8 @@ class _ArmorSetTryer {
   }
 
   /// removes a certain amount of required skill levels
-  static _skill(Map<SkillTemplate, Stack<SkillTemplate>> skills, SkillTemplate skill, int amount) {
+  static _skill(Map<SkillTemplate, Stack<SkillTemplate>> skills,
+      SkillTemplate skill, int amount) {
     Stack<SkillTemplate>? lv = skills[skill];
     if (lv != null && lv.decr(amount)) {
       skills.remove(skill);
@@ -653,16 +907,22 @@ class _DecoTryer {
     // test map
     // we simulate inserting every deco we have regardless of space at the same time
     // if the skill levels dont add to the required levels it is impossible to make this set
-    Map<SkillTemplate, Stack<SkillTemplate>> reqSkills = skills.map((key, value) => MapEntry(key, value.copy()));
+    Map<SkillTemplate, Stack<SkillTemplate>> reqSkills =
+        skills.map((key, value) => MapEntry(key, value.copy()));
     skillDecoMap.clear();
     usedDecos.clear();
     for (var deco in decos) {
       // check if deco skills are still required
-      if (!skills.containsKey(deco.primary) && (!deco.hasSec || !skills.containsKey(deco.secondary!))) continue;
-      var decoStack = DecoStack(value: deco, amount: config.getDecoAmount(deco));
+      if (!skills.containsKey(deco.primary) &&
+          (!deco.hasSec || !skills.containsKey(deco.secondary!))) {
+        continue;
+      }
+      var decoStack =
+          DecoStack(value: deco, amount: config.getDecoAmount(deco));
       decoStack.checkTotalPoints(skills);
       // add primary skill
-      _ArmorSetTryer._skill(reqSkills, deco.primary, deco.primaryLvl * decoStack.amount);
+      _ArmorSetTryer._skill(
+          reqSkills, deco.primary, deco.primaryLvl * decoStack.amount);
       skillDecoMap.putIfAbsent(deco.primary, () => []).add(decoStack);
       if (deco.hasSec) {
         // add secondary skill
@@ -726,7 +986,8 @@ class _DecoTryer {
       }
       int bestDecoValue = _getBestDecoValue(skill.value);
       if (bestDecoValue < bestDecoValueForSkill) continue;
-      if (bestDecoValue > bestDecoValueForSkill || skill.amount > highestReqSkill.amount) {
+      if (bestDecoValue > bestDecoValueForSkill ||
+          skill.amount > highestReqSkill.amount) {
         highestReqSkill = skill;
         bestDecoValueForSkill = bestDecoValue;
       }
@@ -742,7 +1003,9 @@ class _DecoTryer {
 
   void _insertDeco(DecoStack deco) {
     _ArmorSetTryer._skill(skills, deco.value.primary, deco.value.primaryLvl);
-    if (deco.value.hasSec) _ArmorSetTryer._skill(skills, deco.value.secondary!, 1);
+    if (deco.value.hasSec) {
+      _ArmorSetTryer._skill(skills, deco.value.secondary!, 1);
+    }
     usedDecos.add(deco.value);
     deco.decr();
     int size = deco.value.size;
@@ -753,7 +1016,10 @@ class _DecoTryer {
       }
       size++;
     }
-    if (size > 3) print('Before inserting there was space for deco, but now there isn\'t anymore!');
+    if (size > 3) {
+      log.error(
+          'Before inserting there was space for deco, but now there isn\'t anymore!');
+    }
     _cleanDecoList();
   }
 
@@ -769,7 +1035,9 @@ class _DecoTryer {
     skillDecoMap.removeWhere((key, value) {
       value.removeWhere((deco) {
         deco.checkTotalPoints(skills);
-        return deco.totalPoints == 0 || deco.amount <= 0 || !hasSlotForDecoSize(deco.value.size);
+        return deco.totalPoints == 0 ||
+            deco.amount <= 0 ||
+            !hasSlotForDecoSize(deco.value.size);
       });
       if (value.isEmpty) return true;
       value.sort();

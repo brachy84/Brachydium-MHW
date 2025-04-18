@@ -9,7 +9,7 @@ import '../data/equipment.dart';
 class DataStream<T> {
   final StreamController<T> controller;
   Stream<T> _stream;
-  final List<StreamSubscription<T>> _subsciptions = [];
+  final List<StreamSubscription<T>> _subscriptions = [];
 
   DataStream._(this.controller, this._stream);
 
@@ -35,13 +35,13 @@ class DataStream<T> {
     return _stream.listen(onData);
   }
 
-  bool get hasSubscriptions => _subsciptions.isNotEmpty;
+  bool get hasSubscriptions => _subscriptions.isNotEmpty;
 
   Future<void> cancelSubscriptions() async {
-    for (var sub in _subsciptions) {
+    for (var sub in _subscriptions) {
       await sub.cancel();
     }
-    _subsciptions.clear();
+    _subscriptions.clear();
   }
 
   void asBroadcastStream() {
@@ -49,6 +49,11 @@ class DataStream<T> {
       cancelSubscriptions();
       _stream = _stream.asBroadcastStream();
     }
+  }
+
+  @override
+  bool operator ==(Object other) {
+      return identical(this, other) || (other.runtimeType == runtimeType && other is DataStream && _stream == other._stream);
   }
 }
 

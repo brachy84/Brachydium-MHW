@@ -2,20 +2,18 @@ import 'dart:io';
 
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/equipment.dart';
+import 'package:brachys_armor_set_searcher/data/set_finder.dart';
 import 'package:brachys_armor_set_searcher/screen/dev/equipment.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:brachys_armor_set_searcher/screen/searcher.dart' hide SkillEditor;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talker/talker.dart';
 import 'package:window_size/window_size.dart';
 
 import 'screen/home.dart';
 
-void log(Object msg) {
-  if (true) {
-    print(msg);
-  }
-}
+final log = Talker();
 
 bool _skillEditMode = true;
 
@@ -27,6 +25,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // init armor data
   await All.init();
+  await SearchManager.init();
   //testSearch();
   // init window size
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
