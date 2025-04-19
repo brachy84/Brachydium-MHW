@@ -14,17 +14,18 @@ part of 'cubits.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$SearcherState {
+mixin _$SearcherArgsState {
   List<Stack<SkillTemplate>> get skills;
   List<Stack<ArmorFilter>> get armorFilters;
-  bool get useMyDeco;
+  Map<Deco, int>? get decos;
 
-  /// Create a copy of SearcherState
+  /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $SearcherStateCopyWith<SearcherArgsState> get copyWith =>
-      _$SearcherStateCopyWithImpl<SearcherArgsState>(this as SearcherArgsState, _$identity);
+  $SearcherArgsStateCopyWith<SearcherArgsState> get copyWith =>
+      _$SearcherArgsStateCopyWithImpl<SearcherArgsState>(
+          this as SearcherArgsState, _$identity);
 
   @override
   bool operator ==(Object other) {
@@ -32,42 +33,52 @@ mixin _$SearcherState {
         (other.runtimeType == runtimeType &&
             other is SearcherArgsState &&
             const DeepCollectionEquality().equals(other.skills, skills) &&
-            const DeepCollectionEquality().equals(other.armorFilters, armorFilters) &&
-            (identical(other.useMyDeco, useMyDeco) || other.useMyDeco == useMyDeco));
+            const DeepCollectionEquality()
+                .equals(other.armorFilters, armorFilters) &&
+            const DeepCollectionEquality().equals(other.decos, decos));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(skills),
-      const DeepCollectionEquality().hash(armorFilters), useMyDeco);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(skills),
+      const DeepCollectionEquality().hash(armorFilters),
+      const DeepCollectionEquality().hash(decos));
 
   @override
   String toString() {
-    return 'SearcherState(skills: $skills, armorFilters: $armorFilters, useMyDeco: $useMyDeco)';
+    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos)';
   }
 }
 
 /// @nodoc
-abstract mixin class $SearcherStateCopyWith<$Res> {
-  factory $SearcherStateCopyWith(SearcherArgsState value, $Res Function(SearcherArgsState) _then) = _$SearcherStateCopyWithImpl;
+abstract mixin class $SearcherArgsStateCopyWith<$Res> {
+  factory $SearcherArgsStateCopyWith(
+          SearcherArgsState value, $Res Function(SearcherArgsState) _then) =
+      _$SearcherArgsStateCopyWithImpl;
   @useResult
-  $Res call({List<Stack<SkillTemplate>> skills, List<Stack<ArmorFilter>> armorFilters, bool useMyDeco});
+  $Res call(
+      {List<Stack<SkillTemplate>> skills,
+      List<Stack<ArmorFilter>> armorFilters,
+      Map<Deco, int>? decos});
 }
 
 /// @nodoc
-class _$SearcherStateCopyWithImpl<$Res> implements $SearcherStateCopyWith<$Res> {
-  _$SearcherStateCopyWithImpl(this._self, this._then);
+class _$SearcherArgsStateCopyWithImpl<$Res>
+    implements $SearcherArgsStateCopyWith<$Res> {
+  _$SearcherArgsStateCopyWithImpl(this._self, this._then);
 
   final SearcherArgsState _self;
   final $Res Function(SearcherArgsState) _then;
 
-  /// Create a copy of SearcherState
+  /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? skills = null,
     Object? armorFilters = null,
-    Object? useMyDeco = null,
+    Object? decos = freezed,
   }) {
     return _then(_self.copyWith(
       skills: null == skills
@@ -78,10 +89,10 @@ class _$SearcherStateCopyWithImpl<$Res> implements $SearcherStateCopyWith<$Res> 
           ? _self.armorFilters
           : armorFilters // ignore: cast_nullable_to_non_nullable
               as List<Stack<ArmorFilter>>,
-      useMyDeco: null == useMyDeco
-          ? _self.useMyDeco
-          : useMyDeco // ignore: cast_nullable_to_non_nullable
-              as bool,
+      decos: freezed == decos
+          ? _self.decos
+          : decos // ignore: cast_nullable_to_non_nullable
+              as Map<Deco, int>?,
     ));
   }
 }
@@ -92,9 +103,10 @@ class _SearcherState extends SearcherArgsState {
   const _SearcherState(
       {required final List<Stack<SkillTemplate>> skills,
       required final List<Stack<ArmorFilter>> armorFilters,
-      required this.useMyDeco})
+      required final Map<Deco, int>? decos})
       : _skills = skills,
         _armorFilters = armorFilters,
+        _decos = decos,
         super._();
 
   final List<Stack<SkillTemplate>> _skills;
@@ -113,10 +125,17 @@ class _SearcherState extends SearcherArgsState {
     return EqualUnmodifiableListView(_armorFilters);
   }
 
+  final Map<Deco, int>? _decos;
   @override
-  final bool useMyDeco;
+  Map<Deco, int>? get decos {
+    final value = _decos;
+    if (value == null) return null;
+    if (_decos is EqualUnmodifiableMapView) return _decos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
-  /// Create a copy of SearcherState
+  /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -130,44 +149,54 @@ class _SearcherState extends SearcherArgsState {
         (other.runtimeType == runtimeType &&
             other is _SearcherState &&
             const DeepCollectionEquality().equals(other._skills, _skills) &&
-            const DeepCollectionEquality().equals(other._armorFilters, _armorFilters) &&
-            (identical(other.useMyDeco, useMyDeco) || other.useMyDeco == useMyDeco));
+            const DeepCollectionEquality()
+                .equals(other._armorFilters, _armorFilters) &&
+            const DeepCollectionEquality().equals(other._decos, _decos));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_skills),
-      const DeepCollectionEquality().hash(_armorFilters), useMyDeco);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_skills),
+      const DeepCollectionEquality().hash(_armorFilters),
+      const DeepCollectionEquality().hash(_decos));
 
   @override
   String toString() {
-    return 'SearcherState(skills: $skills, armorFilters: $armorFilters, useMyDeco: $useMyDeco)';
+    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$SearcherStateCopyWith<$Res> implements $SearcherStateCopyWith<$Res> {
-  factory _$SearcherStateCopyWith(_SearcherState value, $Res Function(_SearcherState) _then) =
+abstract mixin class _$SearcherStateCopyWith<$Res>
+    implements $SearcherArgsStateCopyWith<$Res> {
+  factory _$SearcherStateCopyWith(
+          _SearcherState value, $Res Function(_SearcherState) _then) =
       __$SearcherStateCopyWithImpl;
   @override
   @useResult
-  $Res call({List<Stack<SkillTemplate>> skills, List<Stack<ArmorFilter>> armorFilters, bool useMyDeco});
+  $Res call(
+      {List<Stack<SkillTemplate>> skills,
+      List<Stack<ArmorFilter>> armorFilters,
+      Map<Deco, int>? decos});
 }
 
 /// @nodoc
-class __$SearcherStateCopyWithImpl<$Res> implements _$SearcherStateCopyWith<$Res> {
+class __$SearcherStateCopyWithImpl<$Res>
+    implements _$SearcherStateCopyWith<$Res> {
   __$SearcherStateCopyWithImpl(this._self, this._then);
 
   final _SearcherState _self;
   final $Res Function(_SearcherState) _then;
 
-  /// Create a copy of SearcherState
+  /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? skills = null,
     Object? armorFilters = null,
-    Object? useMyDeco = null,
+    Object? decos = freezed,
   }) {
     return _then(_SearcherState(
       skills: null == skills
@@ -178,10 +207,10 @@ class __$SearcherStateCopyWithImpl<$Res> implements _$SearcherStateCopyWith<$Res
           ? _self._armorFilters
           : armorFilters // ignore: cast_nullable_to_non_nullable
               as List<Stack<ArmorFilter>>,
-      useMyDeco: null == useMyDeco
-          ? _self.useMyDeco
-          : useMyDeco // ignore: cast_nullable_to_non_nullable
-              as bool,
+      decos: freezed == decos
+          ? _self._decos
+          : decos // ignore: cast_nullable_to_non_nullable
+              as Map<Deco, int>?,
     ));
   }
 }

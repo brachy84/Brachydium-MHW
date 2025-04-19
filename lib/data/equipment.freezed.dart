@@ -24,7 +24,8 @@ mixin _$Skill {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $SkillCopyWith<Skill> get copyWith => _$SkillCopyWithImpl<Skill>(this as Skill, _$identity);
+  $SkillCopyWith<Skill> get copyWith =>
+      _$SkillCopyWithImpl<Skill>(this as Skill, _$identity);
 
   /// Serializes this Skill to a JSON map.
   Map<String, dynamic> toJson();
@@ -32,7 +33,8 @@ mixin _$Skill {
 
 /// @nodoc
 abstract mixin class $SkillCopyWith<$Res> {
-  factory $SkillCopyWith(Skill value, $Res Function(Skill) _then) = _$SkillCopyWithImpl;
+  factory $SkillCopyWith(Skill value, $Res Function(Skill) _then) =
+      _$SkillCopyWithImpl;
   @useResult
   $Res call({String name, SkillCategory category, int maxLevel, String desc});
 }
@@ -78,7 +80,12 @@ class _$SkillCopyWithImpl<$Res> implements $SkillCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class _Skill extends Skill {
-  const _Skill({required this.name, required this.category, required this.maxLevel, required this.desc}) : super._();
+  const _Skill(
+      {required this.name,
+      required this.category,
+      required this.maxLevel,
+      required this.desc})
+      : super._();
   factory _Skill.fromJson(Map<String, dynamic> json) => _$SkillFromJson(json);
 
   @override
@@ -95,7 +102,8 @@ class _Skill extends Skill {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$SkillCopyWith<_Skill> get copyWith => __$SkillCopyWithImpl<_Skill>(this, _$identity);
+  _$SkillCopyWith<_Skill> get copyWith =>
+      __$SkillCopyWithImpl<_Skill>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -107,7 +115,8 @@ class _Skill extends Skill {
 
 /// @nodoc
 abstract mixin class _$SkillCopyWith<$Res> implements $SkillCopyWith<$Res> {
-  factory _$SkillCopyWith(_Skill value, $Res Function(_Skill) _then) = __$SkillCopyWithImpl;
+  factory _$SkillCopyWith(_Skill value, $Res Function(_Skill) _then) =
+      __$SkillCopyWithImpl;
   @override
   @useResult
   $Res call({String name, SkillCategory category, int maxLevel, String desc});
@@ -165,7 +174,8 @@ mixin _$BonusSkill {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $BonusSkillCopyWith<BonusSkill> get copyWith => _$BonusSkillCopyWithImpl<BonusSkill>(this as BonusSkill, _$identity);
+  $BonusSkillCopyWith<BonusSkill> get copyWith =>
+      _$BonusSkillCopyWithImpl<BonusSkill>(this as BonusSkill, _$identity);
 
   /// Serializes this BonusSkill to a JSON map.
   Map<String, dynamic> toJson();
@@ -173,7 +183,9 @@ mixin _$BonusSkill {
 
 /// @nodoc
 abstract mixin class $BonusSkillCopyWith<$Res> {
-  factory $BonusSkillCopyWith(BonusSkill value, $Res Function(BonusSkill) _then) = _$BonusSkillCopyWithImpl;
+  factory $BonusSkillCopyWith(
+          BonusSkill value, $Res Function(BonusSkill) _then) =
+      _$BonusSkillCopyWithImpl;
   @useResult
   $Res call(
       {String name,
@@ -250,7 +262,8 @@ class _BonusSkill extends BonusSkill {
       required this.primaryDesc,
       required this.secondaryDesc})
       : super._();
-  factory _BonusSkill.fromJson(Map<String, dynamic> json) => _$BonusSkillFromJson(json);
+  factory _BonusSkill.fromJson(Map<String, dynamic> json) =>
+      _$BonusSkillFromJson(json);
 
   @override
   final String name;
@@ -272,7 +285,8 @@ class _BonusSkill extends BonusSkill {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$BonusSkillCopyWith<_BonusSkill> get copyWith => __$BonusSkillCopyWithImpl<_BonusSkill>(this, _$identity);
+  _$BonusSkillCopyWith<_BonusSkill> get copyWith =>
+      __$BonusSkillCopyWithImpl<_BonusSkill>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -283,8 +297,11 @@ class _BonusSkill extends BonusSkill {
 }
 
 /// @nodoc
-abstract mixin class _$BonusSkillCopyWith<$Res> implements $BonusSkillCopyWith<$Res> {
-  factory _$BonusSkillCopyWith(_BonusSkill value, $Res Function(_BonusSkill) _then) = __$BonusSkillCopyWithImpl;
+abstract mixin class _$BonusSkillCopyWith<$Res>
+    implements $BonusSkillCopyWith<$Res> {
+  factory _$BonusSkillCopyWith(
+          _BonusSkill value, $Res Function(_BonusSkill) _then) =
+      __$BonusSkillCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -383,7 +400,8 @@ mixin _$Armor {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $ArmorCopyWith<Armor> get copyWith => _$ArmorCopyWithImpl<Armor>(this as Armor, _$identity);
+  $ArmorCopyWith<Armor> get copyWith =>
+      _$ArmorCopyWithImpl<Armor>(this as Armor, _$identity);
 
   /// Serializes this Armor to a JSON map.
   Map<String, dynamic> toJson();
@@ -397,23 +415,35 @@ mixin _$Armor {
             (identical(other.part, part) || other.part == part) &&
             (identical(other.rarity, rarity) || other.rarity == rarity) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
             (identical(other.ternary, ternary) || other.ternary == ternary) &&
-            (identical(other.groupBonus, groupBonus) || other.groupBonus == groupBonus) &&
-            (identical(other.setBonus, setBonus) || other.setBonus == setBonus) &&
-            (identical(other.primaryLv, primaryLv) || other.primaryLv == primaryLv) &&
-            (identical(other.secondaryLv, secondaryLv) || other.secondaryLv == secondaryLv) &&
-            (identical(other.ternaryLv, ternaryLv) || other.ternaryLv == ternaryLv) &&
-            (identical(other.primarySlotSize, primarySlotSize) || other.primarySlotSize == primarySlotSize) &&
-            (identical(other.secondarySlotSize, secondarySlotSize) || other.secondarySlotSize == secondarySlotSize) &&
-            (identical(other.ternarySlotSize, ternarySlotSize) || other.ternarySlotSize == ternarySlotSize) &&
+            (identical(other.groupBonus, groupBonus) ||
+                other.groupBonus == groupBonus) &&
+            (identical(other.setBonus, setBonus) ||
+                other.setBonus == setBonus) &&
+            (identical(other.primaryLv, primaryLv) ||
+                other.primaryLv == primaryLv) &&
+            (identical(other.secondaryLv, secondaryLv) ||
+                other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv) &&
+            (identical(other.primarySlotSize, primarySlotSize) ||
+                other.primarySlotSize == primarySlotSize) &&
+            (identical(other.secondarySlotSize, secondarySlotSize) ||
+                other.secondarySlotSize == secondarySlotSize) &&
+            (identical(other.ternarySlotSize, ternarySlotSize) ||
+                other.ternarySlotSize == ternarySlotSize) &&
             (identical(other.minDef, minDef) || other.minDef == minDef) &&
             (identical(other.maxDef, maxDef) || other.maxDef == maxDef) &&
             (identical(other.defFire, defFire) || other.defFire == defFire) &&
-            (identical(other.defWater, defWater) || other.defWater == defWater) &&
-            (identical(other.defThunder, defThunder) || other.defThunder == defThunder) &&
+            (identical(other.defWater, defWater) ||
+                other.defWater == defWater) &&
+            (identical(other.defThunder, defThunder) ||
+                other.defThunder == defThunder) &&
             (identical(other.defIce, defIce) || other.defIce == defIce) &&
-            (identical(other.defDragon, defDragon) || other.defDragon == defDragon));
+            (identical(other.defDragon, defDragon) ||
+                other.defDragon == defDragon));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -446,17 +476,25 @@ mixin _$Armor {
 
 /// @nodoc
 abstract mixin class $ArmorCopyWith<$Res> {
-  factory $ArmorCopyWith(Armor value, $Res Function(Armor) _then) = _$ArmorCopyWithImpl;
+  factory $ArmorCopyWith(Armor value, $Res Function(Armor) _then) =
+      _$ArmorCopyWithImpl;
   @useResult
   $Res call(
       {String name,
       Part part,
       int rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
-      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? groupBonus,
-      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? setBonus,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
+      @JsonKey(
+          fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
+      BonusSkill? groupBonus,
+      @JsonKey(
+          fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
+      BonusSkill? setBonus,
       int primaryLv,
       int secondaryLv,
       int ternaryLv,
@@ -674,11 +712,18 @@ class _Armor extends Armor {
       {required this.name,
       required this.part,
       required this.rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required this.primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.ternary,
-      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) this.groupBonus,
-      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) this.setBonus,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      required this.primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.ternary,
+      @JsonKey(
+          fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
+      this.groupBonus,
+      @JsonKey(
+          fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
+      this.setBonus,
       required this.primaryLv,
       this.secondaryLv = 0,
       this.ternaryLv = 0,
@@ -750,7 +795,8 @@ class _Armor extends Armor {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$ArmorCopyWith<_Armor> get copyWith => __$ArmorCopyWithImpl<_Armor>(this, _$identity);
+  _$ArmorCopyWith<_Armor> get copyWith =>
+      __$ArmorCopyWithImpl<_Armor>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -768,23 +814,35 @@ class _Armor extends Armor {
             (identical(other.part, part) || other.part == part) &&
             (identical(other.rarity, rarity) || other.rarity == rarity) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
             (identical(other.ternary, ternary) || other.ternary == ternary) &&
-            (identical(other.groupBonus, groupBonus) || other.groupBonus == groupBonus) &&
-            (identical(other.setBonus, setBonus) || other.setBonus == setBonus) &&
-            (identical(other.primaryLv, primaryLv) || other.primaryLv == primaryLv) &&
-            (identical(other.secondaryLv, secondaryLv) || other.secondaryLv == secondaryLv) &&
-            (identical(other.ternaryLv, ternaryLv) || other.ternaryLv == ternaryLv) &&
-            (identical(other.primarySlotSize, primarySlotSize) || other.primarySlotSize == primarySlotSize) &&
-            (identical(other.secondarySlotSize, secondarySlotSize) || other.secondarySlotSize == secondarySlotSize) &&
-            (identical(other.ternarySlotSize, ternarySlotSize) || other.ternarySlotSize == ternarySlotSize) &&
+            (identical(other.groupBonus, groupBonus) ||
+                other.groupBonus == groupBonus) &&
+            (identical(other.setBonus, setBonus) ||
+                other.setBonus == setBonus) &&
+            (identical(other.primaryLv, primaryLv) ||
+                other.primaryLv == primaryLv) &&
+            (identical(other.secondaryLv, secondaryLv) ||
+                other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv) &&
+            (identical(other.primarySlotSize, primarySlotSize) ||
+                other.primarySlotSize == primarySlotSize) &&
+            (identical(other.secondarySlotSize, secondarySlotSize) ||
+                other.secondarySlotSize == secondarySlotSize) &&
+            (identical(other.ternarySlotSize, ternarySlotSize) ||
+                other.ternarySlotSize == ternarySlotSize) &&
             (identical(other.minDef, minDef) || other.minDef == minDef) &&
             (identical(other.maxDef, maxDef) || other.maxDef == maxDef) &&
             (identical(other.defFire, defFire) || other.defFire == defFire) &&
-            (identical(other.defWater, defWater) || other.defWater == defWater) &&
-            (identical(other.defThunder, defThunder) || other.defThunder == defThunder) &&
+            (identical(other.defWater, defWater) ||
+                other.defWater == defWater) &&
+            (identical(other.defThunder, defThunder) ||
+                other.defThunder == defThunder) &&
             (identical(other.defIce, defIce) || other.defIce == defIce) &&
-            (identical(other.defDragon, defDragon) || other.defDragon == defDragon));
+            (identical(other.defDragon, defDragon) ||
+                other.defDragon == defDragon));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -817,18 +875,26 @@ class _Armor extends Armor {
 
 /// @nodoc
 abstract mixin class _$ArmorCopyWith<$Res> implements $ArmorCopyWith<$Res> {
-  factory _$ArmorCopyWith(_Armor value, $Res Function(_Armor) _then) = __$ArmorCopyWithImpl;
+  factory _$ArmorCopyWith(_Armor value, $Res Function(_Armor) _then) =
+      __$ArmorCopyWithImpl;
   @override
   @useResult
   $Res call(
       {String name,
       Part part,
       int rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
-      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? groupBonus,
-      @JsonKey(fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString) BonusSkill? setBonus,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
+      @JsonKey(
+          fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
+      BonusSkill? groupBonus,
+      @JsonKey(
+          fromJson: BonusSkill.fromStringNullable, toJson: BonusSkill.asString)
+      BonusSkill? setBonus,
       int primaryLv,
       int secondaryLv,
       int ternaryLv,
@@ -1058,7 +1124,8 @@ mixin _$Deco {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $DecoCopyWith<Deco> get copyWith => _$DecoCopyWithImpl<Deco>(this as Deco, _$identity);
+  $DecoCopyWith<Deco> get copyWith =>
+      _$DecoCopyWithImpl<Deco>(this as Deco, _$identity);
 
   /// Serializes this Deco to a JSON map.
   Map<String, dynamic> toJson();
@@ -1070,24 +1137,30 @@ mixin _$Deco {
             other is Deco &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
-            (identical(other.primaryLvl, primaryLvl) || other.primaryLvl == primaryLvl) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
+            (identical(other.primaryLvl, primaryLvl) ||
+                other.primaryLvl == primaryLvl) &&
             (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, primary, secondary, primaryLvl, size);
+  int get hashCode =>
+      Object.hash(runtimeType, name, primary, secondary, primaryLvl, size);
 }
 
 /// @nodoc
 abstract mixin class $DecoCopyWith<$Res> {
-  factory $DecoCopyWith(Deco value, $Res Function(Deco) _then) = _$DecoCopyWithImpl;
+  factory $DecoCopyWith(Deco value, $Res Function(Deco) _then) =
+      _$DecoCopyWithImpl;
   @useResult
   $Res call(
       {String name,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
       int primaryLvl,
       int size});
 
@@ -1167,8 +1240,10 @@ class _$DecoCopyWithImpl<$Res> implements $DecoCopyWith<$Res> {
 class _Deco extends Deco {
   const _Deco(
       {required this.name,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required this.primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.secondary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      required this.primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.secondary,
       required this.primaryLvl,
       required this.size})
       : super._();
@@ -1192,7 +1267,8 @@ class _Deco extends Deco {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$DecoCopyWith<_Deco> get copyWith => __$DecoCopyWithImpl<_Deco>(this, _$identity);
+  _$DecoCopyWith<_Deco> get copyWith =>
+      __$DecoCopyWithImpl<_Deco>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1208,25 +1284,31 @@ class _Deco extends Deco {
             other is _Deco &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
-            (identical(other.primaryLvl, primaryLvl) || other.primaryLvl == primaryLvl) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
+            (identical(other.primaryLvl, primaryLvl) ||
+                other.primaryLvl == primaryLvl) &&
             (identical(other.size, size) || other.size == size));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, primary, secondary, primaryLvl, size);
+  int get hashCode =>
+      Object.hash(runtimeType, name, primary, secondary, primaryLvl, size);
 }
 
 /// @nodoc
 abstract mixin class _$DecoCopyWith<$Res> implements $DecoCopyWith<$Res> {
-  factory _$DecoCopyWith(_Deco value, $Res Function(_Deco) _then) = __$DecoCopyWithImpl;
+  factory _$DecoCopyWith(_Deco value, $Res Function(_Deco) _then) =
+      __$DecoCopyWithImpl;
   @override
   @useResult
   $Res call(
       {String name,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
       int primaryLvl,
       int size});
 
@@ -1321,7 +1403,8 @@ mixin _$Charm {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $CharmCopyWith<Charm> get copyWith => _$CharmCopyWithImpl<Charm>(this as Charm, _$identity);
+  $CharmCopyWith<Charm> get copyWith =>
+      _$CharmCopyWithImpl<Charm>(this as Charm, _$identity);
 
   /// Serializes this Charm to a JSON map.
   Map<String, dynamic> toJson();
@@ -1334,29 +1417,37 @@ mixin _$Charm {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.rarity, rarity) || other.rarity == rarity) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
             (identical(other.ternary, ternary) || other.ternary == ternary) &&
-            (identical(other.primaryLv, primaryLv) || other.primaryLv == primaryLv) &&
-            (identical(other.secondaryLv, secondaryLv) || other.secondaryLv == secondaryLv) &&
-            (identical(other.ternaryLv, ternaryLv) || other.ternaryLv == ternaryLv));
+            (identical(other.primaryLv, primaryLv) ||
+                other.primaryLv == primaryLv) &&
+            (identical(other.secondaryLv, secondaryLv) ||
+                other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, rarity, primary, secondary, ternary, primaryLv, secondaryLv, ternaryLv);
+  int get hashCode => Object.hash(runtimeType, name, rarity, primary, secondary,
+      ternary, primaryLv, secondaryLv, ternaryLv);
 }
 
 /// @nodoc
 abstract mixin class $CharmCopyWith<$Res> {
-  factory $CharmCopyWith(Charm value, $Res Function(Charm) _then) = _$CharmCopyWithImpl;
+  factory $CharmCopyWith(Charm value, $Res Function(Charm) _then) =
+      _$CharmCopyWithImpl;
   @useResult
   $Res call(
       {String name,
       int rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
       int primaryLv,
       int secondaryLv,
       int ternaryLv});
@@ -1468,9 +1559,12 @@ class _Charm extends Charm {
   const _Charm(
       {required this.name,
       required this.rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required this.primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.ternary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      required this.primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.ternary,
       required this.primaryLv,
       this.secondaryLv = 0,
       this.ternaryLv = 0})
@@ -1504,7 +1598,8 @@ class _Charm extends Charm {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$CharmCopyWith<_Charm> get copyWith => __$CharmCopyWithImpl<_Charm>(this, _$identity);
+  _$CharmCopyWith<_Charm> get copyWith =>
+      __$CharmCopyWithImpl<_Charm>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1521,30 +1616,38 @@ class _Charm extends Charm {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.rarity, rarity) || other.rarity == rarity) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
             (identical(other.ternary, ternary) || other.ternary == ternary) &&
-            (identical(other.primaryLv, primaryLv) || other.primaryLv == primaryLv) &&
-            (identical(other.secondaryLv, secondaryLv) || other.secondaryLv == secondaryLv) &&
-            (identical(other.ternaryLv, ternaryLv) || other.ternaryLv == ternaryLv));
+            (identical(other.primaryLv, primaryLv) ||
+                other.primaryLv == primaryLv) &&
+            (identical(other.secondaryLv, secondaryLv) ||
+                other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, rarity, primary, secondary, ternary, primaryLv, secondaryLv, ternaryLv);
+  int get hashCode => Object.hash(runtimeType, name, rarity, primary, secondary,
+      ternary, primaryLv, secondaryLv, ternaryLv);
 }
 
 /// @nodoc
 abstract mixin class _$CharmCopyWith<$Res> implements $CharmCopyWith<$Res> {
-  factory _$CharmCopyWith(_Charm value, $Res Function(_Charm) _then) = __$CharmCopyWithImpl;
+  factory _$CharmCopyWith(_Charm value, $Res Function(_Charm) _then) =
+      __$CharmCopyWithImpl;
   @override
   @useResult
   $Res call(
       {String name,
       int rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
       int primaryLv,
       int secondaryLv,
       int ternaryLv});
@@ -1675,7 +1778,8 @@ mixin _$Weapon {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $WeaponCopyWith<Weapon> get copyWith => _$WeaponCopyWithImpl<Weapon>(this as Weapon, _$identity);
+  $WeaponCopyWith<Weapon> get copyWith =>
+      _$WeaponCopyWithImpl<Weapon>(this as Weapon, _$identity);
 
   /// Serializes this Weapon to a JSON map.
   Map<String, dynamic> toJson();
@@ -1689,33 +1793,56 @@ mixin _$Weapon {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.rarity, rarity) || other.rarity == rarity) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
             (identical(other.ternary, ternary) || other.ternary == ternary) &&
-            (identical(other.primaryLv, primaryLv) || other.primaryLv == primaryLv) &&
-            (identical(other.secondaryLv, secondaryLv) || other.secondaryLv == secondaryLv) &&
-            (identical(other.ternaryLv, ternaryLv) || other.ternaryLv == ternaryLv) &&
-            (identical(other.primarySlotSize, primarySlotSize) || other.primarySlotSize == primarySlotSize) &&
-            (identical(other.secondarySlotSize, secondarySlotSize) || other.secondarySlotSize == secondarySlotSize) &&
-            (identical(other.ternarySlotSize, ternarySlotSize) || other.ternarySlotSize == ternarySlotSize));
+            (identical(other.primaryLv, primaryLv) ||
+                other.primaryLv == primaryLv) &&
+            (identical(other.secondaryLv, secondaryLv) ||
+                other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv) &&
+            (identical(other.primarySlotSize, primarySlotSize) ||
+                other.primarySlotSize == primarySlotSize) &&
+            (identical(other.secondarySlotSize, secondarySlotSize) ||
+                other.secondarySlotSize == secondarySlotSize) &&
+            (identical(other.ternarySlotSize, ternarySlotSize) ||
+                other.ternarySlotSize == ternarySlotSize));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, type, rarity, primary, secondary, ternary, primaryLv, secondaryLv,
-      ternaryLv, primarySlotSize, secondarySlotSize, ternarySlotSize);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      type,
+      rarity,
+      primary,
+      secondary,
+      ternary,
+      primaryLv,
+      secondaryLv,
+      ternaryLv,
+      primarySlotSize,
+      secondarySlotSize,
+      ternarySlotSize);
 }
 
 /// @nodoc
 abstract mixin class $WeaponCopyWith<$Res> {
-  factory $WeaponCopyWith(Weapon value, $Res Function(Weapon) _then) = _$WeaponCopyWithImpl;
+  factory $WeaponCopyWith(Weapon value, $Res Function(Weapon) _then) =
+      _$WeaponCopyWithImpl;
   @useResult
   $Res call(
       {String name,
       WeaponType type,
       int rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
       int primaryLv,
       int secondaryLv,
       int ternaryLv,
@@ -1851,9 +1978,12 @@ class _Weapon extends Weapon {
       {required this.name,
       required this.type,
       required this.rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) required this.primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) this.ternary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      required this.primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      this.ternary,
       required this.primaryLv,
       this.secondaryLv = 0,
       this.ternaryLv = 0,
@@ -1898,7 +2028,8 @@ class _Weapon extends Weapon {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$WeaponCopyWith<_Weapon> get copyWith => __$WeaponCopyWithImpl<_Weapon>(this, _$identity);
+  _$WeaponCopyWith<_Weapon> get copyWith =>
+      __$WeaponCopyWithImpl<_Weapon>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1916,34 +2047,57 @@ class _Weapon extends Weapon {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.rarity, rarity) || other.rarity == rarity) &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.secondary, secondary) || other.secondary == secondary) &&
+            (identical(other.secondary, secondary) ||
+                other.secondary == secondary) &&
             (identical(other.ternary, ternary) || other.ternary == ternary) &&
-            (identical(other.primaryLv, primaryLv) || other.primaryLv == primaryLv) &&
-            (identical(other.secondaryLv, secondaryLv) || other.secondaryLv == secondaryLv) &&
-            (identical(other.ternaryLv, ternaryLv) || other.ternaryLv == ternaryLv) &&
-            (identical(other.primarySlotSize, primarySlotSize) || other.primarySlotSize == primarySlotSize) &&
-            (identical(other.secondarySlotSize, secondarySlotSize) || other.secondarySlotSize == secondarySlotSize) &&
-            (identical(other.ternarySlotSize, ternarySlotSize) || other.ternarySlotSize == ternarySlotSize));
+            (identical(other.primaryLv, primaryLv) ||
+                other.primaryLv == primaryLv) &&
+            (identical(other.secondaryLv, secondaryLv) ||
+                other.secondaryLv == secondaryLv) &&
+            (identical(other.ternaryLv, ternaryLv) ||
+                other.ternaryLv == ternaryLv) &&
+            (identical(other.primarySlotSize, primarySlotSize) ||
+                other.primarySlotSize == primarySlotSize) &&
+            (identical(other.secondarySlotSize, secondarySlotSize) ||
+                other.secondarySlotSize == secondarySlotSize) &&
+            (identical(other.ternarySlotSize, ternarySlotSize) ||
+                other.ternarySlotSize == ternarySlotSize));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, type, rarity, primary, secondary, ternary, primaryLv, secondaryLv,
-      ternaryLv, primarySlotSize, secondarySlotSize, ternarySlotSize);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      type,
+      rarity,
+      primary,
+      secondary,
+      ternary,
+      primaryLv,
+      secondaryLv,
+      ternaryLv,
+      primarySlotSize,
+      secondarySlotSize,
+      ternarySlotSize);
 }
 
 /// @nodoc
 abstract mixin class _$WeaponCopyWith<$Res> implements $WeaponCopyWith<$Res> {
-  factory _$WeaponCopyWith(_Weapon value, $Res Function(_Weapon) _then) = __$WeaponCopyWithImpl;
+  factory _$WeaponCopyWith(_Weapon value, $Res Function(_Weapon) _then) =
+      __$WeaponCopyWithImpl;
   @override
   @useResult
   $Res call(
       {String name,
       WeaponType type,
       int rarity,
-      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString) Skill primary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? secondary,
-      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString) Skill? ternary,
+      @JsonKey(fromJson: Skill.fromString, toJson: Skill.asString)
+      Skill primary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? secondary,
+      @JsonKey(fromJson: Skill.fromStringNullable, toJson: Skill.asString)
+      Skill? ternary,
       int primaryLv,
       int secondaryLv,
       int ternaryLv,
@@ -2087,7 +2241,8 @@ mixin _$EquipmentPiece {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $EquipmentPieceCopyWith<EquipmentPiece> get copyWith =>
-      _$EquipmentPieceCopyWithImpl<EquipmentPiece>(this as EquipmentPiece, _$identity);
+      _$EquipmentPieceCopyWithImpl<EquipmentPiece>(
+          this as EquipmentPiece, _$identity);
 
   /// Serializes this EquipmentPiece to a JSON map.
   Map<String, dynamic> toJson();
@@ -2097,13 +2252,16 @@ mixin _$EquipmentPiece {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is EquipmentPiece &&
-            (identical(other.equipment, equipment) || other.equipment == equipment) &&
-            const DeepCollectionEquality().equals(other.decorations, decorations));
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment) &&
+            const DeepCollectionEquality()
+                .equals(other.decorations, decorations));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, equipment, const DeepCollectionEquality().hash(decorations));
+  int get hashCode => Object.hash(
+      runtimeType, equipment, const DeepCollectionEquality().hash(decorations));
 
   @override
   String toString() {
@@ -2113,16 +2271,20 @@ mixin _$EquipmentPiece {
 
 /// @nodoc
 abstract mixin class $EquipmentPieceCopyWith<$Res> {
-  factory $EquipmentPieceCopyWith(EquipmentPiece value, $Res Function(EquipmentPiece) _then) =
+  factory $EquipmentPieceCopyWith(
+          EquipmentPiece value, $Res Function(EquipmentPiece) _then) =
       _$EquipmentPieceCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString) Equipment equipment,
-      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson) List<Deco?> decorations});
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      Equipment equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> decorations});
 }
 
 /// @nodoc
-class _$EquipmentPieceCopyWithImpl<$Res> implements $EquipmentPieceCopyWith<$Res> {
+class _$EquipmentPieceCopyWithImpl<$Res>
+    implements $EquipmentPieceCopyWith<$Res> {
   _$EquipmentPieceCopyWithImpl(this._self, this._then);
 
   final EquipmentPiece _self;
@@ -2153,11 +2315,14 @@ class _$EquipmentPieceCopyWithImpl<$Res> implements $EquipmentPieceCopyWith<$Res
 @JsonSerializable()
 class _EquipmentPiece extends EquipmentPiece {
   const _EquipmentPiece(
-      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString) required this.equipment,
-      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson) required final List<Deco?> decorations})
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      required this.equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      required final List<Deco?> decorations})
       : _decorations = decorations,
         super._();
-  factory _EquipmentPiece.fromJson(Map<String, dynamic> json) => _$EquipmentPieceFromJson(json);
+  factory _EquipmentPiece.fromJson(Map<String, dynamic> json) =>
+      _$EquipmentPieceFromJson(json);
 
   @override
   @JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
@@ -2191,13 +2356,16 @@ class _EquipmentPiece extends EquipmentPiece {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _EquipmentPiece &&
-            (identical(other.equipment, equipment) || other.equipment == equipment) &&
-            const DeepCollectionEquality().equals(other._decorations, _decorations));
+            (identical(other.equipment, equipment) ||
+                other.equipment == equipment) &&
+            const DeepCollectionEquality()
+                .equals(other._decorations, _decorations));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, equipment, const DeepCollectionEquality().hash(_decorations));
+  int get hashCode => Object.hash(runtimeType, equipment,
+      const DeepCollectionEquality().hash(_decorations));
 
   @override
   String toString() {
@@ -2206,18 +2374,23 @@ class _EquipmentPiece extends EquipmentPiece {
 }
 
 /// @nodoc
-abstract mixin class _$EquipmentPieceCopyWith<$Res> implements $EquipmentPieceCopyWith<$Res> {
-  factory _$EquipmentPieceCopyWith(_EquipmentPiece value, $Res Function(_EquipmentPiece) _then) =
+abstract mixin class _$EquipmentPieceCopyWith<$Res>
+    implements $EquipmentPieceCopyWith<$Res> {
+  factory _$EquipmentPieceCopyWith(
+          _EquipmentPiece value, $Res Function(_EquipmentPiece) _then) =
       __$EquipmentPieceCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString) Equipment equipment,
-      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson) List<Deco?> decorations});
+      {@JsonKey(fromJson: Equipment.fromString, toJson: Equipment.asString)
+      Equipment equipment,
+      @JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> decorations});
 }
 
 /// @nodoc
-class __$EquipmentPieceCopyWithImpl<$Res> implements _$EquipmentPieceCopyWith<$Res> {
+class __$EquipmentPieceCopyWithImpl<$Res>
+    implements _$EquipmentPieceCopyWith<$Res> {
   __$EquipmentPieceCopyWithImpl(this._self, this._then);
 
   final _EquipmentPiece _self;
@@ -2257,7 +2430,8 @@ mixin _$ArmorSet {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $ArmorSetCopyWith<ArmorSet> get copyWith => _$ArmorSetCopyWithImpl<ArmorSet>(this as ArmorSet, _$identity);
+  $ArmorSetCopyWith<ArmorSet> get copyWith =>
+      _$ArmorSetCopyWithImpl<ArmorSet>(this as ArmorSet, _$identity);
 
   /// Serializes this ArmorSet to a JSON map.
   Map<String, dynamic> toJson();
@@ -2267,15 +2441,19 @@ mixin _$ArmorSet {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ArmorSet &&
-            const DeepCollectionEquality().equals(other.weaponDecos, weaponDecos) &&
+            const DeepCollectionEquality()
+                .equals(other.weaponDecos, weaponDecos) &&
             const DeepCollectionEquality().equals(other.pieces, pieces) &&
             (identical(other.charm, charm) || other.charm == charm));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(weaponDecos),
-      const DeepCollectionEquality().hash(pieces), charm);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(weaponDecos),
+      const DeepCollectionEquality().hash(pieces),
+      charm);
 
   @override
   String toString() {
@@ -2285,12 +2463,16 @@ mixin _$ArmorSet {
 
 /// @nodoc
 abstract mixin class $ArmorSetCopyWith<$Res> {
-  factory $ArmorSetCopyWith(ArmorSet value, $Res Function(ArmorSet) _then) = _$ArmorSetCopyWithImpl;
+  factory $ArmorSetCopyWith(ArmorSet value, $Res Function(ArmorSet) _then) =
+      _$ArmorSetCopyWithImpl;
   @useResult
   $Res call(
-      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson) List<Deco?> weaponDecos,
-      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson) List<EquipmentPiece> pieces,
-      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString) Charm charm});
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      Charm charm});
 
   $CharmCopyWith<$Res> get charm;
 }
@@ -2342,13 +2524,17 @@ class _$ArmorSetCopyWithImpl<$Res> implements $ArmorSetCopyWith<$Res> {
 @JsonSerializable()
 class _ArmorSet extends ArmorSet {
   const _ArmorSet(
-      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson) required final List<Deco?> weaponDecos,
-      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson) required final List<EquipmentPiece> pieces,
-      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString) required this.charm})
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      required final List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      required final List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      required this.charm})
       : _weaponDecos = weaponDecos,
         _pieces = pieces,
         super._();
-  factory _ArmorSet.fromJson(Map<String, dynamic> json) => _$ArmorSetFromJson(json);
+  factory _ArmorSet.fromJson(Map<String, dynamic> json) =>
+      _$ArmorSetFromJson(json);
 
   final List<Deco?> _weaponDecos;
   @override
@@ -2377,7 +2563,8 @@ class _ArmorSet extends ArmorSet {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$ArmorSetCopyWith<_ArmorSet> get copyWith => __$ArmorSetCopyWithImpl<_ArmorSet>(this, _$identity);
+  _$ArmorSetCopyWith<_ArmorSet> get copyWith =>
+      __$ArmorSetCopyWithImpl<_ArmorSet>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -2391,15 +2578,19 @@ class _ArmorSet extends ArmorSet {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ArmorSet &&
-            const DeepCollectionEquality().equals(other._weaponDecos, _weaponDecos) &&
+            const DeepCollectionEquality()
+                .equals(other._weaponDecos, _weaponDecos) &&
             const DeepCollectionEquality().equals(other._pieces, _pieces) &&
             (identical(other.charm, charm) || other.charm == charm));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_weaponDecos),
-      const DeepCollectionEquality().hash(_pieces), charm);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_weaponDecos),
+      const DeepCollectionEquality().hash(_pieces),
+      charm);
 
   @override
   String toString() {
@@ -2408,14 +2599,19 @@ class _ArmorSet extends ArmorSet {
 }
 
 /// @nodoc
-abstract mixin class _$ArmorSetCopyWith<$Res> implements $ArmorSetCopyWith<$Res> {
-  factory _$ArmorSetCopyWith(_ArmorSet value, $Res Function(_ArmorSet) _then) = __$ArmorSetCopyWithImpl;
+abstract mixin class _$ArmorSetCopyWith<$Res>
+    implements $ArmorSetCopyWith<$Res> {
+  factory _$ArmorSetCopyWith(_ArmorSet value, $Res Function(_ArmorSet) _then) =
+      __$ArmorSetCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson) List<Deco?> weaponDecos,
-      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson) List<EquipmentPiece> pieces,
-      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString) Charm charm});
+      {@JsonKey(fromJson: _jsonToDecoList, toJson: _decoListToJson)
+      List<Deco?> weaponDecos,
+      @JsonKey(fromJson: _jsonToEquipmentList, toJson: _equipmentListToJson)
+      List<EquipmentPiece> pieces,
+      @JsonKey(fromJson: Charm.fromString, toJson: Equipment.asString)
+      Charm charm});
 
   @override
   $CharmCopyWith<$Res> get charm;

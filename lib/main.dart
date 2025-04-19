@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/equipment.dart';
+import 'package:brachys_armor_set_searcher/data/profile.dart';
 import 'package:brachys_armor_set_searcher/data/set_finder.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ void main() async {
   // init armor data
   await All.init();
   await SearchManager.init();
+  await Profile.init();
   //testSearch();
   // init window size
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {

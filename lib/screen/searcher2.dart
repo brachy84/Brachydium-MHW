@@ -93,13 +93,13 @@ Widget _decosOption(BuildContext context, bool mobile) {
             constraints: const BoxConstraints(minWidth: double.infinity),
             //child: SizedBox(height: 60,),
             child: BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
-              buildWhen: (a, b) => a.useMyDeco != b.useMyDeco,
+              buildWhen: (a, b) => (a.decos == null) != (b.decos == null),
               builder: (context, state) {
                 return Column(
                   children: [
                     RadioListTile(
                       value: false,
-                      groupValue: state.useMyDeco,
+                      groupValue: state.decos != null,
                       onChanged: (val) => context.read<SearcherArgsCubit>().useMyDeco(val ?? true),
                       title: const Text('Use all decos'),
                     ),
@@ -108,7 +108,7 @@ Widget _decosOption(BuildContext context, bool mobile) {
                         Expanded(
                           child: RadioListTile(
                             value: true,
-                            groupValue: state.useMyDeco,
+                            groupValue: state.decos != null,
                             onChanged: (val) => context.read<SearcherArgsCubit>().useMyDeco(val ?? true),
                             title: const Text('Use my decos'),
                           ),

@@ -1038,6 +1038,11 @@ abstract class Deco with _$Deco, Localized {
 
   int get totalSkillPoints => hasSec ? primaryLvl + 1 : primaryLvl;
 
+  int get maxDecoAmount {
+    int p = (primary.maxLevel / primaryLvl).ceil();
+    return hasSec ? max(p, secondary!.maxLevel) : p;
+  }
+
   SkillCategory get category {
     /*if (hasSec && primary.category != secondary!.category) {
       throw Exception(

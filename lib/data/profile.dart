@@ -1,16 +1,20 @@
+import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
+
 import 'equipment.dart';
 
-class Profile {
-  final String name;
-  final Map<Deco, int>? decos;
-  final List<Charm>? charms;
-  final int minRarity, maxRarity;
-  final Set<Armor> blacklistedArmor;
+var currentProfile = Profile('main');
 
-  Profile(this.name,
-      {required this.decos,
-      required this.charms,
-      this.minRarity = 1,
-      this.maxRarity = 12,
-      required this.blacklistedArmor});
+class Profile {
+  String name;
+  Map<Deco, int> decos = {};
+  List<Charm> charms = [];
+  int minRarity = 1, maxRarity = 12;
+  Set<Armor> blacklistedArmor = {};
+
+  Profile(this.name);
+
+  static init() async {
+    // TODO read from file
+    currentProfile.decos = { for (var d in All.decos) d : d.maxDecoAmount };
+  }
 }
