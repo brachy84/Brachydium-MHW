@@ -106,7 +106,12 @@ class AutoCompleteValue<T> extends StatelessWidget {
 }
 
 class AutoCompleteList<T> extends StatefulWidget {
-  const AutoCompleteList({super.key, required this.link, required this.optionsSupplier, required this.optionBuilder, required this.onSelect});
+  const AutoCompleteList(
+      {super.key,
+      required this.link,
+      required this.optionsSupplier,
+      required this.optionBuilder,
+      required this.onSelect});
 
   final AutoCompleteLink link;
   final Iterable<T> Function(String) optionsSupplier;
@@ -118,7 +123,6 @@ class AutoCompleteList<T> extends StatefulWidget {
 }
 
 class _AutoCompleteListState<T> extends State<AutoCompleteList<T>> {
-
   bool _shown = false;
   Iterable<T> options = Iterable.empty();
 
@@ -164,9 +168,11 @@ class _AutoCompleteListState<T> extends State<AutoCompleteList<T>> {
   List<Widget> _buildList() {
     List<Widget> widgets = [];
     for (T t in options) {
-      widgets.add(InkWell(onTap: () {
-        widget.onSelect.call(t, widget.link._field!.widget.textEditingController);
-      }, child: AutoCompleteValue(value: t, child: widget.optionBuilder.call(t))));
+      widgets.add(InkWell(
+          onTap: () {
+            widget.onSelect.call(t, widget.link._field!.widget.textEditingController);
+          },
+          child: AutoCompleteValue(value: t, child: widget.optionBuilder.call(t))));
     }
     return widgets;
   }
@@ -174,11 +180,10 @@ class _AutoCompleteListState<T> extends State<AutoCompleteList<T>> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      height: 300,
-      child: ListView(
-        children: _buildList(),
-      )
-    );
+        width: 400,
+        height: 300,
+        child: ListView(
+          children: _buildList(),
+        ));
   }
 }

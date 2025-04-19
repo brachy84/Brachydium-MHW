@@ -106,14 +106,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton(
                     onPressed: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (ctx) => const SimplePage(title: 'Skill Editor', body: SkillEditor()))),
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const SimplePage(title: 'Skill Editor', body: SkillEditor()))),
                     child: const Text('Skill Editor')),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton(
                     onPressed: () => Navigator.push(
-                        context, MaterialPageRoute(builder: (ctx) => const SimplePage(title: 'Armor Editor', body: ArmorEditor()))),
+                        context,
+                        MaterialPageRoute(
+                            builder: (ctx) => const SimplePage(title: 'Armor Editor', body: ArmorEditor()))),
                     child: const Text('Armor Editor')),
               ),
             ]

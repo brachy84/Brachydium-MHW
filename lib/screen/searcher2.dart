@@ -63,7 +63,9 @@ Widget _skillsPreview(BuildContext context, SearcherState state) {
       child: Text('None selected'),
     );
   }
-  List<Widget> skills = state.skills.map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.value.getActualLevel(skill.amount)}")).toList();
+  List<Widget> skills = state.skills
+      .map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.value.getActualLevel(skill.amount)}"))
+      .toList();
   return Wrap(
     spacing: 4,
     runSpacing: 4,
@@ -198,7 +200,9 @@ Widget _skillTile(BuildContext context, ass.Stack<SkillTemplate> skill, bool mob
       ));
   if (mobile) {
     return Dismissible(
-        key: Key(skill.value.name), onDismissed: (dir) => context.read<SearcherCubit>().removeSkill(skill.value), child: tile);
+        key: Key(skill.value.name),
+        onDismissed: (dir) => context.read<SearcherCubit>().removeSkill(skill.value),
+        child: tile);
   }
   return tile;
 }
@@ -268,7 +272,8 @@ class SearcherDesktop extends StatelessWidget {
   }
 }
 
-abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T> with SingleTickerProviderStateMixin {
+abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   AnimationController? _animationController;
@@ -289,7 +294,8 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
         skills = skills.where((skill) => !state.hasSkill(skill)).toList();
       }
     } else {
-      skills = skills.where((skill) => skill.matchesSearch(selectorState.searchValue) && !state.hasSkill(skill)).toList();
+      skills =
+          skills.where((skill) => skill.matchesSearch(selectorState.searchValue) && !state.hasSkill(skill)).toList();
     }
     if (skills.isEmpty) {
       options.add(const Padding(

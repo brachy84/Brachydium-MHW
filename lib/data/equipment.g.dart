@@ -37,8 +37,7 @@ _BonusSkill _$BonusSkillFromJson(Map<String, dynamic> json) => _BonusSkill(
       secondaryDesc: json['secondaryDesc'] as String,
     );
 
-Map<String, dynamic> _$BonusSkillToJson(_BonusSkill instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$BonusSkillToJson(_BonusSkill instance) => <String, dynamic>{
       'name': instance.name,
       'category': _$SkillCategoryEnumMap[instance.category]!,
       'maxLevel': instance.maxLevel,
@@ -191,22 +190,19 @@ const _$WeaponTypeEnumMap = {
   WeaponType.bow: 'bow',
 };
 
-_EquipmentPiece _$EquipmentPieceFromJson(Map<String, dynamic> json) =>
-    _EquipmentPiece(
+_EquipmentPiece _$EquipmentPieceFromJson(Map<String, dynamic> json) => _EquipmentPiece(
       equipment: Equipment.fromString(json['equipment'] as String),
       decorations: _jsonToDecoList(json['decorations'] as List<String>),
     );
 
-Map<String, dynamic> _$EquipmentPieceToJson(_EquipmentPiece instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$EquipmentPieceToJson(_EquipmentPiece instance) => <String, dynamic>{
       'equipment': Equipment.asString(instance.equipment),
       'decorations': _decoListToJson(instance.decorations),
     };
 
 _ArmorSet _$ArmorSetFromJson(Map<String, dynamic> json) => _ArmorSet(
       weaponDecos: _jsonToDecoList(json['weaponDecos'] as List<String>),
-      pieces:
-          _jsonToEquipmentList(json['pieces'] as List<Map<String, dynamic>>),
+      pieces: _jsonToEquipmentList(json['pieces'] as List<Map<String, dynamic>>),
       charm: Charm.fromString(json['charm'] as String),
     );
 

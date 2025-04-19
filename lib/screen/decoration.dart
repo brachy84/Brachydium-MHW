@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class DecoPageMobile extends StatefulWidget {
@@ -14,4 +13,3 @@ class _DecoPageMobileState extends State<DecoPageMobile> {
     return const Placeholder();
   }
 }
-

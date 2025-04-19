@@ -17,7 +17,6 @@ bool _hasSkill(Skill skill) {
 
 bool _useMyDecos = true;
 
-
 /*int _getMaxLevelFor(Skill skill) {
   for (ass.Stack<Skill> skill1 in _skills) {
 
@@ -90,10 +89,7 @@ Widget _skillsPreview(BuildContext context) {
 
 Widget _decosOption(BuildContext context, StateSetter setState) {
   return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.white.withAlpha(20)
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(20)),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,10 +134,7 @@ Widget _decosOption(BuildContext context, StateSetter setState) {
                       child: const Padding(
                         padding: EdgeInsets.only(left: 4, top: 8, bottom: 8),
                         child: Row(
-                          children: [
-                            Text('Edit my deocs'),
-                            Icon(Icons.chevron_right)
-                          ],
+                          children: [Text('Edit my deocs'), Icon(Icons.chevron_right)],
                         ),
                       ),
                     )
@@ -151,8 +144,7 @@ Widget _decosOption(BuildContext context, StateSetter setState) {
             ),
           )
         ],
-      )
-  );
+      ));
 }
 
 List<Widget> _makeSearcherOptions(BuildContext context, StateSetter setState) {
@@ -162,7 +154,8 @@ List<Widget> _makeSearcherOptions(BuildContext context, StateSetter setState) {
   ];
 }
 
-abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T> with SingleTickerProviderStateMixin {
+abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   bool showOptions = false;
@@ -399,8 +392,6 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     );
   }
 
-
-
   @override
   void dispose() {
     super.dispose();
@@ -416,7 +407,7 @@ class SearcherDesktopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SearcherPageCubit>(
-        create: (_) => SearcherPageCubit(),
+      create: (_) => SearcherPageCubit(),
       child: Row(
         children: [
           Column(
@@ -425,9 +416,12 @@ class SearcherDesktopPage extends StatelessWidget {
           BlocBuilder<SearcherPageCubit, SearcherPageState>(
             builder: (BuildContext context, state) {
               switch (state) {
-                case SearcherPageState.editSkills: return const Placeholder();
-                case SearcherPageState.editDecos: return const Placeholder();
-                case SearcherPageState.editArmorFilters: return const Placeholder();
+                case SearcherPageState.editSkills:
+                  return const Placeholder();
+                case SearcherPageState.editDecos:
+                  return const Placeholder();
+                case SearcherPageState.editArmorFilters:
+                  return const Placeholder();
               }
             },
           ),
@@ -436,7 +430,6 @@ class SearcherDesktopPage extends StatelessWidget {
     );
   }
 }
-
 
 /*class SearcherDesktopPage extends StatefulWidget {
   const SearcherDesktopPage({super.key});
@@ -534,8 +527,6 @@ class SearcherMobilePage extends StatefulWidget {
 }
 
 class _SearcherMobilePageState extends _AbstractSearcherPageState<SearcherMobilePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -590,8 +581,8 @@ class _SkillEditorState extends _AbstractSearcherPageState<SkillEditor> {
             ),
             Expanded(
                 child: ListView(
-                  children: _buildSkillList(context, true),
-                )),
+              children: _buildSkillList(context, true),
+            )),
             _skillSelector(250),
             const SizedBox(
               height: 8,
@@ -627,4 +618,3 @@ class _DecoEditorState extends State<DecoEditor> {
     return const Placeholder();
   }
 }
-

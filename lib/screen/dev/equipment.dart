@@ -16,8 +16,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
     List<Widget> widgets = [];
     for (var armor in All.armorList.reversed) {
       //if (armor.rarity == 11) {
-        widgets.add(toWidget(armor, ctx));
-        widgets.add(const Divider());
+      widgets.add(toWidget(armor, ctx));
+      widgets.add(const Divider());
       //}
     }
     widgets.removeLast();
@@ -46,7 +46,10 @@ class _ArmorEditorState extends State<ArmorEditor> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (armor.primary == All.undefined) const Text('') else Text('${armor.primary.name} + ${armor.primaryLv}'),
+                if (armor.primary == All.undefined)
+                  const Text('')
+                else
+                  Text('${armor.primary.name} + ${armor.primaryLv}'),
                 if (armor.secondary != null) Text('${armor.secondary!.name} + ${armor.secondaryLv}'),
               ],
             ),
@@ -107,7 +110,12 @@ class _ArmorEditorState extends State<ArmorEditor> {
                         }
                       }
                       Armor newArmor = armor.copyWith(
-                          primary: skill1!, secondary: skill2, groupBonus: groupBonus, setBonus: setBonus, primaryLv: level1, secondaryLv: level2);
+                          primary: skill1!,
+                          secondary: skill2,
+                          groupBonus: groupBonus,
+                          setBonus: setBonus,
+                          primaryLv: level1,
+                          secondaryLv: level2);
                       setState(() {
                         All.replaceArmor(armor, newArmor);
                       });
@@ -124,8 +132,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
     );
   }
 
-  Row _makeTextField<T>(StateSetter setState, Skill? Function() getter, void Function(Skill?) setter, int Function() lvlGetter,
-      void Function(int) lvlSetter) {
+  Row _makeTextField<T>(StateSetter setState, Skill? Function() getter, void Function(Skill?) setter,
+      int Function() lvlGetter, void Function(int) lvlSetter) {
     var current = getter();
     return Row(
       children: [
@@ -138,8 +146,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
                 l.sort((a, b) {
                   var sa = a.name.toLowerCase().startsWith(t);
                   var sb = b.name.toLowerCase().startsWith(t);
-                  if(sa == sb) return 0;
-                  if(sa && !sb) return -1;
+                  if (sa == sb) return 0;
+                  if (sa && !sb) return -1;
                   return 1;
                 });
                 return l;
@@ -152,7 +160,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
                 });
               },
               initialValue: current != null && current != All.undefined
-                  ? TextEditingValue(text: current.name, selection: TextSelection.collapsed(offset: current.name.length))
+                  ? TextEditingValue(
+                      text: current.name, selection: TextSelection.collapsed(offset: current.name.length))
                   : null),
         ),
         const Spacer(),
@@ -186,7 +195,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
     );
   }
 
-  Row _makeArmorBonusTextField<T>(StateSetter setState, BonusSkill? Function() getter, void Function(BonusSkill?) setter) {
+  Row _makeArmorBonusTextField<T>(
+      StateSetter setState, BonusSkill? Function() getter, void Function(BonusSkill?) setter) {
     var current = getter();
     return Row(
       children: [
@@ -199,8 +209,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
                 l.sort((a, b) {
                   var sa = a.name.toLowerCase().startsWith(t);
                   var sb = b.name.toLowerCase().startsWith(t);
-                  if(sa == sb) return 0;
-                  if(sa && !sb) return -1;
+                  if (sa == sb) return 0;
+                  if (sa && !sb) return -1;
                   return 1;
                 });
                 return l;
@@ -212,7 +222,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
                 });
               },
               initialValue: current != null
-                  ? TextEditingValue(text: current.name, selection: TextSelection.collapsed(offset: current.name.length))
+                  ? TextEditingValue(
+                      text: current.name, selection: TextSelection.collapsed(offset: current.name.length))
                   : null),
         ),
         const Spacer(),

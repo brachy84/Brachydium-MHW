@@ -1,22 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 class CustomAutocomplete<T extends Object> extends StatelessWidget {
   /// Creates an instance of [CustomAutocomplete].
-  const CustomAutocomplete({
-    super.key,
-    required this.optionsBuilder,
-    this.displayStringForOption = RawAutocomplete.defaultStringForOption,
-    this.fieldViewBuilder = _defaultFieldViewBuilder,
-    this.onSelected,
-    this.optionsMaxHeight = 200.0,
-    this.optionsViewBuilder,
-    this.optionsViewOpenDirection = OptionsViewOpenDirection.down,
-    this.initialValue,
-    this.textEditingController,
-    this.focusNode
-  });
+  const CustomAutocomplete(
+      {super.key,
+      required this.optionsBuilder,
+      this.displayStringForOption = RawAutocomplete.defaultStringForOption,
+      this.fieldViewBuilder = _defaultFieldViewBuilder,
+      this.onSelected,
+      this.optionsMaxHeight = 200.0,
+      this.optionsViewBuilder,
+      this.optionsViewOpenDirection = OptionsViewOpenDirection.down,
+      this.initialValue,
+      this.textEditingController,
+      this.focusNode});
 
   /// {@macro flutter.widgets.RawAutocomplete.displayStringForOption}
   final AutocompleteOptionToString<T> displayStringForOption;
@@ -57,7 +55,8 @@ class CustomAutocomplete<T extends Object> extends StatelessWidget {
   /// {@macro flutter.widgets.RawAutocomplete.initialValue}
   final TextEditingValue? initialValue;
 
-  static Widget _defaultFieldViewBuilder(BuildContext context, TextEditingController textEditingController, FocusNode focusNode, VoidCallback onFieldSubmitted) {
+  static Widget _defaultFieldViewBuilder(BuildContext context, TextEditingController textEditingController,
+      FocusNode focusNode, VoidCallback onFieldSubmitted) {
     return AutocompleteField(
       focusNode: focusNode,
       textEditingController: textEditingController,
@@ -73,14 +72,15 @@ class CustomAutocomplete<T extends Object> extends StatelessWidget {
       initialValue: initialValue,
       optionsBuilder: optionsBuilder,
       optionsViewOpenDirection: optionsViewOpenDirection,
-      optionsViewBuilder: optionsViewBuilder ?? (BuildContext context, AutocompleteOnSelected<T> onSelected, Iterable<T> options) {
-        return _AutocompleteOptions<T>(
-          displayStringForOption: displayStringForOption,
-          onSelected: onSelected,
-          options: options,
-          maxOptionsHeight: optionsMaxHeight,
-        );
-      },
+      optionsViewBuilder: optionsViewBuilder ??
+          (BuildContext context, AutocompleteOnSelected<T> onSelected, Iterable<T> options) {
+            return _AutocompleteOptions<T>(
+              displayStringForOption: displayStringForOption,
+              onSelected: onSelected,
+              options: options,
+              maxOptionsHeight: optionsMaxHeight,
+            );
+          },
       onSelected: onSelected,
       textEditingController: textEditingController ?? (focusNode == null ? null : TextEditingController()),
       focusNode: focusNode ?? (textEditingController == null ? null : FocusNode()),
@@ -90,7 +90,8 @@ class CustomAutocomplete<T extends Object> extends StatelessWidget {
 
 // The default Material-style Autocomplete text field.
 class AutocompleteField extends StatelessWidget {
-  const AutocompleteField({super.key,
+  const AutocompleteField({
+    super.key,
     required this.focusNode,
     required this.textEditingController,
     required this.onFieldSubmitted,
@@ -149,21 +150,19 @@ class _AutocompleteOptions<T extends Object> extends StatelessWidget {
                 onTap: () {
                   onSelected(option);
                 },
-                child: Builder(
-                    builder: (BuildContext context) {
-                      final bool highlight = AutocompleteHighlightedOption.of(context) == index;
-                      if (highlight) {
-                        SchedulerBinding.instance.addPostFrameCallback((Duration timeStamp) {
-                          Scrollable.ensureVisible(context, alignment: 0.5);
-                        });
-                      }
-                      return Container(
-                        color: highlight ? Theme.of(context).focusColor : null,
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(displayStringForOption(option)),
-                      );
-                    }
-                ),
+                child: Builder(builder: (BuildContext context) {
+                  final bool highlight = AutocompleteHighlightedOption.of(context) == index;
+                  if (highlight) {
+                    SchedulerBinding.instance.addPostFrameCallback((Duration timeStamp) {
+                      Scrollable.ensureVisible(context, alignment: 0.5);
+                    });
+                  }
+                  return Container(
+                    color: highlight ? Theme.of(context).focusColor : null,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(displayStringForOption(option)),
+                  );
+                }),
               );
             },
           ),

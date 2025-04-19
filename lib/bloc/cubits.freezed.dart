@@ -24,8 +24,7 @@ mixin _$SearcherState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $SearcherStateCopyWith<SearcherState> get copyWith =>
-      _$SearcherStateCopyWithImpl<SearcherState>(
-          this as SearcherState, _$identity);
+      _$SearcherStateCopyWithImpl<SearcherState>(this as SearcherState, _$identity);
 
   @override
   bool operator ==(Object other) {
@@ -33,18 +32,13 @@ mixin _$SearcherState {
         (other.runtimeType == runtimeType &&
             other is SearcherState &&
             const DeepCollectionEquality().equals(other.skills, skills) &&
-            const DeepCollectionEquality()
-                .equals(other.armorFilters, armorFilters) &&
-            (identical(other.useMyDeco, useMyDeco) ||
-                other.useMyDeco == useMyDeco));
+            const DeepCollectionEquality().equals(other.armorFilters, armorFilters) &&
+            (identical(other.useMyDeco, useMyDeco) || other.useMyDeco == useMyDeco));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(skills),
-      const DeepCollectionEquality().hash(armorFilters),
-      useMyDeco);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(skills),
+      const DeepCollectionEquality().hash(armorFilters), useMyDeco);
 
   @override
   String toString() {
@@ -54,19 +48,13 @@ mixin _$SearcherState {
 
 /// @nodoc
 abstract mixin class $SearcherStateCopyWith<$Res> {
-  factory $SearcherStateCopyWith(
-          SearcherState value, $Res Function(SearcherState) _then) =
-      _$SearcherStateCopyWithImpl;
+  factory $SearcherStateCopyWith(SearcherState value, $Res Function(SearcherState) _then) = _$SearcherStateCopyWithImpl;
   @useResult
-  $Res call(
-      {List<Stack<SkillTemplate>> skills,
-      List<Stack<ArmorFilter>> armorFilters,
-      bool useMyDeco});
+  $Res call({List<Stack<SkillTemplate>> skills, List<Stack<ArmorFilter>> armorFilters, bool useMyDeco});
 }
 
 /// @nodoc
-class _$SearcherStateCopyWithImpl<$Res>
-    implements $SearcherStateCopyWith<$Res> {
+class _$SearcherStateCopyWithImpl<$Res> implements $SearcherStateCopyWith<$Res> {
   _$SearcherStateCopyWithImpl(this._self, this._then);
 
   final SearcherState _self;
@@ -142,18 +130,13 @@ class _SearcherState extends SearcherState {
         (other.runtimeType == runtimeType &&
             other is _SearcherState &&
             const DeepCollectionEquality().equals(other._skills, _skills) &&
-            const DeepCollectionEquality()
-                .equals(other._armorFilters, _armorFilters) &&
-            (identical(other.useMyDeco, useMyDeco) ||
-                other.useMyDeco == useMyDeco));
+            const DeepCollectionEquality().equals(other._armorFilters, _armorFilters) &&
+            (identical(other.useMyDeco, useMyDeco) || other.useMyDeco == useMyDeco));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_skills),
-      const DeepCollectionEquality().hash(_armorFilters),
-      useMyDeco);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_skills),
+      const DeepCollectionEquality().hash(_armorFilters), useMyDeco);
 
   @override
   String toString() {
@@ -162,22 +145,16 @@ class _SearcherState extends SearcherState {
 }
 
 /// @nodoc
-abstract mixin class _$SearcherStateCopyWith<$Res>
-    implements $SearcherStateCopyWith<$Res> {
-  factory _$SearcherStateCopyWith(
-          _SearcherState value, $Res Function(_SearcherState) _then) =
+abstract mixin class _$SearcherStateCopyWith<$Res> implements $SearcherStateCopyWith<$Res> {
+  factory _$SearcherStateCopyWith(_SearcherState value, $Res Function(_SearcherState) _then) =
       __$SearcherStateCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {List<Stack<SkillTemplate>> skills,
-      List<Stack<ArmorFilter>> armorFilters,
-      bool useMyDeco});
+  $Res call({List<Stack<SkillTemplate>> skills, List<Stack<ArmorFilter>> armorFilters, bool useMyDeco});
 }
 
 /// @nodoc
-class __$SearcherStateCopyWithImpl<$Res>
-    implements _$SearcherStateCopyWith<$Res> {
+class __$SearcherStateCopyWithImpl<$Res> implements _$SearcherStateCopyWith<$Res> {
   __$SearcherStateCopyWithImpl(this._self, this._then);
 
   final _SearcherState _self;

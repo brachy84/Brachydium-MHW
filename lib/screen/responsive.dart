@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SimplePage extends StatelessWidget {
@@ -23,7 +22,8 @@ class SimplePage extends StatelessWidget {
 }
 
 class ResponsivePage extends StatelessWidget {
-  const ResponsivePage({super.key, required this.mobile, required this.tablet, required this.desktop, required this.title, this.drawer});
+  const ResponsivePage(
+      {super.key, required this.mobile, required this.tablet, required this.desktop, required this.title, this.drawer});
 
   final String title;
   final Widget mobile;

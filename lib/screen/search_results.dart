@@ -53,7 +53,8 @@ class DataStream<T> {
 
   @override
   bool operator ==(Object other) {
-      return identical(this, other) || (other.runtimeType == runtimeType && other is DataStream && _stream == other._stream);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is DataStream && _stream == other._stream);
   }
 }
 
@@ -133,7 +134,8 @@ class _ProgressBarState extends State<ProgressBar> {
   void didUpdateWidget(covariant ProgressBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     // ensures that the armor set list is updated when a new search is happening
-    _listenStream(widget.progressStream != oldWidget.progressStream || widget.armorSetStream != oldWidget.armorSetStream);
+    _listenStream(
+        widget.progressStream != oldWidget.progressStream || widget.armorSetStream != oldWidget.armorSetStream);
   }
 
   @override
@@ -264,7 +266,11 @@ class _ArmorSetListState extends State<ArmorSetList> {
       set.pieces[1].equipment.localizedName,
       set.pieces[2].equipment.localizedName
     ];
-    List<String> display2 = [set.pieces[3].equipment.localizedName, set.pieces[4].equipment.localizedName, set.charm.localizedName];
+    List<String> display2 = [
+      set.pieces[3].equipment.localizedName,
+      set.pieces[4].equipment.localizedName,
+      set.charm.localizedName
+    ];
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: InkWell(
@@ -330,7 +336,8 @@ class _ArmorSetListState extends State<ArmorSetList> {
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+                      decoration:
+                          BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
                       padding: const EdgeInsets.all(8),
                       child: ListView(
                         children: _buildSkills(set),

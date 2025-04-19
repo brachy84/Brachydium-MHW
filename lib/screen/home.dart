@@ -12,7 +12,8 @@ class HomeDrawer extends StatelessWidget {
 
   final bool isHome;
 
-  Widget makeMenuCard(BuildContext context, String title, HomeState state, [Widget icon = const Icon(Icons.chevron_right)]) {
+  Widget makeMenuCard(BuildContext context, String title, HomeState state,
+      [Widget icon = const Icon(Icons.chevron_right)]) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: MaterialButton(
@@ -41,7 +42,11 @@ class HomeDrawer extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            const Center(child: Text('Menu', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),)),
+            const Center(
+                child: Text(
+              'Menu',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+            )),
             makeMenuCard(context, 'Set Searcher', HomeState.setSearcher),
             const SizedBox(
               height: 8,
@@ -63,15 +68,18 @@ class HomePageMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          switch (state) {
-            case HomeState.setSearcher: return const SearcherMobilePage();
-            case HomeState.decorations: return const Placeholder(); // TODO
-            case HomeState.armorSets: return const Placeholder();
-          }
-        }
-    );
+    return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+      switch (state) {
+        case HomeState.setSearcher:
+          return const SearcherMobilePage();
+        case HomeState.decorations:
+          return const Placeholder(); // TODO
+        case HomeState.armorSets:
+          return const Placeholder();
+        case HomeState.results:
+          return const Placeholder();
+      }
+    });
   }
 }
 
@@ -80,22 +88,21 @@ class HomePageDesktop2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          switch (state) {
-            case HomeState.setSearcher: return const SearcherDesktop();
-            case HomeState.decorations: return const Placeholder(); // TODO
-            case HomeState.armorSets: return const Placeholder();
-          }
-        }
-    );
+    return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+      switch (state) {
+        case HomeState.results: // desktop doesnt have its own results page
+        case HomeState.setSearcher:
+          return const SearcherDesktop();
+        case HomeState.decorations:
+          return const Placeholder(); // TODO
+        case HomeState.armorSets:
+          return const Placeholder();
+      }
+    });
   }
 }
 
-
 abstract class _HomePageState<T extends StatefulWidget> extends State<T> {}
-
-
 
 Widget? _currentDesktopWidget;
 int _activeDesktop = -1;
@@ -108,8 +115,8 @@ class HomePageDesktop extends StatefulWidget {
 }
 
 class _HomePageDesktopState extends State<HomePageDesktop> {
-
-  Widget makeMenuCard(BuildContext context, int index, String title, Widget page, [Widget icon = const Icon(Icons.chevron_right)]) {
+  Widget makeMenuCard(BuildContext context, int index, String title, Widget page,
+      [Widget icon = const Icon(Icons.chevron_right)]) {
     if (_currentDesktopWidget == null) {
       _currentDesktopWidget = page;
       _activeDesktop = index;
@@ -159,8 +166,14 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
             ],
           ),
         ),
-        const VerticalDivider(thickness: 4,),
-        Expanded(child: _currentDesktopWidget ?? const SizedBox(width: 1,))
+        const VerticalDivider(
+          thickness: 4,
+        ),
+        Expanded(
+            child: _currentDesktopWidget ??
+                const SizedBox(
+                  width: 1,
+                ))
       ],
     );
   }
