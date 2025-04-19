@@ -415,7 +415,6 @@ class Thread {
 
   @pragma('vm:entry-point')
   static _entry(SendPort port) async {
-    final log = Talker();
     var eventQueue = [];
     var processMsgQueue = [];
     ReceivePort receivePort = ReceivePort();

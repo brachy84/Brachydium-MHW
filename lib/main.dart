@@ -6,12 +6,9 @@ import 'package:brachys_armor_set_searcher/data/set_finder.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:talker/talker.dart';
 import 'package:window_size/window_size.dart';
 
 import 'screen/home.dart';
-
-final log = Talker();
 
 bool _skillEditMode = true;
 
