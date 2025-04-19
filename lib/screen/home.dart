@@ -2,7 +2,6 @@ import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/screen/armor_sets.dart';
 import 'package:brachys_armor_set_searcher/screen/decoration.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
-import 'package:brachys_armor_set_searcher/screen/searcher.dart';
 import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,12 +70,10 @@ class HomePageMobile extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       switch (state) {
         case HomeState.setSearcher:
-          return const SearcherMobilePage();
+          return const SearcherMobile();
         case HomeState.decorations:
           return const Placeholder(); // TODO
         case HomeState.armorSets:
-          return const Placeholder();
-        case HomeState.results:
           return const Placeholder();
       }
     });
@@ -90,7 +87,6 @@ class HomePageDesktop2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       switch (state) {
-        case HomeState.results: // desktop doesnt have its own results page
         case HomeState.setSearcher:
           return const SearcherDesktop();
         case HomeState.decorations:
@@ -154,7 +150,7 @@ class _HomePageDesktopState extends State<HomePageDesktop> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              makeMenuCard(context, 0, 'Set Searcher', const SearcherDesktopPage()),
+              makeMenuCard(context, 0, 'Set Searcher', const SearcherDesktop()),
               const SizedBox(
                 height: 8,
               ),

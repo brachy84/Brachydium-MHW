@@ -542,6 +542,7 @@ class SearchManager {
   }
 
   static void _finalizeProcess() {
+    result?.processedArmorSets.add(count);
     result?.processedArmorSets.close();
     result?.armorSetStream.close();
     result = null;

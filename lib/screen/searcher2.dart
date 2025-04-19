@@ -1,23 +1,21 @@
-import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/set_finder.dart' as ass;
+import 'package:brachys_armor_set_searcher/screen/decoration.dart';
+import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:brachys_armor_set_searcher/screen/search_results.dart';
+import 'package:brachys_armor_set_searcher/screen/skill_editor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_portal/flutter_portal.dart';
 
-import '../data/equipment.dart';
-
-Widget _option(BuildContext context, String title, SearcherPageState pageState, Widget child) {
+Widget _option(BuildContext context, String title, SearcherPageState pageState, Widget child, bool mobile) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 16),
     child: MaterialButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       color: Colors.white.withAlpha(20),
       onPressed: () {
-        context.read<SearcherPageCubit>().updateScreen(pageState);
-        //Navigator.of(context).push<void>(MaterialPageRoute(builder: (context) => SimplePage(body: page, title: title)));
+        _updateScreen(context, pageState, mobile);
       },
       child: Column(
         children: [
@@ -56,7 +54,7 @@ Widget _makeSkillChip(String text) {
   );
 }
 
-Widget _skillsPreview(BuildContext context, SearcherState state) {
+Widget _skillsPreview(BuildContext context, SearcherArgsState state) {
   if (state.skills.isEmpty) {
     return const Padding(
       padding: EdgeInsets.only(left: 4),
@@ -74,7 +72,7 @@ Widget _skillsPreview(BuildContext context, SearcherState state) {
   );
 }
 
-Widget _decosOption(BuildContext context) {
+Widget _decosOption(BuildContext context, bool mobile) {
   return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(20)),
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -94,7 +92,7 @@ Widget _decosOption(BuildContext context) {
             padding: const EdgeInsets.all(4),
             constraints: const BoxConstraints(minWidth: double.infinity),
             //child: SizedBox(height: 60,),
-            child: BlocBuilder<SearcherCubit, SearcherState>(
+            child: BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
               buildWhen: (a, b) => a.useMyDeco != b.useMyDeco,
               builder: (context, state) {
                 return Column(
@@ -102,7 +100,7 @@ Widget _decosOption(BuildContext context) {
                     RadioListTile(
                       value: false,
                       groupValue: state.useMyDeco,
-                      onChanged: (val) => context.read<SearcherCubit>().useMyDeco(val ?? true),
+                      onChanged: (val) => context.read<SearcherArgsCubit>().useMyDeco(val ?? true),
                       title: const Text('Use all decos'),
                     ),
                     Row(
@@ -111,12 +109,12 @@ Widget _decosOption(BuildContext context) {
                           child: RadioListTile(
                             value: true,
                             groupValue: state.useMyDeco,
-                            onChanged: (val) => context.read<SearcherCubit>().useMyDeco(val ?? true),
+                            onChanged: (val) => context.read<SearcherArgsCubit>().useMyDeco(val ?? true),
                             title: const Text('Use my decos'),
                           ),
                         ),
                         MaterialButton(
-                          onPressed: () => context.read<SearcherPageCubit>().updateScreen(SearcherPageState.editDecos),
+                          onPressed: () => _updateScreen(context, SearcherPageState.editDecos, mobile),
                           color: HSLColor.fromColor(Colors.deepPurple).withSaturation(0.4).toColor(),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           child: const Padding(
@@ -137,74 +135,54 @@ Widget _decosOption(BuildContext context) {
       ));
 }
 
-List<Widget> _makeSearcherOptions(BuildContext context) {
+List<Widget> _makeSearcherOptions(BuildContext context, bool mobile) {
   return [
     _option(
         context,
         'Edit Skills',
         SearcherPageState.editSkills,
-        BlocBuilder<SearcherCubit, SearcherState>(
+        BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
           buildWhen: (a, b) => !listEquals(a.skills, b.skills),
           builder: (context, state) {
             return _skillsPreview(context, state);
           },
-        )),
-    _decosOption(context)
+        ),
+        mobile),
+    _decosOption(context, mobile),
+    if (mobile)
+      BlocBuilder<SearchResultCubit, SearchResultState>(
+        builder: (context, state) {
+          if (state.hasResult) {
+            return _option(context, 'Results', SearcherPageState.results,
+                state.searching ? Text('Searching') : Text('Done'), true);
+          }
+          return SizedBox.shrink();
+        },
+      )
   ];
 }
 
-Widget _skillTile(BuildContext context, ass.Stack<SkillTemplate> skill, bool mobile) {
-  int max = skill.value.actualMaxLevel;
-  int level = skill.value.getActualLevel(skill.amount);
-  double sliderMax = max.toDouble();
-  double sliderMin = 1.0;
-  Widget tile = Container(
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(color: Colors.white.withAlpha(20), borderRadius: BorderRadius.circular(8)),
-      child: Row(
-        children: [
-          Expanded(
-              flex: 66,
-              child: Text(
-                skill.value.localizedName,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              )),
-          Text('Lv: $level'),
-          if (max > 1)
-            Expanded(
-              flex: 33,
-              child: Slider(
-                value: clampDouble(level.toDouble(), sliderMin, sliderMax),
-                onChanged: (val) {
-                  int newLevel = skill.value.getRequiredLevels(val.toInt());
-                  if (skill.amount != newLevel) {
-                    context.read<SearcherCubit>().updateSkillLevel(skill.value, newLevel);
-                  }
-                },
-                min: sliderMin,
-                max: sliderMax,
-                divisions: max - 1,
-              ),
-            )
-          else
-            Expanded(flex: 33, child: Container()),
-          if (!mobile)
-            IconButton(
-                onPressed: () => context.read<SearcherCubit>().removeSkill(skill.value),
-                icon: Icon(
-                  Icons.remove_circle_outline,
-                  color: Colors.red.shade700,
-                ))
-        ],
-      ));
-  if (mobile) {
-    return Dismissible(
-        key: Key(skill.value.name),
-        onDismissed: (dir) => context.read<SearcherCubit>().removeSkill(skill.value),
-        child: tile);
+void _updateScreen(BuildContext context, SearcherPageState state, bool mobile) {
+  if (!mobile) {
+    context.read<SearcherPageCubit>().updateScreen(state);
+    return;
   }
-  return tile;
+  Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+    switch (state) {
+      case SearcherPageState.editSkills:
+        return SimplePage(body: const SkillEditor(doneButton: true), title: 'Skill Editor');
+      case SearcherPageState.editArmorFilters:
+        return SimplePage(body: Placeholder(), title: 'Armor filter Editor');
+      case SearcherPageState.editDecos:
+        return SimplePage(body: DecoEditor(), title: 'Deco Editor');
+      case SearcherPageState.results:
+        return SimplePage(
+            body: SearchResultPage(
+              mobile: true,
+            ),
+            title: 'Search Results');
+    }
+  }));
 }
 
 class SearcherDesktop extends StatelessWidget {
@@ -218,7 +196,7 @@ class SearcherDesktop extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 400),
           padding: const EdgeInsets.all(8),
           child: Column(children: [
-            ..._makeSearcherOptions(context),
+            ..._makeSearcherOptions(context, false),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
@@ -238,7 +216,9 @@ class SearcherDesktop extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: () {
-                context.read<SearchResultCubit>().startSearch(context.read<SearcherCubit>().state);
+                context.read<SearchResultCubit>().startSearch(context
+                    .read<SearcherArgsCubit>()
+                    .state);
               },
               color: Colors.green,
               minWidth: double.infinity,
@@ -257,6 +237,7 @@ class SearcherDesktop extends StatelessWidget {
         Expanded(
           child: BlocBuilder<SearcherPageCubit, SearcherPageState>(builder: (context, state) {
             switch (state) {
+              case SearcherPageState.results:
               case SearcherPageState.editSkills:
                 return const SkillEditor(doneButton: false);
               case SearcherPageState.editDecos:
@@ -266,275 +247,66 @@ class SearcherDesktop extends StatelessWidget {
             }
           }),
         ),
-        const Expanded(child: SearchResultPage())
+        Expanded(child: SearchResultPage(mobile: false))
       ],
     );
   }
 }
 
-abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T>
-    with SingleTickerProviderStateMixin {
-  final TextEditingController _controller = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
-  AnimationController? _animationController;
+class SearcherMobile extends StatelessWidget {
+  const SearcherMobile({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
-  }
-
-  Widget _optionsList(BuildContext context, SearcherState state, SkillSelectorState selectorState, double maxHeight) {
-    if (!selectorState.shown) return const SizedBox.shrink();
-    List<Widget> options = [];
-    List<SkillTemplate> skills = List.of(All.skills);
-    skills.addAll(All.armorBonuses);
-    if (selectorState.searchValue.isEmpty) {
-      if (state.skills.isNotEmpty) {
-        skills = skills.where((skill) => !state.hasSkill(skill)).toList();
-      }
-    } else {
-      skills =
-          skills.where((skill) => skill.matchesSearch(selectorState.searchValue) && !state.hasSkill(skill)).toList();
-    }
-    if (skills.isEmpty) {
-      options.add(const Padding(
-        padding: EdgeInsets.all(4),
-        child: Row(
-          children: [
-            Text(
-              'No matches',
-              style: TextStyle(fontSize: 15),
-            ),
-            Padding(padding: EdgeInsets.only(left: 4)),
-            Icon(
-              Icons.accessible_forward,
-              color: Colors.red,
-            )
-          ],
-        ),
-      ));
-    } else {
-      skills.sort((a, b) => a.compareForSearch(b, selectorState.searchValue));
-      for (SkillTemplate skill in skills) {
-        options.add(InkWell(
-            onTap: () {
-              context.read<SearcherCubit>().addSkill(skill);
-            },
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              child: Text(
-                skill.localizedName,
-                style: const TextStyle(fontSize: 15),
-              ),
-            )));
-        options.add(const Divider(
-          height: 4,
-          thickness: 0.5,
-        ));
-      }
-      options.removeLast();
-    }
-    Color color = const Color.fromARGB(0, 30, 30, 30);
-    return AnimatedBuilder(
-      animation: _animationController!,
-      builder: (BuildContext context, Widget? child) {
-        double value = Curves.easeOutQuad.transform(_animationController!.value);
-        double scale = value * 0.1 + 0.90;
-        return Transform.scale(
-            scale: scale,
-            child: ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: maxHeight),
-                child: BlurryContainer(
-                  blur: 10,
-                  color: color.withAlpha((100 * value + 50).toInt()),
-                  padding: const EdgeInsets.all(4),
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  child: child!,
-                )));
-      },
-      child: TapRegion(
-        groupId: "skill_selector",
-        consumeOutsideTaps: true,
-        onTapOutside: (event) {
-          _hideOptions(context, selectorState);
-        },
-        child: ListView(
-          shrinkWrap: true,
-          children: options,
-        ),
-      ),
-    );
-  }
-
-  void _showOptions(BuildContext context, SkillSelectorState state) {
-    if (state.shown) return;
-    context.read<SkillSelectorCubit>().updateShown(true);
-    _animationController!.forward(from: 0);
-  }
-
-  void _hideOptions(BuildContext context, SkillSelectorState state) {
-    if (!state.shown) return;
-    context.read<SkillSelectorCubit>().updateShown(false);
-    _animationController!.value = 0;
-  }
-
-  void _updateOptions(BuildContext context, String value) {
-    context.read<SkillSelectorCubit>().update(true, value);
-    _animationController!.forward();
-  }
-
-  List<Widget> _buildSkillList(BuildContext context, SearcherState state, bool mobile) {
-    List<Widget> skills = [];
-    /*_skills.sort((a, b) {
-      return b.amount.compareTo(a.amount);
-    });*/
-    for (ass.Stack<SkillTemplate> skill in state.skills) {
-      skills.add(_skillTile(context, skill, true));
-    }
-    return skills;
-  }
-
-  Widget _skillSelector(SearcherState state, double maxListHeight) {
-    //return AutoCompleteField(link: _link);
-    return BlocBuilder<SkillSelectorCubit, SkillSelectorState>(
-      builder: (context, selectorState) {
-        return PortalTarget(
-            portalFollower: Material(
-              color: Colors.black.withAlpha(0),
-              child: _optionsList(context, state, selectorState, maxListHeight),
-            ),
-            visible: selectorState.shown,
-            anchor: const Aligned(
-              follower: Alignment.bottomLeft,
-              target: Alignment.topLeft,
-              portal: Alignment.topCenter,
-              //alignToPortal: AxisFlag(y: true, x: true)
-            ),
-            child: TapRegion(
-              groupId: "skill_selector",
-              onTapOutside: (event) => _hideOptions(context, selectorState),
-              child: TextField(
-                controller: _controller,
-                onTap: () => _showOptions(context, selectorState),
-                onChanged: (val) => _updateOptions(context, val),
-                onSubmitted: (val) => _hideOptions(context, selectorState),
-                onEditingComplete: () => _hideOptions(context, selectorState),
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(32)),
-                    hintText: 'Add Skill',
-                    hintStyle: TextStyle(color: Colors.white.withAlpha(80)),
-                    icon: const Icon(Icons.search)),
-              ),
-            ));
-      },
-    );
-  }
-
-  Widget _searchButton() {
+  Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      constraints: const BoxConstraints(minWidth: 300),
-      child: MaterialButton(
-        onPressed: () {},
-        color: Colors.green,
-        child: const Text("Search"),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-    _focusNode.dispose();
-    _animationController!.dispose();
-  }
-}
-
-class SkillEditor extends StatefulWidget {
-  const SkillEditor({super.key, required this.doneButton});
-
-  final bool doneButton;
-
-  @override
-  State<SkillEditor> createState() => _SkillEditorState();
-}
-
-class _SkillEditorState extends _AbstractSearcherPageState<SkillEditor> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
+      constraints: const BoxConstraints(maxWidth: 400),
       padding: const EdgeInsets.all(8),
-      child: Portal(
-        child: Column(
-          children: [
-            MaterialButton(
-              onPressed: () {
-                showDialog<bool>(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: const Text('Remove All Skills?'),
-                        actions: [
-                          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('No')),
-                          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Yes')),
-                        ],
-                      );
-                    }).then((val) {
-                  if (val ?? false) {
-                    context.read<SearcherCubit>().clearSkills();
-                  }
-                });
-              },
-              minWidth: double.infinity,
-              height: 48,
-              color: Colors.red.withAlpha(150),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              child: const Text('Remove all skills'),
-            ),
-            Expanded(
-                child: BlocBuilder<SearcherCubit, SearcherState>(
-              buildWhen: (a, b) => !listEquals(a.skills, b.skills),
-              builder: (context, state) {
-                return ListView(
-                  children: _buildSkillList(context, state, true),
-                );
-              },
-            )),
-            _skillSelector(context.read<SearcherCubit>().state, 250),
-            const SizedBox(
-              height: 8,
-            ),
-            if (widget.doneButton)
-              MaterialButton(
-                onPressed: () => Navigator.of(context).pop(),
+      child: Column(children: [
+        ..._makeSearcherOptions(context, true),
+        const Spacer(),
+        BlocBuilder<SearchResultCubit, SearchResultState>(
+          builder: (context, state) {
+            if (state.searching) {
+              return MaterialButton(
+                onPressed: () {
+                  ass.SearchManager.cancelArmorSearch();
+                },
+                color: Colors.red.shade700,
                 minWidth: double.infinity,
-                height: 48,
-                color: Colors.green,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                height: 64,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 child: const Text(
-                  'Done',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                  'Cancel Search',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                 ),
-              )
-          ],
-        ),
-      ),
+              );
+            } else {
+              return MaterialButton(
+                onPressed: () {
+                  context.read<SearchResultCubit>().startSearch(context
+                      .read<SearcherArgsCubit>()
+                      .state);
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) =>
+                          SimplePage(
+                              body: SearchResultPage(
+                                mobile: true,
+                              ),
+                              title: 'Search Results')));
+                },
+                color: state.hasResult ? Colors.blue.shade700 : Colors.green,
+                minWidth: double.infinity,
+                height: 64,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: Text(
+                  state.hasResult ? 'Restart Search' : 'Start Search',
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                ),
+              );
+            }
+          },
+        )
+      ]),
     );
-  }
-}
-
-class DecoEditor extends StatefulWidget {
-  const DecoEditor({super.key});
-
-  @override
-  State<DecoEditor> createState() => _DecoEditorState();
-}
-
-class _DecoEditorState extends State<DecoEditor> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

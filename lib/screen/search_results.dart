@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/cubits.dart';
 import '../data/equipment.dart';
+import '../data/set_finder.dart' as ass;
 
 class DataStream<T> {
   final StreamController<T> controller;
@@ -14,7 +15,8 @@ class DataStream<T> {
   DataStream._(this.controller, this._stream);
 
   factory DataStream(StreamController<T> controller) {
-    return DataStream._(controller, controller.stream);
+    var stream = DataStream._(controller, controller.stream.asBroadcastStream());
+    return stream;
   }
 
   void add(T data) {
@@ -25,47 +27,59 @@ class DataStream<T> {
     return controller.close();
   }
 
-  //Stream<T> get stream => _stream;
-
   bool get isClosed => controller.isClosed;
 
-  Future<StreamSubscription<T>?> listen(void Function(T)? onData) async {
+  StreamSubscription<T>? listen(void Function(T)? onData) {
     if (isClosed) return null;
-    if (!_stream.isBroadcast) await cancelSubscriptions();
-    return _stream.listen(onData);
+    var sub = _stream.listen(onData);
+    _subscriptions.add(sub);
+    return sub;
   }
 
   bool get hasSubscriptions => _subscriptions.isNotEmpty;
+}
 
-  Future<void> cancelSubscriptions() async {
-    for (var sub in _subscriptions) {
-      await sub.cancel();
+class Observable {
+  void Function()? observe;
+
+  notify() {
+    if (observe != null) {
+      observe!();
     }
-    _subscriptions.clear();
-  }
-
-  void asBroadcastStream() {
-    if (!_stream.isBroadcast) {
-      cancelSubscriptions();
-      _stream = _stream.asBroadcastStream();
-    }
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DataStream && _stream == other._stream);
   }
 }
 
+ass.SearchResult? result;
+int _progress = 0;
+List<ArmorSetProperties> _foundSets = [];
+
 class SearchResultPage extends StatelessWidget {
-  const SearchResultPage({super.key});
+  SearchResultPage({super.key, required this.mobile});
+
+  final bool mobile;
+  final Observable progressObservable = Observable();
+  final Observable setsObservable = Observable();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<SearchResultCubit, SearchResultState>(builder: (context, state) {
+          if (result != state.searchResult) {
+            _foundSets.clear();
+            _progress = 0;
+            result = state.searchResult;
+            if (result != null) {
+              result!.armorSetStream.listen((d) {
+                _foundSets.add(ArmorSetProperties(d));
+                setsObservable.notify();
+              });
+              result!.processedArmorSets.listen((d) {
+                _progress = d;
+                progressObservable.notify();
+              });
+            }
+          }
           if (!state.hasResult) {
             return const Center(
               child: Text(
@@ -75,53 +89,58 @@ class SearchResultPage extends StatelessWidget {
             );
           }
           // broadcast so we can listen here for total set amount and in list for the sets
-          state.searchResult!.armorSetStream.asBroadcastStream();
           return Column(children: [
-            ProgressBar(
-                progressStream: state.searchResult!.processedArmorSets,
-                armorSetStream: state.searchResult!.armorSetStream,
-                totalCount: state.searchResult!.totalArmorSets),
+            ProgressBar(observable: progressObservable, totalCount: state.searchResult!.totalArmorSets),
             Expanded(
-                child: Container(
-              child: ArmorSetList(armorSetStream: state.searchResult!.armorSetStream),
-            ))
+                child: ArmorSetList(
+              observable: setsObservable,
+            )),
+            if (state.searching)
+              MaterialButton(
+                onPressed: () {
+                  ass.SearchManager.cancelArmorSearch();
+                },
+                color: Colors.red.shade700,
+                minWidth: double.infinity,
+                height: 64,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: const Text(
+                  'Cancel Search',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                ),
+              )
+            else
+              MaterialButton(
+                onPressed: () {
+                  context.read<SearchResultCubit>().startSearch(context.read<SearcherArgsCubit>().state);
+                },
+                color: Colors.blue.shade700,
+                minWidth: double.infinity,
+                height: 64,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: const Text(
+                  'Restart Search',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                ),
+              )
           ]);
         }));
   }
 }
 
 class ProgressBar extends StatefulWidget {
-  const ProgressBar({super.key, required this.progressStream, required this.armorSetStream, required this.totalCount});
+  const ProgressBar({super.key, required this.observable, required this.totalCount});
 
   final int totalCount;
-  final DataStream<int> progressStream;
-  final DataStream<ArmorSet> armorSetStream;
+  final Observable observable;
 
   @override
   State<ProgressBar> createState() => _ProgressBarState();
 }
 
 class _ProgressBarState extends State<ProgressBar> {
-  int progress = 0;
-  int foundSets = 0;
-
-  void _listenStream([bool resetData = true]) async {
-    await widget.progressStream.cancelSubscriptions();
-    await widget.armorSetStream.cancelSubscriptions();
-    if (resetData) {
-      progress = 0;
-      foundSets = 0;
-    }
-    widget.progressStream.listen((p) {
-      setState(() {
-        progress = p;
-      });
-    });
-    widget.armorSetStream.listen((_) {
-      setState(() {
-        foundSets++;
-      });
-    });
+  void _listenStream() async {
+    widget.observable.observe = () => setState(() {});
   }
 
   @override
@@ -134,8 +153,7 @@ class _ProgressBarState extends State<ProgressBar> {
   void didUpdateWidget(covariant ProgressBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     // ensures that the armor set list is updated when a new search is happening
-    _listenStream(
-        widget.progressStream != oldWidget.progressStream || widget.armorSetStream != oldWidget.armorSetStream);
+    _listenStream();
   }
 
   @override
@@ -147,8 +165,7 @@ class _ProgressBarState extends State<ProgressBar> {
   @override
   void dispose() {
     super.dispose();
-    widget.armorSetStream.cancelSubscriptions();
-    widget.progressStream.cancelSubscriptions();
+    widget.observable.observe = null;
   }
 
   @override
@@ -159,9 +176,9 @@ class _ProgressBarState extends State<ProgressBar> {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white.withAlpha(40)),
         child: Stack(
           children: [
-            if (widget.totalCount > 0 && progress > 0)
+            if (widget.totalCount > 0 && _progress > 0)
               FractionallySizedBox(
-                widthFactor: progress / widget.totalCount,
+                widthFactor: _progress / widget.totalCount,
                 child: Container(
                   height: 32,
                   constraints: const BoxConstraints(minWidth: double.infinity),
@@ -169,7 +186,7 @@ class _ProgressBarState extends State<ProgressBar> {
                 ),
               ),
             Center(
-              child: Text('$progress / ${widget.totalCount}  -  $foundSets'),
+              child: Text('$_progress / ${widget.totalCount}  -  ${_foundSets.length}'),
             )
           ],
         ));
@@ -201,27 +218,17 @@ extension InsertSorted<T> on List<T> {
 }
 
 class ArmorSetList extends StatefulWidget {
-  const ArmorSetList({super.key, required this.armorSetStream});
+  const ArmorSetList({super.key, required this.observable});
 
-  final DataStream<ArmorSet> armorSetStream;
+  final Observable observable;
 
   @override
   State<ArmorSetList> createState() => _ArmorSetListState();
 }
 
 class _ArmorSetListState extends State<ArmorSetList> {
-  final List<ArmorSetProperties> armorSets = [];
-
-  void _listenStream([bool resetData = true]) async {
-    await widget.armorSetStream.cancelSubscriptions();
-    if (resetData) {
-      armorSets.clear();
-    }
-    widget.armorSetStream.listen((set) {
-      setState(() {
-        armorSets.addSorted(ArmorSetProperties(set), (a, b) => a.compareEmptyTotalWeightedSlots(b));
-      });
-    });
+  void _listenStream() async {
+    widget.observable.observe = () => setState(() {});
   }
 
   @override
@@ -234,7 +241,7 @@ class _ArmorSetListState extends State<ArmorSetList> {
   void didUpdateWidget(covariant ArmorSetList oldWidget) {
     super.didUpdateWidget(oldWidget);
     // ensures that the armor set list is updated when a new search is happening
-    _listenStream(widget.armorSetStream != oldWidget.armorSetStream);
+    _listenStream();
   }
 
   @override
@@ -246,16 +253,16 @@ class _ArmorSetListState extends State<ArmorSetList> {
   @override
   void dispose() {
     super.dispose();
-    widget.armorSetStream.cancelSubscriptions();
+    widget.observable.observe = null;
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: armorSets.length,
+        itemCount: _foundSets.length,
         prototypeItem: _buildArmorSetTile(context, ArmorSetProperties.dummy, 0),
         itemBuilder: (ctx, index) {
-          return _buildArmorSetTile(context, armorSets[index], index);
+          return _buildArmorSetTile(context, _foundSets[index], index);
         });
   }
 

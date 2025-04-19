@@ -23,14 +23,14 @@ mixin _$SearcherState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $SearcherStateCopyWith<SearcherState> get copyWith =>
-      _$SearcherStateCopyWithImpl<SearcherState>(this as SearcherState, _$identity);
+  $SearcherStateCopyWith<SearcherArgsState> get copyWith =>
+      _$SearcherStateCopyWithImpl<SearcherArgsState>(this as SearcherArgsState, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SearcherState &&
+            other is SearcherArgsState &&
             const DeepCollectionEquality().equals(other.skills, skills) &&
             const DeepCollectionEquality().equals(other.armorFilters, armorFilters) &&
             (identical(other.useMyDeco, useMyDeco) || other.useMyDeco == useMyDeco));
@@ -48,7 +48,7 @@ mixin _$SearcherState {
 
 /// @nodoc
 abstract mixin class $SearcherStateCopyWith<$Res> {
-  factory $SearcherStateCopyWith(SearcherState value, $Res Function(SearcherState) _then) = _$SearcherStateCopyWithImpl;
+  factory $SearcherStateCopyWith(SearcherArgsState value, $Res Function(SearcherArgsState) _then) = _$SearcherStateCopyWithImpl;
   @useResult
   $Res call({List<Stack<SkillTemplate>> skills, List<Stack<ArmorFilter>> armorFilters, bool useMyDeco});
 }
@@ -57,8 +57,8 @@ abstract mixin class $SearcherStateCopyWith<$Res> {
 class _$SearcherStateCopyWithImpl<$Res> implements $SearcherStateCopyWith<$Res> {
   _$SearcherStateCopyWithImpl(this._self, this._then);
 
-  final SearcherState _self;
-  final $Res Function(SearcherState) _then;
+  final SearcherArgsState _self;
+  final $Res Function(SearcherArgsState) _then;
 
   /// Create a copy of SearcherState
   /// with the given fields replaced by the non-null parameter values.
@@ -88,7 +88,7 @@ class _$SearcherStateCopyWithImpl<$Res> implements $SearcherStateCopyWith<$Res> 
 
 /// @nodoc
 
-class _SearcherState extends SearcherState {
+class _SearcherState extends SearcherArgsState {
   const _SearcherState(
       {required final List<Stack<SkillTemplate>> skills,
       required final List<Stack<ArmorFilter>> armorFilters,

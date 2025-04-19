@@ -13,3 +13,17 @@ class _DecoPageMobileState extends State<DecoPageMobile> {
     return const Placeholder();
   }
 }
+
+class DecoEditor extends StatefulWidget {
+  const DecoEditor({super.key});
+
+  @override
+  State<DecoEditor> createState() => _DecoEditorState();
+}
+
+class _DecoEditorState extends State<DecoEditor> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}

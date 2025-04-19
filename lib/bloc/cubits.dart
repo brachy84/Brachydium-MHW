@@ -14,7 +14,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 }
 
-enum HomeState { setSearcher, decorations, armorSets, results }
+enum HomeState { setSearcher, decorations, armorSets }
 
 class SearcherPageCubit extends Cubit<SearcherPageState> {
   SearcherPageCubit() : super(SearcherPageState.editSkills);
@@ -24,12 +24,14 @@ class SearcherPageCubit extends Cubit<SearcherPageState> {
   }
 }
 
-enum SearcherPageState { editSkills, editDecos, editArmorFilters }
+enum SearcherPageState { editSkills, editDecos, editArmorFilters, results }
 
-class SearcherCubit extends Cubit<SearcherState> {
-  SearcherCubit() : super(SearcherState.initial());
+class SearcherArgsCubit extends Cubit<SearcherArgsState> {
+  SearcherArgsCubit() : super(SearcherArgsState.initial());
 
-  void update(SearcherState state) {
+  SearcherArgsCubit.withState(super.state);
+
+  void update(SearcherArgsState state) {
     emit(state);
   }
 
@@ -60,13 +62,13 @@ class SearcherCubit extends Cubit<SearcherState> {
 }
 
 @freezed
-abstract class SearcherState with _$SearcherState {
+abstract class SearcherArgsState with _$SearcherState {
   //const factory SearcherState.initial() = _Initial;
 
-  const SearcherState._();
+  const SearcherArgsState._();
 
-  factory SearcherState.initial() {
-    return SearcherState(skills: [
+  factory SearcherArgsState.initial() {
+    return SearcherArgsState(skills: [
       Stack(value: All.skillsMap['critical-boost']!, amount: 5),
       Stack(value: All.skillsMap['burst']!, amount: 5),
       Stack(value: All.skillsMap['antivirus']!, amount: 3),
@@ -74,7 +76,7 @@ abstract class SearcherState with _$SearcherState {
     ], armorFilters: [], useMyDeco: true);
   }
 
-  const factory SearcherState({
+  const factory SearcherArgsState({
     required List<Stack<SkillTemplate>> skills,
     required List<Stack<ArmorFilter>> armorFilters,
     required bool useMyDeco,
@@ -112,24 +114,31 @@ class SkillSelectorState {
 }
 
 class SearchResultCubit extends Cubit<SearchResultState> {
-  SearchResultCubit() : super(SearchResultState(null));
+  SearchResultCubit() : super(SearchResultState(null, false));
 
-  void startSearch(SearcherState searcherState) async {
-    emit(SearchResultState(SearchManager.searchAllArmorCombinations(SearchArguments.of(
+  void startSearch(SearcherArgsState searcherState) async {
+    var result = SearchResultState(SearchManager.searchAllArmorCombinations(SearchArguments.of(
         weapon: All.dummyWeapon,
         requiredSkills: searcherState.skills,
         decorations: null,
         charms: null,
         minRarity: 0,
         maxRarity: 12,
-        blacklistedArmor: {}))));
+        blacklistedArmor: {})), true);
+    result.searchResult!.armorSetStream.controller.onCancel = () => _onFinish();
+    emit(result);
+  }
+
+  void _onFinish() {
+    emit(SearchResultState(state.searchResult, false));
   }
 }
 
 class SearchResultState {
   final SearchResult? searchResult;
+  final bool searching;
 
-  SearchResultState(this.searchResult);
+  SearchResultState(this.searchResult, this.searching);
 
   bool get hasResult => searchResult != null;
 }
