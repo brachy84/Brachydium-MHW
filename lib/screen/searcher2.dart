@@ -185,6 +185,58 @@ void _updateScreen(BuildContext context, SearcherPageState state, bool mobile) {
   }));
 }
 
+Widget _makeSearchButton(String text, Color color, void Function() callback) {
+  return MaterialButton(
+    onPressed: callback,
+    color: color,
+    minWidth: double.infinity,
+    height: 64,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    child: Text(
+      text,
+      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+    ),
+  );
+}
+
+Widget makeSearchStartButton(BuildContext context, bool navigate) {
+  return _makeSearchButton('Start Search', Colors.green, () {
+    context.read<SearchResultCubit>().startSearch(context
+        .read<SearcherArgsCubit>()
+        .state);
+    if (navigate) {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (ctx) =>
+              SimplePage(
+                  body: SearchResultPage(
+                    mobile: true,
+                  ),
+                  title: 'Search Results')));
+    }
+  });
+}
+
+Widget makeSearchCancelButton() {
+  return _makeSearchButton('Cancel Search', Colors.red.shade700, () => ass.SearchManager.cancelArmorSearch());
+}
+
+Widget makeSearchRestartButton(BuildContext context, bool navigate) {
+  return _makeSearchButton('Restart Search', Colors.blue, () {
+    context.read<SearchResultCubit>().startSearch(context
+        .read<SearcherArgsCubit>()
+        .state);
+    if (navigate) {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (ctx) =>
+              SimplePage(
+                  body: SearchResultPage(
+                    mobile: true,
+                  ),
+                  title: 'Search Results')));
+    }
+  });
+}
+
 class SearcherDesktop extends StatelessWidget {
   const SearcherDesktop({super.key});
 
@@ -198,36 +250,14 @@ class SearcherDesktop extends StatelessWidget {
           child: Column(children: [
             ..._makeSearcherOptions(context, false),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: MaterialButton(
-                onPressed: () {
-                  ass.SearchManager.cancelArmorSearch();
-                },
-                color: Colors.red.shade700,
-                minWidth: double.infinity,
-                height: 64,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                child: const Text(
-                  'Cancel Search',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                context.read<SearchResultCubit>().startSearch(context
-                    .read<SearcherArgsCubit>()
-                    .state);
+            BlocBuilder<SearchResultCubit, SearchResultState>(
+              builder: (context, state) {
+                if (state.searching) {
+                  return makeSearchCancelButton();
+                } else {
+                  return state.hasResult ? makeSearchRestartButton(context, false) : makeSearchStartButton(context, false);
+                }
               },
-              color: Colors.green,
-              minWidth: double.infinity,
-              height: 64,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              child: const Text(
-                'Start Search',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-              ),
             )
           ]),
         ),
@@ -267,42 +297,9 @@ class SearcherMobile extends StatelessWidget {
         BlocBuilder<SearchResultCubit, SearchResultState>(
           builder: (context, state) {
             if (state.searching) {
-              return MaterialButton(
-                onPressed: () {
-                  ass.SearchManager.cancelArmorSearch();
-                },
-                color: Colors.red.shade700,
-                minWidth: double.infinity,
-                height: 64,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                child: const Text(
-                  'Cancel Search',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                ),
-              );
+              return makeSearchCancelButton();
             } else {
-              return MaterialButton(
-                onPressed: () {
-                  context.read<SearchResultCubit>().startSearch(context
-                      .read<SearcherArgsCubit>()
-                      .state);
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (ctx) =>
-                          SimplePage(
-                              body: SearchResultPage(
-                                mobile: true,
-                              ),
-                              title: 'Search Results')));
-                },
-                color: state.hasResult ? Colors.blue.shade700 : Colors.green,
-                minWidth: double.infinity,
-                height: 64,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                child: Text(
-                  state.hasResult ? 'Restart Search' : 'Start Search',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                ),
-              );
+              return state.hasResult ? makeSearchRestartButton(context, true) : makeSearchStartButton(context, true);
             }
           },
         )

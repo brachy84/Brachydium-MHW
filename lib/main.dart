@@ -10,8 +10,6 @@ import 'package:window_size/window_size.dart';
 
 import 'screen/home.dart';
 
-bool _skillEditMode = true;
-
 const String appTitle = 'Brachy\'s Armor Set Searcher';
 const String appTitleShort = 'Brachy\'s ASS';
 

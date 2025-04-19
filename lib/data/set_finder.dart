@@ -4,10 +4,8 @@ import 'dart:isolate';
 import 'dart:math';
 
 import 'package:brachys_armor_set_searcher/data/util.dart';
-import 'package:brachys_armor_set_searcher/main.dart';
 import 'package:brachys_armor_set_searcher/screen/search_results.dart';
 import 'package:flutter/material.dart';
-import 'package:talker/talker.dart';
 
 import 'equipment.dart';
 
@@ -383,7 +381,7 @@ void testSearch() {
 
 typedef DataReceiver = void Function(Object?);
 
-Thread? _currentThread;
+//Thread? _currentThread;
 
 class Thread {
   final int id;
@@ -421,7 +419,7 @@ class Thread {
     var sub = receivePort.listen((_) {});
     port.send(receivePort.sendPort);
     int id = await _initPort(sub);
-    _currentThread = Thread._(id, Isolate.current, receivePort, port);
+    //_currentThread = Thread._(id, Isolate.current, receivePort, port);
     log.info('Started isolate $id');
     sub.onData((msg) {
       if (msg is Map) {

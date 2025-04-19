@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -95,34 +96,11 @@ class SearchResultPage extends StatelessWidget {
                 child: ArmorSetList(
               observable: setsObservable,
             )),
-            if (state.searching)
-              MaterialButton(
-                onPressed: () {
-                  ass.SearchManager.cancelArmorSearch();
-                },
-                color: Colors.red.shade700,
-                minWidth: double.infinity,
-                height: 64,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                child: const Text(
-                  'Cancel Search',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                ),
-              )
-            else
-              MaterialButton(
-                onPressed: () {
-                  context.read<SearchResultCubit>().startSearch(context.read<SearcherArgsCubit>().state);
-                },
-                color: Colors.blue.shade700,
-                minWidth: double.infinity,
-                height: 64,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                child: const Text(
-                  'Restart Search',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                ),
-              )
+            if (mobile)
+              if (state.searching)
+                makeSearchCancelButton()
+              else
+                makeSearchRestartButton(context, false)
           ]);
         }));
   }
@@ -321,12 +299,13 @@ class _ArmorSetListState extends State<ArmorSetList> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 750, maxHeight: 500, minWidth: 400, minHeight: 200),
+          constraints: const BoxConstraints(maxWidth: 750, maxHeight: 475, minWidth: 400, minHeight: 200),
           child: Row(
             children: [
               Expanded(
                 flex: 10,
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
                     _equipment(context, set.pieces[0]),
@@ -361,15 +340,15 @@ class _ArmorSetListState extends State<ArmorSetList> {
   Widget _equipment(BuildContext context, EquipmentPiece eq) {
     return Container(
       height: 64,
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       margin: const EdgeInsets.all(4),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(flex: 10, child: Text(eq.equipment.part.localizedName)),
+          Expanded(flex: 5, child: Text(eq.equipment.part.localizedName)), // TODO replace with icon
           Expanded(flex: 15, child: Text(eq.equipment.localizedName)),
-          Expanded(flex: 1, child: _slotSizes(eq.equipment)),
+          Expanded(flex: 1, child: _slotSizes(eq.equipment)), // TODO replace with icons (rive)
           Expanded(flex: 15, child: _decos(eq.equipment, eq.decorations))
         ],
       ),
@@ -414,12 +393,12 @@ class _ArmorSetListState extends State<ArmorSetList> {
   Widget _charm(BuildContext context, Charm charm) {
     return Container(
       height: 32,
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       margin: const EdgeInsets.all(4),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
       child: Row(
         children: [
-          Expanded(flex: 10, child: Text(charm.part.localizedName)),
+          Expanded(flex: 5, child: Text(charm.part.localizedName)),
           Expanded(flex: 15, child: Text(charm.localizedName)),
           const Spacer(
             flex: 1,
