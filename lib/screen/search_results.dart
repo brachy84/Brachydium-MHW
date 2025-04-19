@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -95,12 +96,10 @@ class SearchResultPage extends StatelessWidget {
             Expanded(
                 child: ArmorSetList(
               observable: setsObservable,
+              mobile: mobile,
             )),
             if (mobile)
-              if (state.searching)
-                makeSearchCancelButton()
-              else
-                makeSearchRestartButton(context, false)
+              if (state.searching) makeSearchCancelButton() else makeSearchRestartButton(context, false)
           ]);
         }));
   }
@@ -149,7 +148,7 @@ class _ProgressBarState extends State<ProgressBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 32,
+        height: 24,
         constraints: const BoxConstraints(minWidth: double.infinity),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white.withAlpha(40)),
         child: Stack(
@@ -164,7 +163,7 @@ class _ProgressBarState extends State<ProgressBar> {
                 ),
               ),
             Center(
-              child: Text('$_progress / ${widget.totalCount}  -  ${_foundSets.length}'),
+              child: Text('$_progress / ${widget.totalCount}  -  ${_foundSets.length} found sets'),
             )
           ],
         ));
@@ -196,9 +195,10 @@ extension InsertSorted<T> on List<T> {
 }
 
 class ArmorSetList extends StatefulWidget {
-  const ArmorSetList({super.key, required this.observable});
+  const ArmorSetList({super.key, required this.observable, required this.mobile});
 
   final Observable observable;
+  final bool mobile;
 
   @override
   State<ArmorSetList> createState() => _ArmorSetListState();
@@ -260,6 +260,14 @@ class _ArmorSetListState extends State<ArmorSetList> {
       padding: const EdgeInsets.all(4.0),
       child: InkWell(
         onTap: () {
+          if (widget.mobile) {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (ctx) => SimplePage(
+                      body: ArmorSetPageMobile(set: set),
+                      title: 'Armor Set View',
+                    )));
+            return;
+          }
           showDialog(context: context, builder: (ctx) => _armorSetDialog(ctx, set));
         },
         child: Container(
@@ -305,7 +313,6 @@ class _ArmorSetListState extends State<ArmorSetList> {
               Expanded(
                 flex: 10,
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
                     _equipment(context, set.pieces[0]),
@@ -319,16 +326,31 @@ class _ArmorSetListState extends State<ArmorSetList> {
               ),
               Expanded(
                   flex: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Container(
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
-                      padding: const EdgeInsets.all(8),
-                      child: ListView(
-                        children: _buildSkills(set),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+                            padding: const EdgeInsets.all(8),
+                            child: ListView(
+                              children: [
+                                Center(
+                                  child: Text(
+                                    'Skills',
+                                    style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                ..._buildSkills(set)
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      _legend()
+                    ],
                   ))
             ],
           ),
@@ -336,90 +358,180 @@ class _ArmorSetListState extends State<ArmorSetList> {
       ),
     );
   }
+}
 
-  Widget _equipment(BuildContext context, EquipmentPiece eq) {
-    return Container(
-      height: 64,
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-      margin: const EdgeInsets.all(4),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(flex: 5, child: Text(eq.equipment.part.localizedName)), // TODO replace with icon
-          Expanded(flex: 15, child: Text(eq.equipment.localizedName)),
-          Expanded(flex: 1, child: _slotSizes(eq.equipment)), // TODO replace with icons (rive)
-          Expanded(flex: 15, child: _decos(eq.equipment, eq.decorations))
-        ],
-      ),
-    );
-  }
+Widget _equipment(BuildContext context, EquipmentPiece eq) {
+  return Container(
+    height: 64,
+    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+    margin: const EdgeInsets.all(4),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(flex: 5, child: Text(eq.equipment.part.localizedName, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),)), // TODO replace with icon
+        Expanded(flex: 15, child: Text(eq.equipment.localizedName)),
+        Expanded(flex: 1, child: _slotSizes(eq.equipment)), // TODO replace with icons (rive)
+        Expanded(flex: 15, child: _decos(eq.equipment, eq.decorations))
+      ],
+    ),
+  );
+}
 
-  Widget _slotSizes(Equipment eq) {
-    if (eq is SlottedEquipment) {
-      var seq = eq as SlottedEquipment;
-      TextStyle style = const TextStyle(fontSize: 12);
-      return Column(
-        children: [
-          Text(
-            seq.primarySlotSize == 0 ? '-' : seq.primarySlotSize.toString(),
-            style: style,
-          ),
-          Text(
-            seq.secondarySlotSize == 0 ? '-' : seq.secondarySlotSize.toString(),
-            style: style,
-          ),
-          Text(
-            seq.ternarySlotSize == 0 ? '-' : seq.ternarySlotSize.toString(),
-            style: style,
-          ),
-        ],
-      );
-    }
-    return const Text('-');
-  }
-
-  Widget _decos(Equipment eq, List<Deco?> decos) {
+Widget _slotSizes(Equipment eq) {
+  if (eq is SlottedEquipment) {
+    var seq = eq as SlottedEquipment;
     TextStyle style = const TextStyle(fontSize: 12);
     return Column(
       children: [
-        Text(decos[0] == null ? '-' : decos[0]!.localizedName, style: style),
-        Text(decos[1] == null ? '-' : decos[1]!.localizedName, style: style),
-        Text(decos[2] == null ? '-' : decos[2]!.localizedName, style: style),
+        Text(
+          seq.primarySlotSize == 0 ? '-' : seq.primarySlotSize.toString(),
+          style: style,
+        ),
+        Text(
+          seq.secondarySlotSize == 0 ? '-' : seq.secondarySlotSize.toString(),
+          style: style,
+        ),
+        Text(
+          seq.ternarySlotSize == 0 ? '-' : seq.ternarySlotSize.toString(),
+          style: style,
+        ),
       ],
     );
   }
+  return const Text('-');
+}
 
-  Widget _charm(BuildContext context, Charm charm) {
-    return Container(
-      height: 32,
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-      margin: const EdgeInsets.all(4),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
-      child: Row(
-        children: [
-          Expanded(flex: 5, child: Text(charm.part.localizedName)),
-          Expanded(flex: 15, child: Text(charm.localizedName)),
-          const Spacer(
-            flex: 1,
+Widget _decos(Equipment eq, List<Deco?> decos) {
+  TextStyle style = const TextStyle(fontSize: 12);
+  return Column(
+    children: [
+      Text(decos[0] == null ? '-' : decos[0]!.localizedName, style: style),
+      Text(decos[1] == null ? '-' : decos[1]!.localizedName, style: style),
+      Text(decos[2] == null ? '-' : decos[2]!.localizedName, style: style),
+    ],
+  );
+}
+
+Widget _charm(BuildContext context, Charm charm) {
+  return Container(
+    height: 32,
+    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+    margin: const EdgeInsets.only(top: 4, left: 4, right: 4),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+    child: Row(
+      children: [
+        Expanded(flex: 5, child: Text(charm.part.localizedName, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600))),
+        Expanded(flex: 15, child: Text(charm.localizedName)),
+        const Spacer(
+          flex: 1,
+        ),
+        const Spacer(
+          flex: 15,
+        )
+      ],
+    ),
+  );
+}
+
+List<Widget> _buildSkills(ArmorSet armorSet) {
+  return armorSet.calculateSkills(removeNonFullBonus: false, removeOverlevel: false).map((skill) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(
+        skill.value.localize(skill.amount, capAtMax: false),
+        style: TextStyle(color: skill.value.getColor(skill.amount)),
+      ),
+    );
+  }).toList();
+}
+
+Widget _legendPiece(Color color, String text) {
+  return Row(children: [
+    Container(
+        width: 20,
+        height: 20,
+        margin: EdgeInsets.all(4),
+        padding: EdgeInsets.only(right: 4),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: color)),
+    Text(text)
+  ]);
+}
+
+Widget _legend() {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+    margin: const EdgeInsets.all(4),
+    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+    child: Column(
+      children: [
+        Center(
+          child: Text(
+            'Legend',
+            style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.w600),
           ),
-          const Spacer(
-            flex: 15,
-          )
+        ),
+        _legendPiece(Colors.blue.shade300, 'Maxed Skill'),
+        _legendPiece(Colors.white70, 'Activated Skill'),
+        _legendPiece(Colors.red.shade300, 'Unactivated Bonus Skill'),
+        Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(4),
+              child: Text(
+                '(+X)',
+                style: TextStyle(color: Colors.blue.shade300),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 4, bottom: 4),
+              child: Text('Overleveled Skill'),
+            )
+          ],
+        )
+      ],
+    ),
+  );
+}
+
+class ArmorSetPageMobile extends StatelessWidget {
+  const ArmorSetPageMobile({super.key, required this.set});
+
+  final ArmorSet set;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: ListView(
+        children: [
+          _equipment(context, EquipmentPiece(equipment: All.dummyWeapon, decorations: set.weaponDecos)),
+          _equipment(context, set.pieces[0]),
+          _equipment(context, set.pieces[1]),
+          _equipment(context, set.pieces[2]),
+          _equipment(context, set.pieces[3]),
+          _equipment(context, set.pieces[4]),
+          _charm(context, set.charm),
+          const Divider(),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
+            padding: const EdgeInsets.all(8),
+            margin: EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+            child: Column(
+              children: [
+                Center(
+                  child: Text(
+                    'Skills',
+                    style: TextStyle(decoration: TextDecoration.underline, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                ..._buildSkills(set)
+              ],
+            ),
+          ),
+          _legend()
         ],
       ),
     );
-  }
-
-  List<Widget> _buildSkills(ArmorSet armorSet) {
-    return armorSet.calculateSkills(removeNonFullBonus: false, removeOverlevel: false).map((skill) {
-      return Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Text(
-          skill.value.localize(skill.amount, capAtMax: false),
-          style: TextStyle(color: skill.value.getColor(skill.amount)),
-        ),
-      );
-    }).toList();
   }
 }
