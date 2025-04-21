@@ -11,9 +11,9 @@ import 'equipment.dart';
 
 class SearchArguments {
   final Weapon weapon;
-  final Map<SkillTemplate, Stack<SkillTemplate>> requiredSkills;
+  final Map<SkillTemplate, Leveled<SkillTemplate>> requiredSkills;
   final Map<Deco, int>? decorations;
-  final Map<Charm, List<Charm>>? charms;
+  final Set<Charm>? charms;
   final int minRarity, maxRarity;
   final Set<Armor> blacklistedArmor;
 
@@ -28,23 +28,26 @@ class SearchArguments {
 
   factory SearchArguments.of(
       {required Weapon weapon,
-      required List<Stack<SkillTemplate>> requiredSkills,
+      required List<Leveled<SkillTemplate>> requiredSkills,
       required Map<Deco, int>? decorations,
-      required Map<Charm, List<Charm>>? charms,
+      required Map<CharmFamily, int>? charms,
       int minRarity = 0,
       int maxRarity = 12,
       required Set<Armor> blacklistedArmor}) {
-    Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
-    for (var s in requiredSkills) {
-      skills[s.value] = s;
-    }
     return SearchArguments(
         weapon: weapon,
-        requiredSkills: skills,
+        requiredSkills: Map.fromEntries(requiredSkills.map((s) => MapEntry(s.value, s))),
         decorations: decorations,
-        charms: charms,
+        charms: charms?.entries.where((e) => e.value > 0).map((e) => e.key[e.value]).toSet(),
         minRarity: minRarity,
         blacklistedArmor: blacklistedArmor);
+  }
+
+  bool canCharmBeUsed(Charm charm) {
+    if (charms == null) {
+      return All.charmFamilies[charm]!.last == charm;
+    }
+    return charms!.contains(charm);
   }
 }
 
@@ -54,7 +57,7 @@ class _ValueArmor implements Comparable<_ValueArmor> {
 
   _ValueArmor(this.armor, this.value);
 
-  factory _ValueArmor.create(Armor armor, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
+  factory _ValueArmor.create(Armor armor, Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
     int skillValue = _evaluateSkillValue(armor.primary, armor.primaryLv, skills);
     skillValue += _evaluateSkillValue(armor.secondary, armor.secondaryLv, skills);
     skillValue += _evaluateSkillValue(armor.ternary, armor.ternaryLv, skills);
@@ -64,7 +67,7 @@ class _ValueArmor implements Comparable<_ValueArmor> {
     return _ValueArmor(armor, skillValue * 12 + slotValue * 10);
   }
 
-  static int _evaluateSkillValue(SkillTemplate? skill, int lvl, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
+  static int _evaluateSkillValue(SkillTemplate? skill, int lvl, Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
     return skill != null && skills.containsKey(skill) ? lvl : 0;
   }
 
@@ -76,7 +79,7 @@ class _ValueArmor implements Comparable<_ValueArmor> {
 
 class _SearchConfig {
   final Weapon weapon;
-  final Map<SkillTemplate, Stack<SkillTemplate>> requiredSkills;
+  final Map<SkillTemplate, Leveled<SkillTemplate>> requiredSkills;
   final Map<Deco, int>? decorations;
   final int estimatedCombinations;
   final List<Armor> helmets;
@@ -98,25 +101,13 @@ class _SearchConfig {
     final List<Armor> legs = [];
     final List<Charm> charms = [];
     final List<Deco> decos = [];
-    for (Stack<SkillTemplate> skill in args.requiredSkills.values) {
+    for (Leveled<SkillTemplate> skill in args.requiredSkills.values) {
       _addArmor(args, helmets, All.helmets[skill.value]);
       _addArmor(args, chests, All.chests[skill.value]);
       _addArmor(args, arms, All.arms[skill.value]);
       _addArmor(args, waists, All.waists[skill.value]);
       _addArmor(args, legs, All.legs[skill.value]);
-      var charms1 = All.charms[skill.value];
-      if (charms1 != null) {
-        if (args.charms != null) {
-          for (var charm in charms1) {
-            var fam = args.charms![charm];
-            if (fam != null && fam.isNotEmpty) {
-              charms.add(fam.last);
-            }
-          }
-        } else {
-          charms.addAll(charms1);
-        }
-      }
+      charms.addAll(All.charms[skill.value]?.where((c) => args.canCharmBeUsed(c)) ?? []);
       Set<Deco> decoSet = {};
       for (var deco in All.decosMap[skill.value] ?? []) {
         if (_hasDeco(args.decorations, deco)) {
@@ -140,7 +131,7 @@ class _SearchConfig {
 
   Json toJson() {
     Json json = {};
-    json['skills'] = requiredSkills.map((k, v) => MapEntry(v.value.name, v.amount));
+    json['skills'] = requiredSkills.map((k, v) => MapEntry(v.value.name, v.level));
     json['decorations'] = decorations?.map((k, v) => MapEntry(k.name, v));
     json['weapon'] = weapon.toJson();
     json['count'] = estimatedCombinations;
@@ -155,9 +146,9 @@ class _SearchConfig {
   }
 
   factory _SearchConfig.fromJson(Json json) {
-    List<Stack<SkillTemplate>> requiredSkills =
-        (json['skills'] as Json).entries.map((e) => Stack(value: All.allSkills[e.key]!, amount: e.value)).toList();
-    Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+    List<Leveled<SkillTemplate>> requiredSkills =
+        (json['skills'] as Json).entries.map((e) => Leveled(value: All.allSkills[e.key]!, level: e.value)).toList();
+    Map<SkillTemplate, Leveled<SkillTemplate>> skills = {};
     for (var s in requiredSkills) {
       skills[s.value] = s;
     }
@@ -288,89 +279,10 @@ class ArmorPieceFilter extends ArmorFilter {
   Color get color => blacklist ? Colors.red : Colors.green;
 }
 
-class Stack<T> {
-  final T value;
-  int amount;
-
-  Stack({required this.value, this.amount = 1}) {
-    amount = max(0, amount);
-  }
-
-  bool decr([int by = 1]) {
-    amount = max(0, amount - by);
-    return isEmpty;
-  }
-
-  void incr([int by = 1]) {
-    amount = max(0, amount + by);
-  }
-
-  bool get isEmpty => amount <= 0;
-
-  Stack<T> copy([int? newAmount]) {
-    return Stack(value: value, amount: newAmount ?? amount);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Stack && value == other.value && amount == other.amount);
-  }
-
-  @override
-  int get hashCode => Object.hash(value, amount);
-
-  Json toJson(ToJson<T> toJson) {
-    Json json = toJson(value);
-    json['\$stack'] = amount;
-    return json;
-  }
-
-  static Stack<T> fromJson<T>(Json json, FromJson<T> fromJson) {
-    return Stack(value: fromJson(json), amount: json['\$stack'] ?? 1);
-  }
-}
-
-class DecoStack extends Stack<Deco> implements Comparable<DecoStack> {
-  int totalPoints;
-
-  DecoStack({required super.value, super.amount, this.totalPoints = 0});
-
-  void checkTotalPoints(Map<SkillTemplate, Stack<SkillTemplate>> skills) {
-    totalPoints = 0;
-    Stack<SkillTemplate>? skill = skills[value.primary];
-    if (skill != null) totalPoints += min(skill.amount, value.primaryLvl);
-    if (value.hasSec) {
-      skill = skills[value.secondary!];
-      if (skill != null) totalPoints += min(skill.amount, 1);
-    }
-  }
-
-  @override
-  DecoStack copy([int? newAmount]) {
-    return DecoStack(value: value, amount: newAmount ?? amount);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (runtimeType == other.runtimeType && other is DecoStack && value.name == other.value.name);
-  }
-
-  @override
-  int get hashCode => value.name.hashCode;
-
-  @override
-  int compareTo(DecoStack other) {
-    int i = other.totalPoints.compareTo(totalPoints); // higher total skill points first
-    return i != 0 ? i : value.size.compareTo(other.value.size); // lower size first
-  }
-}
-
 void testSearch() {
   var skills = ['burst', 'antivirus', 'weakness-exploit', 'critical-boost']
       .map((s) => Skill.fromString(s))
-      .map((s) => Stack(value: s, amount: s.maxLevel));
+      .map((s) => Leveled(value: s, level: s.maxLevel));
   SearchArguments args = SearchArguments.of(
       weapon: All.dummyWeapon, requiredSkills: skills.toList(), decorations: null, charms: null, blacklistedArmor: {});
   _SearchConfig cfg = _SearchConfig(args);
@@ -621,7 +533,7 @@ class _ArmorSetTryer {
   final List<Armor> armor = List.filled(5, All.dummyArmor);
   Charm charm = All.dummyCharm;
   final List<Deco> decos;
-  final Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+  final Map<SkillTemplate, Leveled<SkillTemplate>> skills = {};
   final _DecoTryer weaponTryer;
   final _DecoTryer armorTryer;
   final _DecoTryer setBonusTryer;
@@ -654,7 +566,7 @@ class _ArmorSetTryer {
     armor[4] = leg;
     this.charm = charm;
     skills.clear();
-    for (Stack<SkillTemplate> skill in config.requiredSkills.values) {
+    for (Leveled<SkillTemplate> skill in config.requiredSkills.values) {
       skills[skill.value] = skill.copy();
     }
     addEquipmentSkills(config.weapon);
@@ -770,8 +682,8 @@ class _ArmorSetTryer {
   }
 
   /// removes a certain amount of required skill levels
-  static _skill(Map<SkillTemplate, Stack<SkillTemplate>> skills, SkillTemplate skill, int amount) {
-    Stack<SkillTemplate>? lv = skills[skill];
+  static _skill(Map<SkillTemplate, Leveled<SkillTemplate>> skills, SkillTemplate skill, int amount) {
+    Leveled<SkillTemplate>? lv = skills[skill];
     if (lv != null && lv.decr(amount)) {
       skills.remove(skill);
     }
@@ -787,14 +699,14 @@ class _DecoTryer {
   final _SearchConfig config;
   final List<Deco> decos = [];
   final List<int> slots = List.filled(4, 0);
-  final Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
-  final Map<SkillTemplate, List<DecoStack>> skillDecoMap = {};
+  final Map<SkillTemplate, Leveled<SkillTemplate>> skills = {};
+  final Map<SkillTemplate, List<LeveledDeco>> skillDecoMap = {};
   final List<Deco> usedDecos = [];
   String? error;
 
   _DecoTryer(this.type, this.config);
 
-  init(List<Deco> decos, Iterable<Stack<SkillTemplate>> skills) {
+  init(List<Deco> decos, Iterable<Leveled<SkillTemplate>> skills) {
     slots[0] = 0;
     slots[1] = 0;
     slots[2] = 0;
@@ -823,7 +735,7 @@ class _DecoTryer {
     // test map
     // we simulate inserting every deco we have regardless of space at the same time
     // if the skill levels dont add to the required levels it is impossible to make this set
-    Map<SkillTemplate, Stack<SkillTemplate>> reqSkills = skills.map((key, value) => MapEntry(key, value.copy()));
+    Map<SkillTemplate, Leveled<SkillTemplate>> reqSkills = skills.map((key, value) => MapEntry(key, value.copy()));
     skillDecoMap.clear();
     usedDecos.clear();
     for (var deco in decos) {
@@ -831,14 +743,14 @@ class _DecoTryer {
       if (!skills.containsKey(deco.primary) && (!deco.hasSec || !skills.containsKey(deco.secondary!))) {
         continue;
       }
-      var decoStack = DecoStack(value: deco, amount: config.getDecoAmount(deco));
+      var decoStack = LeveledDeco(value: deco, level: config.getDecoAmount(deco));
       decoStack.checkTotalPoints(skills);
       // add primary skill
-      _ArmorSetTryer._skill(reqSkills, deco.primary, deco.primaryLvl * decoStack.amount);
+      _ArmorSetTryer._skill(reqSkills, deco.primary, deco.primaryLvl * decoStack.level);
       skillDecoMap.putIfAbsent(deco.primary, () => []).add(decoStack);
       if (deco.hasSec) {
         // add secondary skill
-        _ArmorSetTryer._skill(reqSkills, deco.secondary!, decoStack.amount);
+        _ArmorSetTryer._skill(reqSkills, deco.secondary!, decoStack.level);
         skillDecoMap.putIfAbsent(deco.secondary!, () => []).add(decoStack);
       }
     }
@@ -854,8 +766,8 @@ class _DecoTryer {
 
   bool get hasAnySlots => slots[1] > 0 || slots[2] > 0 || slots[3] > 0;
 
-  bool canInsert(DecoStack deco) {
-    return deco.amount > 0 && slots[deco.value.size] > 0;
+  bool canInsert(LeveledDeco deco) {
+    return deco.level > 0 && slots[deco.value.size] > 0;
   }
 
   bool hasSlotForDecoSize(int size) {
@@ -870,8 +782,8 @@ class _DecoTryer {
     // inserts any deco for which skills we only have one deco available
     // so in order to get this skill this deco must be inserted
     while (true) {
-      DecoStack? deco;
-      for (List<DecoStack> decos in skillDecoMap.values) {
+      LeveledDeco? deco;
+      for (List<LeveledDeco> decos in skillDecoMap.values) {
         if (decos.length == 1 && canInsert(decos[0])) {
           deco = decos[0];
           break;
@@ -887,10 +799,10 @@ class _DecoTryer {
     return skillDecoMap[skill]![0].totalPoints;
   }
 
-  Stack<SkillTemplate> _findBestSkill() {
-    Stack<SkillTemplate>? highestReqSkill;
+  Leveled<SkillTemplate> _findBestSkill() {
+    Leveled<SkillTemplate>? highestReqSkill;
     int bestDecoValueForSkill = 0;
-    for (Stack<SkillTemplate> skill in skills.values) {
+    for (Leveled<SkillTemplate> skill in skills.values) {
       if (highestReqSkill == null) {
         highestReqSkill = skill;
         bestDecoValueForSkill = _getBestDecoValue(skill.value);
@@ -898,7 +810,7 @@ class _DecoTryer {
       }
       int bestDecoValue = _getBestDecoValue(skill.value);
       if (bestDecoValue < bestDecoValueForSkill) continue;
-      if (bestDecoValue > bestDecoValueForSkill || skill.amount > highestReqSkill.amount) {
+      if (bestDecoValue > bestDecoValueForSkill || skill.level > highestReqSkill.level) {
         highestReqSkill = skill;
         bestDecoValueForSkill = bestDecoValue;
       }
@@ -907,12 +819,12 @@ class _DecoTryer {
   }
 
   bool _insertBestDeco() {
-    Stack<SkillTemplate> highestReqSkill = _findBestSkill();
+    Leveled<SkillTemplate> highestReqSkill = _findBestSkill();
     _insertDeco(skillDecoMap[highestReqSkill.value]![0]);
     return skills.isEmpty || skillDecoMap.isEmpty;
   }
 
-  void _insertDeco(DecoStack deco) {
+  void _insertDeco(LeveledDeco deco) {
     _ArmorSetTryer._skill(skills, deco.value.primary, deco.value.primaryLvl);
     if (deco.value.hasSec) {
       _ArmorSetTryer._skill(skills, deco.value.secondary!, 1);
@@ -945,13 +857,13 @@ class _DecoTryer {
     skillDecoMap.removeWhere((key, value) {
       value.removeWhere((deco) {
         deco.checkTotalPoints(skills);
-        return deco.totalPoints == 0 || deco.amount <= 0 || !hasSlotForDecoSize(deco.value.size);
+        return deco.totalPoints == 0 || deco.level <= 0 || !hasSlotForDecoSize(deco.value.size);
       });
       if (value.isEmpty) return true;
       value.sort();
       return false;
     });
-    for (Stack<SkillTemplate> skill in skills.values) {
+    for (Leveled<SkillTemplate> skill in skills.values) {
       if (skillDecoMap[skill.value] == null) {
         // no decos available for a skill
         skillDecoMap.clear();

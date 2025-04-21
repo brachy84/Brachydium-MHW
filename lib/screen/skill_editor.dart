@@ -6,7 +6,6 @@ import 'package:flutter_portal/flutter_portal.dart';
 
 import '../bloc/cubits.dart';
 import '../data/equipment.dart';
-import '../data/set_finder.dart' as ass;
 
 abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends State<T>
     with SingleTickerProviderStateMixin {
@@ -126,7 +125,7 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     /*_skills.sort((a, b) {
       return b.amount.compareTo(a.amount);
     });*/
-    for (ass.Stack<SkillTemplate> skill in state.skills) {
+    for (Leveled<SkillTemplate> skill in state.skills) {
       skills.add(_skillTile(context, skill, true));
     }
     return skills;
@@ -264,9 +263,9 @@ class _SkillEditorState extends _AbstractSearcherPageState<SkillEditor> {
   }
 }
 
-Widget _skillTile(BuildContext context, ass.Stack<SkillTemplate> skill, bool mobile) {
+Widget _skillTile(BuildContext context, Leveled<SkillTemplate> skill, bool mobile) {
   int max = skill.value.actualMaxLevel;
-  int level = skill.value.getActualLevel(skill.amount);
+  int level = skill.value.getActualLevel(skill.level);
   double sliderMax = max.toDouble();
   double sliderMin = 1.0;
   Widget tile = Container(
@@ -289,7 +288,7 @@ Widget _skillTile(BuildContext context, ass.Stack<SkillTemplate> skill, bool mob
                 value: clampDouble(level.toDouble(), sliderMin, sliderMax),
                 onChanged: (val) {
                   int newLevel = skill.value.getRequiredLevels(val.toInt());
-                  if (skill.amount != newLevel) {
+                  if (skill.level != newLevel) {
                     context.read<SearcherArgsCubit>().updateSkillLevel(skill.value, newLevel);
                   }
                 },

@@ -15,9 +15,10 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$SearcherArgsState {
-  List<Stack<SkillTemplate>> get skills;
-  List<Stack<ArmorFilter>> get armorFilters;
+  List<Leveled<SkillTemplate>> get skills;
+  List<Leveled<ArmorFilter>> get armorFilters;
   Map<Deco, int>? get decos;
+  Map<CharmFamily, int>? get charms;
 
   /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,7 +36,8 @@ mixin _$SearcherArgsState {
             const DeepCollectionEquality().equals(other.skills, skills) &&
             const DeepCollectionEquality()
                 .equals(other.armorFilters, armorFilters) &&
-            const DeepCollectionEquality().equals(other.decos, decos));
+            const DeepCollectionEquality().equals(other.decos, decos) &&
+            const DeepCollectionEquality().equals(other.charms, charms));
   }
 
   @override
@@ -43,11 +45,12 @@ mixin _$SearcherArgsState {
       runtimeType,
       const DeepCollectionEquality().hash(skills),
       const DeepCollectionEquality().hash(armorFilters),
-      const DeepCollectionEquality().hash(decos));
+      const DeepCollectionEquality().hash(decos),
+      const DeepCollectionEquality().hash(charms));
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos)';
+    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos, charms: $charms)';
   }
 }
 
@@ -58,9 +61,10 @@ abstract mixin class $SearcherArgsStateCopyWith<$Res> {
       _$SearcherArgsStateCopyWithImpl;
   @useResult
   $Res call(
-      {List<Stack<SkillTemplate>> skills,
-      List<Stack<ArmorFilter>> armorFilters,
-      Map<Deco, int>? decos});
+      {List<Leveled<SkillTemplate>> skills,
+      List<Leveled<ArmorFilter>> armorFilters,
+      Map<Deco, int>? decos,
+      Map<CharmFamily, int>? charms});
 }
 
 /// @nodoc
@@ -79,20 +83,25 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
     Object? skills = null,
     Object? armorFilters = null,
     Object? decos = freezed,
+    Object? charms = freezed,
   }) {
     return _then(_self.copyWith(
       skills: null == skills
           ? _self.skills
           : skills // ignore: cast_nullable_to_non_nullable
-              as List<Stack<SkillTemplate>>,
+              as List<Leveled<SkillTemplate>>,
       armorFilters: null == armorFilters
           ? _self.armorFilters
           : armorFilters // ignore: cast_nullable_to_non_nullable
-              as List<Stack<ArmorFilter>>,
+              as List<Leveled<ArmorFilter>>,
       decos: freezed == decos
           ? _self.decos
           : decos // ignore: cast_nullable_to_non_nullable
               as Map<Deco, int>?,
+      charms: freezed == charms
+          ? _self.charms
+          : charms // ignore: cast_nullable_to_non_nullable
+              as Map<CharmFamily, int>?,
     ));
   }
 }
@@ -101,25 +110,27 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
 
 class _SearcherState extends SearcherArgsState {
   const _SearcherState(
-      {required final List<Stack<SkillTemplate>> skills,
-      required final List<Stack<ArmorFilter>> armorFilters,
-      required final Map<Deco, int>? decos})
+      {required final List<Leveled<SkillTemplate>> skills,
+      required final List<Leveled<ArmorFilter>> armorFilters,
+      required final Map<Deco, int>? decos,
+      required final Map<CharmFamily, int>? charms})
       : _skills = skills,
         _armorFilters = armorFilters,
         _decos = decos,
+        _charms = charms,
         super._();
 
-  final List<Stack<SkillTemplate>> _skills;
+  final List<Leveled<SkillTemplate>> _skills;
   @override
-  List<Stack<SkillTemplate>> get skills {
+  List<Leveled<SkillTemplate>> get skills {
     if (_skills is EqualUnmodifiableListView) return _skills;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_skills);
   }
 
-  final List<Stack<ArmorFilter>> _armorFilters;
+  final List<Leveled<ArmorFilter>> _armorFilters;
   @override
-  List<Stack<ArmorFilter>> get armorFilters {
+  List<Leveled<ArmorFilter>> get armorFilters {
     if (_armorFilters is EqualUnmodifiableListView) return _armorFilters;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_armorFilters);
@@ -131,6 +142,16 @@ class _SearcherState extends SearcherArgsState {
     final value = _decos;
     if (value == null) return null;
     if (_decos is EqualUnmodifiableMapView) return _decos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
+  final Map<CharmFamily, int>? _charms;
+  @override
+  Map<CharmFamily, int>? get charms {
+    final value = _charms;
+    if (value == null) return null;
+    if (_charms is EqualUnmodifiableMapView) return _charms;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
@@ -151,7 +172,8 @@ class _SearcherState extends SearcherArgsState {
             const DeepCollectionEquality().equals(other._skills, _skills) &&
             const DeepCollectionEquality()
                 .equals(other._armorFilters, _armorFilters) &&
-            const DeepCollectionEquality().equals(other._decos, _decos));
+            const DeepCollectionEquality().equals(other._decos, _decos) &&
+            const DeepCollectionEquality().equals(other._charms, _charms));
   }
 
   @override
@@ -159,11 +181,12 @@ class _SearcherState extends SearcherArgsState {
       runtimeType,
       const DeepCollectionEquality().hash(_skills),
       const DeepCollectionEquality().hash(_armorFilters),
-      const DeepCollectionEquality().hash(_decos));
+      const DeepCollectionEquality().hash(_decos),
+      const DeepCollectionEquality().hash(_charms));
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos)';
+    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos, charms: $charms)';
   }
 }
 
@@ -176,9 +199,10 @@ abstract mixin class _$SearcherStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Stack<SkillTemplate>> skills,
-      List<Stack<ArmorFilter>> armorFilters,
-      Map<Deco, int>? decos});
+      {List<Leveled<SkillTemplate>> skills,
+      List<Leveled<ArmorFilter>> armorFilters,
+      Map<Deco, int>? decos,
+      Map<CharmFamily, int>? charms});
 }
 
 /// @nodoc
@@ -197,20 +221,25 @@ class __$SearcherStateCopyWithImpl<$Res>
     Object? skills = null,
     Object? armorFilters = null,
     Object? decos = freezed,
+    Object? charms = freezed,
   }) {
     return _then(_SearcherState(
       skills: null == skills
           ? _self._skills
           : skills // ignore: cast_nullable_to_non_nullable
-              as List<Stack<SkillTemplate>>,
+              as List<Leveled<SkillTemplate>>,
       armorFilters: null == armorFilters
           ? _self._armorFilters
           : armorFilters // ignore: cast_nullable_to_non_nullable
-              as List<Stack<ArmorFilter>>,
+              as List<Leveled<ArmorFilter>>,
       decos: freezed == decos
           ? _self._decos
           : decos // ignore: cast_nullable_to_non_nullable
               as Map<Deco, int>?,
+      charms: freezed == charms
+          ? _self._charms
+          : charms // ignore: cast_nullable_to_non_nullable
+              as Map<CharmFamily, int>?,
     ));
   }
 }

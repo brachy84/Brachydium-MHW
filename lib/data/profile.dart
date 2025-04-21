@@ -7,7 +7,7 @@ var currentProfile = Profile('main');
 class Profile {
   String name;
   Map<Deco, int> decos = {};
-  List<Charm> charms = [];
+  Map<CharmFamily, int> charms = {};
   int minRarity = 1, maxRarity = 12;
   Set<Armor> blacklistedArmor = {};
 
@@ -16,5 +16,6 @@ class Profile {
   static init() async {
     // TODO read from file
     currentProfile.decos = { for (var d in All.decos) d : d.maxDecoAmount };
+    currentProfile.charms = { for (var c in All.charmFamiliesList) c : c.maxLevel };
   }
 }

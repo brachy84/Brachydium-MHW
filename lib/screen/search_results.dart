@@ -439,8 +439,8 @@ List<Widget> _buildSkills(ArmorSet armorSet) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Text(
-        skill.value.localize(skill.amount, capAtMax: false),
-        style: TextStyle(color: skill.value.getColor(skill.amount)),
+        skill.value.localize(skill.level, capAtMax: false),
+        style: TextStyle(color: skill.value.getColor(skill.level)),
       ),
     );
   }).toList();

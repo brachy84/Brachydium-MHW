@@ -86,7 +86,8 @@ class All {
   static final Map<SkillTemplate, List<Armor>> waists = {};
   static final Map<SkillTemplate, List<Armor>> legs = {};
   static final Map<SkillTemplate, List<Charm>> charms = {};
-  static final Map<Charm, List<Charm>> charmFamilies = {};
+  static final Map<Charm, CharmFamily> charmFamilies = {};
+  static final List<CharmFamily> charmFamiliesList = [];
   static final Map<Part, Map<SkillTemplate, List<Armor>>> _armorBySkillByPart = {
     Part.head: helmets,
     Part.chest: chests,
@@ -275,18 +276,19 @@ class All {
     for (var charms in charmFamiliesByString.values) {
       charms.sort((a, b) => a.name.compareTo(b.name));
       // map charms to families
-      for (var charm in charms) {
-        charmFamilies[charm] = charms;
-      }
+      var fam = CharmFamily(charms.last.baseName, charms);
+      charmFamiliesList.add(fam);
       var map = All.charms;
-      var charm = charms.last;
-      // map skills to best charm of family
-      map.putIfAbsent(charm.primary, () => []).add(charm);
-      if (charm.secondary != null) {
-        map.putIfAbsent(charm.secondary!, () => []).add(charm);
-      }
-      if (charm.ternary != null) {
-        map.putIfAbsent(charm.ternary!, () => []).add(charm);
+      for (var charm in charms) {
+        charmFamilies[charm] = fam;
+
+        map.putIfAbsent(charm.primary, () => []).add(charm);
+        if (charm.secondary != null) {
+          map.putIfAbsent(charm.secondary!, () => []).add(charm);
+        }
+        if (charm.ternary != null) {
+          map.putIfAbsent(charm.ternary!, () => []).add(charm);
+        }
       }
     }
   }
@@ -1117,6 +1119,16 @@ abstract class Charm with _$Charm, Equipment, Localized {
           i = 2;
         }
       }
+    } else if (n.lastChar(0) == 'v') {
+      if (n.lastChar(1) == 'i') {
+        if (n.lastChar(2) == '-') {
+          i = 3;
+        }
+      } else {
+        if (n.lastChar(1) == '-') {
+          i = 2;
+        }
+      }
     }
     return i > 0 ? n.substring(0, n.length - i) : n;
   }
@@ -1131,6 +1143,25 @@ abstract class Charm with _$Charm, Equipment, Localized {
   String toString() {
     return name;
   }
+}
+
+class CharmFamily {
+
+  final String name;
+  final List<Charm> charms;
+
+  CharmFamily(this.name, this.charms);
+
+  int get maxLevel => charms.length;
+
+  Charm get first => charms.first;
+
+  Charm get last => charms.last;
+
+  Charm operator [](int level) {
+    return charms[level - 1];
+  }
+
 }
 
 @freezed
@@ -1164,6 +1195,85 @@ abstract class Weapon with _$Weapon, Equipment, SlottedEquipment, Localized {
   @override
   String toString() {
     return name;
+  }
+}
+
+class Leveled<T> {
+  final T value;
+  int level;
+
+  Leveled({required this.value, this.level = 1}) {
+    level = max(0, level);
+  }
+
+  bool decr([int by = 1]) {
+    level = max(0, level - by);
+    return isEmpty;
+  }
+
+  void incr([int by = 1]) {
+    level = max(0, level + by);
+  }
+
+  bool get isEmpty => level <= 0;
+
+  Leveled<T> copy([int? newAmount]) {
+    return Leveled(value: value, level: newAmount ?? level);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Leveled && value == other.value && level == other.level);
+  }
+
+  @override
+  int get hashCode => Object.hash(value, level);
+
+  Json toJson(ToJson<T> toJson) {
+    Json json = toJson(value);
+    json['\$stack'] = level;
+    return json;
+  }
+
+  static Leveled<T> fromJson<T>(Json json, FromJson<T> fromJson) {
+    return Leveled(value: fromJson(json), level: json['\$stack'] ?? 1);
+  }
+}
+
+class LeveledDeco extends Leveled<Deco> implements Comparable<LeveledDeco> {
+  int totalPoints;
+
+  LeveledDeco({required super.value, super.level, this.totalPoints = 0});
+
+  void checkTotalPoints(Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
+    totalPoints = 0;
+    Leveled<SkillTemplate>? skill = skills[value.primary];
+    if (skill != null) totalPoints += min(skill.level, value.primaryLvl);
+    if (value.hasSec) {
+      skill = skills[value.secondary!];
+      if (skill != null) totalPoints += min(skill.level, 1);
+    }
+  }
+
+  @override
+  LeveledDeco copy([int? newAmount]) {
+    return LeveledDeco(value: value, level: newAmount ?? level);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (runtimeType == other.runtimeType && other is LeveledDeco && value.name == other.value.name);
+  }
+
+  @override
+  int get hashCode => value.name.hashCode;
+
+  @override
+  int compareTo(LeveledDeco other) {
+    int i = other.totalPoints.compareTo(totalPoints); // higher total skill points first
+    return i != 0 ? i : value.size.compareTo(other.value.size); // lower size first
   }
 }
 
@@ -1222,8 +1332,8 @@ abstract class ArmorSet with _$ArmorSet {
 
   factory ArmorSet.fromJson(Map<String, Object?> json) => _$ArmorSetFromJson(json);
 
-  List<Stack<SkillTemplate>> calculateSkills({bool removeOverlevel = true, bool removeNonFullBonus = true}) {
-    Map<SkillTemplate, Stack<SkillTemplate>> skills = {};
+  List<Leveled<SkillTemplate>> calculateSkills({bool removeOverlevel = true, bool removeNonFullBonus = true}) {
+    Map<SkillTemplate, Leveled<SkillTemplate>> skills = {};
     if (weaponDecos[0] != null) _putDecoSkills(weaponDecos[0]!, skills);
     if (weaponDecos[1] != null) _putDecoSkills(weaponDecos[1]!, skills);
     if (weaponDecos[2] != null) _putDecoSkills(weaponDecos[2]!, skills);
@@ -1236,12 +1346,12 @@ abstract class ArmorSet with _$ArmorSet {
     _putEquipmentSkills(charm, skills);
     var list = skills.values.toList();
     if (removeNonFullBonus) {
-      list.removeWhere((skill) => skill.value is BonusSkill && skill.amount < (skill.value as BonusSkill).primaryCount);
+      list.removeWhere((skill) => skill.value is BonusSkill && skill.level < (skill.value as BonusSkill).primaryCount);
     }
     if (removeOverlevel) {
       for (var skill in list) {
         if (skill.value is Skill) {
-          skill.amount = min(skill.amount, (skill.value as Skill).maxLevel);
+          skill.level = min(skill.level, (skill.value as Skill).maxLevel);
         }
       }
     }
@@ -1249,35 +1359,35 @@ abstract class ArmorSet with _$ArmorSet {
       int i = a.value.category.index.compareTo(b.value.category.index);
       if (i != 0) return i;
       if (a.value is BonusSkill && b.value is BonusSkill) {
-        bool a1 = (a.value as BonusSkill).activates(a.amount);
-        bool b1 = (b.value as BonusSkill).activates(b.amount);
+        bool a1 = (a.value as BonusSkill).activates(a.level);
+        bool b1 = (b.value as BonusSkill).activates(b.level);
         if (a1 && !b1) return -1;
         if (!a1 && b1) return 1;
       }
-      i = b.amount.compareTo(a.amount);
+      i = b.level.compareTo(a.level);
       if (i != 0) return i;
       return a.value.localizedName.compareTo(b.value.localizedName);
     });
     return list;
   }
 
-  void _putEquipmentSkills(Equipment eq, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
-    skills.putIfAbsent(eq.primary, () => Stack(value: eq.primary, amount: 0)).incr(eq.primaryLv);
+  void _putEquipmentSkills(Equipment eq, Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
+    skills.putIfAbsent(eq.primary, () => Leveled(value: eq.primary, level: 0)).incr(eq.primaryLv);
     if (eq.secondary != null)
-      skills.putIfAbsent(eq.secondary!, () => Stack(value: eq.secondary!, amount: 0)).incr(eq.secondaryLv);
+      skills.putIfAbsent(eq.secondary!, () => Leveled(value: eq.secondary!, level: 0)).incr(eq.secondaryLv);
     if (eq.ternary != null)
-      skills.putIfAbsent(eq.ternary!, () => Stack(value: eq.ternary!, amount: 0)).incr(eq.ternaryLv);
+      skills.putIfAbsent(eq.ternary!, () => Leveled(value: eq.ternary!, level: 0)).incr(eq.ternaryLv);
     if (eq is Armor) {
-      if (eq.setBonus != null) skills.putIfAbsent(eq.setBonus!, () => Stack(value: eq.setBonus!, amount: 0)).incr(1);
+      if (eq.setBonus != null) skills.putIfAbsent(eq.setBonus!, () => Leveled(value: eq.setBonus!, level: 0)).incr(1);
       if (eq.groupBonus != null)
-        skills.putIfAbsent(eq.groupBonus!, () => Stack(value: eq.groupBonus!, amount: 0)).incr(1);
+        skills.putIfAbsent(eq.groupBonus!, () => Leveled(value: eq.groupBonus!, level: 0)).incr(1);
     }
   }
 
-  void _putDecoSkills(Deco deco, Map<SkillTemplate, Stack<SkillTemplate>> skills) {
-    skills.putIfAbsent(deco.primary, () => Stack(value: deco.primary, amount: 0)).incr(deco.primaryLvl);
+  void _putDecoSkills(Deco deco, Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
+    skills.putIfAbsent(deco.primary, () => Leveled(value: deco.primary, level: 0)).incr(deco.primaryLvl);
     if (deco.secondary != null)
-      skills.putIfAbsent(deco.secondary!, () => Stack(value: deco.secondary!, amount: 0)).incr(1);
+      skills.putIfAbsent(deco.secondary!, () => Leveled(value: deco.secondary!, level: 0)).incr(1);
   }
 }
 
@@ -1285,7 +1395,7 @@ class ArmorSetProperties {
   static final ArmorSetProperties dummy = ArmorSetProperties(ArmorSet.dummy);
 
   final ArmorSet armorSet;
-  final List<Stack<SkillTemplate>> skills;
+  final List<Leveled<SkillTemplate>> skills;
   final int totalSkillLevels;
   final int empty1Slots;
   final int empty2Slots;
@@ -1331,8 +1441,8 @@ class ArmorSetProperties {
       defThunder += armor.defThunder;
       defDragon += armor.defDragon;
     }
-    List<Stack<SkillTemplate>> skills = set.calculateSkills();
-    int totalSkillLevels = skills.map((skill) => skill.value.getActualLevel(skill.amount)).reduce((a, b) => a + b);
+    List<Leveled<SkillTemplate>> skills = set.calculateSkills();
+    int totalSkillLevels = skills.map((skill) => skill.value.getActualLevel(skill.level)).reduce((a, b) => a + b);
     return ArmorSetProperties._(
         armorSet: set,
         skills: skills,

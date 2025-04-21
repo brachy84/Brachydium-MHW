@@ -27,7 +27,7 @@ class SearcherPageCubit extends Cubit<SearcherPageState> {
   }
 }
 
-enum SearcherPageState { editSkills, editDecos, editArmorFilters, results }
+enum SearcherPageState { editSkills, editDecos, editCharms, editArmorFilters, results }
 
 class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   SearcherArgsCubit() : super(SearcherArgsState.initial());
@@ -43,13 +43,13 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   }
 
   void addSkill(SkillTemplate skill) {
-    update(state.copyWith(skills: [...state.skills, Stack(value: skill, amount: skill.maxLevel)]));
+    update(state.copyWith(skills: [...state.skills, Leveled(value: skill, level: skill.maxLevel)]));
   }
 
   void updateSkillLevel(SkillTemplate skill, int level) {
     int i = state.skills.indexWhere((s) => s.value == skill);
     var skills = List.of(state.skills);
-    skills[i] = Stack(value: skill, amount: level);
+    skills[i] = Leveled(value: skill, level: level);
     update(state.copyWith(skills: skills));
   }
 
@@ -91,6 +91,39 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   Map<Deco, int> getDecos() {
     return state.decos != null ? Map.of(state.decos!) : currentProfile.decos;
   }
+
+  void useMyCharms(bool val) {
+    update(state.copyWith(charms: val ? currentProfile.charms : null));
+  }
+
+  void _updateCharms(Map<CharmFamily, int> charms) {
+    currentProfile.charms = charms;
+    update(state.copyWith(charms: charms));
+  }
+
+  void updateCharmLevel(CharmFamily charm, int level) {
+    var charms = getCharms();
+    charms[charm] = level;
+    _updateCharms(charms);
+  }
+
+  void updateCharmLevelBy(CharmFamily charm, [int by = 1]) {
+    var charms = getCharms();
+    charms[charm] = min(charm.maxLevel, max(0, (charms[charm] ?? 0) + by));
+    _updateCharms(charms);
+  }
+
+  void setCharmsToMax() {
+    _updateCharms({ for (var c in All.charmFamiliesList) c : c.maxLevel });
+  }
+
+  void setCharmsToZero() {
+    _updateCharms({ for (var c in All.charmFamiliesList) c : 0 });
+  }
+
+  Map<CharmFamily, int> getCharms() {
+    return state.charms != null ? Map.of(state.charms!) : currentProfile.charms;
+  }
 }
 
 @freezed
@@ -101,17 +134,18 @@ abstract class SearcherArgsState with _$SearcherArgsState {
 
   factory SearcherArgsState.initial() {
     return SearcherArgsState(skills: [
-      Stack(value: All.skillsMap['critical-boost']!, amount: 5),
-      Stack(value: All.skillsMap['burst']!, amount: 5),
-      Stack(value: All.skillsMap['antivirus']!, amount: 3),
-      Stack(value: All.skillsMap['weakness-exploit']!, amount: 5)
-    ], armorFilters: [], decos: null);
+      Leveled(value: All.skillsMap['critical-boost']!, level: 5),
+      Leveled(value: All.skillsMap['burst']!, level: 5),
+      Leveled(value: All.skillsMap['antivirus']!, level: 3),
+      Leveled(value: All.skillsMap['weakness-exploit']!, level: 5)
+    ], armorFilters: [], decos: null, charms: null);
   }
 
   const factory SearcherArgsState({
-    required List<Stack<SkillTemplate>> skills,
-    required List<Stack<ArmorFilter>> armorFilters,
+    required List<Leveled<SkillTemplate>> skills,
+    required List<Leveled<ArmorFilter>> armorFilters,
     required Map<Deco, int>? decos,
+    required Map<CharmFamily, int>? charms,
   }) = _SearcherState;
 
   bool hasSkill(SkillTemplate skill) {
@@ -157,7 +191,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
         weapon: All.dummyWeapon,
         requiredSkills: searcherState.skills,
         decorations: searcherState.decos,
-        charms: null,
+        charms: searcherState.charms,
         minRarity: 0,
         maxRarity: 12,
         blacklistedArmor: {})), true);

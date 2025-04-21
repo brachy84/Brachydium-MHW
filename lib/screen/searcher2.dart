@@ -1,5 +1,6 @@
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/set_finder.dart' as ass;
+import 'package:brachys_armor_set_searcher/screen/charm.dart';
 import 'package:brachys_armor_set_searcher/screen/decoration.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:brachys_armor_set_searcher/screen/search_results.dart';
@@ -62,7 +63,7 @@ Widget _skillsPreview(BuildContext context, SearcherArgsState state) {
     );
   }
   List<Widget> skills = state.skills
-      .map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.value.getActualLevel(skill.amount)}"))
+      .map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.value.getActualLevel(skill.level)}"))
       .toList();
   return Wrap(
     spacing: 4,
@@ -135,6 +136,69 @@ Widget _decosOption(BuildContext context, bool mobile) {
       ));
 }
 
+Widget _charmsOption(BuildContext context, bool mobile) {
+  return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(20)),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(
+              'Charms',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(30)),
+            margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
+            padding: const EdgeInsets.all(4),
+            constraints: const BoxConstraints(minWidth: double.infinity),
+            //child: SizedBox(height: 60,),
+            child: BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
+              buildWhen: (a, b) => (a.charms == null) != (b.charms == null),
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    RadioListTile(
+                      value: false,
+                      groupValue: state.charms != null,
+                      onChanged: (val) => context.read<SearcherArgsCubit>().useMyCharms(val ?? true),
+                      title: const Text('Use all charms'),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: RadioListTile(
+                            value: true,
+                            groupValue: state.charms != null,
+                            onChanged: (val) => context.read<SearcherArgsCubit>().useMyCharms(val ?? true),
+                            title: const Text('Use my charms'),
+                          ),
+                        ),
+                        MaterialButton(
+                          onPressed: () => _updateScreen(context, SearcherPageState.editCharms, mobile),
+                          color: HSLColor.fromColor(Colors.deepPurple).withSaturation(0.4).toColor(),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 4, top: 8, bottom: 8),
+                            child: Row(
+                              children: [Text('Edit my charms'), Icon(Icons.chevron_right)],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                );
+              },
+            ),
+          )
+        ],
+      ));
+}
+
 List<Widget> _makeSearcherOptions(BuildContext context, bool mobile) {
   return [
     _option(
@@ -149,6 +213,7 @@ List<Widget> _makeSearcherOptions(BuildContext context, bool mobile) {
         ),
         mobile),
     _decosOption(context, mobile),
+    _charmsOption(context, mobile),
     if (mobile)
       BlocBuilder<SearchResultCubit, SearchResultState>(
         builder: (context, state) {
@@ -175,6 +240,8 @@ void _updateScreen(BuildContext context, SearcherPageState state, bool mobile) {
         return SimplePage(body: Placeholder(), title: 'Armor filter Editor');
       case SearcherPageState.editDecos:
         return SimplePage(body: DecoEditor(), title: 'Deco Editor');
+      case SearcherPageState.editCharms:
+        return SimplePage(body: CharmEditorPage(), title: 'Charm Editor');
       case SearcherPageState.results:
         return SimplePage(
             body: SearchResultPage(
@@ -247,7 +314,7 @@ class SearcherDesktop extends StatelessWidget {
         Container(
           constraints: const BoxConstraints(maxWidth: 400),
           padding: const EdgeInsets.all(8),
-          child: Column(children: [
+          child: ListView(children: [
             ..._makeSearcherOptions(context, false),
             const Spacer(),
             BlocBuilder<SearchResultCubit, SearchResultState>(
@@ -272,6 +339,8 @@ class SearcherDesktop extends StatelessWidget {
                 return const SkillEditor(doneButton: false);
               case SearcherPageState.editDecos:
                 return const DecoEditor();
+              case SearcherPageState.editCharms:
+                return const CharmEditorPage();
               case SearcherPageState.editArmorFilters:
                 return const Placeholder();
             }
@@ -291,7 +360,7 @@ class SearcherMobile extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 400),
       padding: const EdgeInsets.all(8),
-      child: Column(children: [
+      child: ListView(children: [
         ..._makeSearcherOptions(context, true),
         const Spacer(),
         BlocBuilder<SearchResultCubit, SearchResultState>(
