@@ -114,6 +114,9 @@ class _DecoEditorState extends State<DecoEditor> {
   }
 }
 
+const minus = Icon(Icons.remove);
+const plus = Icon(Icons.add);
+
 class DecoTile extends StatelessWidget {
   const DecoTile({super.key, required this.deco});
 
@@ -133,16 +136,35 @@ class DecoTile extends StatelessWidget {
         children: [
           Text(deco.localizedName),
           Spacer(),
-          IconButton(onPressed: () => context.read<SearcherArgsCubit>().updateDecoLevelBy(deco, -1), icon: Icon(Icons.remove)),
+          FastButton(deco: deco, up: false),
+          //IconButton(onPressed: () => context.read<SearcherArgsCubit>().updateDecoLevelBy(deco, -1), icon: minus),
           BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
             buildWhen: (prev, next) => prev.decos?[deco] != next.decos?[deco],
             builder: (context, state) {
               return Text(' ${state.decos?[deco] ?? deco.maxDecoAmount} ');
             },
           ),
-          IconButton(onPressed: () => context.read<SearcherArgsCubit>().updateDecoLevelBy(deco, 1), icon: Icon(Icons.add))
+          FastButton(deco: deco, up: true)
+          //IconButton(onPressed: () => context.read<SearcherArgsCubit>().updateDecoLevelBy(deco, 1), icon: plus)
         ],
       ),
     );
   }
 }
+
+class FastButton extends StatelessWidget {
+  const FastButton({super.key, required this.deco, required this.up});
+
+  final Deco deco;
+  final bool up;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkResponse(
+      onTap: () => context.read<SearcherArgsCubit>().updateDecoLevelBy(deco, up ? 1 : -1),
+      radius: 10,
+      child: up ? plus : minus,
+    );
+  }
+}
+
