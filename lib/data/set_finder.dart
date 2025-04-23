@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:core';
+import 'dart:io';
 import 'dart:isolate';
 import 'dart:math';
 
@@ -208,15 +209,86 @@ class _SearchConfig {
       }
     }
   }
+
+  List<_SearchConfig> splitIntoMultiple(int amount) {
+    if (amount == 0) throw Exception();
+    if (amount == 1) return [this];
+    List<List<Armor>> armors = [helmets, chests, arms, waists, legs];
+    int index = NestedListHelper.getLargest(armors, (l) => l.length % amount == 0);
+    if (index >= 0) {
+      return _splitExact(amount, armors, index);
+    }
+    return _split(amount, armors, NestedListHelper.getLargest(armors));
+  }
+
+  List<_SearchConfig> _splitExact(int amount, List<List<Armor>> armors, int index) {
+    List<List<List<Armor>>> splittedArmors =
+        List.generate(amount, (i) => List.of(armors, growable: false), growable: false);
+    List<Armor> listToSplit = armors[index];
+    int each = (listToSplit.length / amount).toInt();
+    for (int i = 0; i < amount; i++) {
+      splittedArmors[i][index] = [];
+      for (int j = 0; j < each; j++) {
+        splittedArmors[i][index].add(listToSplit[j * amount + i]);
+      }
+    }
+    return splittedArmors
+        .map((armors) => _SearchConfig._(
+            weapon,
+            requiredSkills,
+            decorations,
+            armors.map((l) => l.length).reduce((a, b) => a * b) * charms.length,
+            armors[0],
+            armors[1],
+            armors[2],
+            armors[3],
+            armors[4],
+            charms,
+            decos))
+        .toList();
+  }
+
+  List<_SearchConfig> _split(int amount, List<List<Armor>> armors, int index) {
+    List<Armor> listToSplit = armors[index];
+    if ((listToSplit.length / amount).floor() == 0) {
+      return _splitExact(listToSplit.length % amount, armors, index);
+    }
+    List<List<List<Armor>>> splittedArmors =
+        List.generate(amount, (i) => List.of(armors, growable: false), growable: false);
+    int each = (listToSplit.length / amount).ceil();
+    for (int i = 0; i < amount; i++) {
+      splittedArmors[i][index] = [];
+      for (int j = 0; j < each; j++) {
+        int armorIndex = j * amount + i;
+        if (armorIndex >= listToSplit.length) break; // do not break outer
+        splittedArmors[i][index].add(listToSplit[j * amount + i]);
+      }
+    }
+    return splittedArmors
+        .map((armors) => _SearchConfig._(
+            weapon,
+            requiredSkills,
+            decorations,
+            armors.map((l) => l.length).reduce((a, b) => a * b) * charms.length,
+            armors[0],
+            armors[1],
+            armors[2],
+            armors[3],
+            armors[4],
+            charms,
+            decos))
+        .toList();
+  }
 }
 
 class SearchResult {
   SearchResult();
 
   int totalArmorSets = 0;
+  bool likelyDone = false;
 
   DataStream<int> processedArmorSets = DataStream(StreamController());
-  DataStream<ArmorSet> armorSetStream = DataStream(StreamController());
+  DataStream<List<ArmorSet>> armorSetStream = DataStream(StreamController());
 }
 
 abstract class ArmorFilter {
@@ -291,6 +363,24 @@ void testSearch() {
   log.info(set?.toJson());
 }
 
+class Vec6 implements Comparable<Vec6> {
+  static const Vec6 zero = Vec6._(0, 0, 0, 0, 0, 0, 0);
+
+  final int head, chest, arm, waist, leg, charm, sqDist;
+
+  const Vec6._(this.head, this.chest, this.arm, this.waist, this.leg, this.charm, this.sqDist);
+
+  factory Vec6(int head, int chest, int arm, int waist, int leg, int charm) {
+    return Vec6._(head, chest, arm, waist, leg, charm,
+        head * head + chest * chest + arm * arm + waist * waist + leg * leg + charm * charm);
+  }
+
+  @override
+  int compareTo(Vec6 other) {
+    return sqDist.compareTo(other.sqDist);
+  }
+}
+
 typedef DataReceiver = void Function(Object?);
 
 //Thread? _currentThread;
@@ -351,7 +441,7 @@ class Thread {
         var msg = eventQueue.removeAt(0);
         var data = msg['StartSearch'];
         if (data is Json) {
-          log.info('Received search command');
+          log.info('Received search command $id');
           _SearchConfig config = _SearchConfig.fromJson(data);
           _ArmorSetTryer.search(config, port, processMsgQueue, id);
         }
@@ -394,33 +484,56 @@ class Thread {
 class SearchManager {
   static final List<Thread> _threads = [];
   static final List<bool> _processState = [];
+  static final List<bool> _likelyDone = [];
   static SearchResult? result;
   static int count = 0;
+  static final int milliesBetweenSend = 50;
+  static int _lastSend = 0;
+  static List<ArmorSet> cachedSets = [];
+  static int _lastSendArmor = 0;
 
   static init() async {
-    int maxProcesses = 1;
+    // Flutter can max use 8 Isolates, so we can only add 7
+    // this is a major design flaw in the dart sdk
+    // TODO: implement searching with native code
+    int maxProcesses = max(1, min(7, (Platform.numberOfProcessors - 2)));
+    log.info('Search Threads: $maxProcesses');
     Json allData = All.allToJson();
     for (int id = 0; id < maxProcesses; id++) {
-      Thread thread = await Thread.create(id, (msg) {
+      Thread thread = await Thread.create(id, (msg) async {
         if (msg is int) {
-          if (msg == -1) {
-            count++;
-            //double prog = count / result.totalArmorSets;
-            //if (prog - lastProg >= 0.01) { // this makes the ui lag a lot more than the line below and i have no idea why
-            if (count % 1000 == 0) {
-              //lastProg = prog;
-              result!.processedArmorSets.add(count);
-            }
+          count += msg;
+          var now = DateTime.timestamp().millisecondsSinceEpoch;
+          if (now - _lastSend >= milliesBetweenSend) {
+            result!.processedArmorSets.add(count);
+            _lastSend = now;
           }
         } else if (msg is Map<String, dynamic>) {
-          result!.armorSetStream.add(ArmorSet.fromJson(msg));
+          scheduleMicrotask(() {
+            cachedSets.add(ArmorSet.fromJson(msg));
+            _checkSendArmor();
+          });
+        } else if (msg is List<Map<String, dynamic>>) {
+          scheduleMicrotask(() {
+            cachedSets.addAll(msg.map((j) => ArmorSet.fromJson(j)));
+            _checkSendArmor();
+          });
         } else if (msg is String) {
-          if (msg.startsWith('done')) {
+          if (msg == 'done') {
             log.info('Isolate $id done');
             _processState[id] = false;
             if (_processState.every((s) => !s)) {
               log.info('All isolates done');
               _finalizeProcess();
+            }
+            return;
+          }
+          if (msg == 'ldone') {
+            log.info('Isolate $id is likely done');
+            _likelyDone[id] = true;
+            if (_likelyDone.every((b) => b)) {
+              log.info('All isolates are likely done');
+              result!.likelyDone = true; // TODO do something with it
             }
             return;
           }
@@ -431,6 +544,7 @@ class SearchManager {
       thread.sendPort.send({'allData': allData});
       _threads.add(thread);
       _processState.add(false);
+      _likelyDone.add(true);
     }
   }
 
@@ -450,12 +564,25 @@ class SearchManager {
     }
   }
 
+  static void _checkSendArmor() {
+    var now = DateTime.timestamp().millisecondsSinceEpoch;
+    if (now - _lastSendArmor >= milliesBetweenSend) {
+      result!.armorSetStream.add(cachedSets);
+      cachedSets = [];
+      _lastSendArmor = now;
+    }
+  }
+
   static void _finalizeProcess() {
     result?.processedArmorSets.add(count);
+    if (cachedSets.isNotEmpty) {
+      result?.armorSetStream.add(cachedSets);
+    }
     result?.processedArmorSets.close();
     result?.armorSetStream.close();
     result = null;
     count = 0;
+    cachedSets = [];
   }
 
   static bool get isProcessActive => _processState.any((b) => b);
@@ -464,14 +591,70 @@ class SearchManager {
     if (isProcessActive) throw Exception('Process is already active');
     result = SearchResult();
     count = 0;
+    cachedSets = [];
     _SearchConfig cfg = _SearchConfig(arguments);
-    Object msg = {'StartSearch': cfg.toJson()};
     result!.totalArmorSets = cfg.estimatedCombinations;
-    for (int i = 0; i < _threads.length; i++) {
+    List<_SearchConfig> splitConfigs = cfg.splitIntoMultiple(_threads.length);
+    int max = min(splitConfigs.length, _threads.length);
+    for (int i = 0; i < max; i++) {
       _processState[i] = true;
-      _threads[i].sendPort.send(msg);
+      _likelyDone[i] = false;
+      _threads[i].sendPort.send({'StartSearch': splitConfigs[i].toJson()});
     }
     return result!;
+  }
+}
+
+class CuboidIndexer {
+  final int a, b, c, d, e, f;
+  final int totalSize;
+
+  int _manhattanDistance = 0;
+  int _i = 0;
+  int _j = 0;
+  int _k = 0;
+  int _l = 0;
+  int _m = 0;
+  int _index = 0;
+
+  CuboidIndexer._(this.a, this.b, this.c, this.d, this.e, this.f, this.totalSize);
+
+  factory CuboidIndexer(int a, int b, int c, int d, int e, int f) {
+    return CuboidIndexer._(a, b, c, d, e, f, a * b * c * d * e * f);
+  }
+
+  bool nextIndex(void Function(int i, int j, int k, int l, int m, int n) consumer) {
+    while (_index < totalSize && _manhattanDistance <= a + b + c + d + e + f) {
+      while (_i <= _manhattanDistance && _i < a) {
+        while (_j <= _manhattanDistance && _j < b) {
+          while (_k <= _manhattanDistance && _k < c) {
+            while (_l <= _manhattanDistance && _l < d) {
+              while (_m <= _manhattanDistance - _i - _j - _k - _l && _m < e) {
+                int z = _manhattanDistance - _i - _j - _k - _l - _m;
+                if (z < f) {
+                  consumer(_i, _j, _k, _l, _m, z);
+                  _m++;
+                  _index++;
+                  return true;
+                }
+                _m++;
+              }
+              _m = 0;
+              _l++;
+            }
+            _l = 0;
+            _k++;
+          }
+          _k = 0;
+          _j++;
+        }
+        _j = 0;
+        _i++;
+      }
+      _i = 0;
+      _manhattanDistance++;
+    }
+    return false;
   }
 }
 
@@ -480,35 +663,116 @@ class SearchManager {
 class _ArmorSetTryer {
   static search(_SearchConfig config, SendPort sendPort, List msgQueue, int id) async {
     var tryer = _ArmorSetTryer.of(config: config, decos: config.decos);
-    sendPort.send('Searching on Isolate $id');
+    log.info('Searching on Isolate $id');
+    log.info(' - building index $id');
+    //var indexes = _buildIndexes(config);
+    var indexer = CuboidIndexer(config.helmets.length, config.chests.length, config.arms.length, config.waists.length, config.legs.length, config.charms.length);
     bool canceled = false;
-    for (var helm in config.helmets) {
-      for (var chest in config.chests) {
-        for (var arm in config.arms) {
-          for (var waist in config.waists) {
-            for (var leg in config.legs) {
-              if (canceled) {
-                sendPort.send('done');
-                return;
+    final int batchSize = 1000;
+    final int likelyDoneThreshold = (config.estimatedCombinations * 0.2).floor();
+    final int armorThreshold = (config.estimatedCombinations * 0.02).floor();
+    int lastArmor = 0;
+    bool likelyDone = false;
+    log.info(' - start actual search $id');
+    for (int i = 0; i < config.estimatedCombinations; i += batchSize) {
+      if (canceled) {
+        sendPort.send('done');
+        return;
+      }
+      if (await _searchInner2(sendPort, config, tryer, indexer, batchSize)) {
+        lastArmor = i;
+      } else if (!likelyDone && i > likelyDoneThreshold && i - lastArmor >= armorThreshold) {
+        likelyDone = true;
+        sendPort.send('ldone');
+      }
+      isCanceled(sendPort, msgQueue).then((c) => canceled = c); // must use then to not block computation
+      await Future.delayed(Duration.zero); // give the async canceled check time to compute
+    }
+    sendPort.send('done');
+  }
+
+  static List<Vec6> _buildIndexes(_SearchConfig config) {
+    // causes memory problems
+    // list of indexes for the 6 dimensional tensor of equipment + charm
+    List<Vec6> indexes = List.filled(config.estimatedCombinations, Vec6.zero);
+    int head = 0, chest = 0, arm = 0, waist = 0, leg = 0, charm = 0;
+    final int headM = config.helmets.length,
+        chestM = config.chests.length,
+        armM = config.arms.length,
+        waistM = config.waists.length,
+        legM = config.legs.length,
+        charmM = config.charms.length;
+    for (int i = 0; i < indexes.length; i++) {
+      indexes[i] = Vec6(head, chest, arm, waist, leg, charm);
+      if (++charm == charmM) {
+        charm = 0;
+        if (++leg == legM) {
+          leg = 0;
+          if (++waist == waistM) {
+            waist = 0;
+            if (++arm == armM) {
+              arm = 0;
+              if (++chest == chestM) {
+                chest = 0;
+                if (++head == headM && i != indexes.length - 1) {
+                  throw Exception();
+                }
               }
-              await _searchInner(sendPort, config, tryer, helm, chest, arm, waist, leg);
-              isCanceled(sendPort, msgQueue).then((c) => canceled = c); // must use then to not block computation
-              await Future.delayed(Duration.zero); // give the async canceled check time to compute
             }
           }
         }
       }
     }
-    sendPort.send('done');
+    // equipment list is sorted so that best ones come first
+    // this sorting makes sure armor sets which are more likely to produce a matching set come first
+    indexes.sort();
+    return indexes;
   }
 
-  static Future _searchInner(SendPort sendPort, _SearchConfig config, _ArmorSetTryer tryer, Armor helm, Armor chest,
-      Armor arm, Armor waist, Armor leg) async {
-    for (var charm in config.charms) {
-      ArmorSet? set = tryer.tryArmor(helm, chest, arm, waist, leg, charm);
-      sendPort.send(-1);
+  static Future<bool> _searchInner2(
+      SendPort sendPort, _SearchConfig config, _ArmorSetTryer tryer, CuboidIndexer indexer, int batchSize) async {
+    List<ArmorSet>? sets;
+    for (int j = 0; j < batchSize; j++) {
+      bool result = indexer.nextIndex((i, j, k, l, m, n) {
+        var set = tryer.tryArmor(config.helmets[i], config.chests[j], config.arms[k], config.waists[l], config.legs[m], config.charms[n]);
+        if (set != null) {
+          sets ??= [];
+          sets!.add(set);
+        }
+      });
+      if (!result) {
+        batchSize = j + 1;
+        break;
+      }
+    }
+    sendPort.send(batchSize); // only send after a batch, sending every set would block the main isolate cause of the amount of messages
+    if (sets != null) {
+      if (sets!.length == 1) {
+        sendPort.send(sets![0].toJson());
+      } else {
+        sendPort.send(sets!.map((set) => set.toJson()).toList());
+      }
+      return true;
+    }
+    return false;
+  }
+
+  static _searchInner(
+      SendPort sendPort, _SearchConfig config, _ArmorSetTryer tryer, List<Vec6> indexes, int start, int end) async {
+    List<ArmorSet>? sets;
+    for (int i = start; i < end; i++) {
+      ArmorSet? set = tryer.tryArmorFrom(config, indexes[i]);
       if (set != null) {
-        sendPort.send(set.toJson());
+        sets ??= [];
+        sets.add(set);
+      }
+    }
+    sendPort.send(end - start); // only send after a batch, sending every set would block the main isolate cause of the amount of messages
+    if (sets != null) {
+      if (sets.length == 1) {
+        sendPort.send(sets[0].toJson());
+      } else {
+        sendPort.send(sets.map((set) => set.toJson()).toList());
       }
     }
   }
@@ -556,6 +820,11 @@ class _ArmorSetTryer {
         armorTryer: _DecoTryer(SkillCategory.armor, config),
         groupBonusTryer: _DecoTryer(SkillCategory.groupBonus, config),
         setBonusTryer: _DecoTryer(SkillCategory.setBonus, config));
+  }
+
+  ArmorSet? tryArmorFrom(_SearchConfig config, Vec6 vec) {
+    return tryArmor(config.helmets[vec.head], config.chests[vec.chest], config.arms[vec.arm], config.waists[vec.waist],
+        config.legs[vec.leg], config.charms[vec.charm]);
   }
 
   ArmorSet? tryArmor(Armor helm, Armor chest, Armor arm, Armor waist, Armor leg, Charm charm) {

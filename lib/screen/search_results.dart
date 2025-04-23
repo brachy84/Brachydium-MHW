@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:brachys_armor_set_searcher/data/util.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class DataStream<T> {
   DataStream._(this.controller, this._stream);
 
   factory DataStream(StreamController<T> controller) {
-    var stream = DataStream._(controller, controller.stream.asBroadcastStream());
+    var stream = DataStream._(controller, controller.stream);
     return stream;
   }
 
@@ -35,6 +36,7 @@ class DataStream<T> {
     if (isClosed) return null;
     var sub = _stream.listen(onData);
     _subscriptions.add(sub);
+    log.info('Adding stream listener');
     return sub;
   }
 
@@ -73,7 +75,9 @@ class SearchResultPage extends StatelessWidget {
             result = state.searchResult;
             if (result != null) {
               result!.armorSetStream.listen((d) {
-                _foundSets.add(ArmorSetProperties(d));
+                d
+                    .map((set) => ArmorSetProperties(set))
+                    .forEach((set) => _foundSets.addSorted(set, (a, b) => a.compareEmptyTotalWeightedSlots(b)));
                 setsObservable.notify();
               });
               result!.processedArmorSets.listen((d) {
@@ -167,30 +171,6 @@ class _ProgressBarState extends State<ProgressBar> {
             )
           ],
         ));
-  }
-}
-
-extension InsertSorted<T> on List<T> {
-  // finds a position in the list so that the new list is sorted
-  // assumes that before inserting the list is sorted
-  // this is much faster than sorting after inserting
-  void addSorted(T t, [int Function(T a, T b)? compare]) {
-    int low = 0;
-    int high = length;
-
-    compare ??= (a, b) => (a as Comparable<T>).compareTo(b);
-
-    // binary search index
-    while (low < high) {
-      int mid = (low + high) >> 1;
-      if (compare(t, this[mid]) < 0) {
-        high = mid;
-      } else {
-        low = mid + 1;
-      }
-    }
-
-    insert(low, t);
   }
 }
 
@@ -369,9 +349,16 @@ Widget _equipment(BuildContext context, EquipmentPiece eq) {
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(flex: 5, child: Text(eq.equipment.part.localizedName, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),)), // TODO replace with icon
+        Expanded(
+            flex: 5,
+            child: Text(
+              eq.equipment.part.localizedName,
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+            )),
+        // TODO replace with icon
         Expanded(flex: 15, child: Text(eq.equipment.localizedName)),
-        Expanded(flex: 1, child: _slotSizes(eq.equipment)), // TODO replace with icons (rive)
+        Expanded(flex: 1, child: _slotSizes(eq.equipment)),
+        // TODO replace with icons (rive)
         Expanded(flex: 15, child: _decos(eq.equipment, eq.decorations))
       ],
     ),
@@ -421,7 +408,9 @@ Widget _charm(BuildContext context, Charm charm) {
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
     child: Row(
       children: [
-        Expanded(flex: 5, child: Text(charm.part.localizedName, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600))),
+        Expanded(
+            flex: 5,
+            child: Text(charm.part.localizedName, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600))),
         Expanded(flex: 15, child: Text(charm.localizedName)),
         const Spacer(
           flex: 1,
