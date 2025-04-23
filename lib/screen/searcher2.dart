@@ -268,17 +268,14 @@ Widget _makeSearchButton(String text, Color color, void Function() callback) {
 
 Widget makeSearchStartButton(BuildContext context, bool navigate) {
   return _makeSearchButton('Start Search', Colors.green, () {
-    context.read<SearchResultCubit>().startSearch(context
-        .read<SearcherArgsCubit>()
-        .state);
+    context.read<SearchResultCubit>().startSearch(context.read<SearcherArgsCubit>().state);
     if (navigate) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (ctx) =>
-              SimplePage(
-                  body: SearchResultPage(
-                    mobile: true,
-                  ),
-                  title: 'Search Results')));
+          builder: (ctx) => SimplePage(
+              body: SearchResultPage(
+                mobile: true,
+              ),
+              title: 'Search Results')));
     }
   });
 }
@@ -289,17 +286,14 @@ Widget makeSearchCancelButton() {
 
 Widget makeSearchRestartButton(BuildContext context, bool navigate) {
   return _makeSearchButton('Restart Search', Colors.blue, () {
-    context.read<SearchResultCubit>().startSearch(context
-        .read<SearcherArgsCubit>()
-        .state);
+    context.read<SearchResultCubit>().startSearch(context.read<SearcherArgsCubit>().state);
     if (navigate) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (ctx) =>
-              SimplePage(
-                  body: SearchResultPage(
-                    mobile: true,
-                  ),
-                  title: 'Search Results')));
+          builder: (ctx) => SimplePage(
+              body: SearchResultPage(
+                mobile: true,
+              ),
+              title: 'Search Results')));
     }
   });
 }
@@ -314,19 +308,22 @@ class SearcherDesktop extends StatelessWidget {
         Container(
           constraints: const BoxConstraints(maxWidth: 400),
           padding: const EdgeInsets.all(8),
-          child: ListView(children: [
-            ..._makeSearcherOptions(context, false),
-            const Spacer(),
-            BlocBuilder<SearchResultCubit, SearchResultState>(
-              builder: (context, state) {
-                if (state.searching) {
-                  return makeSearchCancelButton();
-                } else {
-                  return state.hasResult ? makeSearchRestartButton(context, false) : makeSearchStartButton(context, false);
-                }
-              },
-            )
-          ]),
+          child: Column(
+            children: [
+              Expanded(child: ListView(children: _makeSearcherOptions(context, false),)),
+              BlocBuilder<SearchResultCubit, SearchResultState>(
+                builder: (context, state) {
+                  if (state.searching) {
+                    return makeSearchCancelButton();
+                  } else {
+                    return state.hasResult
+                        ? makeSearchRestartButton(context, false)
+                        : makeSearchStartButton(context, false);
+                  }
+                },
+              )
+            ],
+          ),
         ),
         const VerticalDivider(
           thickness: 4,
@@ -360,19 +357,23 @@ class SearcherMobile extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 400),
       padding: const EdgeInsets.all(8),
-      child: ListView(children: [
-        ..._makeSearcherOptions(context, true),
-        const Spacer(),
-        BlocBuilder<SearchResultCubit, SearchResultState>(
-          builder: (context, state) {
-            if (state.searching) {
-              return makeSearchCancelButton();
-            } else {
-              return state.hasResult ? makeSearchRestartButton(context, true) : makeSearchStartButton(context, true);
-            }
-          },
-        )
-      ]),
+      child: Column(
+        children: [
+          Expanded(
+              child: ListView(
+            children: _makeSearcherOptions(context, true),
+          )),
+          BlocBuilder<SearchResultCubit, SearchResultState>(
+            builder: (context, state) {
+              if (state.searching) {
+                return makeSearchCancelButton();
+              } else {
+                return state.hasResult ? makeSearchRestartButton(context, true) : makeSearchStartButton(context, true);
+              }
+            },
+          )
+        ],
+      ),
     );
   }
 }
