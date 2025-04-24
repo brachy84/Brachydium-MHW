@@ -229,7 +229,7 @@ List<Widget> _makeSearcherOptions(BuildContext context, bool mobile) {
     _charmsOption(context, mobile),
     _option(
         context,
-        'Equipment Blacklist',
+        'Equipment Filter',
         SearcherPageState.editArmorFilters,
         BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
           buildWhen: (a, b) => !setEquals(a.blacklistedArmors, b.blacklistedArmors) || a.minRarity != b.minRarity || a.maxRarity != b.maxRarity,

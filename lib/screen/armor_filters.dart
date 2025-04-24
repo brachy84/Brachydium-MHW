@@ -32,11 +32,13 @@ class _ArmorFiltersState extends _AbstractSearcherPageState<ArmorFilters> {
                       'Rarity Limit: ${state.minRarity} - ${state.maxRarity} (Including)',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     ),
+                    const Text('High Rank starts at Rarity 5'),
                     RangeSlider(
                         min: All.minRarity.toDouble(),
                         max: All.maxRarity.toDouble(),
                         divisions: All.maxRarity - All.minRarity,
                         values: RangeValues(state.minRarity.toDouble(), state.maxRarity.toDouble()),
+                        labels: RangeLabels('Min Rarity: ${state.minRarity}', 'Max Rarity: ${state.maxRarity}'),
                         onChanged: (val) =>
                             context.read<SearcherArgsCubit>().updateRarity(val.start.toInt(), val.end.toInt())),
                   ],
