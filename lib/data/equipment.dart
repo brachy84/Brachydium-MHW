@@ -3,9 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:brachys_armor_set_searcher/data/localization.dart';
-import 'package:brachys_armor_set_searcher/data/set_finder.dart';
 import 'package:brachys_armor_set_searcher/data/util.dart';
-import 'package:brachys_armor_set_searcher/main.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -98,6 +96,8 @@ class All {
 
   static final int minRarity = 1;
   static final int maxRarity = 8;
+  static final int endLowRankRarity = 4;
+  static final int startHighRankRarity = 5;
 
   static final Map<String, String> langEn = {};
 
@@ -398,8 +398,29 @@ class All {
     log.info('Parsing armor from json');
     final content = await rootBundle.loadString("assets/data/wilds/armor.json");
     final json = jsonDecode(content)['data'] as List;
+
+    /*int currentRarity = 1;
+    final rarityMap = {
+      'conga-helm': 2,
+      'ingot-helm': 3,
+      'guardian-seikret-waist': 4,
+      'hope-a-helm': 5,
+      'ingot-a-helm': 6,
+      'dober-a-helm': 7,
+      'arkveld-a-helm': 8,
+      'guild-cross-a-helm': 5,
+      'clerk-a-helm': 6,
+      'numinous-a-helm': 8,
+      'sakuratide-a-helm': 5
+    };*/
+
     for (Map<String, dynamic> element in json) {
-      _addEquipment(Armor.fromJson(element), false);
+      var armor = Armor.fromJson(element);
+      /*if (rarityMap[armor.name] != null) {
+        currentRarity = rarityMap[armor.name]!;
+      }
+      armor = armor.copyWith(rarity: currentRarity)*/
+      _addEquipment(armor, false);
     }
   }
 
@@ -1137,7 +1158,6 @@ abstract class Charm with _$Charm, Equipment, Localized {
 }
 
 class CharmFamily {
-
   final String name;
   final List<Charm> charms;
 
@@ -1152,7 +1172,6 @@ class CharmFamily {
   Charm operator [](int level) {
     return charms[level - 1];
   }
-
 }
 
 @freezed

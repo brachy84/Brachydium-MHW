@@ -116,7 +116,7 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
   }
 
   void _updateOptions(BuildContext context, String value) {
-    context.read<SkillSelectorCubit>().update(true, value);
+    context.read<SkillSelectorCubit>().update(true, value.toLowerCase());
     _animationController!.forward();
   }
 

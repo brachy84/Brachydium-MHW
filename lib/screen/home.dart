@@ -1,8 +1,9 @@
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/screen/armor_sets.dart';
 import 'package:brachys_armor_set_searcher/screen/decoration.dart';
-import 'package:brachys_armor_set_searcher/screen/responsive.dart';
+import 'package:brachys_armor_set_searcher/screen/dev/equipment.dart';
 import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,7 +55,11 @@ class HomeDrawer extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            makeMenuCard(context, 'My Armor Sets', HomeState.armorSets)
+            makeMenuCard(context, 'My Armor Sets', HomeState.armorSets),
+            const SizedBox(
+              height: 8,
+            ),
+            if (kDebugMode) makeMenuCard(context, 'Edit Armors', HomeState.devEditArmor)
           ],
         ),
       ),
@@ -75,6 +80,8 @@ class HomePageMobile extends StatelessWidget {
           return const Placeholder(); // TODO
         case HomeState.armorSets:
           return const Placeholder();
+        case HomeState.devEditArmor:
+          return ArmorEditor();
       }
     });
   }
@@ -93,6 +100,8 @@ class HomePageDesktop2 extends StatelessWidget {
           return const Placeholder(); // TODO
         case HomeState.armorSets:
           return const Placeholder();
+        case HomeState.devEditArmor:
+          return ArmorEditor();
       }
     });
   }

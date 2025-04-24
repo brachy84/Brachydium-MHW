@@ -1,3 +1,5 @@
+import 'package:brachys_armor_set_searcher/data/equipment.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SimplePage extends StatelessWidget {
@@ -13,7 +15,10 @@ class SimplePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
-        actions: const [Icon(Icons.settings)],
+        actions: [
+          if (kDebugMode) IconButton(onPressed: () => All.saveData(), icon: const Icon(Icons.save)),
+          const Icon(Icons.settings)
+        ],
       ),
       drawer: drawer,
       body: body,
@@ -37,7 +42,10 @@ class ResponsivePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
-        actions: const [Icon(Icons.settings)],
+        actions: [
+          if (kDebugMode) IconButton(onPressed: () => All.saveData(), icon: const Icon(Icons.save)),
+          const Icon(Icons.settings)
+        ],
       ),
       drawer: drawer,
       body: LayoutBuilder(builder: (context, constraints) {

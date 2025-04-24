@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 }
 
-enum HomeState { setSearcher, decorations, armorSets }
+enum HomeState { setSearcher, decorations, armorSets, devEditArmor }
 
 class SearcherPageCubit extends Cubit<SearcherPageState> {
   SearcherPageCubit() : super(SearcherPageState.editSkills);
@@ -60,7 +60,7 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   }
 
   void useMyDeco(bool val) {
-    update(state.copyWith(decos: val ? currentProfile.decos : null));
+    update(state.copyWith(useAllDecos: !val));
   }
 
   void _updateDecos(Map<Deco, int> decos) {
@@ -93,7 +93,7 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   }
 
   void useMyCharms(bool val) {
-    update(state.copyWith(charms: val ? currentProfile.charms : null));
+    update(state.copyWith(useAllCharms: !val));
   }
 
   void _updateCharms(Map<CharmFamily, int> charms) {
@@ -153,7 +153,8 @@ abstract class SearcherArgsState with _$SearcherArgsState {
   const SearcherArgsState._();
 
   factory SearcherArgsState.initial() {
-    return SearcherArgsState(skills: [
+    return SearcherArgsState(
+        skills: [
       Leveled(value: All.skillsMap['critical-boost']!, level: 5),
       Leveled(value: All.skillsMap['burst']!, level: 5),
       Leveled(value: All.skillsMap['antivirus']!, level: 3),
@@ -162,14 +163,23 @@ abstract class SearcherArgsState with _$SearcherArgsState {
       Leveled(value: All.skillsMap['evade-extender']!, level: 1),
       Leveled(value: All.armorBonusesMap['gore-magalas-tyranny']!, level: 2),
       Leveled(value: All.armorBonusesMap['arkvelds-hunger']!, level: 2),
-    ], blacklistedArmors: {}, decos: null, charms: null, minRarity: All.minRarity, maxRarity: All.maxRarity);
+    ],
+        blacklistedArmors: {},
+        decos: { for (var d in All.decos) d : d.maxDecoAmount },
+        useAllDecos: true,
+        charms: { for (var c in All.charmFamiliesList) c : c.maxLevel },
+        useAllCharms: true,
+        minRarity: All.startHighRankRarity,
+        maxRarity: All.maxRarity);
   }
 
   const factory SearcherArgsState({
     required List<Leveled<SkillTemplate>> skills,
     required Set<Armor> blacklistedArmors,
-    required Map<Deco, int>? decos,
-    required Map<CharmFamily, int>? charms,
+    required Map<Deco, int> decos,
+    required bool useAllDecos,
+    required Map<CharmFamily, int> charms,
+    required bool useAllCharms,
     required int minRarity,
     required int maxRarity
   }) = _SearcherState;

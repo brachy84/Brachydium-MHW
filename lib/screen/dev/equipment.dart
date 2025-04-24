@@ -51,6 +51,7 @@ class _ArmorEditorState extends State<ArmorEditor> {
                 else
                   Text('${armor.primary.name} + ${armor.primaryLv}'),
                 if (armor.secondary != null) Text('${armor.secondary!.name} + ${armor.secondaryLv}'),
+                if (armor.ternary != null) Text('${armor.ternary!.name} + ${armor.ternaryLv}'),
               ],
             ),
           ),
@@ -62,29 +63,55 @@ class _ArmorEditorState extends State<ArmorEditor> {
   }
 
   Dialog openDialog(Armor armor, BuildContext context) {
-    Skill? skill1 = armor.primary, skill2 = armor.secondary;
-    int level1 = armor.primaryLv, level2 = armor.secondaryLv;
-    BonusSkill? groupBonus = armor.setBonus;
+    Skill? skill1 = armor.primary, skill2 = armor.secondary, skill3 = armor.ternary;
+    int level1 = armor.primaryLv, level2 = armor.secondaryLv, level3 = armor.ternaryLv;
+    BonusSkill? groupBonus = armor.groupBonus;
     BonusSkill? setBonus = armor.setBonus;
+    int rarity = armor.rarity;
     return Dialog(
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
       child: Container(
         padding: const EdgeInsets.all(16.0),
-        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 450),
+        constraints: const BoxConstraints(maxWidth: 600, maxHeight: 550),
         child: StatefulBuilder(builder: (context, setSubState) {
           return Column(
             children: [
               Text(armor.name),
               const Divider(),
-              const Text("Primary Skill"),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      'Rarity:  ',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                  Expanded(
+                    child: SpinBox(
+                      min: All.minRarity.toDouble(),
+                      max: All.maxRarity.toDouble(),
+                      value: rarity.toDouble(),
+                      onChanged: (val) {
+                        setSubState(() {
+                          rarity = val.toInt();
+                        });
+                      },
+                    ),
+                  )
+                ],
+              ),
+              const Text("1st Skill"),
               _makeTextField(setSubState, () => skill1, (skill) => skill1 = skill, () => level1, (lv) => level1 = lv),
-              const Text("Secondary Skill"),
+              const Text("2nd Skill"),
               _makeTextField(setSubState, () => skill2, (skill) => skill2 = skill, () => level2, (lv) => level2 = lv),
+              const Text("3rd Skill"),
+              _makeTextField(setSubState, () => skill3, (skill) => skill3 = skill, () => level3, (lv) => level3 = lv),
               const Divider(),
               const Text("Group Bonus"),
-              _makeArmorBonusTextField(setSubState, () => groupBonus, (skill) => groupBonus = skill),
+              _makeArmorBonusTextField(setSubState, () => groupBonus, (skill) => groupBonus = skill, SkillCategory.groupBonus),
               const Text("Set Bonus"),
-              _makeArmorBonusTextField(setSubState, () => setBonus, (skill) => setBonus = skill),
+              _makeArmorBonusTextField(setSubState, () => setBonus, (skill) => setBonus = skill, SkillCategory.setBonus),
               const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -98,24 +125,49 @@ class _ArmorEditorState extends State<ArmorEditor> {
                     color: Colors.green.shade700,
                     onPressed: () {
                       if (skill2 == All.undefined) skill2 = null;
+                      if (skill3 == All.undefined) skill3 = null;
                       if (skill1 == null || skill1 == All.undefined) {
                         if (skill2 != null) {
-                          skill1 = skill2;
-                          level1 = level2;
-                          skill2 = null;
-                          level2 = 0;
+                          if (skill3 != null) {
+                            skill1 = skill2;
+                            level1 = level2;
+                            skill2 = skill3;
+                            level2 = level3;
+                            skill3 = null;
+                            level3 = 0;
+                          } else {
+                            skill1 = skill2;
+                            level1 = level2;
+                            skill2 = null;
+                            level2 = 0;
+                          }
                         } else {
-                          skill1 = All.undefined;
-                          level1 = 0;
+                          if (skill3 != null) {
+                            skill1 = skill3;
+                            level1 = level3;
+                            skill3 = null;
+                            level3 = 0;
+                          } else {
+                            skill1 = All.undefined;
+                            level1 = 0;
+                          }
                         }
+                      } else if (skill2 == null && skill3 != null) {
+                        skill2 = skill3;
+                        level2 = level3;
+                        skill3 = null;
+                        level3 = 0;
                       }
                       Armor newArmor = armor.copyWith(
                           primary: skill1!,
                           secondary: skill2,
+                          ternary: skill3,
                           groupBonus: groupBonus,
                           setBonus: setBonus,
                           primaryLv: level1,
-                          secondaryLv: level2);
+                          secondaryLv: level2,
+                          ternaryLv: level3,
+                          rarity: rarity);
                       setState(() {
                         All.replaceArmor(armor, newArmor);
                       });
@@ -196,7 +248,7 @@ class _ArmorEditorState extends State<ArmorEditor> {
   }
 
   Row _makeArmorBonusTextField<T>(
-      StateSetter setState, BonusSkill? Function() getter, void Function(BonusSkill?) setter) {
+      StateSetter setState, BonusSkill? Function() getter, void Function(BonusSkill?) setter, SkillCategory category) {
     var current = getter();
     return Row(
       children: [
@@ -205,7 +257,7 @@ class _ArmorEditorState extends State<ArmorEditor> {
           child: CustomAutocomplete(
               optionsBuilder: (value) {
                 var t = value.text.toLowerCase();
-                var l = All.armorBonuses.where((skill) => skill.name.toLowerCase().contains(t)).toList();
+                var l = All.armorBonuses.where((skill) => skill.category == category && skill.name.toLowerCase().contains(t)).toList();
                 l.sort((a, b) {
                   var sa = a.name.toLowerCase().startsWith(t);
                   var sb = b.name.toLowerCase().startsWith(t);
@@ -263,7 +315,8 @@ class _ArmorEditorState extends State<ArmorEditor> {
                 Expanded(child: Text('Rarity', style: style)),
                 Expanded(child: Text('Slots', style: style)),
                 Expanded(child: Text('Skills', style: style)),
-                Expanded(child: Text('Armor Bonus', style: style)),
+                Expanded(child: Text('Group Bonus', style: style)),
+                Expanded(child: Text('Set Bonus', style: style)),
               ],
             ),
           ),

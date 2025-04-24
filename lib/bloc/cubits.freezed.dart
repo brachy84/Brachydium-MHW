@@ -17,8 +17,10 @@ T _$identity<T>(T value) => value;
 mixin _$SearcherArgsState {
   List<Leveled<SkillTemplate>> get skills;
   Set<Armor> get blacklistedArmors;
-  Map<Deco, int>? get decos;
-  Map<CharmFamily, int>? get charms;
+  Map<Deco, int> get decos;
+  bool get useAllDecos;
+  Map<CharmFamily, int> get charms;
+  bool get useAllCharms;
   int get minRarity;
   int get maxRarity;
 
@@ -39,7 +41,11 @@ mixin _$SearcherArgsState {
             const DeepCollectionEquality()
                 .equals(other.blacklistedArmors, blacklistedArmors) &&
             const DeepCollectionEquality().equals(other.decos, decos) &&
+            (identical(other.useAllDecos, useAllDecos) ||
+                other.useAllDecos == useAllDecos) &&
             const DeepCollectionEquality().equals(other.charms, charms) &&
+            (identical(other.useAllCharms, useAllCharms) ||
+                other.useAllCharms == useAllCharms) &&
             (identical(other.minRarity, minRarity) ||
                 other.minRarity == minRarity) &&
             (identical(other.maxRarity, maxRarity) ||
@@ -52,13 +58,15 @@ mixin _$SearcherArgsState {
       const DeepCollectionEquality().hash(skills),
       const DeepCollectionEquality().hash(blacklistedArmors),
       const DeepCollectionEquality().hash(decos),
+      useAllDecos,
       const DeepCollectionEquality().hash(charms),
+      useAllCharms,
       minRarity,
       maxRarity);
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, charms: $charms, minRarity: $minRarity, maxRarity: $maxRarity)';
+    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, useAllDecos: $useAllDecos, charms: $charms, useAllCharms: $useAllCharms, minRarity: $minRarity, maxRarity: $maxRarity)';
   }
 }
 
@@ -71,8 +79,10 @@ abstract mixin class $SearcherArgsStateCopyWith<$Res> {
   $Res call(
       {List<Leveled<SkillTemplate>> skills,
       Set<Armor> blacklistedArmors,
-      Map<Deco, int>? decos,
-      Map<CharmFamily, int>? charms,
+      Map<Deco, int> decos,
+      bool useAllDecos,
+      Map<CharmFamily, int> charms,
+      bool useAllCharms,
       int minRarity,
       int maxRarity});
 }
@@ -92,8 +102,10 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
   $Res call({
     Object? skills = null,
     Object? blacklistedArmors = null,
-    Object? decos = freezed,
-    Object? charms = freezed,
+    Object? decos = null,
+    Object? useAllDecos = null,
+    Object? charms = null,
+    Object? useAllCharms = null,
     Object? minRarity = null,
     Object? maxRarity = null,
   }) {
@@ -106,14 +118,22 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
           ? _self.blacklistedArmors
           : blacklistedArmors // ignore: cast_nullable_to_non_nullable
               as Set<Armor>,
-      decos: freezed == decos
+      decos: null == decos
           ? _self.decos
           : decos // ignore: cast_nullable_to_non_nullable
-              as Map<Deco, int>?,
-      charms: freezed == charms
+              as Map<Deco, int>,
+      useAllDecos: null == useAllDecos
+          ? _self.useAllDecos
+          : useAllDecos // ignore: cast_nullable_to_non_nullable
+              as bool,
+      charms: null == charms
           ? _self.charms
           : charms // ignore: cast_nullable_to_non_nullable
-              as Map<CharmFamily, int>?,
+              as Map<CharmFamily, int>,
+      useAllCharms: null == useAllCharms
+          ? _self.useAllCharms
+          : useAllCharms // ignore: cast_nullable_to_non_nullable
+              as bool,
       minRarity: null == minRarity
           ? _self.minRarity
           : minRarity // ignore: cast_nullable_to_non_nullable
@@ -132,8 +152,10 @@ class _SearcherState extends SearcherArgsState {
   const _SearcherState(
       {required final List<Leveled<SkillTemplate>> skills,
       required final Set<Armor> blacklistedArmors,
-      required final Map<Deco, int>? decos,
-      required final Map<CharmFamily, int>? charms,
+      required final Map<Deco, int> decos,
+      required this.useAllDecos,
+      required final Map<CharmFamily, int> charms,
+      required this.useAllCharms,
       required this.minRarity,
       required this.maxRarity})
       : _skills = skills,
@@ -159,26 +181,26 @@ class _SearcherState extends SearcherArgsState {
     return EqualUnmodifiableSetView(_blacklistedArmors);
   }
 
-  final Map<Deco, int>? _decos;
+  final Map<Deco, int> _decos;
   @override
-  Map<Deco, int>? get decos {
-    final value = _decos;
-    if (value == null) return null;
+  Map<Deco, int> get decos {
     if (_decos is EqualUnmodifiableMapView) return _decos;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
+    return EqualUnmodifiableMapView(_decos);
   }
 
-  final Map<CharmFamily, int>? _charms;
   @override
-  Map<CharmFamily, int>? get charms {
-    final value = _charms;
-    if (value == null) return null;
+  final bool useAllDecos;
+  final Map<CharmFamily, int> _charms;
+  @override
+  Map<CharmFamily, int> get charms {
     if (_charms is EqualUnmodifiableMapView) return _charms;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
+    return EqualUnmodifiableMapView(_charms);
   }
 
+  @override
+  final bool useAllCharms;
   @override
   final int minRarity;
   @override
@@ -201,7 +223,11 @@ class _SearcherState extends SearcherArgsState {
             const DeepCollectionEquality()
                 .equals(other._blacklistedArmors, _blacklistedArmors) &&
             const DeepCollectionEquality().equals(other._decos, _decos) &&
+            (identical(other.useAllDecos, useAllDecos) ||
+                other.useAllDecos == useAllDecos) &&
             const DeepCollectionEquality().equals(other._charms, _charms) &&
+            (identical(other.useAllCharms, useAllCharms) ||
+                other.useAllCharms == useAllCharms) &&
             (identical(other.minRarity, minRarity) ||
                 other.minRarity == minRarity) &&
             (identical(other.maxRarity, maxRarity) ||
@@ -214,13 +240,15 @@ class _SearcherState extends SearcherArgsState {
       const DeepCollectionEquality().hash(_skills),
       const DeepCollectionEquality().hash(_blacklistedArmors),
       const DeepCollectionEquality().hash(_decos),
+      useAllDecos,
       const DeepCollectionEquality().hash(_charms),
+      useAllCharms,
       minRarity,
       maxRarity);
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, charms: $charms, minRarity: $minRarity, maxRarity: $maxRarity)';
+    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, useAllDecos: $useAllDecos, charms: $charms, useAllCharms: $useAllCharms, minRarity: $minRarity, maxRarity: $maxRarity)';
   }
 }
 
@@ -235,8 +263,10 @@ abstract mixin class _$SearcherStateCopyWith<$Res>
   $Res call(
       {List<Leveled<SkillTemplate>> skills,
       Set<Armor> blacklistedArmors,
-      Map<Deco, int>? decos,
-      Map<CharmFamily, int>? charms,
+      Map<Deco, int> decos,
+      bool useAllDecos,
+      Map<CharmFamily, int> charms,
+      bool useAllCharms,
       int minRarity,
       int maxRarity});
 }
@@ -256,8 +286,10 @@ class __$SearcherStateCopyWithImpl<$Res>
   $Res call({
     Object? skills = null,
     Object? blacklistedArmors = null,
-    Object? decos = freezed,
-    Object? charms = freezed,
+    Object? decos = null,
+    Object? useAllDecos = null,
+    Object? charms = null,
+    Object? useAllCharms = null,
     Object? minRarity = null,
     Object? maxRarity = null,
   }) {
@@ -270,14 +302,22 @@ class __$SearcherStateCopyWithImpl<$Res>
           ? _self._blacklistedArmors
           : blacklistedArmors // ignore: cast_nullable_to_non_nullable
               as Set<Armor>,
-      decos: freezed == decos
+      decos: null == decos
           ? _self._decos
           : decos // ignore: cast_nullable_to_non_nullable
-              as Map<Deco, int>?,
-      charms: freezed == charms
+              as Map<Deco, int>,
+      useAllDecos: null == useAllDecos
+          ? _self.useAllDecos
+          : useAllDecos // ignore: cast_nullable_to_non_nullable
+              as bool,
+      charms: null == charms
           ? _self._charms
           : charms // ignore: cast_nullable_to_non_nullable
-              as Map<CharmFamily, int>?,
+              as Map<CharmFamily, int>,
+      useAllCharms: null == useAllCharms
+          ? _self.useAllCharms
+          : useAllCharms // ignore: cast_nullable_to_non_nullable
+              as bool,
       minRarity: null == minRarity
           ? _self.minRarity
           : minRarity // ignore: cast_nullable_to_non_nullable
