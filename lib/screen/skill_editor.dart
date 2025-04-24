@@ -19,8 +19,8 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
   }
 
-  Widget _optionsList(BuildContext context, SearcherArgsState state, SkillSelectorState selectorState,
-      double maxHeight) {
+  Widget _optionsList(
+      BuildContext context, SearcherArgsState state, SkillSelectorState selectorState, double maxHeight) {
     if (!selectorState.shown) return const SizedBox.shrink();
     List<Widget> options = [];
     List<SkillTemplate> skills = List.of(All.skills);
@@ -131,14 +131,19 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
     return skills;
   }
 
-  Widget _skillSelector(SearcherArgsState state, double maxListHeight) {
+  Widget _skillSelector(double maxListHeight) {
     //return AutoCompleteField(link: _link);
     return BlocBuilder<SkillSelectorCubit, SkillSelectorState>(
       builder: (context, selectorState) {
         return PortalTarget(
             portalFollower: Material(
               color: Colors.black.withAlpha(0),
-              child: _optionsList(context, state, selectorState, maxListHeight),
+              child: BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
+                buildWhen: (a, b) => !listEquals(a.skills, b.skills),
+                builder: (context, state) {
+                  return _optionsList(context, state, selectorState, maxListHeight);
+                },
+              ),
             ),
             visible: selectorState.shown,
             anchor: const Aligned(
@@ -164,18 +169,6 @@ abstract class _AbstractSearcherPageState<T extends StatefulWidget> extends Stat
               ),
             ));
       },
-    );
-  }
-
-  Widget _searchButton() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      constraints: const BoxConstraints(minWidth: 300),
-      child: MaterialButton(
-        onPressed: () {},
-        color: Colors.green,
-        child: const Text("Search"),
-      ),
     );
   }
 
@@ -213,15 +206,16 @@ class _SkillEditorState extends _AbstractSearcherPageState<SkillEditor> {
                       return AlertDialog(
                         title: const Text('Remove All Skills?'),
                         actions: [
-                          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('No')),
-                          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Yes')),
+                          TextButton(onPressed: () => Navigator.pop(context), child: const Text('No')),
+                          TextButton(
+                              onPressed: () {
+                                context.read<SearcherArgsCubit>().clearSkills();
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Yes')),
                         ],
                       );
-                    }).then((val) {
-                  if (val ?? false) {
-                    context.read<SearcherArgsCubit>().clearSkills();
-                  }
-                });
+                    });
               },
               minWidth: double.infinity,
               height: 48,
@@ -231,16 +225,14 @@ class _SkillEditorState extends _AbstractSearcherPageState<SkillEditor> {
             ),
             Expanded(
                 child: BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
-                  buildWhen: (a, b) => !listEquals(a.skills, b.skills),
-                  builder: (context, state) {
-                    return ListView(
-                      children: _buildSkillList(context, state, true),
-                    );
-                  },
-                )),
-            _skillSelector(context
-                .read<SearcherArgsCubit>()
-                .state, 250),
+              buildWhen: (a, b) => !listEquals(a.skills, b.skills),
+              builder: (context, state) {
+                return ListView(
+                  children: _buildSkillList(context, state, true),
+                );
+              },
+            )),
+            _skillSelector(250),
             const SizedBox(
               height: 8,
             ),

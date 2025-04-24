@@ -1,5 +1,6 @@
 import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
 import 'package:brachys_armor_set_searcher/data/set_finder.dart' as ass;
+import 'package:brachys_armor_set_searcher/screen/armor_filters.dart';
 import 'package:brachys_armor_set_searcher/screen/charm.dart';
 import 'package:brachys_armor_set_searcher/screen/decoration.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
@@ -44,10 +45,16 @@ Widget _option(BuildContext context, String title, SearcherPageState pageState, 
   );
 }
 
-Widget _makeSkillChip(String text) {
+Widget _makeChip(String text) {
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 4),
-    decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.deepPurple.shade600),
+    decoration: ShapeDecoration(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+        color: Colors.deepPurple.shade500,
+      shadows: [BoxShadow(color: Colors.black87, blurRadius: 8, spreadRadius: -3, offset: Offset(2, 2))]
+    ),
     child: Text(
       text,
       style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
@@ -55,22 +62,28 @@ Widget _makeSkillChip(String text) {
   );
 }
 
-Widget _skillsPreview(BuildContext context, SearcherArgsState state) {
-  if (state.skills.isEmpty) {
+Widget _chipsPreview(BuildContext context, Iterable<String> texts) {
+  if (texts.isEmpty) {
     return const Padding(
       padding: EdgeInsets.only(left: 4),
       child: Text('None selected'),
     );
   }
-  List<Widget> skills = state.skills
-      .map((skill) => _makeSkillChip("${skill.value.localizedName} ${skill.value.getActualLevel(skill.level)}"))
-      .toList();
   return Wrap(
     spacing: 4,
     runSpacing: 4,
     alignment: WrapAlignment.spaceEvenly,
-    children: skills,
+    children: texts.map((skill) => _makeChip(skill)).toList(),
   );
+}
+
+Widget _skillsPreview(BuildContext context, SearcherArgsState state) {
+  return _chipsPreview(
+      context, state.skills.map((skill) => "${skill.value.localizedName} ${skill.value.getActualLevel(skill.level)}"));
+}
+
+Widget _armorBlacklistPreview(BuildContext context, SearcherArgsState state) {
+  return _chipsPreview(context, ['Min Rarity: ${state.minRarity}', 'Max Rarity: ${state.maxRarity}'].followedBy(state.blacklistedArmors.map((armor) => armor.localizedName)));
 }
 
 Widget _decosOption(BuildContext context, bool mobile) {
@@ -88,7 +101,7 @@ Widget _decosOption(BuildContext context, bool mobile) {
             ),
           ),
           Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(30)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
             margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
             padding: const EdgeInsets.all(4),
             constraints: const BoxConstraints(minWidth: double.infinity),
@@ -151,7 +164,7 @@ Widget _charmsOption(BuildContext context, bool mobile) {
             ),
           ),
           Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(30)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), color: Colors.white.withAlpha(40)),
             margin: const EdgeInsets.only(bottom: 8, left: 8, right: 8),
             padding: const EdgeInsets.all(4),
             constraints: const BoxConstraints(minWidth: double.infinity),
@@ -214,6 +227,17 @@ List<Widget> _makeSearcherOptions(BuildContext context, bool mobile) {
         mobile),
     _decosOption(context, mobile),
     _charmsOption(context, mobile),
+    _option(
+        context,
+        'Equipment Blacklist',
+        SearcherPageState.editArmorFilters,
+        BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
+          buildWhen: (a, b) => !setEquals(a.blacklistedArmors, b.blacklistedArmors) || a.minRarity != b.minRarity || a.maxRarity != b.maxRarity,
+          builder: (context, state) {
+            return _armorBlacklistPreview(context, state);
+          },
+        ),
+        mobile),
     if (mobile)
       BlocBuilder<SearchResultCubit, SearchResultState>(
         builder: (context, state) {
@@ -235,9 +259,9 @@ void _updateScreen(BuildContext context, SearcherPageState state, bool mobile) {
   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
     switch (state) {
       case SearcherPageState.editSkills:
-        return SimplePage(body: const SkillEditor(doneButton: true), title: 'Skill Editor');
+        return SimplePage(body: const SkillEditor(doneButton: false), title: 'Skill Editor');
       case SearcherPageState.editArmorFilters:
-        return SimplePage(body: Placeholder(), title: 'Armor filter Editor');
+        return SimplePage(body: ArmorFilters(mobile: true), title: 'Equipment Blacklist');
       case SearcherPageState.editDecos:
         return SimplePage(body: DecoEditor(), title: 'Deco Editor');
       case SearcherPageState.editCharms:
@@ -310,7 +334,10 @@ class SearcherDesktop extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Column(
             children: [
-              Expanded(child: ListView(children: _makeSearcherOptions(context, false),)),
+              Expanded(
+                  child: ListView(
+                children: _makeSearcherOptions(context, false),
+              )),
               BlocBuilder<SearchResultCubit, SearchResultState>(
                 builder: (context, state) {
                   if (state.searching) {
@@ -339,7 +366,7 @@ class SearcherDesktop extends StatelessWidget {
               case SearcherPageState.editCharms:
                 return const CharmEditorPage();
               case SearcherPageState.editArmorFilters:
-                return const Placeholder();
+                return const ArmorFilters(mobile: false);
             }
           }),
         ),

@@ -16,9 +16,11 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SearcherArgsState {
   List<Leveled<SkillTemplate>> get skills;
-  List<Leveled<ArmorFilter>> get armorFilters;
+  Set<Armor> get blacklistedArmors;
   Map<Deco, int>? get decos;
   Map<CharmFamily, int>? get charms;
+  int get minRarity;
+  int get maxRarity;
 
   /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,22 +37,28 @@ mixin _$SearcherArgsState {
             other is SearcherArgsState &&
             const DeepCollectionEquality().equals(other.skills, skills) &&
             const DeepCollectionEquality()
-                .equals(other.armorFilters, armorFilters) &&
+                .equals(other.blacklistedArmors, blacklistedArmors) &&
             const DeepCollectionEquality().equals(other.decos, decos) &&
-            const DeepCollectionEquality().equals(other.charms, charms));
+            const DeepCollectionEquality().equals(other.charms, charms) &&
+            (identical(other.minRarity, minRarity) ||
+                other.minRarity == minRarity) &&
+            (identical(other.maxRarity, maxRarity) ||
+                other.maxRarity == maxRarity));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(skills),
-      const DeepCollectionEquality().hash(armorFilters),
+      const DeepCollectionEquality().hash(blacklistedArmors),
       const DeepCollectionEquality().hash(decos),
-      const DeepCollectionEquality().hash(charms));
+      const DeepCollectionEquality().hash(charms),
+      minRarity,
+      maxRarity);
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos, charms: $charms)';
+    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, charms: $charms, minRarity: $minRarity, maxRarity: $maxRarity)';
   }
 }
 
@@ -62,9 +70,11 @@ abstract mixin class $SearcherArgsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Leveled<SkillTemplate>> skills,
-      List<Leveled<ArmorFilter>> armorFilters,
+      Set<Armor> blacklistedArmors,
       Map<Deco, int>? decos,
-      Map<CharmFamily, int>? charms});
+      Map<CharmFamily, int>? charms,
+      int minRarity,
+      int maxRarity});
 }
 
 /// @nodoc
@@ -81,19 +91,21 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? skills = null,
-    Object? armorFilters = null,
+    Object? blacklistedArmors = null,
     Object? decos = freezed,
     Object? charms = freezed,
+    Object? minRarity = null,
+    Object? maxRarity = null,
   }) {
     return _then(_self.copyWith(
       skills: null == skills
           ? _self.skills
           : skills // ignore: cast_nullable_to_non_nullable
               as List<Leveled<SkillTemplate>>,
-      armorFilters: null == armorFilters
-          ? _self.armorFilters
-          : armorFilters // ignore: cast_nullable_to_non_nullable
-              as List<Leveled<ArmorFilter>>,
+      blacklistedArmors: null == blacklistedArmors
+          ? _self.blacklistedArmors
+          : blacklistedArmors // ignore: cast_nullable_to_non_nullable
+              as Set<Armor>,
       decos: freezed == decos
           ? _self.decos
           : decos // ignore: cast_nullable_to_non_nullable
@@ -102,6 +114,14 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
           ? _self.charms
           : charms // ignore: cast_nullable_to_non_nullable
               as Map<CharmFamily, int>?,
+      minRarity: null == minRarity
+          ? _self.minRarity
+          : minRarity // ignore: cast_nullable_to_non_nullable
+              as int,
+      maxRarity: null == maxRarity
+          ? _self.maxRarity
+          : maxRarity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -111,11 +131,13 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
 class _SearcherState extends SearcherArgsState {
   const _SearcherState(
       {required final List<Leveled<SkillTemplate>> skills,
-      required final List<Leveled<ArmorFilter>> armorFilters,
+      required final Set<Armor> blacklistedArmors,
       required final Map<Deco, int>? decos,
-      required final Map<CharmFamily, int>? charms})
+      required final Map<CharmFamily, int>? charms,
+      required this.minRarity,
+      required this.maxRarity})
       : _skills = skills,
-        _armorFilters = armorFilters,
+        _blacklistedArmors = blacklistedArmors,
         _decos = decos,
         _charms = charms,
         super._();
@@ -128,12 +150,13 @@ class _SearcherState extends SearcherArgsState {
     return EqualUnmodifiableListView(_skills);
   }
 
-  final List<Leveled<ArmorFilter>> _armorFilters;
+  final Set<Armor> _blacklistedArmors;
   @override
-  List<Leveled<ArmorFilter>> get armorFilters {
-    if (_armorFilters is EqualUnmodifiableListView) return _armorFilters;
+  Set<Armor> get blacklistedArmors {
+    if (_blacklistedArmors is EqualUnmodifiableSetView)
+      return _blacklistedArmors;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_armorFilters);
+    return EqualUnmodifiableSetView(_blacklistedArmors);
   }
 
   final Map<Deco, int>? _decos;
@@ -156,6 +179,11 @@ class _SearcherState extends SearcherArgsState {
     return EqualUnmodifiableMapView(value);
   }
 
+  @override
+  final int minRarity;
+  @override
+  final int maxRarity;
+
   /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
   @override
@@ -171,22 +199,28 @@ class _SearcherState extends SearcherArgsState {
             other is _SearcherState &&
             const DeepCollectionEquality().equals(other._skills, _skills) &&
             const DeepCollectionEquality()
-                .equals(other._armorFilters, _armorFilters) &&
+                .equals(other._blacklistedArmors, _blacklistedArmors) &&
             const DeepCollectionEquality().equals(other._decos, _decos) &&
-            const DeepCollectionEquality().equals(other._charms, _charms));
+            const DeepCollectionEquality().equals(other._charms, _charms) &&
+            (identical(other.minRarity, minRarity) ||
+                other.minRarity == minRarity) &&
+            (identical(other.maxRarity, maxRarity) ||
+                other.maxRarity == maxRarity));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_skills),
-      const DeepCollectionEquality().hash(_armorFilters),
+      const DeepCollectionEquality().hash(_blacklistedArmors),
       const DeepCollectionEquality().hash(_decos),
-      const DeepCollectionEquality().hash(_charms));
+      const DeepCollectionEquality().hash(_charms),
+      minRarity,
+      maxRarity);
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, armorFilters: $armorFilters, decos: $decos, charms: $charms)';
+    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, charms: $charms, minRarity: $minRarity, maxRarity: $maxRarity)';
   }
 }
 
@@ -200,9 +234,11 @@ abstract mixin class _$SearcherStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<Leveled<SkillTemplate>> skills,
-      List<Leveled<ArmorFilter>> armorFilters,
+      Set<Armor> blacklistedArmors,
       Map<Deco, int>? decos,
-      Map<CharmFamily, int>? charms});
+      Map<CharmFamily, int>? charms,
+      int minRarity,
+      int maxRarity});
 }
 
 /// @nodoc
@@ -219,19 +255,21 @@ class __$SearcherStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? skills = null,
-    Object? armorFilters = null,
+    Object? blacklistedArmors = null,
     Object? decos = freezed,
     Object? charms = freezed,
+    Object? minRarity = null,
+    Object? maxRarity = null,
   }) {
     return _then(_SearcherState(
       skills: null == skills
           ? _self._skills
           : skills // ignore: cast_nullable_to_non_nullable
               as List<Leveled<SkillTemplate>>,
-      armorFilters: null == armorFilters
-          ? _self._armorFilters
-          : armorFilters // ignore: cast_nullable_to_non_nullable
-              as List<Leveled<ArmorFilter>>,
+      blacklistedArmors: null == blacklistedArmors
+          ? _self._blacklistedArmors
+          : blacklistedArmors // ignore: cast_nullable_to_non_nullable
+              as Set<Armor>,
       decos: freezed == decos
           ? _self._decos
           : decos // ignore: cast_nullable_to_non_nullable
@@ -240,6 +278,14 @@ class __$SearcherStateCopyWithImpl<$Res>
           ? _self._charms
           : charms // ignore: cast_nullable_to_non_nullable
               as Map<CharmFamily, int>?,
+      minRarity: null == minRarity
+          ? _self.minRarity
+          : minRarity // ignore: cast_nullable_to_non_nullable
+              as int,
+      maxRarity: null == maxRarity
+          ? _self.maxRarity
+          : maxRarity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }

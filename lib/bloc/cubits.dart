@@ -124,6 +124,26 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   Map<CharmFamily, int> getCharms() {
     return state.charms != null ? Map.of(state.charms!) : currentProfile.charms;
   }
+
+  void updateRarity(int min, int max) {
+    update(state.copyWith(minRarity: min, maxRarity: max));
+  }
+
+  void clearBlacklistedEquipment() {
+    update(state.copyWith(blacklistedArmors: {}));
+  }
+
+  void removeBlacklistedArmor(Armor armor) {
+    var set = Set.of(state.blacklistedArmors);
+    set.remove(armor);
+    update(state.copyWith(blacklistedArmors: set));
+  }
+
+  void addBlacklistedArmor(Armor armor) {
+    var set = Set.of(state.blacklistedArmors);
+    set.add(armor);
+    update(state.copyWith(blacklistedArmors: set));
+  }
 }
 
 @freezed
@@ -137,19 +157,29 @@ abstract class SearcherArgsState with _$SearcherArgsState {
       Leveled(value: All.skillsMap['critical-boost']!, level: 5),
       Leveled(value: All.skillsMap['burst']!, level: 5),
       Leveled(value: All.skillsMap['antivirus']!, level: 3),
-      Leveled(value: All.skillsMap['weakness-exploit']!, level: 5)
-    ], armorFilters: [], decos: null, charms: null);
+      Leveled(value: All.skillsMap['weakness-exploit']!, level: 5),
+      Leveled(value: All.skillsMap['evade-window']!, level: 3),
+      Leveled(value: All.skillsMap['evade-extender']!, level: 1),
+      Leveled(value: All.armorBonusesMap['gore-magalas-tyranny']!, level: 2),
+      Leveled(value: All.armorBonusesMap['arkvelds-hunger']!, level: 2),
+    ], blacklistedArmors: {}, decos: null, charms: null, minRarity: All.minRarity, maxRarity: All.maxRarity);
   }
 
   const factory SearcherArgsState({
     required List<Leveled<SkillTemplate>> skills,
-    required List<Leveled<ArmorFilter>> armorFilters,
+    required Set<Armor> blacklistedArmors,
     required Map<Deco, int>? decos,
     required Map<CharmFamily, int>? charms,
+    required int minRarity,
+    required int maxRarity
   }) = _SearcherState;
 
   bool hasSkill(SkillTemplate skill) {
     return skills.any((s) => s.value == skill);
+  }
+
+  bool hasArmorBlacklisted(Armor armor) {
+    return blacklistedArmors.contains(armor);
   }
 
   int getDecoAmount(Deco deco) {
@@ -192,9 +222,9 @@ class SearchResultCubit extends Cubit<SearchResultState> {
         requiredSkills: searcherState.skills,
         decorations: searcherState.decos,
         charms: searcherState.charms,
-        minRarity: 0,
-        maxRarity: 12,
-        blacklistedArmor: {})), true);
+        minRarity: searcherState.minRarity,
+        maxRarity: searcherState.maxRarity,
+        blacklistedArmor: searcherState.blacklistedArmors)), true);
     result.searchResult!.armorSetStream.controller.onCancel = () => _onFinish();
     emit(result);
   }

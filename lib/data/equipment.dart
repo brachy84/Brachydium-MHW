@@ -96,6 +96,9 @@ class All {
     Part.leg: legs
   };
 
+  static final int minRarity = 1;
+  static final int maxRarity = 8;
+
   static final Map<String, String> langEn = {};
 
   static void addSkill(String name, SkillCategory category, int maxLevel, String desc) {
@@ -741,18 +744,6 @@ mixin SkillTemplate implements Localized {
   int getRequiredLevels(int actualLevel);
 
   int get actualMaxLevel => getActualLevel(maxLevel);
-
-  bool matchesSearch(String searchValue) {
-    return localizedName.toLowerCase().contains(searchValue);
-  }
-
-  int compareForSearch(SkillTemplate b, String searchValue) {
-    var sa = name.toLowerCase().startsWith(searchValue);
-    var sb = b.name.toLowerCase().startsWith(searchValue);
-    if (sa && !sb) return -1;
-    if (!sa && sb) return 1;
-    return 0;
-  }
 
   String localize(int count, {bool capAtMax = true});
 
