@@ -167,7 +167,7 @@ class _ProgressBarState extends State<ProgressBar> {
                 ),
               ),
             Center(
-              child: Text('$_progress / ${widget.totalCount}  -  ${_foundSets.length} found sets'),
+              child: Text('$_progress / ${widget.totalCount} (${(100 * _progress / widget.totalCount).toInt()}%)  -  ${_foundSets.length} found sets'),
             )
           ],
         ));
@@ -237,7 +237,7 @@ class _ArmorSetListState extends State<ArmorSetList> {
       set.charm.localizedName
     ];
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
         onTap: () {
           if (widget.mobile) {
