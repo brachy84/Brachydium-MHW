@@ -2,861 +2,738 @@
   "data": [
     {
       "name": "resentment",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "attack-boost",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "adrenaline-rush",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "offensive-guard",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "peak-performance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "critical-eye",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "counterstrike",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "critical-boost",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "weakness-exploit",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "critical-draw",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "maximum-might",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "fire-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "convert-element",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "water-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "defense-boost",
-      "altName": null,
       "category": "armor",
       "maxLevel": 7,
       "desc": ""
     },
     {
       "name": "ice-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "thunder-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "divine-blessing",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "dragon-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "fire-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "poison-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "water-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "paralysis-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "thunder-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "sleep-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "blast-attack",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "ice-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "dragon-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "critical-element",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "poison-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "critical-status",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "paralysis-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "charge-master",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "sleep-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "iron-skin",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "handicraft",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "blight-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "razor-sharp",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "stun-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "bleeding-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "protective-polish",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "minds-eye",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "bind-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "bludgeoner",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "blast-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "masters-touch",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "stench-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "normal-shots",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "adaptability",
-      "altName": null,
       "category": "armor",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "piercing-shots",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "recovery-up",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "spreadpower-shots",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "recovery-speed",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "ballistics",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "rapid-fire-up",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "survival-expert",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "opening-shot",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "constitution",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "stamina-surge",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "tetrad-shot",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "marathon-runner",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "special-ammo-boost",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "poison-functionality",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "hunger-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "para-functionality",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "agitator",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "sleep-functionality",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "blast-functionality",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "latent-power",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "exhaust-functionality",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "heroics",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "burst",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "focus",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "foray",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "power-prolonger",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "flayer",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "punishing-draw",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "palico-rally",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "slugger",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "partbreaker",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "stamina-thief",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "coalescence",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "artillery",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "ambush",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "rapid-morph",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "antivirus",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "horn-maestro",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "elemental-absorption",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "charge-up",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "self-improvement",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "airborne",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "evade-window",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "poison-duration-up",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "evade-extender",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "earplugs",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "guard",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "quick-sheathe",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "guard-up",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "windproof",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "load-shells",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "tremor-resistance",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "speed-sharpening",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "flinch-free",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "slicked-blade",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "intimidator",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "whiteflame-torrent",
-      "altName": null,
       "category": "weapon",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "speed-eating",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "aquaticoilsilt-mobility",
-      "altName": null,
       "category": "armor",
       "maxLevel": 2,
       "desc": ""
     },
     {
       "name": "shock-absorber",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "leap-of-faith",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "jump-master",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "cliffhanger",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "wide-range",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "tool-specialist",
-      "altName": null,
       "category": "armor",
       "maxLevel": 5,
       "desc": ""
     },
     {
       "name": "bombardier",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "mushroomancer",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "item-prolonger",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "free-meal",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "blindsider",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "botanist",
-      "altName": null,
       "category": "armor",
       "maxLevel": 4,
       "desc": ""
     },
     {
       "name": "geologist",
-      "altName": null,
       "category": "armor",
       "maxLevel": 3,
       "desc": ""
     },
     {
       "name": "entomologist",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
     },
     {
       "name": "outdoorsman",
-      "altName": null,
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
