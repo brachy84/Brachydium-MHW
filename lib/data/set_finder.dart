@@ -95,12 +95,13 @@ class _SearchConfig {
       this.chests, this.arms, this.waists, this.legs, this.charms, this.decos);
 
   factory _SearchConfig(SearchArguments args) {
-    final List<Armor> helmets = [];
-    final List<Armor> chests = [];
-    final List<Armor> arms = [];
-    final List<Armor> waists = [];
-    final List<Armor> legs = [];
-    final List<Charm> charms = [];
+    // sets to avoid duplicate armor pieces which have multiple required skills
+    final Set<Armor> helmets = {};
+    final Set<Armor> chests = {};
+    final Set<Armor> arms = {};
+    final Set<Armor> waists = {};
+    final Set<Armor> legs = {};
+    final Set<Charm> charms = {};
     final List<Deco> decos = [];
     for (Leveled<SkillTemplate> skill in args.requiredSkills.values) {
       _addArmor(args, helmets, All.helmets[skill.value]);
@@ -118,16 +119,11 @@ class _SearchConfig {
       decos.addAll(decoSet);
       decos.sort((d1, d2) => d2.size.compareTo(d1.size));
     }
-    _sortList(args, helmets);
-    _sortList(args, chests);
-    _sortList(args, arms);
-    _sortList(args, waists);
-    _sortList(args, legs);
     int estimatedCombinations =
         helmets.length * chests.length * arms.length * waists.length * legs.length * charms.length;
     log.info('Searching $estimatedCombinations combinations');
-    return _SearchConfig._(args.weapon, args.requiredSkills, args.decorations, estimatedCombinations, helmets, chests,
-        arms, waists, legs, charms, decos);
+    return _SearchConfig._(args.weapon, args.requiredSkills, args.decorations, estimatedCombinations, _sortList(args, helmets), _sortList(args, chests),
+        _sortList(args, arms), _sortList(args, waists), _sortList(args, legs), charms.toList(growable: false), decos);
   }
 
   Json toJson() {
@@ -169,11 +165,10 @@ class _SearchConfig {
     );
   }
 
-  static void _sortList(SearchArguments args, List<Armor> list) {
-    var copy = list.map((a) => _ValueArmor.create(a, args.requiredSkills)).toList(growable: false);
+  static List<Armor> _sortList(SearchArguments args, Set<Armor> set) {
+    var copy = set.map((a) => _ValueArmor.create(a, args.requiredSkills)).toList(growable: false);
     copy.sort();
-    list.clear();
-    list.addAll(copy.map((as) => as.armor));
+    return copy.map((as) => as.armor).toList(growable: false);
   }
 
   static bool _hasDeco(Map<Deco, int>? decorations, Deco deco) {
@@ -198,7 +193,7 @@ class _SearchConfig {
     return _getDecoAmount(decorations, deco);
   }
 
-  static void _addArmor(SearchArguments args, List<Armor> validArmor, List<Armor>? allArmor) {
+  static void _addArmor(SearchArguments args, Set<Armor> validArmor, List<Armor>? allArmor) {
     if (allArmor != null) {
       for (var armor in allArmor) {
         if (armor.rarity >= args.minRarity &&
@@ -664,7 +659,6 @@ class _ArmorSetTryer {
   static search(_SearchConfig config, SendPort sendPort, List msgQueue, int id) async {
     var tryer = _ArmorSetTryer.of(config: config, decos: config.decos);
     log.info('Searching on Isolate $id');
-    log.info(' - building index $id');
     //var indexes = _buildIndexes(config);
     var indexer = CuboidIndexer(config.helmets.length, config.chests.length, config.arms.length, config.waists.length, config.legs.length, config.charms.length);
     bool canceled = false;
@@ -673,7 +667,6 @@ class _ArmorSetTryer {
     final int armorThreshold = (config.estimatedCombinations * 0.02).floor();
     int lastArmor = 0;
     bool likelyDone = false;
-    log.info(' - start actual search $id');
     for (int i = 0; i < config.estimatedCombinations; i += batchSize) {
       if (canceled) {
         sendPort.send('done');
