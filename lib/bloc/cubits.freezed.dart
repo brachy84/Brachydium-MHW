@@ -12,13 +12,20 @@ part of 'cubits.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+SearcherArgsState _$SearcherArgsStateFromJson(Map<String, dynamic> json) {
+  return _SearcherState.fromJson(json);
+}
 
 /// @nodoc
 mixin _$SearcherArgsState {
+  @JsonKey(fromJson: _jsonToSkills, toJson: _skillsToJson)
   List<Leveled<SkillTemplate>> get skills;
+  @JsonKey(fromJson: _jsonToArmor, toJson: _armorToJson)
   Set<Armor> get blacklistedArmors;
+  @JsonKey(fromJson: _jsonToDecos, toJson: _decosToJson)
   Map<Deco, int> get decos;
   bool get useAllDecos;
+  @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson)
   Map<CharmFamily, int> get charms;
   bool get useAllCharms;
   int get minRarity;
@@ -31,6 +38,9 @@ mixin _$SearcherArgsState {
   $SearcherArgsStateCopyWith<SearcherArgsState> get copyWith =>
       _$SearcherArgsStateCopyWithImpl<SearcherArgsState>(
           this as SearcherArgsState, _$identity);
+
+  /// Serializes this SearcherArgsState to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -52,6 +62,7 @@ mixin _$SearcherArgsState {
                 other.maxRarity == maxRarity));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -77,10 +88,14 @@ abstract mixin class $SearcherArgsStateCopyWith<$Res> {
       _$SearcherArgsStateCopyWithImpl;
   @useResult
   $Res call(
-      {List<Leveled<SkillTemplate>> skills,
+      {@JsonKey(fromJson: _jsonToSkills, toJson: _skillsToJson)
+      List<Leveled<SkillTemplate>> skills,
+      @JsonKey(fromJson: _jsonToArmor, toJson: _armorToJson)
       Set<Armor> blacklistedArmors,
+      @JsonKey(fromJson: _jsonToDecos, toJson: _decosToJson)
       Map<Deco, int> decos,
       bool useAllDecos,
+      @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson)
       Map<CharmFamily, int> charms,
       bool useAllCharms,
       int minRarity,
@@ -147,13 +162,17 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _SearcherState extends SearcherArgsState {
   const _SearcherState(
-      {required final List<Leveled<SkillTemplate>> skills,
+      {@JsonKey(fromJson: _jsonToSkills, toJson: _skillsToJson)
+      required final List<Leveled<SkillTemplate>> skills,
+      @JsonKey(fromJson: _jsonToArmor, toJson: _armorToJson)
       required final Set<Armor> blacklistedArmors,
+      @JsonKey(fromJson: _jsonToDecos, toJson: _decosToJson)
       required final Map<Deco, int> decos,
       required this.useAllDecos,
+      @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson)
       required final Map<CharmFamily, int> charms,
       required this.useAllCharms,
       required this.minRarity,
@@ -163,9 +182,12 @@ class _SearcherState extends SearcherArgsState {
         _decos = decos,
         _charms = charms,
         super._();
+  factory _SearcherState.fromJson(Map<String, dynamic> json) =>
+      _$SearcherStateFromJson(json);
 
   final List<Leveled<SkillTemplate>> _skills;
   @override
+  @JsonKey(fromJson: _jsonToSkills, toJson: _skillsToJson)
   List<Leveled<SkillTemplate>> get skills {
     if (_skills is EqualUnmodifiableListView) return _skills;
     // ignore: implicit_dynamic_type
@@ -174,6 +196,7 @@ class _SearcherState extends SearcherArgsState {
 
   final Set<Armor> _blacklistedArmors;
   @override
+  @JsonKey(fromJson: _jsonToArmor, toJson: _armorToJson)
   Set<Armor> get blacklistedArmors {
     if (_blacklistedArmors is EqualUnmodifiableSetView)
       return _blacklistedArmors;
@@ -183,6 +206,7 @@ class _SearcherState extends SearcherArgsState {
 
   final Map<Deco, int> _decos;
   @override
+  @JsonKey(fromJson: _jsonToDecos, toJson: _decosToJson)
   Map<Deco, int> get decos {
     if (_decos is EqualUnmodifiableMapView) return _decos;
     // ignore: implicit_dynamic_type
@@ -193,6 +217,7 @@ class _SearcherState extends SearcherArgsState {
   final bool useAllDecos;
   final Map<CharmFamily, int> _charms;
   @override
+  @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson)
   Map<CharmFamily, int> get charms {
     if (_charms is EqualUnmodifiableMapView) return _charms;
     // ignore: implicit_dynamic_type
@@ -215,6 +240,13 @@ class _SearcherState extends SearcherArgsState {
       __$SearcherStateCopyWithImpl<_SearcherState>(this, _$identity);
 
   @override
+  Map<String, dynamic> toJson() {
+    return _$SearcherStateToJson(
+      this,
+    );
+  }
+
+  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -234,6 +266,7 @@ class _SearcherState extends SearcherArgsState {
                 other.maxRarity == maxRarity));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -261,10 +294,14 @@ abstract mixin class _$SearcherStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Leveled<SkillTemplate>> skills,
+      {@JsonKey(fromJson: _jsonToSkills, toJson: _skillsToJson)
+      List<Leveled<SkillTemplate>> skills,
+      @JsonKey(fromJson: _jsonToArmor, toJson: _armorToJson)
       Set<Armor> blacklistedArmors,
+      @JsonKey(fromJson: _jsonToDecos, toJson: _decosToJson)
       Map<Deco, int> decos,
       bool useAllDecos,
+      @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson)
       Map<CharmFamily, int> charms,
       bool useAllCharms,
       int minRarity,

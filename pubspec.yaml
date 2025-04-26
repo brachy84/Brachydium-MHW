@@ -55,6 +55,7 @@ dependencies:
   blurrycontainer: ^2.1.0
   flutter_bloc: ^9.0.0
   talker: ^4.7.2
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:

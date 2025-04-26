@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:talker/talker.dart';
 
 typedef Json = Map<String, dynamic>;
@@ -5,6 +7,8 @@ typedef ToJson<T> = Json Function(T);
 typedef FromJson<T> = T Function(Json);
 
 final log = Talker(logger: TalkerLogger(formatter: _MyLogFormatter()));
+
+final jsonEncoder = JsonEncoder.withIndent('  ');
 
 class _MyLogFormatter implements LoggerFormatter {
   @override

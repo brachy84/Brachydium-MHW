@@ -6,8 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../data/equipment.dart';
 import '../data/set_finder.dart';
+import '../data/util.dart';
 
 part 'cubits.freezed.dart';
+part 'cubits.g.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState.setSearcher);
@@ -30,11 +32,12 @@ class SearcherPageCubit extends Cubit<SearcherPageState> {
 enum SearcherPageState { editSkills, editDecos, editCharms, editArmorFilters, results }
 
 class SearcherArgsCubit extends Cubit<SearcherArgsState> {
-  SearcherArgsCubit() : super(SearcherArgsState.initial());
+  SearcherArgsCubit() : super(currentProfile.args);
 
   SearcherArgsCubit.withState(super.state);
 
   void update(SearcherArgsState state) {
+    currentProfile.args = state;
     emit(state);
   }
 
@@ -64,32 +67,27 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   }
 
   void _updateDecos(Map<Deco, int> decos) {
-    currentProfile.decos = decos;
     update(state.copyWith(decos: decos));
   }
 
   void updateDecoLevel(Deco deco, int level) {
-    var decos = getDecos();
+    var decos = Map.of(state.decos);
     decos[deco] = level;
     _updateDecos(decos);
   }
 
   void updateDecoLevelBy(Deco deco, [int by = 1]) {
-    var decos = getDecos();
+    var decos = Map.of(state.decos);
     decos[deco] = min(deco.maxDecoAmount, max(0, (decos[deco] ?? 0) + by));
     _updateDecos(decos);
   }
 
   void setDecosToMax() {
-    _updateDecos({ for (var d in All.decos) d : d.maxDecoAmount });
+    _updateDecos({for (var d in All.decos) d: d.maxDecoAmount});
   }
 
   void setDecosToZero() {
-    _updateDecos({ for (var d in All.decos) d : 0 });
-  }
-
-  Map<Deco, int> getDecos() {
-    return state.decos != null ? Map.of(state.decos!) : currentProfile.decos;
+    _updateDecos({for (var d in All.decos) d: 0});
   }
 
   void useMyCharms(bool val) {
@@ -97,32 +95,27 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   }
 
   void _updateCharms(Map<CharmFamily, int> charms) {
-    currentProfile.charms = charms;
     update(state.copyWith(charms: charms));
   }
 
   void updateCharmLevel(CharmFamily charm, int level) {
-    var charms = getCharms();
+    var charms = Map.of(state.charms);
     charms[charm] = level;
     _updateCharms(charms);
   }
 
   void updateCharmLevelBy(CharmFamily charm, [int by = 1]) {
-    var charms = getCharms();
+    var charms = Map.of(state.charms);
     charms[charm] = min(charm.maxLevel, max(0, (charms[charm] ?? 0) + by));
     _updateCharms(charms);
   }
 
   void setCharmsToMax() {
-    _updateCharms({ for (var c in All.charmFamiliesList) c : c.maxLevel });
+    _updateCharms({for (var c in All.charmFamiliesList) c: c.maxLevel});
   }
 
   void setCharmsToZero() {
-    _updateCharms({ for (var c in All.charmFamiliesList) c : 0 });
-  }
-
-  Map<CharmFamily, int> getCharms() {
-    return state.charms != null ? Map.of(state.charms!) : currentProfile.charms;
+    _updateCharms({for (var c in All.charmFamiliesList) c: 0});
   }
 
   void updateRarity(int min, int max) {
@@ -146,6 +139,38 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
   }
 }
 
+Map<String, int> _skillsToJson(List<Leveled<SkillTemplate>> skills) {
+  return Map.fromEntries(skills.map((s) => MapEntry(s.value.name, s.level)));
+}
+
+List<Leveled<SkillTemplate>> _jsonToSkills(Map<String, dynamic> map) {
+  return map.entries.map((e) => Leveled(value: All.allSkills[e.key]!, level: e.value)).toList();
+}
+
+List<String> _armorToJson(Set<Armor> armor) {
+  return armor.map((a) => a.name).toList();
+}
+
+Set<Armor> _jsonToArmor(List<dynamic> json) {
+  return json.map((s) => All.equipment[s] as Armor).toSet();
+}
+
+Map<String, int> _decosToJson(Map<Deco, int> decos) {
+  return decos.map((k, v) => MapEntry(k.name, v));
+}
+
+Map<Deco, int> _jsonToDecos(Map<String, dynamic> map) {
+  return map.map((k, v) => MapEntry(All.decosByString[k]!, v));
+}
+
+Map<String, int> _charmsToJson(Map<CharmFamily, int> charms) {
+  return charms.map((k, v) => MapEntry(k.toJson(), v));
+}
+
+Map<CharmFamily, int> _jsonToCharms(Map<String, dynamic> map) {
+  return map.map((k, v) => MapEntry(CharmFamily.fromJson(k), v));
+}
+
 @freezed
 abstract class SearcherArgsState with _$SearcherArgsState {
   //const factory SearcherState.initial() = _Initial;
@@ -155,34 +180,35 @@ abstract class SearcherArgsState with _$SearcherArgsState {
   factory SearcherArgsState.initial() {
     return SearcherArgsState(
         skills: [
-      Leveled(value: All.skillsMap['critical-boost']!, level: 5),
-      Leveled(value: All.skillsMap['burst']!, level: 5),
-      Leveled(value: All.skillsMap['antivirus']!, level: 3),
-      Leveled(value: All.skillsMap['weakness-exploit']!, level: 5),
-      Leveled(value: All.skillsMap['evade-window']!, level: 3),
-      Leveled(value: All.skillsMap['evade-extender']!, level: 1),
-      Leveled(value: All.armorBonusesMap['gore-magalas-tyranny']!, level: 2),
-      Leveled(value: All.armorBonusesMap['arkvelds-hunger']!, level: 2),
-    ],
+          Leveled(value: All.skillsMap['critical-boost']!, level: 5),
+          Leveled(value: All.skillsMap['burst']!, level: 5),
+          Leveled(value: All.skillsMap['antivirus']!, level: 3),
+          Leveled(value: All.skillsMap['weakness-exploit']!, level: 5),
+          Leveled(value: All.skillsMap['evade-window']!, level: 3),
+          Leveled(value: All.skillsMap['evade-extender']!, level: 1),
+          Leveled(value: All.armorBonusesMap['gore-magalas-tyranny']!, level: 2),
+          Leveled(value: All.armorBonusesMap['arkvelds-hunger']!, level: 2),
+        ],
         blacklistedArmors: {},
-        decos: { for (var d in All.decos) d : d.maxDecoAmount },
+        decos: {for (var d in All.decos) d: d.maxDecoAmount},
         useAllDecos: true,
-        charms: { for (var c in All.charmFamiliesList) c : c.maxLevel },
+        charms: {for (var c in All.charmFamiliesList) c: c.maxLevel},
         useAllCharms: true,
         minRarity: All.startHighRankRarity,
         maxRarity: All.maxRarity);
   }
 
-  const factory SearcherArgsState({
-    required List<Leveled<SkillTemplate>> skills,
-    required Set<Armor> blacklistedArmors,
-    required Map<Deco, int> decos,
-    required bool useAllDecos,
-    required Map<CharmFamily, int> charms,
-    required bool useAllCharms,
-    required int minRarity,
-    required int maxRarity
-  }) = _SearcherState;
+  const factory SearcherArgsState(
+      {@JsonKey(fromJson: _jsonToSkills, toJson: _skillsToJson) required List<Leveled<SkillTemplate>> skills,
+      @JsonKey(fromJson: _jsonToArmor, toJson: _armorToJson) required Set<Armor> blacklistedArmors,
+      @JsonKey(fromJson: _jsonToDecos, toJson: _decosToJson) required Map<Deco, int> decos,
+      required bool useAllDecos,
+      @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson) required Map<CharmFamily, int> charms,
+      required bool useAllCharms,
+      required int minRarity,
+      required int maxRarity}) = _SearcherState;
+
+  factory SearcherArgsState.fromJson(Json json) => _$SearcherArgsStateFromJson(json);
 
   bool hasSkill(SkillTemplate skill) {
     return skills.any((s) => s.value == skill);
@@ -227,14 +253,16 @@ class SearchResultCubit extends Cubit<SearchResultState> {
   SearchResultCubit() : super(SearchResultState(null, false));
 
   void startSearch(SearcherArgsState searcherState) async {
-    var result = SearchResultState(SearchManager.searchAllArmorCombinations(SearchArguments.of(
-        weapon: All.dummyWeapon,
-        requiredSkills: searcherState.skills,
-        decorations: searcherState.decos,
-        charms: searcherState.charms,
-        minRarity: searcherState.minRarity,
-        maxRarity: searcherState.maxRarity,
-        blacklistedArmor: searcherState.blacklistedArmors)), true);
+    var result = SearchResultState(
+        SearchManager.searchAllArmorCombinations(SearchArguments.of(
+            weapon: All.dummyWeapon,
+            requiredSkills: searcherState.skills,
+            decorations: searcherState.decos,
+            charms: searcherState.charms,
+            minRarity: searcherState.minRarity,
+            maxRarity: searcherState.maxRarity,
+            blacklistedArmor: searcherState.blacklistedArmors)),
+        true);
     result.searchResult!.armorSetStream.controller.onCancel = () => _onFinish();
     emit(result);
   }

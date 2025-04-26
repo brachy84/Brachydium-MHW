@@ -1172,6 +1172,14 @@ class CharmFamily {
   Charm operator [](int level) {
     return charms[level - 1];
   }
+
+  String toJson() {
+    return charms.first.name;
+  }
+
+  factory CharmFamily.fromJson(String s) {
+    return All.charmFamilies[All.equipment[s] as Charm]!;
+  }
 }
 
 @freezed
