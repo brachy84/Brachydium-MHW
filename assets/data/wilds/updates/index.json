@@ -2,7 +2,7 @@
   "updates": [
     {
       "id": "test",
-      "requiredVersion": "1.0.0",
+      "minVersion": "1.0.0",
       "availableSince": "30.4.2025",
       "updateVersion": 0
     }
