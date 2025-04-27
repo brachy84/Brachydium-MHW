@@ -250,7 +250,7 @@ class SkillSelectorState {
 }
 
 class SearchResultCubit extends Cubit<SearchResultState> {
-  SearchResultCubit() : super(SearchResultState(null, false));
+  SearchResultCubit() : super(SearchResultState(null, false, All.sortFunctions[0]));
 
   void startSearch(SearcherArgsState searcherState) async {
     var result = SearchResultState(
@@ -262,21 +262,38 @@ class SearchResultCubit extends Cubit<SearchResultState> {
             minRarity: searcherState.minRarity,
             maxRarity: searcherState.maxRarity,
             blacklistedArmor: searcherState.blacklistedArmors)),
-        true);
+        true, state.sortFunction);
     result.searchResult!.armorSetStream.controller.onCancel = () => _onFinish();
     emit(result);
   }
 
   void _onFinish() {
-    emit(SearchResultState(state.searchResult, false));
+    emit(state.copyWith(searching: false));
+  }
+
+  void updateSortFunction(ArmorSetSortFunction sortFunction) {
+    emit(state.copyWith(sortFunction: sortFunction));
+  }
+
+  void cycleSortFunction() {
+    log.info('old sort function ${state.sortFunction.name}');
+    int i = All.sortFunctions.indexOf(state.sortFunction);
+    if (++i == All.sortFunctions.length) i = 0;
+    log.info('new sort function ${All.sortFunctions[i].name}');
+    updateSortFunction(All.sortFunctions[i]);
   }
 }
 
 class SearchResultState {
   final SearchResult? searchResult;
   final bool searching;
+  final ArmorSetSortFunction sortFunction;
 
-  SearchResultState(this.searchResult, this.searching);
+  SearchResultState(this.searchResult, this.searching, this.sortFunction);
 
   bool get hasResult => searchResult != null;
+
+  SearchResultState copyWith({bool? searching, ArmorSetSortFunction? sortFunction}) {
+    return SearchResultState(searchResult, searching ?? this.searching, sortFunction ?? this.sortFunction);
+  }
 }

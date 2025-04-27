@@ -56,6 +56,7 @@ dependencies:
   flutter_bloc: ^9.0.0
   talker: ^4.7.2
   path_provider: ^2.1.5
+  package_info_plus: ^8.3.0
 
 dev_dependencies:
   flutter_test:

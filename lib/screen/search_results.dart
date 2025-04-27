@@ -68,44 +68,61 @@ class SearchResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: BlocBuilder<SearchResultCubit, SearchResultState>(builder: (context, state) {
-          if (result != state.searchResult) {
-            _foundSets.clear();
-            _progress = 0;
-            result = state.searchResult;
-            if (result != null) {
-              result!.armorSetStream.listen((d) {
-                d
-                    .map((set) => ArmorSetProperties(set))
-                    .forEach((set) => _foundSets.addSorted(set, (a, b) => a.compareEmptyTotalWeightedSlots(b)));
-                setsObservable.notify();
-              });
-              result!.processedArmorSets.listen((d) {
-                _progress = d;
-                progressObservable.notify();
-              });
+        child: BlocBuilder<SearchResultCubit, SearchResultState>(
+          builder: (context, state) {
+            _foundSets.sort((a, b) => state.sortFunction.compare(a, b));
+            if (result != state.searchResult) {
+              _foundSets.clear();
+              _progress = 0;
+              result = state.searchResult;
+              if (result != null) {
+                result!.armorSetStream.listen((d) {
+                  d
+                      .map((set) => ArmorSetProperties(set))
+                      .forEach((set) => _foundSets.addSorted(set, (a, b) => a.compareEmptyTotalWeightedSlots(b)));
+                  setsObservable.notify();
+                });
+                result!.processedArmorSets.listen((d) {
+                  _progress = d;
+                  progressObservable.notify();
+                });
+              }
             }
-          }
-          if (!state.hasResult) {
-            return const Center(
-              child: Text(
-                'No Results yet',
-                style: TextStyle(fontSize: 24),
+            if (!state.hasResult) {
+              return const Center(
+                child: Text(
+                  'No Results yet',
+                  style: TextStyle(fontSize: 24),
+                ),
+              );
+            }
+            // broadcast so we can listen here for total set amount and in list for the sets
+            return Column(children: [
+              ProgressBar(observable: progressObservable, totalCount: state.searchResult!.totalArmorSets),
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: MaterialButton(
+                  height: 32,
+                  minWidth: double.infinity,
+                  color: Colors.deepPurple.shade500,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  onPressed: () {
+                    context.read<SearchResultCubit>().cycleSortFunction();
+                  },
+                  child: Text('Sort armor sets ${state.sortFunction.name}'),
+                ),
               ),
-            );
-          }
-          // broadcast so we can listen here for total set amount and in list for the sets
-          return Column(children: [
-            ProgressBar(observable: progressObservable, totalCount: state.searchResult!.totalArmorSets),
-            Expanded(
-                child: ArmorSetList(
-              observable: setsObservable,
-              mobile: mobile,
-            )),
-            if (mobile)
-              if (state.searching) makeSearchCancelButton() else makeSearchRestartButton(context, false)
-          ]);
-        }));
+              Expanded(
+                  child: ArmorSetList(
+                    observable: setsObservable,
+                    mobile: mobile,
+                  )),
+              if (mobile)
+                if (state.searching) makeSearchCancelButton() else
+                  makeSearchRestartButton(context, false)
+            ]);
+          },
+        ));
   }
 }
 
@@ -167,7 +184,9 @@ class _ProgressBarState extends State<ProgressBar> {
                 ),
               ),
             Center(
-              child: Text('$_progress / ${widget.totalCount} (${(100 * _progress / widget.totalCount).toInt()}%)  -  ${_foundSets.length} found sets'),
+              child: Text(
+                  '$_progress / ${widget.totalCount} (${(100 * _progress / widget.totalCount).toInt()}%)  -  ${_foundSets
+                      .length} found sets'),
             )
           ],
         ));
@@ -242,7 +261,8 @@ class _ArmorSetListState extends State<ArmorSetList> {
         onTap: () {
           if (widget.mobile) {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (ctx) => SimplePage(
+                builder: (ctx) =>
+                    SimplePage(
                       body: ArmorSetPageMobile(set: set),
                       title: 'Armor Set View',
                     )));

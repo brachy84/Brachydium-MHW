@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:talker/talker.dart';
 
@@ -60,4 +61,18 @@ class NestedListHelper {
     }
     return largest;
   }
+}
+
+int getVersionNumber(String version) {
+  List<String> parts = version.split('.');
+  int result = 0;
+  int start = pow(10, 3 * 2).toInt();
+  for (String s in parts) {
+    int? v = int.tryParse(s);
+    if (v == null) throw FormatException('Version format error');
+    result += start * v;
+    start = (start / 100).toInt();
+    if (start < 1) break;
+  }
+  return result;
 }

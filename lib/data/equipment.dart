@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:brachys_armor_set_searcher/data/localization.dart';
+import 'package:brachys_armor_set_searcher/data/update.dart';
 import 'package:brachys_armor_set_searcher/data/util.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
@@ -93,6 +94,8 @@ class All {
     Part.waist: waists,
     Part.leg: legs
   };
+
+  static final List<ArmorSetSortFunction> sortFunctions = [];
 
   static final int minRarity = 1;
   static final int maxRarity = 8;
@@ -229,7 +232,11 @@ class All {
     await parseCharmsFromJson();
     //await parseArmorFromWeb();
     await parseArmorsFromJson();
+    await Update.init();
     _initCharms();
+
+    sortFunctions.add(ArmorSetSortFunction('by empty slots', (a, b) => a.compareEmptyTotalWeightedSlots(b)));
+    sortFunctions.add(ArmorSetSortFunction('by extra skills', (a, b) => a.compareTotalSkills(b)));
   }
 
   static Json allToJson() {
@@ -305,6 +312,17 @@ class All {
 
   static _writeLang() {
     _writeJsonData("data/wilds/lang/en_us.json", langEn);
+  }
+
+  static parseFromUpdateJson(Json json) {
+    _parseSkillsFromJson(json['skills'], json['bskills']);
+    _parseDecosFromJson(json['decos']);
+    for (Json j in json['charms']) {
+      _addEquipment(Armor.fromJson(j), false);
+    }
+    for (Json j in json['armor']) {
+      _addEquipment(Armor.fromJson(j), false);
+    }
   }
 
   static _parseSkillsFromJson(List jSkills, List jBSkills) {
@@ -1491,5 +1509,17 @@ class ArmorSetProperties {
 
   int compareTotalSkills(ArmorSetProperties prop) {
     return prop.totalSkillLevels.compareTo(totalSkillLevels);
+  }
+}
+
+class ArmorSetSortFunction {
+
+  final String name;
+  final int Function(ArmorSetProperties, ArmorSetProperties) _sortFunction;
+
+  ArmorSetSortFunction(this.name, this._sortFunction);
+
+  int compare(ArmorSetProperties a, ArmorSetProperties b) {
+    return _sortFunction(a, b);
   }
 }

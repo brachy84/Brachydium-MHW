@@ -5,6 +5,7 @@ import 'package:brachys_armor_set_searcher/data/util.dart';
 import 'package:brachys_armor_set_searcher/screen/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:window_size/window_size.dart';
 
 import 'data/equipment.dart';
@@ -15,11 +16,17 @@ import 'screen/home.dart';
 const String appTitle = 'Brachy\'s Armor Set Searcher';
 const String appTitleShort = 'Brachy\'s ASS';
 
+PackageInfo? _packageInfo;
+
+PackageInfo get packageInfo => _packageInfo!;
+
 void main() async {
   // init flutter
   WidgetsFlutterBinding.ensureInitialized();
   log.info('Threads: ${Platform.numberOfProcessors}');
   // init armor data
+  _packageInfo = await PackageInfo.fromPlatform();
+  log.info("App version ${packageInfo.version}");
   await All.init(); // total data size (armor, deco, charm, skill) around 140 KB
   await SearchManager.init();
   await Profile.init();
