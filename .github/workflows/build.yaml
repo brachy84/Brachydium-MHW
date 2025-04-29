@@ -1,0 +1,75 @@
+name: Build Installer
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build the Inno Setup Installer
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read current version from pubspec.yaml
+        id: read_version
+        run: |
+          $content = Get-Content pubspec.yaml
+          $versionLine = $content | Where-Object { $_ -match '^version:' }
+          if ($versionLine -match 'version:\s*([\d\.]+)') {
+            echo "CURRENT_VERSION=$($Matches[1])" >> $env:GITHUB_ENV
+          } else {
+            echo "No version found!"
+            exit 1
+          }
+
+      - name: Update pubspec.yaml if version changed
+        if: env.CURRENT_VERSION != github.event.inputs.version
+        run: |
+          Write-Host "Version has changed from $env:CURRENT_VERSION to ${{ github.event.inputs.version }}."
+          $pubspec = Get-Content pubspec.yaml
+          $updated = $pubspec -replace '^version: .+', "version: ${{ github.event.inputs.version }}+1"
+          Set-Content pubspec.yaml $updated
+
+      - name: Commit and push pubspec.yaml
+        if: env.CURRENT_VERSION != github.event.inputs.version # only push new version if it's not already updated
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Bump version to ${{ github.event.inputs.version }}"
+          commit_options: "--no-verify"
+          file_pattern: pubspec.yaml
+          tagging_message: "v${{ github.event.inputs.version }}"
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Windows app
+        run: flutter build windows
+
+      - name: Compile .ISS to .EXE Installer
+        uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+        with:
+          path: windows/setup.iss
+          options: "/O+ \"/DMyAppVersion=${{ github.event.inputs.version }}\""
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ github.event.inputs.version }}"
+          token: ${{ secrets.PAT }}
+          name: Release v${{ github.event.inputs.version }}
+          files: |
+            build\windows\out\installer.exe
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+
+
