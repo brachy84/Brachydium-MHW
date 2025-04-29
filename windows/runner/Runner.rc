@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.brachy" "\0"
-            VALUE "FileDescription", "brachys_armor_set_searcher" "\0"
+            VALUE "FileDescription", "brachydium_searcher" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "com.brachy.BrachydiumSearcher" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 com.brachy. All rights reserved." "\0"
             VALUE "OriginalFilename", "brachys_armor_set_searcher.exe" "\0"
-            VALUE "ProductName", "brachys_armor_set_searcher" "\0"
+            VALUE "ProductName", "brachydium_searcher" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
