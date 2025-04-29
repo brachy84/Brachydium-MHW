@@ -8,7 +8,23 @@ import 'package:path_provider/path_provider.dart';
 
 import 'equipment.dart';
 
-var currentProfile = Profile('main');
+var currentProfile = _getOrCreateProfile('main');
+
+Map<String, Profile> _allProfiles = {};
+
+void _registerProfile(Profile profile) {
+  _allProfiles[profile.name] = profile;
+}
+
+Profile _createProfile(String name) {
+  Profile p = Profile(name);
+  _registerProfile(p);
+  return p;
+}
+
+Profile _getOrCreateProfile(String name) {
+  return _allProfiles[name] ?? _createProfile(name);
+}
 
 class Profile {
 
@@ -28,6 +44,16 @@ class Profile {
 
   set args(SearcherArgsState args) {
     _args = args;
+    _scheduleUpdate();
+  }
+
+  set armorSets(Map<String, ArmorSet> sets) {
+    armorSets.clear();
+    armorSets.addAll(sets);
+    _scheduleUpdate();
+  }
+
+  _scheduleUpdate() {
     // save after 5 seconds and cancel current scheduled save
     _timer?.cancel();
     _timer = Timer(Duration(seconds: 5), () {
@@ -40,7 +66,7 @@ class Profile {
     version = json['v'];
     _args = SearcherArgsState.fromJson(json['args']);
     for (var j in (json['armorSets'] as List<dynamic>)) {
-      armorSets[j['name']] = ArmorSet.fromJson(json);
+      armorSets[j['name']] = ArmorSet.fromJson(j);
     }
   }
 
@@ -49,7 +75,7 @@ class Profile {
     _args = SearcherArgsState.initial();
   }
 
-  Json saveToJson() {
+  Json toJson() {
     Json json = {};
     json['v'] = version;
     json['args'] = _args?.toJson();
@@ -66,7 +92,11 @@ class Profile {
     if (!await file.exists()) {
       await file.create(recursive: false);
     }
-    file.writeAsString(jsonEncoder.convert(currentProfile.saveToJson()));
+    Json json = {};
+    for (var e in _allProfiles.entries) {
+      json[e.key] = e.value.toJson();
+    }
+    file.writeAsString(jsonEncoder.convert(json));
   }
 
   static init() async {
@@ -77,7 +107,11 @@ class Profile {
       save();
       return;
     }
-    currentProfile.readFromJson(jsonDecode(await file.readAsString()));
+    Json json = jsonDecode(await file.readAsString());
+    for (var e in json.entries) {
+      var p = _getOrCreateProfile(e.key);
+      p.readFromJson(e.value);
+    }
   }
 
   static Future<File> _getFile() async {

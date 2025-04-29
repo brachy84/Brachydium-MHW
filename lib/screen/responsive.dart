@@ -2,6 +2,9 @@ import 'package:brachys_armor_set_searcher/data/equipment.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+const int _mobileW = 600;
+const int _tabletW = 1280;
+
 class SimplePage extends StatelessWidget {
   const SimplePage({super.key, required this.body, required this.title, this.drawer});
 
@@ -27,6 +30,19 @@ class SimplePage extends StatelessWidget {
 }
 
 class ResponsivePage extends StatelessWidget {
+
+  static bool isMobile(double width) {
+    return width <= _mobileW;
+  }
+
+  static bool isTablet(double width) {
+    return width > _mobileW && width <= _tabletW;
+  }
+
+  static bool isDesktop(double width) {
+    return width > _tabletW;
+  }
+
   const ResponsivePage(
       {super.key, required this.mobile, required this.tablet, required this.desktop, required this.title, this.drawer});
 
@@ -49,10 +65,10 @@ class ResponsivePage extends StatelessWidget {
       ),
       drawer: drawer,
       body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth <= 600) {
+        if (isMobile(constraints.maxWidth)) {
           return mobile;
         }
-        if (constraints.maxWidth <= 1280) {
+        if (isTablet(constraints.maxWidth)) {
           return tablet;
         }
         return desktop;

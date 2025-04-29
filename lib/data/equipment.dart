@@ -1317,7 +1317,7 @@ List<String> _decoListToJson(List<Deco?> decos) {
   return decos.map((d) => Deco.asString(d)).toList();
 }
 
-List<Deco?> _jsonToDecoList(List<String> json) {
+List<Deco?> _jsonToDecoList(List<dynamic> json) {
   return json.map((j) => Deco.fromStringNullable(j)).toList();
 }
 
@@ -1325,7 +1325,7 @@ List<Map<String, dynamic>> _equipmentListToJson(List<EquipmentPiece> equipment) 
   return equipment.map((eq) => eq.toJson()).toList();
 }
 
-List<EquipmentPiece> _jsonToEquipmentList(List<Map<String, dynamic>> json) {
+List<EquipmentPiece> _jsonToEquipmentList(List<dynamic> json) {
   return json.map((j) => EquipmentPiece.fromJson(j)).toList();
 }
 

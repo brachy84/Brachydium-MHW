@@ -53,6 +53,7 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
           BlocProvider(create: (_) => SearcherPageCubit()),
           BlocProvider(create: (_) => SkillSelectorCubit()),
           BlocProvider(create: (_) => SearchResultCubit()),
+          BlocProvider(create: (_) => ArmorSetCubit()),
         ],
         child: MaterialApp(
           title: appTitleShort,

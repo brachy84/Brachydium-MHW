@@ -194,7 +194,7 @@ const _$WeaponTypeEnumMap = {
 _EquipmentPiece _$EquipmentPieceFromJson(Map<String, dynamic> json) =>
     _EquipmentPiece(
       equipment: Equipment.fromString(json['equipment'] as String),
-      decorations: _jsonToDecoList(json['decorations'] as List<String>),
+      decorations: _jsonToDecoList(json['decorations'] as List),
     );
 
 Map<String, dynamic> _$EquipmentPieceToJson(_EquipmentPiece instance) =>
@@ -204,9 +204,8 @@ Map<String, dynamic> _$EquipmentPieceToJson(_EquipmentPiece instance) =>
     };
 
 _ArmorSet _$ArmorSetFromJson(Map<String, dynamic> json) => _ArmorSet(
-      weaponDecos: _jsonToDecoList(json['weaponDecos'] as List<String>),
-      pieces:
-          _jsonToEquipmentList(json['pieces'] as List<Map<String, dynamic>>),
+      weaponDecos: _jsonToDecoList(json['weaponDecos'] as List),
+      pieces: _jsonToEquipmentList(json['pieces'] as List),
       charm: Charm.fromString(json['charm'] as String),
     );
 

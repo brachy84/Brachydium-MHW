@@ -297,3 +297,24 @@ class SearchResultState {
     return SearchResultState(searchResult, searching ?? this.searching, sortFunction ?? this.sortFunction);
   }
 }
+
+class ArmorSetCubit extends Cubit<Map<String, ArmorSet>> {
+  ArmorSetCubit() : super(currentProfile.armorSets);
+
+  void update(Map<String, ArmorSet> sets) {
+    currentProfile.armorSets = sets;
+    emit(sets);
+  }
+
+  void addSet(String name, ArmorSet set) {
+    var sets = Map.of(state);
+    sets[name] = set;
+    update(sets);
+  }
+
+  void removeSet(String name) {
+    var sets = Map.of(state);
+    sets.remove(name);
+    update(sets);
+  }
+}
