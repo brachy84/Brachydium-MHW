@@ -946,8 +946,14 @@ abstract class BonusSkill with _$BonusSkill, SkillTemplate, Localized {
 
   @override
   String localize(int count, {bool capAtMax = true}) {
-    String lvl = (secondaryCount > 0 && count >= secondaryCount) ? 'II' : (count >= primaryCount ? 'I' : '0');
-    String t = '$localizedName $lvl';
+    if (secondaryCount > 0) {
+      String lvl = count >= secondaryCount ? 'II' : (count >= primaryCount ? 'I' : '0');
+      String t = '$localizedName $lvl';
+      if (!capAtMax && count != maxLevel) t += '  $count/$maxLevel';
+      return t;
+    }
+    if (count >= primaryCount) return localizedName;
+    String t = '$localizedName 0';
     if (!capAtMax && count != maxLevel) t += '  $count/$maxLevel';
     return t;
   }

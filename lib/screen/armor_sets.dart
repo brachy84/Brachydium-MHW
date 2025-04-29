@@ -58,7 +58,10 @@ class ArmorSetPage {
     if (mobile) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (ctx) => SimplePage(
-                body: ArmorSetPageMobile(set: set, withSaveButton: withSaveButton,),
+                body: ArmorSetPageMobile(
+                  set: set,
+                  withSaveButton: withSaveButton,
+                ),
                 title: 'Armor Set View',
               )));
       return;
@@ -138,11 +141,11 @@ class ArmorSetPage {
           Expanded(
               flex: 5,
               child: Text(
-                eq.equipment == All.dummyWeapon ? '' : eq.equipment.part.localizedName,
+                eq.equipment.part.localizedName,
                 style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
               )),
           // TODO replace with icon
-          Expanded(flex: 15, child: Text(eq.equipment.localizedName)),
+          Expanded(flex: 15, child: Text(eq.equipment == All.dummyWeapon ? '' : eq.equipment.localizedName)),
           Expanded(flex: 1, child: slotSizes(eq.equipment)),
           // TODO replace with icons (rive)
           Expanded(flex: 15, child: decos(eq.equipment, eq.decorations))
@@ -210,15 +213,43 @@ class ArmorSetPage {
   }
 
   static List<Widget> buildSkills(ArmorSet armorSet) {
-    return armorSet.calculateSkills(removeNonFullBonus: false, removeOverlevel: false).map((skill) {
-      return Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Text(
-          skill.value.localize(skill.level, capAtMax: false),
-          style: TextStyle(color: skill.value.getColor(skill.level)),
-        ),
-      );
-    }).toList();
+    var l = armorSet.calculateSkills(removeNonFullBonus: true, removeOverlevel: false);
+    return [
+      ...[l.where((s) => s.value.category == SkillCategory.weapon).map(_skillText)]
+          .firstWhere((e) => e.isNotEmpty, orElse: () => [_skillIssue('weapon')]),
+      Divider(height: 4, color: Colors.white),
+      ...[l.where((s) => s.value.category == SkillCategory.armor).map(_skillText)]
+          .firstWhere((e) => e.isNotEmpty, orElse: () => [_skillIssue('armor')]),
+      Divider(
+        height: 4,
+        color: Colors.white,
+      ),
+      ...[
+        l
+            .where((s) => s.value.category == SkillCategory.setBonus || s.value.category == SkillCategory.groupBonus)
+            .map(_skillText)
+      ].firstWhere((e) => e.isNotEmpty, orElse: () => [_skillIssue('bonus')]),
+    ];
+  }
+
+  static Widget _skillText(Leveled<SkillTemplate> skill) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(
+        skill.value.localize(skill.level, capAtMax: false),
+        style: TextStyle(color: skill.value.getColor(skill.level)),
+      ),
+    );
+  }
+
+  static Widget _skillIssue(String category) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(
+        'No $category skills',
+        style: TextStyle(color: Colors.white70),
+      ),
+    );
   }
 
   static Widget legendPiece(Color color, String text) {
@@ -248,7 +279,7 @@ class ArmorSetPage {
           ),
           legendPiece(Colors.blue.shade300, 'Maxed Skill'),
           legendPiece(Colors.white70, 'Activated Skill'),
-          legendPiece(Colors.red.shade300, 'Unactivated Bonus Skill'),
+          //legendPiece(Colors.red.shade300, 'Unactivated Bonus Skill'),
           Row(
             children: [
               Padding(
