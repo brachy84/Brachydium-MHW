@@ -5,6 +5,7 @@
 ;#define MyAppVersion "1.0.0"
 #define MyAppPublisher "brachy"
 #define MyAppExeName "brachydium_searcher.exe"
+#define ReleaseFolder "..\build\windows\x64\runner\Release"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -28,9 +29,9 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=build\windows\out
+OutputDir=..\build\windows\out
 OutputBaseFilename=brachydium_installer
-SetupIconFile=assets\brachydium_searcher_logo_64.ico
+SetupIconFile=..\assets\brachydium_searcher_logo_64.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -41,10 +42,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "build\windows\x64\runner\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "build\windows\x64\runner\Release\flutter_windows.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "build\windows\x64\runner\Release\window_size_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "build\windows\x64\runner\Release\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#ReleaseFolder}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ReleaseFolder}\flutter_windows.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ReleaseFolder}\window_size_plugin.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ReleaseFolder}\data\*"; DestDir: "{app}\data"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
