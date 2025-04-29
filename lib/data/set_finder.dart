@@ -4,8 +4,8 @@ import 'dart:io';
 import 'dart:isolate';
 import 'dart:math';
 
-import 'package:brachys_armor_set_searcher/data/util.dart';
-import 'package:brachys_armor_set_searcher/screen/search_results.dart';
+import 'package:brachydium_searcher/data/util.dart';
+import 'package:brachydium_searcher/screen/search_results.dart';
 import 'package:flutter/material.dart';
 
 import 'equipment.dart';

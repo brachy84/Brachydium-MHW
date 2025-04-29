@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import 'package:brachys_armor_set_searcher/data/profile.dart';
+import 'package:brachydium_searcher/data/profile.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../data/equipment.dart';

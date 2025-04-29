@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
-import 'package:brachys_armor_set_searcher/data/util.dart';
-import 'package:brachys_armor_set_searcher/screen/responsive.dart';
+import 'package:brachydium_searcher/bloc/cubits.dart';
+import 'package:brachydium_searcher/data/util.dart';
+import 'package:brachydium_searcher/screen/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -13,8 +13,8 @@ import 'data/profile.dart';
 import 'data/set_finder.dart';
 import 'screen/home.dart';
 
-const String appTitle = 'Brachy\'s Armor Set Searcher';
-const String appTitleShort = 'Brachy\'s ASS';
+const String appTitle = 'Brachydium Searcher';
+const String appTitleShort = appTitle;
 
 PackageInfo? _packageInfo;
 

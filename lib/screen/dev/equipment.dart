@@ -1,4 +1,4 @@
-import 'package:brachys_armor_set_searcher/screen/widgets/autocomplete.dart';
+import 'package:brachydium_searcher/screen/widgets/autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/material.dart';
 

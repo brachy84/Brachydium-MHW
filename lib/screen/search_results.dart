@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:brachys_armor_set_searcher/data/util.dart';
-import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
+import 'package:brachydium_searcher/data/util.dart';
+import 'package:brachydium_searcher/screen/searcher2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

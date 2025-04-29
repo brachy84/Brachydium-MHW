@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:brachys_armor_set_searcher/data/localization.dart';
-import 'package:brachys_armor_set_searcher/data/update.dart';
-import 'package:brachys_armor_set_searcher/data/util.dart';
+import 'package:brachydium_searcher/data/localization.dart';
+import 'package:brachydium_searcher/data/update.dart';
+import 'package:brachydium_searcher/data/util.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

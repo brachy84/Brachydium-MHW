@@ -2,9 +2,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:brachys_armor_set_searcher/data/equipment.dart';
-import 'package:brachys_armor_set_searcher/data/util.dart';
-import 'package:brachys_armor_set_searcher/main.dart';
+import 'package:brachydium_searcher/data/equipment.dart';
+import 'package:brachydium_searcher/data/util.dart';
+import 'package:brachydium_searcher/main.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';

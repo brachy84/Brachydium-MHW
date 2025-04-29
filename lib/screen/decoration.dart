@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
-import 'package:brachys_armor_set_searcher/data/equipment.dart';
+import 'package:brachydium_searcher/bloc/cubits.dart';
+import 'package:brachydium_searcher/data/equipment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinbox/material.dart';

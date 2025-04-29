@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
-import 'package:brachys_armor_set_searcher/data/util.dart';
+import 'package:brachydium_searcher/bloc/cubits.dart';
+import 'package:brachydium_searcher/data/util.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'equipment.dart';

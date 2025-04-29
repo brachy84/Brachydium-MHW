@@ -1,8 +1,8 @@
-import 'package:brachys_armor_set_searcher/bloc/cubits.dart';
-import 'package:brachys_armor_set_searcher/screen/armor_sets.dart';
-import 'package:brachys_armor_set_searcher/screen/decoration.dart';
-import 'package:brachys_armor_set_searcher/screen/dev/equipment.dart';
-import 'package:brachys_armor_set_searcher/screen/searcher2.dart';
+import 'package:brachydium_searcher/bloc/cubits.dart';
+import 'package:brachydium_searcher/screen/armor_sets.dart';
+import 'package:brachydium_searcher/screen/decoration.dart';
+import 'package:brachydium_searcher/screen/dev/equipment.dart';
+import 'package:brachydium_searcher/screen/searcher2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,4 +1,4 @@
-import 'package:brachys_armor_set_searcher/data/equipment.dart';
+import 'package:brachydium_searcher/data/equipment.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
