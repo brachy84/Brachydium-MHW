@@ -1,4 +1,4 @@
-package com.brachy.brachys_armor_set_searcher
+package com.brachy.brachydium_searcher
 
 import io.flutter.embedding.android.FlutterActivity
 
