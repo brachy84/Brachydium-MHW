@@ -65,14 +65,23 @@ jobs:
           path: windows/setup.iss
           options: "/O+ \"/DMyAppVersion=${{ github.event.inputs.version }}\""
 
+      - name: Zip portable windows build
+        run: |
+          Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\windows\out\brachydium_searcher_win_portable.zip
+
+      - name: Build Android APK
+        run: flutter build apk --release
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: "v${{ github.event.inputs.version }}"
           token: ${{ secrets.PAT }}
-          name: Release v${{ github.event.inputs.version }}
+          name: Brachydium Searcher v${{ github.event.inputs.version }}
           files: |
             build/windows/out/*.exe
+            build/windows/out/*.zip
+            build/app/outputs/apk/release/*.apk
           generate_release_notes: true
           fail_on_unmatched_files: true
 

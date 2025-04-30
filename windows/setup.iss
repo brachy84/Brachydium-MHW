@@ -4,7 +4,7 @@
 #define MyAppName "BrachydiumSearcher"
 ;#define MyAppVersion "1.0.0"
 #define MyAppPublisher "brachy"
-#define MyAppExeName "brachydium_searcher.exe"
+#define MyAppExeName "brachydium_searcher_win_installer.exe"
 #define ReleaseFolder "..\build\windows\x64\runner\Release"
 
 [Setup]
