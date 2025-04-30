@@ -1014,6 +1014,35 @@ mixin Equipment implements Localized {
 
   Map<String, dynamic> toJson();
 
+  @override
+  bool matchesSearch(String searchValue) {
+    return localizedName.toLowerCase().contains(searchValue) ||
+        primary.localizedName.toLowerCase().contains(searchValue) ||
+        (secondary?.localizedName.toLowerCase().contains(searchValue) ?? false) ||
+        (ternary?.localizedName.toLowerCase().contains(searchValue) ?? false);
+  }
+
+  @override
+  int compareForSearch(covariant Equipment b, String searchValue) {
+    var sa = localizedName.toLowerCase().startsWith(searchValue);
+    var sb = b.localizedName.toLowerCase().startsWith(searchValue);
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    sa = primary.localizedName.toLowerCase().startsWith(searchValue);
+    sb = b.primary.localizedName.toLowerCase().startsWith(searchValue);
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    sa = secondary?.localizedName.toLowerCase().startsWith(searchValue) ?? false;
+    sb = b.secondary?.localizedName.toLowerCase().startsWith(searchValue) ?? false;
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    sa = ternary?.localizedName.toLowerCase().startsWith(searchValue) ?? false;
+    sb = b.ternary?.localizedName.toLowerCase().startsWith(searchValue) ?? false;
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    return 0;
+  }
+
   static String asString(Equipment? equipment) {
     return equipment?.name ?? '';
   }
@@ -1073,12 +1102,16 @@ abstract class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
 
   @override
   bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is Armor && (identical(other.name, name) || other.name == name));
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Armor && (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([runtimeType, name,]);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        name,
+      ]);
 }
 
 @freezed
@@ -1113,6 +1146,30 @@ abstract class Deco with _$Deco, Localized {
   factory Deco.fromJson(Map<String, Object?> json) => _$DecoFromJson(json);
 
   @override
+  bool matchesSearch(String searchValue) {
+    return localizedName.toLowerCase().contains(searchValue) ||
+        primary.localizedName.toLowerCase().contains(searchValue) ||
+        (secondary?.localizedName.toLowerCase().contains(searchValue) ?? false);
+  }
+
+  @override
+  int compareForSearch(covariant Deco b, String searchValue) {
+    var sa = localizedName.toLowerCase().startsWith(searchValue);
+    var sb = b.localizedName.toLowerCase().startsWith(searchValue);
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    sa = primary.localizedName.toLowerCase().startsWith(searchValue);
+    sb = b.primary.localizedName.toLowerCase().startsWith(searchValue);
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    sa = secondary?.localizedName.toLowerCase().startsWith(searchValue) ?? false;
+    sb = b.secondary?.localizedName.toLowerCase().startsWith(searchValue) ?? false;
+    if (sa && !sb) return -1;
+    if (!sa && sb) return 1;
+    return 0;
+  }
+
+  @override
   String get localizedName => All.langEn['deco:$name']!;
 
   @override
@@ -1136,7 +1193,7 @@ extension CharGetter on String {
 }
 
 @freezed
-abstract class Charm with _$Charm, Equipment, Localized {
+abstract class Charm with _$Charm, Equipment {
   const Charm._();
 
   const factory Charm(

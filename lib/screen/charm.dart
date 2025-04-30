@@ -22,12 +22,12 @@ class _CharmEditorPageState extends State<CharmEditorPage> {
     s = s.toLowerCase();
     charms.clear();
     for (CharmFamily charm in All.charmFamiliesList) {
-      if (s.isEmpty || charm.first.localizedName.toLowerCase().contains(s)) {
+      if (s.isEmpty || charm.last.matchesSearch(s)) {
         charms.add(charm);
       }
     }
     charms.sort((a, b) {
-      return a.name.compareTo(b.name);
+      return a.last.compareForSearch(b.last, s);
     });
   }
 

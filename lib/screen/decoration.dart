@@ -35,14 +35,14 @@ class _DecoEditorState extends State<DecoEditor> {
     s = s.toLowerCase();
     decos.clear();
     for (Deco deco in All.decos) {
-      if (s.isEmpty || deco.localizedName.toLowerCase().contains(s)) {
+      if (s.isEmpty || deco.matchesSearch(s)) {
         decos.add(deco);
       }
     }
     decos.sort((a, b) {
       int i = a.category.index.compareTo(b.category.index);
       if (i != 0) return i;
-      return a.name.compareTo(b.name);
+      return a.compareForSearch(b, s);
     });
   }
 
