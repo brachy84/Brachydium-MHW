@@ -34,9 +34,9 @@ enum WeaponType { gs, ls, sns, db, sa, hammer, hh, lance, gl, ig, cb, lbg, hbg, 
 enum DecorationType { weapon, armor }
 
 class All {
-  static const Skill undefined = Skill(name: "dummy", maxLevel: 0, category: SkillCategory.weapon, desc: '');
+  static const Skill undefined = Skill(name: "dummy-skill", maxLevel: 0, category: SkillCategory.weapon, desc: '');
   static const BonusSkill undefinedBonus = BonusSkill(
-      name: "dummy",
+      name: "dummy-bskill",
       maxLevel: 0,
       category: SkillCategory.groupBonus,
       primaryCount: 0,
@@ -44,7 +44,7 @@ class All {
       primaryDesc: '',
       secondaryDesc: '');
   static const Armor dummyArmor = Armor(
-      name: 'dummy',
+      name: 'dummy-armor',
       part: Part.head,
       rarity: 1,
       primary: undefined,
@@ -53,15 +53,15 @@ class All {
       secondarySlotSize: 0,
       ternarySlotSize: 0,
       minDef: 0,
-      maxDef: 1,
+      maxDef: 0,
       defFire: 0,
       defWater: 0,
       defThunder: 0,
       defIce: 0,
       defDragon: 0);
-  static const Charm dummyCharm = Charm(name: 'dummy', rarity: 1, primary: undefined, primaryLv: 0);
+  static const Charm dummyCharm = Charm(name: 'dummy-charm', rarity: 1, primary: undefined, primaryLv: 0);
   static const Weapon dummyWeapon = Weapon(
-      name: 'dummy',
+      name: 'dummy-weapon',
       type: WeaponType.gs,
       rarity: 1,
       primary: undefined,
@@ -219,6 +219,10 @@ class All {
     legs.clear();
     charms.clear();
     charmFamilies.clear();
+    equipment[dummyArmor.name] = dummyArmor;
+    equipment[dummyCharm.name] = dummyCharm;
+    skillsMap[undefined.name] = undefined;
+    armorBonusesMap[undefinedBonus.name] = undefinedBonus;
   }
 
   static Future<void> init() async {
@@ -235,8 +239,16 @@ class All {
     await Update.init();
     _initCharms();
 
-    sortFunctions.add(ArmorSetSortFunction('by empty slots', (a, b) => a.compareEmptyTotalWeightedSlots(b)));
-    sortFunctions.add(ArmorSetSortFunction('by extra skills', (a, b) => a.compareTotalSkills(b)));
+    sortFunctions.add(ArmorSetSortFunction(
+        'by empty slots',
+        ArmorSetProperties.compareEmptyArmorPieces
+            .thenCompare(ArmorSetProperties.compareEmptyTotalWeightedSlots)
+            .thenCompare(ArmorSetProperties.compareDef)));
+    sortFunctions.add(ArmorSetSortFunction(
+        'by extra skills',
+        ArmorSetProperties.compareEmptyArmorPieces
+            .thenCompare(ArmorSetProperties.compareEmptyTotalSlots)
+            .thenCompare(ArmorSetProperties.compareDef)));
   }
 
   static Json allToJson() {
@@ -1058,6 +1070,15 @@ abstract class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
   String toString() {
     return name;
   }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType && other is Armor && (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hashAll([runtimeType, name,]);
 }
 
 @freezed
@@ -1380,12 +1401,15 @@ abstract class ArmorSet with _$ArmorSet {
     if (weaponDecos[1] != null) _putDecoSkills(weaponDecos[1]!, skills);
     if (weaponDecos[2] != null) _putDecoSkills(weaponDecos[2]!, skills);
     for (EquipmentPiece piece in pieces) {
+      if (piece.equipment == All.dummyArmor) continue;
       _putEquipmentSkills(piece.equipment, skills);
       if (piece.decorations[0] != null) _putDecoSkills(piece.decorations[0]!, skills);
       if (piece.decorations[1] != null) _putDecoSkills(piece.decorations[1]!, skills);
       if (piece.decorations[2] != null) _putDecoSkills(piece.decorations[2]!, skills);
     }
-    _putEquipmentSkills(charm, skills);
+    if (charm != All.dummyCharm) {
+      _putEquipmentSkills(charm, skills);
+    }
     var list = skills.values.toList();
     if (removeNonFullBonus) {
       list.removeWhere((skill) => skill.value is BonusSkill && skill.level < (skill.value as BonusSkill).primaryCount);
@@ -1415,21 +1439,36 @@ abstract class ArmorSet with _$ArmorSet {
 
   void _putEquipmentSkills(Equipment eq, Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
     skills.putIfAbsent(eq.primary, () => Leveled(value: eq.primary, level: 0)).incr(eq.primaryLv);
-    if (eq.secondary != null)
+    if (eq.secondary != null) {
       skills.putIfAbsent(eq.secondary!, () => Leveled(value: eq.secondary!, level: 0)).incr(eq.secondaryLv);
-    if (eq.ternary != null)
+    }
+    if (eq.ternary != null) {
       skills.putIfAbsent(eq.ternary!, () => Leveled(value: eq.ternary!, level: 0)).incr(eq.ternaryLv);
+    }
     if (eq is Armor) {
       if (eq.setBonus != null) skills.putIfAbsent(eq.setBonus!, () => Leveled(value: eq.setBonus!, level: 0)).incr(1);
-      if (eq.groupBonus != null)
+      if (eq.groupBonus != null) {
         skills.putIfAbsent(eq.groupBonus!, () => Leveled(value: eq.groupBonus!, level: 0)).incr(1);
+      }
     }
   }
 
   void _putDecoSkills(Deco deco, Map<SkillTemplate, Leveled<SkillTemplate>> skills) {
     skills.putIfAbsent(deco.primary, () => Leveled(value: deco.primary, level: 0)).incr(deco.primaryLvl);
-    if (deco.secondary != null)
+    if (deco.secondary != null) {
       skills.putIfAbsent(deco.secondary!, () => Leveled(value: deco.secondary!, level: 0)).incr(1);
+    }
+  }
+
+  int get empties {
+    int empties = 0;
+    if (pieces[0].equipment == All.dummyArmor) empties++;
+    if (pieces[1].equipment == All.dummyArmor) empties++;
+    if (pieces[2].equipment == All.dummyArmor) empties++;
+    if (pieces[3].equipment == All.dummyArmor) empties++;
+    if (pieces[4].equipment == All.dummyArmor) empties++;
+    if (charm == All.dummyCharm) empties++;
+    return empties;
   }
 }
 
@@ -1442,6 +1481,7 @@ class ArmorSetProperties {
   final int empty1Slots;
   final int empty2Slots;
   final int empty3Slots;
+  final int emptyArmorPieces;
   final int def;
   final int defFire;
   final int defWater;
@@ -1456,6 +1496,7 @@ class ArmorSetProperties {
       required this.empty1Slots,
       required this.empty2Slots,
       required this.empty3Slots,
+      required this.emptyArmorPieces,
       required this.def,
       required this.defFire,
       required this.defWater,
@@ -1465,6 +1506,7 @@ class ArmorSetProperties {
 
   factory ArmorSetProperties(ArmorSet set) {
     List<int> emptySlots = [0, 0, 0, 0];
+    int emptyArmorPieces = 0;
     int def = 0;
     int defFire = 0;
     int defWater = 0;
@@ -1473,6 +1515,10 @@ class ArmorSetProperties {
     int defDragon = 0;
     for (var eq in set.pieces) {
       var armor = eq.equipment as Armor;
+      if (armor == All.dummyArmor) {
+        emptyArmorPieces++;
+        continue;
+      }
       if (armor.primarySlotSize > 0 && eq.decorations[0] == null) emptySlots[armor.primarySlotSize]++;
       if (armor.secondarySlotSize > 0 && eq.decorations[1] == null) emptySlots[armor.primarySlotSize]++;
       if (armor.ternarySlotSize > 0 && eq.decorations[2] == null) emptySlots[armor.primarySlotSize]++;
@@ -1483,14 +1529,16 @@ class ArmorSetProperties {
       defThunder += armor.defThunder;
       defDragon += armor.defDragon;
     }
+    if (set.charm == All.dummyCharm) emptyArmorPieces++;
     List<Leveled<SkillTemplate>> skills = set.calculateSkills();
-    int totalSkillLevels = skills.map((skill) => skill.value.getActualLevel(skill.level)).reduce((a, b) => a + b);
+    int totalSkillLevels = skills.map((skill) => skill.value.getActualLevel(skill.level)).fold(0, (a, b) => a + b);
     return ArmorSetProperties._(
         armorSet: set,
         skills: skills,
         empty1Slots: emptySlots[1],
         empty2Slots: emptySlots[2],
         empty3Slots: emptySlots[3],
+        emptyArmorPieces: emptyArmorPieces,
         totalSkillLevels: totalSkillLevels,
         def: def,
         defFire: defFire,
@@ -1500,28 +1548,31 @@ class ArmorSetProperties {
         defDragon: defDragon);
   }
 
-  int compareDef(ArmorSetProperties prop) {
-    return prop.def.compareTo(def);
+  static int compareEmptyArmorPieces(ArmorSetProperties a, ArmorSetProperties b) {
+    return b.emptyArmorPieces.compareTo(a.emptyArmorPieces);
   }
 
-  int compareEmptyTotalSlots(ArmorSetProperties prop) {
-    return (prop.empty1Slots + prop.empty2Slots + prop.empty3Slots).compareTo(empty1Slots + empty2Slots + empty3Slots);
+  static int compareDef(ArmorSetProperties a, ArmorSetProperties b) {
+    return b.def.compareTo(a.def);
   }
 
-  int compareEmptyTotalWeightedSlots(ArmorSetProperties prop) {
-    return (prop.empty1Slots + prop.empty2Slots * 2 + prop.empty3Slots * 3)
-        .compareTo(empty1Slots + empty2Slots * 2 + empty3Slots * 3);
+  static int compareEmptyTotalSlots(ArmorSetProperties a, ArmorSetProperties b) {
+    return (b.empty1Slots + b.empty2Slots + b.empty3Slots).compareTo(a.empty1Slots + a.empty2Slots + a.empty3Slots);
   }
 
-  int compareTotalSkills(ArmorSetProperties prop) {
-    return prop.totalSkillLevels.compareTo(totalSkillLevels);
+  static int compareEmptyTotalWeightedSlots(ArmorSetProperties a, ArmorSetProperties b) {
+    return (b.empty1Slots + b.empty2Slots * 2 + b.empty3Slots * 3)
+        .compareTo(a.empty1Slots + a.empty2Slots * 2 + a.empty3Slots * 3);
+  }
+
+  static int compareTotalSkills(ArmorSetProperties a, ArmorSetProperties b) {
+    return b.totalSkillLevels.compareTo(a.totalSkillLevels);
   }
 }
 
 class ArmorSetSortFunction {
-
   final String name;
-  final int Function(ArmorSetProperties, ArmorSetProperties) _sortFunction;
+  final Comparator<ArmorSetProperties> _sortFunction;
 
   ArmorSetSortFunction(this.name, this._sortFunction);
 

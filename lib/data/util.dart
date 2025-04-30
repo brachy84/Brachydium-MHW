@@ -63,6 +63,16 @@ class NestedListHelper {
   }
 }
 
+extension ChainedComparable<T> on Comparator<T> {
+
+  Comparator<T> thenCompare(Comparator<T> comparator) {
+    return (a, b) {
+      int result = this(a, b);
+      return result != 0 ? result : comparator(a, b);
+    };
+  }
+}
+
 int getVersionNumber(String version) {
   List<String> parts = version.split('.');
   int result = 0;

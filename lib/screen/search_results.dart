@@ -79,7 +79,7 @@ class SearchResultPage extends StatelessWidget {
                 result!.armorSetStream.listen((d) {
                   d
                       .map((set) => ArmorSetProperties(set))
-                      .forEach((set) => _foundSets.addSorted(set, (a, b) => a.compareEmptyTotalWeightedSlots(b)));
+                      .forEach((set) => _foundSets.addSorted(set, (a, b) => state.sortFunction.compare(a, b)));
                   setsObservable.notify();
                 });
                 result!.processedArmorSets.listen((d) {

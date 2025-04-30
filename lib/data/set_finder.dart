@@ -96,12 +96,12 @@ class _SearchConfig {
 
   factory _SearchConfig(SearchArguments args) {
     // sets to avoid duplicate armor pieces which have multiple required skills
-    final Set<Armor> helmets = {};
-    final Set<Armor> chests = {};
-    final Set<Armor> arms = {};
-    final Set<Armor> waists = {};
-    final Set<Armor> legs = {};
-    final Set<Charm> charms = {};
+    final Set<Armor> helmets = {All.dummyArmor};
+    final Set<Armor> chests = {All.dummyArmor};
+    final Set<Armor> arms = {All.dummyArmor};
+    final Set<Armor> waists = {All.dummyArmor};
+    final Set<Armor> legs = {All.dummyArmor};
+    final Set<Charm> charms = {All.dummyCharm};
     final List<Deco> decos = [];
     for (Leveled<SkillTemplate> skill in args.requiredSkills.values) {
       _addArmor(args, helmets, All.helmets[skill.value]);
@@ -899,19 +899,19 @@ class _ArmorSetTryer {
         log.error('Decos was inserted before, but no fitting slot in weapon was found');
       }
     }
-    Map<Armor, List<Deco?>> pieces = {
-      armor[0]: List.filled(3, null),
-      armor[1]: List.filled(3, null),
-      armor[2]: List.filled(3, null),
-      armor[3]: List.filled(3, null),
-      armor[4]: List.filled(3, null)
-    };
+    List<List<Deco?>> decos = [
+      List.filled(3, null),
+      List.filled(3, null),
+      List.filled(3, null),
+      List.filled(3, null),
+      List.filled(3, null)
+    ];
     for (Deco deco in armorTryer.usedDecos) {
       int size = deco.size;
       outer:
       while (size <= 3) {
-        for (Armor armor in this.armor) {
-          if (_insertDeco(armor, pieces[armor]!, deco, size)) {
+        for (int i = 0; i < armor.length; i++) {
+          if (_insertDeco(armor[i], decos[i], deco, size)) {
             break outer;
           }
         }
@@ -921,9 +921,7 @@ class _ArmorSetTryer {
         log.error('Decos was inserted before, but no fitting slot in armor was found');
       }
     }
-    List<EquipmentPiece> piecesList = [];
-    pieces.forEach((k, v) => piecesList.add(EquipmentPiece(equipment: k, decorations: v)));
-    piecesList.sort();
+    List<EquipmentPiece> piecesList = List.generate(5, (i) => EquipmentPiece(equipment: armor[i], decorations: decos[i]));
     return ArmorSet(weaponDecos: weaponDecos, pieces: piecesList, charm: charm);
   }
 

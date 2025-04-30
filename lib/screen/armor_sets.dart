@@ -130,6 +130,14 @@ class ArmorSetPage {
   }
 
   static Widget equipment(BuildContext context, EquipmentPiece eq) {
+    String name;
+    if (eq.equipment == All.dummyArmor) {
+      name = 'Empty';
+    } else if (eq.equipment == All.dummyWeapon) {
+      name = '';
+    } else {
+      name = eq.equipment.localizedName;
+    }
     return Container(
       height: 64,
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
@@ -145,7 +153,7 @@ class ArmorSetPage {
                 style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
               )),
           // TODO replace with icon
-          Expanded(flex: 15, child: Text(eq.equipment == All.dummyWeapon ? '' : eq.equipment.localizedName)),
+          Expanded(flex: 15, child: Text(name)),
           Expanded(flex: 1, child: slotSizes(eq.equipment)),
           // TODO replace with icons (rive)
           Expanded(flex: 15, child: decos(eq.equipment, eq.decorations))
