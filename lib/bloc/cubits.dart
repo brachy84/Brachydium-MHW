@@ -137,6 +137,10 @@ class SearcherArgsCubit extends Cubit<SearcherArgsState> {
     set.add(armor);
     update(state.copyWith(blacklistedArmors: set));
   }
+
+  void updateIncludeEmptyArmor(bool val) {
+    update(state.copyWith(includeEmptyArmor: val));
+  }
 }
 
 Map<String, int> _skillsToJson(List<Leveled<SkillTemplate>> skills) {
@@ -206,7 +210,8 @@ abstract class SearcherArgsState with _$SearcherArgsState {
       @JsonKey(fromJson: _jsonToCharms, toJson: _charmsToJson) required Map<CharmFamily, int> charms,
       required bool useAllCharms,
       required int minRarity,
-      required int maxRarity}) = _SearcherState;
+      required int maxRarity,
+      @Default(true) bool includeEmptyArmor}) = _SearcherState;
 
   factory SearcherArgsState.fromJson(Json json) => _$SearcherArgsStateFromJson(json);
 
@@ -261,8 +266,10 @@ class SearchResultCubit extends Cubit<SearchResultState> {
             charms: searcherState.charms,
             minRarity: searcherState.minRarity,
             maxRarity: searcherState.maxRarity,
-            blacklistedArmor: searcherState.blacklistedArmors)),
-        true, state.sortFunction);
+            blacklistedArmor: searcherState.blacklistedArmors,
+            includeEmptyArmor: searcherState.includeEmptyArmor)),
+        true,
+        state.sortFunction);
     result.searchResult!.armorSetStream.controller.onCancel = () => _onFinish();
     emit(result);
   }

@@ -16,6 +16,7 @@ _SearcherState _$SearcherStateFromJson(Map<String, dynamic> json) =>
       useAllCharms: json['useAllCharms'] as bool,
       minRarity: (json['minRarity'] as num).toInt(),
       maxRarity: (json['maxRarity'] as num).toInt(),
+      includeEmptyArmor: json['includeEmptyArmor'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$SearcherStateToJson(_SearcherState instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$SearcherStateToJson(_SearcherState instance) =>
       'useAllCharms': instance.useAllCharms,
       'minRarity': instance.minRarity,
       'maxRarity': instance.maxRarity,
+      'includeEmptyArmor': instance.includeEmptyArmor,
     };

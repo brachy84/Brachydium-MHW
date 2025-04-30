@@ -24,7 +24,10 @@ class _ArmorFiltersState extends _AbstractSearcherPageState<ArmorFilters> {
         child: Column(
           children: [
             BlocBuilder<SearcherArgsCubit, SearcherArgsState>(
-              buildWhen: (a, b) => a.minRarity != b.minRarity || a.maxRarity != b.maxRarity,
+              buildWhen: (a, b) =>
+                  a.minRarity != b.minRarity ||
+                  a.maxRarity != b.maxRarity ||
+                  a.includeEmptyArmor != b.includeEmptyArmor,
               builder: (context, state) {
                 return Column(
                   children: [
@@ -41,6 +44,17 @@ class _ArmorFiltersState extends _AbstractSearcherPageState<ArmorFilters> {
                         labels: RangeLabels('Min Rarity: ${state.minRarity}', 'Max Rarity: ${state.maxRarity}'),
                         onChanged: (val) =>
                             context.read<SearcherArgsCubit>().updateRarity(val.start.toInt(), val.end.toInt())),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        children: [
+                          Text('Include empty armor and charm pieces  ', style: TextStyle(fontSize: 16),),
+                          Switch(
+                              value: state.includeEmptyArmor,
+                              onChanged: (val) => context.read<SearcherArgsCubit>().updateIncludeEmptyArmor(val))
+                        ],
+                      ),
+                    )
                   ],
                 );
               },

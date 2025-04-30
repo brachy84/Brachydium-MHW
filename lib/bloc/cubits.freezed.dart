@@ -30,6 +30,7 @@ mixin _$SearcherArgsState {
   bool get useAllCharms;
   int get minRarity;
   int get maxRarity;
+  bool get includeEmptyArmor;
 
   /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
@@ -59,7 +60,9 @@ mixin _$SearcherArgsState {
             (identical(other.minRarity, minRarity) ||
                 other.minRarity == minRarity) &&
             (identical(other.maxRarity, maxRarity) ||
-                other.maxRarity == maxRarity));
+                other.maxRarity == maxRarity) &&
+            (identical(other.includeEmptyArmor, includeEmptyArmor) ||
+                other.includeEmptyArmor == includeEmptyArmor));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -73,11 +76,12 @@ mixin _$SearcherArgsState {
       const DeepCollectionEquality().hash(charms),
       useAllCharms,
       minRarity,
-      maxRarity);
+      maxRarity,
+      includeEmptyArmor);
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, useAllDecos: $useAllDecos, charms: $charms, useAllCharms: $useAllCharms, minRarity: $minRarity, maxRarity: $maxRarity)';
+    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, useAllDecos: $useAllDecos, charms: $charms, useAllCharms: $useAllCharms, minRarity: $minRarity, maxRarity: $maxRarity, includeEmptyArmor: $includeEmptyArmor)';
   }
 }
 
@@ -99,7 +103,8 @@ abstract mixin class $SearcherArgsStateCopyWith<$Res> {
       Map<CharmFamily, int> charms,
       bool useAllCharms,
       int minRarity,
-      int maxRarity});
+      int maxRarity,
+      bool includeEmptyArmor});
 }
 
 /// @nodoc
@@ -123,6 +128,7 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
     Object? useAllCharms = null,
     Object? minRarity = null,
     Object? maxRarity = null,
+    Object? includeEmptyArmor = null,
   }) {
     return _then(_self.copyWith(
       skills: null == skills
@@ -157,6 +163,10 @@ class _$SearcherArgsStateCopyWithImpl<$Res>
           ? _self.maxRarity
           : maxRarity // ignore: cast_nullable_to_non_nullable
               as int,
+      includeEmptyArmor: null == includeEmptyArmor
+          ? _self.includeEmptyArmor
+          : includeEmptyArmor // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -176,7 +186,8 @@ class _SearcherState extends SearcherArgsState {
       required final Map<CharmFamily, int> charms,
       required this.useAllCharms,
       required this.minRarity,
-      required this.maxRarity})
+      required this.maxRarity,
+      this.includeEmptyArmor = true})
       : _skills = skills,
         _blacklistedArmors = blacklistedArmors,
         _decos = decos,
@@ -230,6 +241,9 @@ class _SearcherState extends SearcherArgsState {
   final int minRarity;
   @override
   final int maxRarity;
+  @override
+  @JsonKey()
+  final bool includeEmptyArmor;
 
   /// Create a copy of SearcherArgsState
   /// with the given fields replaced by the non-null parameter values.
@@ -263,7 +277,9 @@ class _SearcherState extends SearcherArgsState {
             (identical(other.minRarity, minRarity) ||
                 other.minRarity == minRarity) &&
             (identical(other.maxRarity, maxRarity) ||
-                other.maxRarity == maxRarity));
+                other.maxRarity == maxRarity) &&
+            (identical(other.includeEmptyArmor, includeEmptyArmor) ||
+                other.includeEmptyArmor == includeEmptyArmor));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -277,11 +293,12 @@ class _SearcherState extends SearcherArgsState {
       const DeepCollectionEquality().hash(_charms),
       useAllCharms,
       minRarity,
-      maxRarity);
+      maxRarity,
+      includeEmptyArmor);
 
   @override
   String toString() {
-    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, useAllDecos: $useAllDecos, charms: $charms, useAllCharms: $useAllCharms, minRarity: $minRarity, maxRarity: $maxRarity)';
+    return 'SearcherArgsState(skills: $skills, blacklistedArmors: $blacklistedArmors, decos: $decos, useAllDecos: $useAllDecos, charms: $charms, useAllCharms: $useAllCharms, minRarity: $minRarity, maxRarity: $maxRarity, includeEmptyArmor: $includeEmptyArmor)';
   }
 }
 
@@ -305,7 +322,8 @@ abstract mixin class _$SearcherStateCopyWith<$Res>
       Map<CharmFamily, int> charms,
       bool useAllCharms,
       int minRarity,
-      int maxRarity});
+      int maxRarity,
+      bool includeEmptyArmor});
 }
 
 /// @nodoc
@@ -329,6 +347,7 @@ class __$SearcherStateCopyWithImpl<$Res>
     Object? useAllCharms = null,
     Object? minRarity = null,
     Object? maxRarity = null,
+    Object? includeEmptyArmor = null,
   }) {
     return _then(_SearcherState(
       skills: null == skills
@@ -363,6 +382,10 @@ class __$SearcherStateCopyWithImpl<$Res>
           ? _self.maxRarity
           : maxRarity // ignore: cast_nullable_to_non_nullable
               as int,
+      includeEmptyArmor: null == includeEmptyArmor
+          ? _self.includeEmptyArmor
+          : includeEmptyArmor // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }

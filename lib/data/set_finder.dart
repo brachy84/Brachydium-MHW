@@ -17,15 +17,18 @@ class SearchArguments {
   final Set<Charm>? charms;
   final int minRarity, maxRarity;
   final Set<Armor> blacklistedArmor;
+  final bool includeEmptyArmor;
 
-  SearchArguments(
-      {required this.weapon,
-      required this.requiredSkills,
-      required this.decorations,
-      required this.charms,
-      this.minRarity = 0,
-      this.maxRarity = 12,
-      required this.blacklistedArmor});
+  SearchArguments({
+    required this.weapon,
+    required this.requiredSkills,
+    required this.decorations,
+    required this.charms,
+    this.minRarity = 0,
+    this.maxRarity = 12,
+    required this.blacklistedArmor,
+    this.includeEmptyArmor = true,
+  });
 
   factory SearchArguments.of(
       {required Weapon weapon,
@@ -34,14 +37,16 @@ class SearchArguments {
       required Map<CharmFamily, int>? charms,
       int minRarity = 0,
       int maxRarity = 12,
-      required Set<Armor> blacklistedArmor}) {
+      required Set<Armor> blacklistedArmor,
+      bool includeEmptyArmor = true}) {
     return SearchArguments(
         weapon: weapon,
         requiredSkills: Map.fromEntries(requiredSkills.map((s) => MapEntry(s.value, s))),
         decorations: decorations,
         charms: charms?.entries.where((e) => e.value > 0).map((e) => e.key[e.value]).toSet(),
         minRarity: minRarity,
-        blacklistedArmor: blacklistedArmor);
+        blacklistedArmor: blacklistedArmor,
+        includeEmptyArmor: includeEmptyArmor);
   }
 
   bool canCharmBeUsed(Charm charm) {
@@ -96,13 +101,21 @@ class _SearchConfig {
 
   factory _SearchConfig(SearchArguments args) {
     // sets to avoid duplicate armor pieces which have multiple required skills
-    final Set<Armor> helmets = {All.dummyArmor};
-    final Set<Armor> chests = {All.dummyArmor};
-    final Set<Armor> arms = {All.dummyArmor};
-    final Set<Armor> waists = {All.dummyArmor};
-    final Set<Armor> legs = {All.dummyArmor};
-    final Set<Charm> charms = {All.dummyCharm};
+    final Set<Armor> helmets = {};
+    final Set<Armor> chests = {};
+    final Set<Armor> arms = {};
+    final Set<Armor> waists = {};
+    final Set<Armor> legs = {};
+    final Set<Charm> charms = {};
     final List<Deco> decos = [];
+    if (args.includeEmptyArmor) {
+      helmets.add(All.dummyArmor);
+      chests.add(All.dummyArmor);
+      arms.add(All.dummyArmor);
+      waists.add(All.dummyArmor);
+      legs.add(All.dummyArmor);
+      charms.add(All.dummyCharm);
+    }
     for (Leveled<SkillTemplate> skill in args.requiredSkills.values) {
       _addArmor(args, helmets, All.helmets[skill.value]);
       _addArmor(args, chests, All.chests[skill.value]);
@@ -122,8 +135,18 @@ class _SearchConfig {
     int estimatedCombinations =
         helmets.length * chests.length * arms.length * waists.length * legs.length * charms.length;
     log.info('Searching $estimatedCombinations combinations');
-    return _SearchConfig._(args.weapon, args.requiredSkills, args.decorations, estimatedCombinations, _sortList(args, helmets), _sortList(args, chests),
-        _sortList(args, arms), _sortList(args, waists), _sortList(args, legs), charms.toList(growable: false), decos);
+    return _SearchConfig._(
+        args.weapon,
+        args.requiredSkills,
+        args.decorations,
+        estimatedCombinations,
+        _sortList(args, helmets),
+        _sortList(args, chests),
+        _sortList(args, arms),
+        _sortList(args, waists),
+        _sortList(args, legs),
+        charms.toList(growable: false),
+        decos);
   }
 
   Json toJson() {
@@ -660,7 +683,8 @@ class _ArmorSetTryer {
     var tryer = _ArmorSetTryer.of(config: config, decos: config.decos);
     log.info('Searching on Isolate $id');
     //var indexes = _buildIndexes(config);
-    var indexer = CuboidIndexer(config.helmets.length, config.chests.length, config.arms.length, config.waists.length, config.legs.length, config.charms.length);
+    var indexer = CuboidIndexer(config.helmets.length, config.chests.length, config.arms.length, config.waists.length,
+        config.legs.length, config.charms.length);
     bool canceled = false;
     final int batchSize = 1000;
     final int likelyDoneThreshold = (config.estimatedCombinations * 0.2).floor();
@@ -727,7 +751,8 @@ class _ArmorSetTryer {
     List<ArmorSet>? sets;
     for (int j = 0; j < batchSize; j++) {
       bool result = indexer.nextIndex((i, j, k, l, m, n) {
-        var set = tryer.tryArmor(config.helmets[i], config.chests[j], config.arms[k], config.waists[l], config.legs[m], config.charms[n]);
+        var set = tryer.tryArmor(
+            config.helmets[i], config.chests[j], config.arms[k], config.waists[l], config.legs[m], config.charms[n]);
         if (set != null) {
           sets ??= [];
           sets!.add(set);
@@ -738,7 +763,8 @@ class _ArmorSetTryer {
         break;
       }
     }
-    sendPort.send(batchSize); // only send after a batch, sending every set would block the main isolate cause of the amount of messages
+    sendPort.send(
+        batchSize); // only send after a batch, sending every set would block the main isolate cause of the amount of messages
     if (sets != null) {
       if (sets!.length == 1) {
         sendPort.send(sets![0].toJson());
@@ -760,7 +786,8 @@ class _ArmorSetTryer {
         sets.add(set);
       }
     }
-    sendPort.send(end - start); // only send after a batch, sending every set would block the main isolate cause of the amount of messages
+    sendPort.send(end -
+        start); // only send after a batch, sending every set would block the main isolate cause of the amount of messages
     if (sets != null) {
       if (sets.length == 1) {
         sendPort.send(sets[0].toJson());
@@ -921,7 +948,8 @@ class _ArmorSetTryer {
         log.error('Decos was inserted before, but no fitting slot in armor was found');
       }
     }
-    List<EquipmentPiece> piecesList = List.generate(5, (i) => EquipmentPiece(equipment: armor[i], decorations: decos[i]));
+    List<EquipmentPiece> piecesList =
+        List.generate(5, (i) => EquipmentPiece(equipment: armor[i], decorations: decos[i]));
     return ArmorSet(weaponDecos: weaponDecos, pieces: piecesList, charm: charm);
   }
 
