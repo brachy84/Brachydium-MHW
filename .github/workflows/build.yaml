@@ -64,6 +64,12 @@ jobs:
         run: |
           Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath build\windows\out\brachydium_searcher_win_portable.zip
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Build Android APK
         run: flutter build apk --release
 
