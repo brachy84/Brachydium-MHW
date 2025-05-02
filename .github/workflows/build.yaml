@@ -58,7 +58,7 @@ jobs:
         uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
         with:
           path: windows/setup.iss
-          options: "/O+ \"/DMyAppVersion=${{ github.event.inputs.version }}\""
+          options: "/O+ \"/DMyAppVersion=${{ github.event.inputs.version }}\" \"/BasePath=..\""
 
       - name: Zip portable windows build
         run: |

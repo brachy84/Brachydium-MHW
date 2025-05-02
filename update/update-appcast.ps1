@@ -18,7 +18,7 @@ $template = Get-Content $TemplatePath -Raw
 # Ersetze Platzhalter
 $itemXml = $template `
     -replace "{{VERSION}}", $Version `
-    -replace "{{DESCRIPTION}}", $Version `
+    -replace "{{DESCRIPTION}}", $Description `
     -replace "{{OS}}", $OS `
     -replace "{{FILE}}", $File `
     -replace "{{LENGTH}}", $Length `
