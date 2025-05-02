@@ -30,22 +30,25 @@ class _ArmorSetsPageMobileState extends State<ArmorSetsPageMobile> {
   }
 
   Widget _armorSetTile(BuildContext context, String name, ArmorSet set) {
-    return InkWell(
-      onTap: () => ArmorSetPage.show(context, widget.mobile, set, false),
-      child: Container(
-        height: 48,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white24),
-        child: Row(
-          children: [
-            Expanded(
-                child: Center(
-                    child: Text(
-              name,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-            ))),
-            IconButton(onPressed: () => context.read<ArmorSetCubit>().removeSet(name), icon: Icon(Icons.delete))
-          ],
-        ), // show additional info like weapon, element
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: InkWell(
+        onTap: () => ArmorSetPage.show(context, widget.mobile, set, false),
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.white24),
+          child: Row(
+            children: [
+              Expanded(
+                  child: Center(
+                      child: Text(
+                name,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ))),
+              IconButton(onPressed: () => context.read<ArmorSetCubit>().removeSet(name), icon: Icon(Icons.delete))
+            ],
+          ), // show additional info like weapon, element
+        ),
       ),
     );
   }
@@ -74,8 +77,8 @@ class ArmorSetPage {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ConstrainedBox(
-          constraints:
-              BoxConstraints(maxWidth: 750, maxHeight: withSaveButton ? 505 : 475, minWidth: 400, minHeight: 200),
+          constraints: BoxConstraints(
+              maxWidth: 750, maxHeight: withSaveButton ? 505 : /*475*/ 505, minWidth: 400, minHeight: 200),
           child: Row(
             children: [
               Expanded(
@@ -90,7 +93,7 @@ class ArmorSetPage {
                     ArmorSetPage.equipment(context, set.pieces[3]),
                     ArmorSetPage.equipment(context, set.pieces[4]),
                     ArmorSetPage.charm(context, set.charm),
-                    ArmorSetPage.saveButton(context, set)
+                    if (withSaveButton) ArmorSetPage.saveButton(context, set)
                   ],
                 ),
               ),
@@ -119,7 +122,7 @@ class ArmorSetPage {
                           ),
                         ),
                       ),
-                      ArmorSetPage.legend()
+                      //ArmorSetPage.legend()
                     ],
                   ))
             ],
