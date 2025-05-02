@@ -6,6 +6,7 @@ import 'package:brachydium_searcher/screen/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:upgrader/upgrader.dart';
 import 'package:window_size/window_size.dart';
 
 import 'data/equipment.dart';
@@ -19,6 +20,21 @@ const String appTitleShort = appTitle;
 PackageInfo? _packageInfo;
 
 PackageInfo get packageInfo => _packageInfo!;
+
+bool? _portableExe;
+
+bool get isPortableExe {
+  _portableExe ??= Platform.isWindows & !File('installed.flag').existsSync();
+  return _portableExe!;
+}
+
+const appcastURL = 'https://raw.githubusercontent.com/brachy84/BrachydiumSearcher/refs/heads/wilds/appcast.xml';
+final upgrader = Upgrader(
+  storeController: UpgraderStoreController(
+    onAndroid: () => UpgraderAppcastStore(appcastURL: appcastURL),
+    onWindows: () => UpgraderAppcastStore(appcastURL: appcastURL),
+  ),
+);
 
 void main() async {
   // init flutter
@@ -46,6 +62,23 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      Widget home = const ResponsivePage(
+        mobile: HomePageMobile(),
+        tablet: HomePageDesktop2(),
+        desktop: HomePageDesktop2(),
+        title: appTitle,
+        drawer: Drawer(
+          child: HomeDrawer(isHome: true),
+        ));
+
+    if (!isPortableExe) {
+      // auto updates for portable zips is more complex
+      home = UpgradeAlert(
+        upgrader: upgrader,
+        child: home,
+      );
+    }
+
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => HomeCubit()),
@@ -58,14 +91,7 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
         child: MaterialApp(
           title: appTitleShort,
           theme: ThemeData.dark(useMaterial3: true),
-          home: const ResponsivePage(
-              mobile: HomePageMobile(),
-              tablet: HomePageDesktop2(),
-              desktop: HomePageDesktop2(),
-              title: appTitle,
-              drawer: Drawer(
-                child: HomeDrawer(isHome: true),
-              )),
+          home: home,
         ));
   }
 }

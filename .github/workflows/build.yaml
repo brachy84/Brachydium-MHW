@@ -6,6 +6,10 @@ on:
         description: 'Version'
         required: true
         type: string
+      description:
+        description: 'Release Notes'
+        default: 'Fixes'
+        type: string
 
 jobs:
   build:
@@ -28,23 +32,6 @@ jobs:
             echo "No version found!"
             exit 1
           }
-
-      - name: Update pubspec.yaml if version changed
-        if: env.CURRENT_VERSION != github.event.inputs.version
-        run: |
-          Write-Host "Version has changed from $env:CURRENT_VERSION to ${{ github.event.inputs.version }}."
-          $pubspec = Get-Content pubspec.yaml
-          $updated = $pubspec -replace '^version: .+', "version: ${{ github.event.inputs.version }}+1"
-          Set-Content pubspec.yaml $updated
-
-      - name: Commit and push pubspec.yaml
-        if: env.CURRENT_VERSION != github.event.inputs.version # only push new version if it's not already updated
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Bump version to ${{ github.event.inputs.version }}"
-          commit_options: "--no-verify"
-          file_pattern: pubspec.yaml
-          tagging_message: "v${{ github.event.inputs.version }}"
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -72,6 +59,47 @@ jobs:
       - name: Build Android APK
         run: flutter build apk --release
 
+      - name: Add windows update item
+        if: env.CURRENT_VERSION != github.event.inputs.version
+        run: |
+          $file = Get-ChildItem build/windows/out/*.exe | Select-Object -First 1
+          .\update\update-appcast.ps1 `
+            -Version "${{ github.event.inputs.version }}" `
+            -Description "${{ github.event.inputs.description }}" `
+            -OS "windows" `
+            -File "$($file.Name)" `
+            -Length "$($file.Length)" `
+            -Type "application/octet-stream"
+
+      - name: Add android update item
+        if: env.CURRENT_VERSION != github.event.inputs.version
+        run: |
+          $file = Get-ChildItem build/app/outputs/apk/release/*.apk | Select-Object -First 1
+          .\update\update-appcast.ps1 `
+            -Version "${{ github.event.inputs.version }}" `
+            -Description "${{ github.event.inputs.description }}" `
+            -OS "android" `
+            -File "$($file.Name)" `
+            -Length "$($file.Length)" `
+            -Type "application/vnd.android.package-archive"
+
+      - name: Update pubspec.yaml if version changed
+        if: env.CURRENT_VERSION != github.event.inputs.version
+        run: |
+          Write-Host "Version has changed from $env:CURRENT_VERSION to ${{ github.event.inputs.version }}."
+          $pubspec = Get-Content pubspec.yaml
+          $updated = $pubspec -replace '^version: .+', "version: ${{ github.event.inputs.version }}+1"
+          Set-Content pubspec.yaml $updated
+
+      - name: Commit and push pubspec.yaml and appcast.xml
+        if: env.CURRENT_VERSION != github.event.inputs.version # only push new version if it's not already updated
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Bump version to ${{ github.event.inputs.version }}"
+          commit_options: "--no-verify"
+          file_pattern: "pubspec.yaml update/appcast.xml"
+          tagging_message: "v${{ github.event.inputs.version }}"
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
@@ -84,5 +112,3 @@ jobs:
             build/app/outputs/apk/release/*.apk
           generate_release_notes: true
           fail_on_unmatched_files: true
-
-

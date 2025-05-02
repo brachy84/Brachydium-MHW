@@ -1,0 +1,12 @@
+        <item>
+            <title>Version {{VERSION}} ({{OS}})</title>
+            <description>{{DESCRIPTION}}</description>
+            <pubDate>{{DATE}}</pubDate>
+            <enclosure
+                    url="https://github.com/brachy84/BrachydiumSearcher/releases/download/v{{VERSION}}/{{FILE}}"
+                    sparkle:version="{{VERSION}}"
+                    sparkle:shortVersionString="{{VERSION}}"
+                    sparkle:os="{{OS}}"
+                    length="{{LENGTH}}"
+                    type="{{TYPE}}" />
+        </item>
