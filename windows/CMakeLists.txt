@@ -4,7 +4,7 @@ project(brachys_armor_set_searcher LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "brachydium_searcher")
+set(BINARY_NAME "brachydium_searcher_win_installer")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
