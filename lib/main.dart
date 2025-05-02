@@ -28,7 +28,7 @@ bool get isPortableExe {
   return _portableExe!;
 }
 
-const appcastURL = 'https://raw.githubusercontent.com/brachy84/BrachydiumSearcher/refs/heads/wilds/appcast.xml';
+const appcastURL = 'https://raw.githubusercontent.com/brachy84/BrachydiumSearcher/refs/heads/wilds/update/appcast.xml';
 final upgrader = Upgrader(
   storeController: UpgraderStoreController(
     onAndroid: () => UpgraderAppcastStore(appcastURL: appcastURL),
