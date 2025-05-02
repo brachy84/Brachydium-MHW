@@ -33,6 +33,14 @@ jobs:
             exit 1
           }
 
+      - name: Update pubspec.yaml if version changed
+        if: env.CURRENT_VERSION != github.event.inputs.version
+        run: |
+          Write-Host "Version has changed from $env:CURRENT_VERSION to ${{ github.event.inputs.version }}."
+          $pubspec = Get-Content pubspec.yaml
+          $updated = $pubspec -replace '^version: .+', "version: ${{ github.event.inputs.version }}+1"
+          Set-Content pubspec.yaml $updated
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -82,14 +90,6 @@ jobs:
             -File "$($file.Name)" `
             -Length "$($file.Length)" `
             -Type "application/vnd.android.package-archive"
-
-      - name: Update pubspec.yaml if version changed
-        if: env.CURRENT_VERSION != github.event.inputs.version
-        run: |
-          Write-Host "Version has changed from $env:CURRENT_VERSION to ${{ github.event.inputs.version }}."
-          $pubspec = Get-Content pubspec.yaml
-          $updated = $pubspec -replace '^version: .+', "version: ${{ github.event.inputs.version }}+1"
-          Set-Content pubspec.yaml $updated
 
       - name: Commit and push pubspec.yaml and appcast.xml
         if: env.CURRENT_VERSION != github.event.inputs.version # only push new version if it's not already updated
