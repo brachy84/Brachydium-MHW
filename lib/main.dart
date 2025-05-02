@@ -62,11 +62,11 @@ class BrachysArmorSetSearcherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      Widget home = const ResponsivePage(
+      Widget home = ResponsivePage(
         mobile: HomePageMobile(),
         tablet: HomePageDesktop2(),
         desktop: HomePageDesktop2(),
-        title: appTitle,
+        title: '$appTitle ${packageInfo.version}',
         drawer: Drawer(
           child: HomeDrawer(isHome: true),
         ));
