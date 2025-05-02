@@ -6,6 +6,32 @@
         <link>https://github.com/brachy84/BrachydiumSearcher/releases</link>
         <!--ITEM_MARKER-->
         <item>
+            <title>Version 1.0.3 (android)</title>
+            <description>1.0.3</description>
+            <pubDate>Fri, 02 May 2025 13:14:01 GMT</pubDate>
+            <enclosure
+                    url="https://github.com/brachy84/BrachydiumSearcher/releases/download/v1.0.3/brachydium_searcher.apk"
+                    sparkle:version="1.0.3"
+                    sparkle:shortVersionString="1.0.3"
+                    sparkle:os="android"
+                    length="23553693"
+                    type="application/vnd.android.package-archive" />
+        </item>
+
+        <item>
+            <title>Version 1.0.3 (windows)</title>
+            <description>1.0.3</description>
+            <pubDate>Fri, 02 May 2025 13:14:01 GMT</pubDate>
+            <enclosure
+                    url="https://github.com/brachy84/BrachydiumSearcher/releases/download/v1.0.3/brachydium_installer.exe"
+                    sparkle:version="1.0.3"
+                    sparkle:shortVersionString="1.0.3"
+                    sparkle:os="windows"
+                    length="10462708"
+                    type="application/octet-stream" />
+        </item>
+
+        <item>
             <title>Version 1.0.2 (android)</title>
             <description>1.0.2</description>
             <pubDate>Fri, 02 May 2025 11:08:55 GMT</pubDate>
@@ -33,6 +59,8 @@
 
     </channel>
 </rss>
+
+
 
 
 
