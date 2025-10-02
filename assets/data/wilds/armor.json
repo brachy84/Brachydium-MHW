@@ -1,7 +1,7 @@
 {
   "data": [
     {
-      "name": "hope-helm",
+      "name": "hope-head",
       "part": "head",
       "rarity": 1,
       "primary": "stun-resistance",
@@ -116,7 +116,7 @@
       "defDragon": 0
     },
     {
-      "name": "leather-helm",
+      "name": "leather-head",
       "part": "head",
       "rarity": 1,
       "primary": "botanist",
@@ -231,7 +231,7 @@
       "defDragon": 0
     },
     {
-      "name": "chainmail-helm",
+      "name": "chainmail-head",
       "part": "head",
       "rarity": 1,
       "primary": "geologist",
@@ -346,7 +346,7 @@
       "defDragon": 0
     },
     {
-      "name": "bone-helm",
+      "name": "bone-head",
       "part": "head",
       "rarity": 1,
       "primary": "marathon-runner",
@@ -461,7 +461,7 @@
       "defDragon": 2
     },
     {
-      "name": "bulaqchi-helm",
+      "name": "bulaqchi-head",
       "part": "head",
       "rarity": 1,
       "primary": "entomologist",
@@ -507,7 +507,7 @@
       "defDragon": 2
     },
     {
-      "name": "chatacabra-helm",
+      "name": "chatacabra-head",
       "part": "head",
       "rarity": 1,
       "primary": "speed-eating",
@@ -622,7 +622,7 @@
       "defDragon": 1
     },
     {
-      "name": "quematrice-helm",
+      "name": "quematrice-head",
       "part": "head",
       "rarity": 1,
       "primary": "flinch-free",
@@ -737,7 +737,7 @@
       "defDragon": 0
     },
     {
-      "name": "alloy-helm",
+      "name": "alloy-head",
       "part": "head",
       "rarity": 1,
       "primary": "quick-sheathe",
@@ -875,7 +875,7 @@
       "defDragon": 1
     },
     {
-      "name": "vespoid-helm",
+      "name": "vespoid-head",
       "part": "head",
       "rarity": 1,
       "primary": "survival-expert",
@@ -1013,7 +1013,7 @@
       "defDragon": 0
     },
     {
-      "name": "lala-barina-helm",
+      "name": "lala-barina-head",
       "part": "head",
       "rarity": 1,
       "primary": "paralysis-resistance",
@@ -1128,7 +1128,7 @@
       "defDragon": 3
     },
     {
-      "name": "conga-helm",
+      "name": "conga-head",
       "part": "head",
       "rarity": 2,
       "primary": "mushroomancer",
@@ -1243,7 +1243,7 @@
       "defDragon": 2
     },
     {
-      "name": "balahara-helm",
+      "name": "balahara-head",
       "part": "head",
       "rarity": 2,
       "primary": "hunger-resistance",
@@ -1358,7 +1358,7 @@
       "defDragon": 1
     },
     {
-      "name": "doshaguma-helm",
+      "name": "doshaguma-head",
       "part": "head",
       "rarity": 2,
       "primary": "free-meal",
@@ -1473,7 +1473,7 @@
       "defDragon": 4
     },
     {
-      "name": "ingot-helm",
+      "name": "ingot-head",
       "part": "head",
       "rarity": 3,
       "primary": "divine-blessing",
@@ -1611,7 +1611,7 @@
       "defDragon": 0
     },
     {
-      "name": "comaqchi-helm",
+      "name": "comaqchi-head",
       "part": "head",
       "rarity": 3,
       "primary": "sleep-resistance",
@@ -1634,7 +1634,7 @@
       "defDragon": 3
     },
     {
-      "name": "rompopolo-helm",
+      "name": "rompopolo-head",
       "part": "head",
       "rarity": 3,
       "primary": "wide-range",
@@ -1749,7 +1749,7 @@
       "defDragon": 1
     },
     {
-      "name": "nerscylla-helm",
+      "name": "nerscylla-head",
       "part": "head",
       "rarity": 3,
       "primary": "ambush",
@@ -1864,7 +1864,7 @@
       "defDragon": 2
     },
     {
-      "name": "hirabami-helm",
+      "name": "hirabami-head",
       "part": "head",
       "rarity": 3,
       "primary": "evade-window",
@@ -1979,7 +1979,7 @@
       "defDragon": 0
     },
     {
-      "name": "ajarakan-helm",
+      "name": "ajarakan-head",
       "part": "head",
       "rarity": 3,
       "primary": "partbreaker",
@@ -2117,7 +2117,7 @@
       "defDragon": -3
     },
     {
-      "name": "uth-duna-helm",
+      "name": "uth-duna-head",
       "part": "head",
       "rarity": 4,
       "primary": "peak-performance",
@@ -2232,7 +2232,7 @@
       "defDragon": 0
     },
     {
-      "name": "rey-dau-helm",
+      "name": "rey-dau-head",
       "part": "head",
       "rarity": 4,
       "primary": "latent-power",
@@ -2347,7 +2347,7 @@
       "defDragon": 0
     },
     {
-      "name": "nu-udra-helm",
+      "name": "nu-udra-head",
       "part": "head",
       "rarity": 4,
       "primary": "resentment",
@@ -2462,7 +2462,7 @@
       "defDragon": 0
     },
     {
-      "name": "guardian-doshaguma-helm",
+      "name": "guardian-doshaguma-head",
       "part": "head",
       "rarity": 4,
       "primary": "heroics",
@@ -2577,7 +2577,7 @@
       "defDragon": 2
     },
     {
-      "name": "guardian-rathalos-helm",
+      "name": "guardian-rathalos-head",
       "part": "head",
       "rarity": 4,
       "primary": "weakness-exploit",
@@ -2692,7 +2692,7 @@
       "defDragon": -5
     },
     {
-      "name": "guardian-ebony-helm",
+      "name": "guardian-ebony-head",
       "part": "head",
       "rarity": 4,
       "primary": "burst",
@@ -2807,7 +2807,7 @@
       "defDragon": 4
     },
     {
-      "name": "xu-wu-helm",
+      "name": "xu-wu-head",
       "part": "head",
       "rarity": 4,
       "primary": "maximum-might",
@@ -2922,7 +2922,7 @@
       "defDragon": 2
     },
     {
-      "name": "guardian-arkveld-helm",
+      "name": "guardian-arkveld-head",
       "part": "head",
       "rarity": 4,
       "primary": "flayer",
@@ -3037,7 +3037,7 @@
       "defDragon": -4
     },
     {
-      "name": "hope-a-helm",
+      "name": "hope-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "divine-blessing",
@@ -3152,7 +3152,7 @@
       "defDragon": 0
     },
     {
-      "name": "leather-a-helm",
+      "name": "leather-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "botanist",
@@ -3267,7 +3267,7 @@
       "defDragon": 0
     },
     {
-      "name": "chainmail-a-helm",
+      "name": "chainmail-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "geologist",
@@ -3382,7 +3382,7 @@
       "defDragon": 0
     },
     {
-      "name": "bone-a-helm",
+      "name": "bone-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "stun-resistance",
@@ -3497,7 +3497,7 @@
       "defDragon": 2
     },
     {
-      "name": "alloy-a-helm",
+      "name": "alloy-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "quick-sheathe",
@@ -3612,7 +3612,7 @@
       "defDragon": 1
     },
     {
-      "name": "bulaqchi-a-helm",
+      "name": "bulaqchi-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "entomologist",
@@ -3635,7 +3635,7 @@
       "defDragon": 4
     },
     {
-      "name": "bulaqchi-b-helm",
+      "name": "bulaqchi-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "entomologist",
@@ -3750,7 +3750,7 @@
       "defDragon": 1
     },
     {
-      "name": "vespoid-a-helm",
+      "name": "vespoid-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "survival-expert",
@@ -3865,7 +3865,7 @@
       "defDragon": 2
     },
     {
-      "name": "vespoid-b-helm",
+      "name": "vespoid-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "survival-expert",
@@ -4026,7 +4026,7 @@
       "defDragon": 0
     },
     {
-      "name": "comaqchi-a-helm",
+      "name": "comaqchi-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "sleep-resistance",
@@ -4049,7 +4049,7 @@
       "defDragon": 3
     },
     {
-      "name": "comaqchi-b-helm",
+      "name": "comaqchi-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "sleep-resistance",
@@ -4072,7 +4072,7 @@
       "defDragon": 3
     },
     {
-      "name": "kut-ku-a-helm",
+      "name": "kut-ku-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "constitution",
@@ -4187,7 +4187,7 @@
       "defDragon": 2
     },
     {
-      "name": "kut-ku-b-helm",
+      "name": "kut-ku-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "constitution",
@@ -4302,7 +4302,7 @@
       "defDragon": 2
     },
     {
-      "name": "chatacabra-a-helm",
+      "name": "chatacabra-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "speed-eating",
@@ -4417,7 +4417,7 @@
       "defDragon": 1
     },
     {
-      "name": "chatacabra-b-helm",
+      "name": "chatacabra-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "speed-eating",
@@ -4532,7 +4532,7 @@
       "defDragon": 1
     },
     {
-      "name": "quematrice-a-helm",
+      "name": "quematrice-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "flinch-free",
@@ -4647,7 +4647,7 @@
       "defDragon": 0
     },
     {
-      "name": "quematrice-b-helm",
+      "name": "quematrice-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "latent-power",
@@ -4762,7 +4762,7 @@
       "defDragon": 0
     },
     {
-      "name": "lala-barina-a-helm",
+      "name": "lala-barina-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "paralysis-resistance",
@@ -4877,7 +4877,7 @@
       "defDragon": 3
     },
     {
-      "name": "lala-barina-b-helm",
+      "name": "lala-barina-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "foray",
@@ -4992,7 +4992,7 @@
       "defDragon": 3
     },
     {
-      "name": "conga-a-helm",
+      "name": "conga-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "intimidator",
@@ -5107,7 +5107,7 @@
       "defDragon": 2
     },
     {
-      "name": "conga-b-helm",
+      "name": "conga-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "intimidator",
@@ -5222,7 +5222,7 @@
       "defDragon": 2
     },
     {
-      "name": "rompopolo-a-helm",
+      "name": "rompopolo-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "wide-range",
@@ -5337,7 +5337,7 @@
       "defDragon": 1
     },
     {
-      "name": "rompopolo-b-helm",
+      "name": "rompopolo-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "wide-range",
@@ -5452,7 +5452,7 @@
       "defDragon": 1
     },
     {
-      "name": "gypceros-a-helm",
+      "name": "gypceros-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "stamina-surge",
@@ -5567,7 +5567,7 @@
       "defDragon": 1
     },
     {
-      "name": "gypceros-b-helm",
+      "name": "gypceros-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "stamina-surge",
@@ -5682,7 +5682,7 @@
       "defDragon": 1
     },
     {
-      "name": "nerscylla-a-helm",
+      "name": "nerscylla-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "bind-resistance",
@@ -5797,7 +5797,7 @@
       "defDragon": 2
     },
     {
-      "name": "nerscylla-b-helm",
+      "name": "nerscylla-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "bind-resistance",
@@ -5912,7 +5912,7 @@
       "defDragon": 2
     },
     {
-      "name": "balahara-a-helm",
+      "name": "balahara-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "geologist",
@@ -6027,7 +6027,7 @@
       "defDragon": 1
     },
     {
-      "name": "balahara-b-helm",
+      "name": "balahara-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "evade-window",
@@ -6142,7 +6142,7 @@
       "defDragon": 1
     },
     {
-      "name": "hirabami-a-helm",
+      "name": "hirabami-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "evade-window",
@@ -6257,7 +6257,7 @@
       "defDragon": 0
     },
     {
-      "name": "hirabami-b-helm",
+      "name": "hirabami-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "evade-window",
@@ -6372,7 +6372,7 @@
       "defDragon": 0
     },
     {
-      "name": "rathian-a-helm",
+      "name": "rathian-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "divine-blessing",
@@ -6487,7 +6487,7 @@
       "defDragon": -3
     },
     {
-      "name": "rathian-b-helm",
+      "name": "rathian-b-head",
       "part": "head",
       "rarity": 5,
       "primary": "divine-blessing",
@@ -6602,7 +6602,7 @@
       "defDragon": -3
     },
     {
-      "name": "ingot-a-helm",
+      "name": "ingot-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "divine-blessing",
@@ -6786,7 +6786,7 @@
       "defDragon": 0
     },
     {
-      "name": "guardian-fulgur-a-helm",
+      "name": "guardian-fulgur-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "agitator",
@@ -6901,7 +6901,7 @@
       "defDragon": -2
     },
     {
-      "name": "guardian-fulgur-b-helm",
+      "name": "guardian-fulgur-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "agitator",
@@ -7016,7 +7016,7 @@
       "defDragon": -2
     },
     {
-      "name": "doshaguma-a-helm",
+      "name": "doshaguma-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "free-meal",
@@ -7131,7 +7131,7 @@
       "defDragon": 4
     },
     {
-      "name": "doshaguma-b-helm",
+      "name": "doshaguma-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "free-meal",
@@ -7246,7 +7246,7 @@
       "defDragon": 4
     },
     {
-      "name": "guardian-doshaguma-a-helm",
+      "name": "guardian-doshaguma-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "heroics",
@@ -7361,7 +7361,7 @@
       "defDragon": 2
     },
     {
-      "name": "guardian-doshaguma-b-helm",
+      "name": "guardian-doshaguma-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "heroics",
@@ -7476,7 +7476,7 @@
       "defDragon": 2
     },
     {
-      "name": "ajarakan-a-helm",
+      "name": "ajarakan-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "resentment",
@@ -7591,7 +7591,7 @@
       "defDragon": 0
     },
     {
-      "name": "ajarakan-b-helm",
+      "name": "ajarakan-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "resentment",
@@ -7706,7 +7706,7 @@
       "defDragon": 0
     },
     {
-      "name": "guardian-ebony-a-helm",
+      "name": "guardian-ebony-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "burst",
@@ -7821,7 +7821,7 @@
       "defDragon": 4
     },
     {
-      "name": "guardian-ebony-b-helm",
+      "name": "guardian-ebony-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "burst",
@@ -7936,7 +7936,7 @@
       "defDragon": 4
     },
     {
-      "name": "xu-wu-a-helm",
+      "name": "xu-wu-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "adrenaline-rush",
@@ -8051,7 +8051,7 @@
       "defDragon": 2
     },
     {
-      "name": "xu-wu-b-helm",
+      "name": "xu-wu-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "adrenaline-rush",
@@ -8166,7 +8166,7 @@
       "defDragon": 2
     },
     {
-      "name": "rathalos-a-helm",
+      "name": "rathalos-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "evade-window",
@@ -8281,7 +8281,7 @@
       "defDragon": -3
     },
     {
-      "name": "rathalos-b-helm",
+      "name": "rathalos-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "evade-window",
@@ -8396,7 +8396,7 @@
       "defDragon": -3
     },
     {
-      "name": "guardian-rathalos-a-helm",
+      "name": "guardian-rathalos-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "weakness-exploit",
@@ -8511,7 +8511,7 @@
       "defDragon": -5
     },
     {
-      "name": "guardian-rathalos-b-helm",
+      "name": "guardian-rathalos-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "weakness-exploit",
@@ -8626,7 +8626,7 @@
       "defDragon": -5
     },
     {
-      "name": "gravios-a-helm",
+      "name": "gravios-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "peak-performance",
@@ -8741,7 +8741,7 @@
       "defDragon": -2
     },
     {
-      "name": "gravios-b-helm",
+      "name": "gravios-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "peak-performance",
@@ -8856,7 +8856,7 @@
       "defDragon": -2
     },
     {
-      "name": "blango-a-helm",
+      "name": "blango-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "wide-range",
@@ -8971,7 +8971,7 @@
       "defDragon": 0
     },
     {
-      "name": "blango-b-helm",
+      "name": "blango-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "wide-range",
@@ -9086,7 +9086,7 @@
       "defDragon": 0
     },
     {
-      "name": "commission-a-helm",
+      "name": "commission-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "agitator",
@@ -9201,7 +9201,7 @@
       "defDragon": 0
     },
     {
-      "name": "kunafa-a-helm",
+      "name": "kunafa-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "wide-range",
@@ -9293,7 +9293,7 @@
       "defDragon": 1
     },
     {
-      "name": "azuz-a-helm",
+      "name": "azuz-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "maximum-might",
@@ -9385,7 +9385,7 @@
       "defDragon": 1
     },
     {
-      "name": "sild-a-helm",
+      "name": "sild-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "botanist",
@@ -9431,7 +9431,7 @@
       "defDragon": 4
     },
     {
-      "name": "death-stench-a-helm",
+      "name": "death-stench-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "resentment",
@@ -9546,7 +9546,7 @@
       "defDragon": 4
     },
     {
-      "name": "butterfly-a-helm",
+      "name": "butterfly-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "constitution",
@@ -9661,7 +9661,7 @@
       "defDragon": 2
     },
     {
-      "name": "king-beetle-a-helm",
+      "name": "king-beetle-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "heroics",
@@ -9776,7 +9776,7 @@
       "defDragon": 2
     },
     {
-      "name": "high-metal-a-helm",
+      "name": "high-metal-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "stun-resistance",
@@ -9891,7 +9891,7 @@
       "defDragon": 0
     },
     {
-      "name": "battle-a-helm",
+      "name": "battle-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "stamina-surge",
@@ -10006,7 +10006,7 @@
       "defDragon": 0
     },
     {
-      "name": "melahoa-a-helm",
+      "name": "melahoa-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "survival-expert",
@@ -10121,7 +10121,7 @@
       "defDragon": 0
     },
     {
-      "name": "artian-a-helm",
+      "name": "artian-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "flayer",
@@ -10236,7 +10236,7 @@
       "defDragon": 3
     },
     {
-      "name": "dober-a-helm",
+      "name": "dober-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "constitution",
@@ -10351,7 +10351,7 @@
       "defDragon": 4
     },
     {
-      "name": "damascus-a-helm",
+      "name": "damascus-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "wide-range",
@@ -10466,7 +10466,7 @@
       "defDragon": 0
     },
     {
-      "name": "dahaad-a-helm",
+      "name": "dahaad-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "agitator",
@@ -10581,7 +10581,7 @@
       "defDragon": -1
     },
     {
-      "name": "dahaad-b-helm",
+      "name": "dahaad-b-head",
       "part": "head",
       "rarity": 7,
       "primary": "agitator",
@@ -10696,7 +10696,7 @@
       "defDragon": -1
     },
     {
-      "name": "uth-duna-a-helm",
+      "name": "uth-duna-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "tool-specialist",
@@ -10811,7 +10811,7 @@
       "defDragon": 0
     },
     {
-      "name": "uth-duna-b-helm",
+      "name": "uth-duna-b-head",
       "part": "head",
       "rarity": 7,
       "primary": "tool-specialist",
@@ -10926,7 +10926,7 @@
       "defDragon": 0
     },
     {
-      "name": "rey-dau-a-helm",
+      "name": "rey-dau-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "latent-power",
@@ -11041,7 +11041,7 @@
       "defDragon": 0
     },
     {
-      "name": "rey-dau-b-helm",
+      "name": "rey-dau-b-head",
       "part": "head",
       "rarity": 7,
       "primary": "latent-power",
@@ -11156,7 +11156,7 @@
       "defDragon": 0
     },
     {
-      "name": "nu-udra-a-helm",
+      "name": "nu-udra-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "resentment",
@@ -11271,7 +11271,7 @@
       "defDragon": 0
     },
     {
-      "name": "nu-udra-b-helm",
+      "name": "nu-udra-b-head",
       "part": "head",
       "rarity": 7,
       "primary": "resentment",
@@ -11386,7 +11386,7 @@
       "defDragon": 0
     },
     {
-      "name": "gore-a-helm",
+      "name": "gore-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "evade-window",
@@ -11501,7 +11501,7 @@
       "defDragon": -1
     },
     {
-      "name": "gore-b-helm",
+      "name": "gore-b-head",
       "part": "head",
       "rarity": 7,
       "primary": "evade-window",
@@ -11616,7 +11616,7 @@
       "defDragon": -1
     },
     {
-      "name": "arkveld-a-helm",
+      "name": "arkveld-a-head",
       "part": "head",
       "rarity": 8,
       "primary": "convert-element",
@@ -11731,7 +11731,7 @@
       "defDragon": -3
     },
     {
-      "name": "arkveld-b-helm",
+      "name": "arkveld-b-head",
       "part": "head",
       "rarity": 8,
       "primary": "convert-element",
@@ -11846,7 +11846,7 @@
       "defDragon": -3
     },
     {
-      "name": "guardian-arkveld-a-helm",
+      "name": "guardian-arkveld-a-head",
       "part": "head",
       "rarity": 8,
       "primary": "flayer",
@@ -11961,7 +11961,7 @@
       "defDragon": -4
     },
     {
-      "name": "guardian-arkveld-b-helm",
+      "name": "guardian-arkveld-b-head",
       "part": "head",
       "rarity": 8,
       "primary": "flayer",
@@ -12076,7 +12076,7 @@
       "defDragon": -4
     },
     {
-      "name": "guild-ace-a-helm",
+      "name": "guild-ace-a-head",
       "part": "head",
       "rarity": 8,
       "primary": "peak-performance",
@@ -12191,7 +12191,7 @@
       "defDragon": 2
     },
     {
-      "name": "dragonking-a-helm",
+      "name": "dragonking-a-head",
       "part": "head",
       "rarity": 8,
       "primary": "counterstrike",
@@ -12214,7 +12214,7 @@
       "defDragon": 0
     },
     {
-      "name": "guild-cross-a-helm",
+      "name": "guild-cross-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "earplugs",
@@ -12329,7 +12329,7 @@
       "defDragon": 0
     },
     {
-      "name": "clerk-a-helm",
+      "name": "clerk-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "divine-blessing",
@@ -12444,7 +12444,7 @@
       "defDragon": 2
     },
     {
-      "name": "gourmands-earring-a-helm",
+      "name": "gourmands-earring-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "speed-eating",
@@ -12467,7 +12467,7 @@
       "defDragon": 0
     },
     {
-      "name": "earrings-of-dedication-a-helm",
+      "name": "earrings-of-dedication-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "wide-range",
@@ -12490,7 +12490,7 @@
       "defDragon": 0
     },
     {
-      "name": "mizutsune-a-helm",
+      "name": "mizutsune-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "evade-extender",
@@ -12605,7 +12605,7 @@
       "defDragon": -1
     },
     {
-      "name": "mizutsune-b-helm",
+      "name": "mizutsune-b-head",
       "part": "head",
       "rarity": 6,
       "primary": "aquaticoilsilt-mobility",
@@ -12720,7 +12720,7 @@
       "defDragon": -1
     },
     {
-      "name": "numinous-a-helm",
+      "name": "numinous-a-head",
       "part": "head",
       "rarity": 8,
       "primary": "agitator",
@@ -12835,7 +12835,7 @@
       "defDragon": -4
     },
     {
-      "name": "numinous-b-helm",
+      "name": "numinous-b-head",
       "part": "head",
       "rarity": 8,
       "primary": "agitator",
@@ -12950,7 +12950,7 @@
       "defDragon": -4
     },
     {
-      "name": "rey-dau-g-helm",
+      "name": "rey-dau-g-head",
       "part": "head",
       "rarity": 8,
       "primary": "weakness-exploit",
@@ -13065,7 +13065,7 @@
       "defDragon": 0
     },
     {
-      "name": "sakuratide-a-helm",
+      "name": "sakuratide-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "foray",
@@ -13180,7 +13180,7 @@
       "defDragon": 2
     },
     {
-      "name": "blossom-a-helm",
+      "name": "blossom-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "paralysis-resistance",
@@ -13295,7 +13295,7 @@
       "defDragon": 1
     },
     {
-      "name": "mimiphyta-a-helm",
+      "name": "mimiphyta-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "entomologist",
@@ -13318,7 +13318,7 @@
       "defDragon": 2
     },
     {
-      "name": "expedition-headgear-a-helm",
+      "name": "expedition-headgear-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "blight-resistance",
@@ -13341,7 +13341,7 @@
       "defDragon": 1
     },
     {
-      "name": "amstrigian-a-helm",
+      "name": "amstrigian-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "wide-range",
@@ -13364,7 +13364,7 @@
       "defDragon": 3
     },
     {
-      "name": "sealed-dragon-cloth-a-helm",
+      "name": "sealed-dragon-cloth-a-head",
       "part": "head",
       "rarity": 5,
       "primary": "resentment",
@@ -13387,7 +13387,7 @@
       "defDragon": 5
     },
     {
-      "name": "strategist-spectacles-a-helm",
+      "name": "strategist-spectacles-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "geologist",
@@ -13410,7 +13410,7 @@
       "defDragon": 2
     },
     {
-      "name": "square-glasses-a-helm",
+      "name": "square-glasses-a-head",
       "part": "head",
       "rarity": 6,
       "primary": "botanist",
@@ -13433,7 +13433,7 @@
       "defDragon": 2
     },
     {
-      "name": "sealed-eyepatch-a-helm",
+      "name": "sealed-eyepatch-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "fire-resistance",
@@ -13456,7 +13456,7 @@
       "defDragon": 0
     },
     {
-      "name": "shadow-shades-a-helm",
+      "name": "shadow-shades-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "stun-resistance",
@@ -13479,7 +13479,7 @@
       "defDragon": 0
     },
     {
-      "name": "round-glasses-a-helm",
+      "name": "round-glasses-a-head",
       "part": "head",
       "rarity": 7,
       "primary": "blight-resistance",
