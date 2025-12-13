@@ -109,6 +109,14 @@ class All {
 
   static final List<String> charmTiers = ['-i', '-ii', '-iii', '-iv', '-v', '-vi', '-vii', '-viii', '-ix', '-x'];
 
+  static String lang(String type, String name) {
+    var k = '$type:$name';
+    return langEn.putIfAbsent(k, () {
+      log.error('Missing lang for $k');
+      return name;
+    });
+  }
+
   static void addSkill(String name, SkillCategory category, int maxLevel, String desc) {
     String trueName = name;
     log.info('Adding skill $trueName');
@@ -211,6 +219,7 @@ class All {
     _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
     _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
     _writeJsonData("data/wilds/bonus_skills.json", {'data': armorBonuses.map((e) => e.toJson()).toList()});
+    charmList.sort((a, b) => a.name.compareTo(b.name));
     _writeJsonData("data/wilds/charms.json", {'data': charmList.map((e) => e.toJson()).toList()});
     _writeJsonData("data/wilds/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
     _writeJsonData("data/wilds/lang/en_us.json", langEn);
@@ -342,12 +351,14 @@ class All {
   }
 
   static parseFromUpdateJson(Json json) {
-    _parseSkillsFromJson(json['skills'], json['bskills']);
-    _parseDecosFromJson(json['decos']);
-    for (Json j in json['charms']) {
+    Json lang = (json['lang'] ?? {})['en_us'] ?? {};
+    lang.forEach((a,b) => All.langEn[a] = b);
+    _parseSkillsFromJson(json['skills'] ?? [], json['bskills'] ?? []);
+    _parseDecosFromJson(json['decos'] ?? []);
+    for (Json j in (json['charms'] ?? [])) {
       _addEquipment(Charm.fromJson(j), false);
     }
-    for (Json j in json['armor']) {
+    for (Json j in (json['armor'] ?? [])) {
       _addEquipment(Armor.fromJson(j), false);
     }
   }
@@ -948,7 +959,7 @@ abstract class Skill with _$Skill, SkillTemplate, Localized {
   }
 
   @override
-  String get localizedName => All.langEn['skill:$name']!;
+  String get localizedName => All.lang('skill', name);
 
   @override
   String localize(int count, {bool capAtMax = true}) {
@@ -1028,7 +1039,7 @@ abstract class BonusSkill with _$BonusSkill, SkillTemplate, Localized {
   }
 
   @override
-  String get localizedName => All.langEn['bskill:$name']!;
+  String get localizedName => All.lang('bskill', name);
 
   @override
   String localize(int count, {bool capAtMax = true}) {
@@ -1167,7 +1178,7 @@ abstract class Armor with _$Armor, Equipment, SlottedEquipment, Localized {
   factory Armor.fromJson(Map<String, Object?> json) => _$ArmorFromJson(json);
 
   @override
-  String get localizedName => All.langEn['armor:$name']!;
+  String get localizedName => All.lang('armor', name);
 
   @override
   String toString() {
@@ -1244,7 +1255,7 @@ abstract class Deco with _$Deco, Localized {
   }
 
   @override
-  String get localizedName => All.langEn['deco:$name']!;
+  String get localizedName => All.lang('deco', name);
 
   @override
   String toString() {
@@ -1286,7 +1297,7 @@ abstract class Charm with _$Charm, Equipment {
   Part get part => Part.charm;
 
   @override
-  String get localizedName => All.langEn['charm:$name']!;
+  String get localizedName => All.lang('charm', name);
 
   String get baseName {
     for (String tier in All.charmTiers) {
