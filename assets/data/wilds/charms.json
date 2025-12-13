@@ -1,888 +1,8 @@
 {
   "data": [
     {
-      "name": "marathon-charm-i",
-      "rarity": 1,
-      "primary": "marathon-runner",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "marathon-charm-ii",
-      "rarity": 1,
-      "primary": "marathon-runner",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "marathon-charm-iii",
-      "rarity": 1,
-      "primary": "marathon-runner",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fitness-charm-i",
-      "rarity": 1,
-      "primary": "constitution",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fitness-charm-ii",
-      "rarity": 1,
-      "primary": "constitution",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fitness-charm-iii",
-      "rarity": 1,
-      "primary": "constitution",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fitness-charm-iv",
-      "rarity": 1,
-      "primary": "constitution",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 4,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fitness-charm-v",
-      "rarity": 1,
-      "primary": "constitution",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 5,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "sheathe-charm-i",
-      "rarity": 1,
-      "primary": "quick-sheathe",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "sheathe-charm-ii",
-      "rarity": 1,
-      "primary": "quick-sheathe",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "sheathe-charm-iii",
-      "rarity": 1,
-      "primary": "quick-sheathe",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "challenger-charm-i",
-      "rarity": 1,
-      "primary": "agitator",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "challenger-charm-ii",
-      "rarity": 1,
-      "primary": "agitator",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "unscathed-charm-i",
-      "rarity": 1,
-      "primary": "peak-performance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "unscathed-charm-ii",
-      "rarity": 1,
-      "primary": "peak-performance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fury-charm-i",
-      "rarity": 1,
-      "primary": "resentment",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fury-charm-ii",
-      "rarity": 1,
-      "primary": "resentment",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "exploiter-charm-i",
-      "rarity": 1,
-      "primary": "weakness-exploit",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "exploiter-charm-ii",
-      "rarity": 1,
-      "primary": "weakness-exploit",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "power-charm-i",
-      "rarity": 1,
-      "primary": "latent-power",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "power-charm-ii",
-      "rarity": 1,
-      "primary": "latent-power",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "power-charm-iii",
-      "rarity": 1,
-      "primary": "latent-power",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "mighty-charm-i",
-      "rarity": 1,
-      "primary": "maximum-might",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "mighty-charm-ii",
-      "rarity": 1,
-      "primary": "maximum-might",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "surge-charm-i",
-      "rarity": 1,
-      "primary": "stamina-surge",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "surge-charm-ii",
-      "rarity": 1,
-      "primary": "stamina-surge",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "surge-charm-iii",
-      "rarity": 1,
-      "primary": "stamina-surge",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "defense-charm-i",
-      "rarity": 1,
-      "primary": "defense-boost",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "defense-charm-ii",
-      "rarity": 1,
-      "primary": "defense-boost",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "defense-charm-iii",
-      "rarity": 1,
-      "primary": "defense-boost",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "defense-charm-iv",
-      "rarity": 1,
-      "primary": "defense-boost",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 4,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "defense-charm-v",
-      "rarity": 1,
-      "primary": "defense-boost",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 5,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "blessing-charm-i",
-      "rarity": 1,
-      "primary": "divine-blessing",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "blessing-charm-ii",
-      "rarity": 1,
-      "primary": "divine-blessing",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "blessing-charm-iii",
-      "rarity": 1,
-      "primary": "divine-blessing",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "recovery-charm-i",
-      "rarity": 1,
-      "primary": "recovery-up",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "recovery-charm-ii",
-      "rarity": 1,
-      "primary": "recovery-up",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "recovery-charm-iii",
-      "rarity": 1,
-      "primary": "recovery-up",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "speed-heal-charm-i",
-      "rarity": 1,
-      "primary": "recovery-speed",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "speed-heal-charm-ii",
-      "rarity": 1,
-      "primary": "recovery-speed",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "speed-heal-charm-iii",
-      "rarity": 1,
-      "primary": "recovery-speed",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "gluttons-charm-i",
-      "rarity": 1,
-      "primary": "speed-eating",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "gluttons-charm-ii",
-      "rarity": 1,
-      "primary": "speed-eating",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "gluttons-charm-iii",
-      "rarity": 1,
-      "primary": "speed-eating",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "earplugs-charm-i",
-      "rarity": 1,
-      "primary": "earplugs",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "earplugs-charm-ii",
-      "rarity": 1,
-      "primary": "earplugs",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "windproof-charm-i",
-      "rarity": 1,
-      "primary": "windproof",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "windproof-charm-ii",
-      "rarity": 1,
-      "primary": "windproof",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "windproof-charm-iii",
-      "rarity": 1,
-      "primary": "windproof",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "tremor-charm-i",
-      "rarity": 1,
-      "primary": "tremor-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "tremor-charm-ii",
-      "rarity": 1,
-      "primary": "tremor-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "tremor-charm-iii",
-      "rarity": 1,
-      "primary": "tremor-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "evasion-charm-i",
-      "rarity": 1,
-      "primary": "evade-window",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "evasion-charm-ii",
-      "rarity": 1,
-      "primary": "evade-window",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "evasion-charm-iii",
-      "rarity": 1,
-      "primary": "evade-window",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "evasion-charm-iv",
-      "rarity": 1,
-      "primary": "evade-window",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 4,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "leaping-charm-i",
-      "rarity": 1,
-      "primary": "evade-extender",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "leaping-charm-ii",
-      "rarity": 1,
-      "primary": "evade-extender",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "leaping-charm-iii",
-      "rarity": 1,
-      "primary": "evade-extender",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fire-charm-i",
-      "rarity": 1,
-      "primary": "fire-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fire-charm-ii",
-      "rarity": 1,
-      "primary": "fire-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "fire-charm-iii",
-      "rarity": 1,
-      "primary": "fire-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "water-charm-i",
-      "rarity": 1,
-      "primary": "water-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "water-charm-ii",
-      "rarity": 1,
-      "primary": "water-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "water-charm-iii",
-      "rarity": 1,
-      "primary": "water-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "thunder-charm-i",
-      "rarity": 1,
-      "primary": "thunder-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "thunder-charm-ii",
-      "rarity": 1,
-      "primary": "thunder-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "thunder-charm-iii",
-      "rarity": 1,
-      "primary": "thunder-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "ice-charm-i",
-      "rarity": 1,
-      "primary": "ice-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "ice-charm-ii",
-      "rarity": 1,
-      "primary": "ice-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "ice-charm-iii",
-      "rarity": 1,
-      "primary": "ice-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "dragon-charm-i",
-      "rarity": 1,
-      "primary": "dragon-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "dragon-charm-ii",
-      "rarity": 1,
-      "primary": "dragon-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "dragon-charm-iii",
-      "rarity": 1,
-      "primary": "dragon-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "blight-charm-i",
-      "rarity": 1,
-      "primary": "blight-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "blight-charm-ii",
-      "rarity": 1,
-      "primary": "blight-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "poison-charm-i",
-      "rarity": 1,
-      "primary": "poison-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "poison-charm-ii",
-      "rarity": 1,
-      "primary": "poison-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "poison-charm-iii",
-      "rarity": 1,
-      "primary": "poison-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "paralysis-charm-i",
-      "rarity": 1,
-      "primary": "paralysis-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "paralysis-charm-ii",
-      "rarity": 1,
-      "primary": "paralysis-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "paralysis-charm-iii",
-      "rarity": 1,
-      "primary": "paralysis-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "sleep-charm-i",
-      "rarity": 1,
-      "primary": "sleep-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "sleep-charm-ii",
-      "rarity": 1,
-      "primary": "sleep-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "sleep-charm-iii",
-      "rarity": 1,
-      "primary": "sleep-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "stun-charm-i",
-      "rarity": 1,
-      "primary": "stun-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "stun-charm-ii",
-      "rarity": 1,
-      "primary": "stun-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "stun-charm-iii",
-      "rarity": 1,
-      "primary": "stun-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
       "name": "blast-charm-i",
-      "rarity": 1,
+      "rarity": 3,
       "primary": "blast-resistance",
       "secondary": "",
       "ternary": "",
@@ -892,7 +12,7 @@
     },
     {
       "name": "blast-charm-ii",
-      "rarity": 1,
+      "rarity": 4,
       "primary": "blast-resistance",
       "secondary": "",
       "ternary": "",
@@ -902,7 +22,7 @@
     },
     {
       "name": "blast-charm-iii",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "blast-resistance",
       "secondary": "",
       "ternary": "",
@@ -911,478 +31,8 @@
       "ternaryLv": 0
     },
     {
-      "name": "botany-charm-i",
-      "rarity": 1,
-      "primary": "botanist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "botany-charm-ii",
-      "rarity": 1,
-      "primary": "botanist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "botany-charm-iii",
-      "rarity": 1,
-      "primary": "botanist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "botany-charm-iv",
-      "rarity": 1,
-      "primary": "botanist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 4,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "geology-charm-i",
-      "rarity": 1,
-      "primary": "geologist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "geology-charm-ii",
-      "rarity": 1,
-      "primary": "geologist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "geology-charm-iii",
-      "rarity": 1,
-      "primary": "geologist",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "breaker-charm-i",
-      "rarity": 1,
-      "primary": "partbreaker",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "breaker-charm-ii",
-      "rarity": 1,
-      "primary": "partbreaker",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "bombardier-charm-i",
-      "rarity": 1,
-      "primary": "bombardier",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "bombardier-charm-ii",
-      "rarity": 1,
-      "primary": "bombardier",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "bombardier-charm-iii",
-      "rarity": 1,
-      "primary": "bombardier",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "mushroom-charm-i",
-      "rarity": 1,
-      "primary": "mushroomancer",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "mushroom-charm-ii",
-      "rarity": 1,
-      "primary": "mushroomancer",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "mushroom-charm-iii",
-      "rarity": 1,
-      "primary": "mushroomancer",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "extension-charm-i",
-      "rarity": 1,
-      "primary": "item-prolonger",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "extension-charm-ii",
-      "rarity": 1,
-      "primary": "item-prolonger",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "extension-charm-iii",
-      "rarity": 1,
-      "primary": "item-prolonger",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "friendship-charm-i",
-      "rarity": 1,
-      "primary": "wide-range",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "friendship-charm-ii",
-      "rarity": 1,
-      "primary": "wide-range",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "friendship-charm-iii",
-      "rarity": 1,
-      "primary": "wide-range",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "friendship-charm-iv",
-      "rarity": 1,
-      "primary": "wide-range",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 4,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "light-eaters-charm-i",
-      "rarity": 1,
-      "primary": "free-meal",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "light-eaters-charm-ii",
-      "rarity": 1,
-      "primary": "free-meal",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "light-eaters-charm-iii",
-      "rarity": 1,
-      "primary": "free-meal",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "grit-charm-i",
-      "rarity": 1,
-      "primary": "heroics",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "grit-charm-ii",
-      "rarity": 1,
-      "primary": "heroics",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "grit-charm-iii",
-      "rarity": 1,
-      "primary": "heroics",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "impact-charm-i",
-      "rarity": 1,
-      "primary": "flinch-free",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "impact-charm-ii",
-      "rarity": 1,
-      "primary": "flinch-free",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "impact-charm-iii",
-      "rarity": 1,
-      "primary": "flinch-free",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "hungerless-charm-i",
-      "rarity": 1,
-      "primary": "hunger-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "hungerless-charm-ii",
-      "rarity": 1,
-      "primary": "hunger-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "hungerless-charm-iii",
-      "rarity": 1,
-      "primary": "hunger-resistance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "counter-charm-i",
-      "rarity": 1,
-      "primary": "counterstrike",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "counter-charm-ii",
-      "rarity": 1,
-      "primary": "counterstrike",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "counter-charm-iii",
-      "rarity": 1,
-      "primary": "counterstrike",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "foray-charm-i",
-      "rarity": 1,
-      "primary": "foray",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "foray-charm-ii",
-      "rarity": 1,
-      "primary": "foray",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "phoenix-charm-i",
-      "rarity": 1,
-      "primary": "coalescence",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "phoenix-charm-ii",
-      "rarity": 1,
-      "primary": "coalescence",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "chain-charm-i",
-      "rarity": 1,
-      "primary": "burst",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "chain-charm-ii",
-      "rarity": 1,
-      "primary": "burst",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "counterattack-charm-i",
-      "rarity": 1,
-      "primary": "adrenaline-rush",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "counterattack-charm-ii",
-      "rarity": 1,
-      "primary": "adrenaline-rush",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "descent-charm-i",
-      "rarity": 1,
-      "primary": "ambush",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 1,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "descent-charm-ii",
-      "rarity": 1,
-      "primary": "ambush",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 2,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
       "name": "bleed-charm-i",
-      "rarity": 1,
+      "rarity": 3,
       "primary": "bleeding-resistance",
       "secondary": "",
       "ternary": "",
@@ -1392,7 +42,7 @@
     },
     {
       "name": "bleed-charm-ii",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "bleeding-resistance",
       "secondary": "",
       "ternary": "",
@@ -1402,7 +52,7 @@
     },
     {
       "name": "bleed-charm-iii",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "bleeding-resistance",
       "secondary": "",
       "ternary": "",
@@ -1411,9 +61,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "guard-charm-i",
-      "rarity": 1,
-      "primary": "iron-skin",
+      "name": "blessing-charm-i",
+      "rarity": 3,
+      "primary": "divine-blessing",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1421,9 +71,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "guard-charm-ii",
-      "rarity": 1,
-      "primary": "iron-skin",
+      "name": "blessing-charm-ii",
+      "rarity": 4,
+      "primary": "divine-blessing",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
@@ -1431,9 +81,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "guard-charm-iii",
-      "rarity": 1,
-      "primary": "iron-skin",
+      "name": "blessing-charm-iii",
+      "rarity": 5,
+      "primary": "divine-blessing",
       "secondary": "",
       "ternary": "",
       "primaryLv": 3,
@@ -1441,9 +91,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "survival-charm-i",
-      "rarity": 1,
-      "primary": "survival-expert",
+      "name": "blight-charm-i",
+      "rarity": 6,
+      "primary": "blight-resistance",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1451,9 +101,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "survival-charm-ii",
-      "rarity": 1,
-      "primary": "survival-expert",
+      "name": "blight-charm-ii",
+      "rarity": 7,
+      "primary": "blight-resistance",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
@@ -1461,9 +111,29 @@
       "ternaryLv": 0
     },
     {
-      "name": "survival-charm-iii",
-      "rarity": 1,
-      "primary": "survival-expert",
+      "name": "bombardier-charm-i",
+      "rarity": 4,
+      "primary": "bombardier",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "bombardier-charm-ii",
+      "rarity": 5,
+      "primary": "bombardier",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "bombardier-charm-iii",
+      "rarity": 6,
+      "primary": "bombardier",
       "secondary": "",
       "ternary": "",
       "primaryLv": 3,
@@ -1471,9 +141,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "maintenance-charm-i",
-      "rarity": 1,
-      "primary": "tool-specialist",
+      "name": "botany-charm-i",
+      "rarity": 2,
+      "primary": "botanist",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1481,9 +151,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "maintenance-charm-ii",
-      "rarity": 1,
-      "primary": "tool-specialist",
+      "name": "botany-charm-ii",
+      "rarity": 4,
+      "primary": "botanist",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
@@ -1491,9 +161,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "maintenance-charm-iii",
-      "rarity": 1,
-      "primary": "tool-specialist",
+      "name": "botany-charm-iii",
+      "rarity": 4,
+      "primary": "botanist",
       "secondary": "",
       "ternary": "",
       "primaryLv": 3,
@@ -1501,9 +171,19 @@
       "ternaryLv": 0
     },
     {
-      "name": "intimidator-charm-i",
-      "rarity": 1,
-      "primary": "intimidator",
+      "name": "botany-charm-iv",
+      "rarity": 5,
+      "primary": "botanist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "breaker-charm-i",
+      "rarity": 5,
+      "primary": "partbreaker",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1511,9 +191,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "intimidator-charm-ii",
-      "rarity": 1,
-      "primary": "intimidator",
+      "name": "breaker-charm-ii",
+      "rarity": 7,
+      "primary": "partbreaker",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
@@ -1521,19 +201,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "intimidator-charm-iii",
-      "rarity": 1,
-      "primary": "intimidator",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "escape-charm-i",
-      "rarity": 1,
-      "primary": "bind-resistance",
+      "name": "chain-charm-i",
+      "rarity": 5,
+      "primary": "burst",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1541,9 +211,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "escape-charm-ii",
-      "rarity": 1,
-      "primary": "bind-resistance",
+      "name": "chain-charm-ii",
+      "rarity": 7,
+      "primary": "burst",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
@@ -1551,9 +221,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "escape-charm-iii",
-      "rarity": 1,
-      "primary": "bind-resistance",
+      "name": "chain-charm-iii",
+      "rarity": 8,
+      "primary": "burst",
       "secondary": "",
       "ternary": "",
       "primaryLv": 3,
@@ -1562,7 +232,7 @@
     },
     {
       "name": "chainblade-charm-i",
-      "rarity": 1,
+      "rarity": 4,
       "primary": "flayer",
       "secondary": "",
       "ternary": "",
@@ -1572,7 +242,7 @@
     },
     {
       "name": "chainblade-charm-ii",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "flayer",
       "secondary": "",
       "ternary": "",
@@ -1581,9 +251,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "imbibe-charm-i",
-      "rarity": 1,
-      "primary": "elemental-absorption",
+      "name": "challenger-charm-i",
+      "rarity": 5,
+      "primary": "agitator",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1591,8 +261,18 @@
       "ternaryLv": 0
     },
     {
+      "name": "challenger-charm-ii",
+      "rarity": 7,
+      "primary": "agitator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
       "name": "convert-charm-i",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "convert-element",
       "secondary": "",
       "ternary": "",
@@ -1602,7 +282,7 @@
     },
     {
       "name": "convert-charm-ii",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "convert-element",
       "secondary": "",
       "ternary": "",
@@ -1611,9 +291,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "sanity-charm-i",
-      "rarity": 1,
-      "primary": "antivirus",
+      "name": "counter-charm-i",
+      "rarity": 5,
+      "primary": "counterstrike",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
@@ -1621,9 +301,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "sanity-charm-ii",
-      "rarity": 1,
-      "primary": "antivirus",
+      "name": "counter-charm-ii",
+      "rarity": 6,
+      "primary": "counterstrike",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
@@ -1631,9 +311,9 @@
       "ternaryLv": 0
     },
     {
-      "name": "sanity-charm-iii",
-      "rarity": 1,
-      "primary": "antivirus",
+      "name": "counter-charm-iii",
+      "rarity": 7,
+      "primary": "counterstrike",
       "secondary": "",
       "ternary": "",
       "primaryLv": 3,
@@ -1641,88 +321,28 @@
       "ternaryLv": 0
     },
     {
-      "name": "hope-charm",
-      "rarity": 1,
-      "primary": "self-improvement",
-      "secondary": "recovery-up",
+      "name": "counterattack-charm-i",
+      "rarity": 5,
+      "primary": "adrenaline-rush",
+      "secondary": "",
       "ternary": "",
       "primaryLv": 1,
-      "secondaryLv": 1,
-      "ternaryLv": 0
-    },
-    {
-      "name": "unscathed-charm-iii",
-      "rarity": 1,
-      "primary": "peak-performance",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
       "secondaryLv": 0,
       "ternaryLv": 0
     },
     {
-      "name": "fury-charm-iii",
-      "rarity": 1,
-      "primary": "resentment",
+      "name": "counterattack-charm-ii",
+      "rarity": 7,
+      "primary": "adrenaline-rush",
       "secondary": "",
       "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "mighty-charm-iii",
-      "rarity": 1,
-      "primary": "maximum-might",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "friendship-charm-v",
-      "rarity": 1,
-      "primary": "wide-range",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 5,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "grit-charm-iv",
-      "rarity": 1,
-      "primary": "heroics",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 4,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "foray-charm-iii",
-      "rarity": 1,
-      "primary": "foray",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
-      "secondaryLv": 0,
-      "ternaryLv": 0
-    },
-    {
-      "name": "chain-charm-iii",
-      "rarity": 1,
-      "primary": "burst",
-      "secondary": "",
-      "ternary": "",
-      "primaryLv": 3,
+      "primaryLv": 2,
       "secondaryLv": 0,
       "ternaryLv": 0
     },
     {
       "name": "counterattack-charm-iii",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "adrenaline-rush",
       "secondary": "",
       "ternary": "",
@@ -1731,8 +351,78 @@
       "ternaryLv": 0
     },
     {
+      "name": "defense-charm-i",
+      "rarity": 2,
+      "primary": "defense-boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "defense-charm-ii",
+      "rarity": 4,
+      "primary": "defense-boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "defense-charm-iii",
+      "rarity": 5,
+      "primary": "defense-boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "defense-charm-iv",
+      "rarity": 6,
+      "primary": "defense-boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "defense-charm-v",
+      "rarity": 7,
+      "primary": "defense-boost",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "descent-charm-i",
+      "rarity": 4,
+      "primary": "ambush",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "descent-charm-ii",
+      "rarity": 6,
+      "primary": "ambush",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
       "name": "descent-charm-iii",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "ambush",
       "secondary": "",
       "ternary": "",
@@ -1741,12 +431,492 @@
       "ternaryLv": 0
     },
     {
-      "name": "imbibe-charm-ii",
-      "rarity": 1,
-      "primary": "elemental-absorption",
+      "name": "dragon-charm-i",
+      "rarity": 3,
+      "primary": "dragon-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "dragon-charm-ii",
+      "rarity": 4,
+      "primary": "dragon-resistance",
       "secondary": "",
       "ternary": "",
       "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "dragon-charm-iii",
+      "rarity": 5,
+      "primary": "dragon-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "earplugs-charm-i",
+      "rarity": 6,
+      "primary": "earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "earplugs-charm-ii",
+      "rarity": 7,
+      "primary": "earplugs",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "escape-charm-i",
+      "rarity": 4,
+      "primary": "bind-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "escape-charm-ii",
+      "rarity": 6,
+      "primary": "bind-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "escape-charm-iii",
+      "rarity": 7,
+      "primary": "bind-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "evasion-charm-i",
+      "rarity": 4,
+      "primary": "evade-window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "evasion-charm-ii",
+      "rarity": 5,
+      "primary": "evade-window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "evasion-charm-iii",
+      "rarity": 6,
+      "primary": "evade-window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "evasion-charm-iv",
+      "rarity": 7,
+      "primary": "evade-window",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "exploiter-charm-i",
+      "rarity": 5,
+      "primary": "weakness-exploit",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "exploiter-charm-ii",
+      "rarity": 7,
+      "primary": "weakness-exploit",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "extension-charm-i",
+      "rarity": 3,
+      "primary": "item-prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "extension-charm-ii",
+      "rarity": 4,
+      "primary": "item-prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "extension-charm-iii",
+      "rarity": 5,
+      "primary": "item-prolonger",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fire-charm-i",
+      "rarity": 2,
+      "primary": "fire-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fire-charm-ii",
+      "rarity": 4,
+      "primary": "fire-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fire-charm-iii",
+      "rarity": 5,
+      "primary": "fire-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fitness-charm-i",
+      "rarity": 4,
+      "primary": "constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fitness-charm-ii",
+      "rarity": 5,
+      "primary": "constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fitness-charm-iii",
+      "rarity": 6,
+      "primary": "constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fitness-charm-iv",
+      "rarity": 7,
+      "primary": "constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fitness-charm-v",
+      "rarity": 8,
+      "primary": "constitution",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "foray-charm-i",
+      "rarity": 4,
+      "primary": "foray",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "foray-charm-ii",
+      "rarity": 6,
+      "primary": "foray",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "foray-charm-iii",
+      "rarity": 7,
+      "primary": "foray",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "friendship-charm-i",
+      "rarity": 3,
+      "primary": "wide-range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "friendship-charm-ii",
+      "rarity": 4,
+      "primary": "wide-range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "friendship-charm-iii",
+      "rarity": 4,
+      "primary": "wide-range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "friendship-charm-iv",
+      "rarity": 5,
+      "primary": "wide-range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "friendship-charm-v",
+      "rarity": 6,
+      "primary": "wide-range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fury-charm-i",
+      "rarity": 5,
+      "primary": "resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fury-charm-ii",
+      "rarity": 7,
+      "primary": "resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fury-charm-iii",
+      "rarity": 8,
+      "primary": "resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "geology-charm-i",
+      "rarity": 2,
+      "primary": "geologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "geology-charm-ii",
+      "rarity": 4,
+      "primary": "geologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "geology-charm-iii",
+      "rarity": 5,
+      "primary": "geologist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "gluttons-charm-i",
+      "rarity": 2,
+      "primary": "speed-eating",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "gluttons-charm-ii",
+      "rarity": 4,
+      "primary": "speed-eating",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "gluttons-charm-iii",
+      "rarity": 5,
+      "primary": "speed-eating",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "grit-charm-i",
+      "rarity": 4,
+      "primary": "heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "grit-charm-ii",
+      "rarity": 6,
+      "primary": "heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "grit-charm-iii",
+      "rarity": 7,
+      "primary": "heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "grit-charm-iv",
+      "rarity": 8,
+      "primary": "heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "guard-charm-i",
+      "rarity": 3,
+      "primary": "iron-skin",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "guard-charm-ii",
+      "rarity": 5,
+      "primary": "iron-skin",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "guard-charm-iii",
+      "rarity": 6,
+      "primary": "iron-skin",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
       "secondaryLv": 0,
       "ternaryLv": 0
     },
@@ -1761,8 +931,238 @@
       "ternaryLv": 0
     },
     {
+      "name": "hungerless-charm-i",
+      "rarity": 2,
+      "primary": "hunger-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "hungerless-charm-ii",
+      "rarity": 4,
+      "primary": "hunger-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "hungerless-charm-iii",
+      "rarity": 5,
+      "primary": "hunger-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "ice-charm-i",
+      "rarity": 3,
+      "primary": "ice-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "ice-charm-ii",
+      "rarity": 4,
+      "primary": "ice-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "ice-charm-iii",
+      "rarity": 6,
+      "primary": "ice-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "imbibe-charm-i",
+      "rarity": 7,
+      "primary": "elemental-absorption",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "imbibe-charm-ii",
+      "rarity": 8,
+      "primary": "elemental-absorption",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "impact-charm-i",
+      "rarity": 3,
+      "primary": "flinch-free",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "impact-charm-ii",
+      "rarity": 4,
+      "primary": "flinch-free",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "impact-charm-iii",
+      "rarity": 6,
+      "primary": "flinch-free",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "intimidator-charm-i",
+      "rarity": 3,
+      "primary": "intimidator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "intimidator-charm-ii",
+      "rarity": 5,
+      "primary": "intimidator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "intimidator-charm-iii",
+      "rarity": 6,
+      "primary": "intimidator",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "leaping-charm-i",
+      "rarity": 4,
+      "primary": "evade-extender",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "leaping-charm-ii",
+      "rarity": 5,
+      "primary": "evade-extender",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "leaping-charm-iii",
+      "rarity": 6,
+      "primary": "evade-extender",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "light-eaters-charm-i",
+      "rarity": 4,
+      "primary": "free-meal",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "light-eaters-charm-ii",
+      "rarity": 5,
+      "primary": "free-meal",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "light-eaters-charm-iii",
+      "rarity": 6,
+      "primary": "free-meal",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "maintenance-charm-i",
+      "rarity": 4,
+      "primary": "tool-specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "maintenance-charm-ii",
+      "rarity": 5,
+      "primary": "tool-specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "maintenance-charm-iii",
+      "rarity": 7,
+      "primary": "tool-specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
       "name": "maintenance-charm-iv",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "tool-specialist",
       "secondary": "",
       "ternary": "",
@@ -1771,12 +1171,602 @@
       "ternaryLv": 0
     },
     {
+      "name": "marathon-charm-i",
+      "rarity": 4,
+      "primary": "marathon-runner",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "marathon-charm-ii",
+      "rarity": 5,
+      "primary": "marathon-runner",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "marathon-charm-iii",
+      "rarity": 6,
+      "primary": "marathon-runner",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mighty-charm-i",
+      "rarity": 5,
+      "primary": "maximum-might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mighty-charm-ii",
+      "rarity": 7,
+      "primary": "maximum-might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mighty-charm-iii",
+      "rarity": 8,
+      "primary": "maximum-might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mushroom-charm-i",
+      "rarity": 4,
+      "primary": "mushroomancer",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mushroom-charm-ii",
+      "rarity": 6,
+      "primary": "mushroomancer",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mushroom-charm-iii",
+      "rarity": 7,
+      "primary": "mushroomancer",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "paralysis-charm-i",
+      "rarity": 2,
+      "primary": "paralysis-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "paralysis-charm-ii",
+      "rarity": 4,
+      "primary": "paralysis-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "paralysis-charm-iii",
+      "rarity": 6,
+      "primary": "paralysis-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "phoenix-charm-i",
+      "rarity": 6,
+      "primary": "coalescence",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "phoenix-charm-ii",
+      "rarity": 7,
+      "primary": "coalescence",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "poison-charm-i",
+      "rarity": 3,
+      "primary": "poison-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "poison-charm-ii",
+      "rarity": 6,
+      "primary": "poison-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "poison-charm-iii",
+      "rarity": 6,
+      "primary": "poison-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "power-charm-i",
+      "rarity": 5,
+      "primary": "latent-power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "power-charm-ii",
+      "rarity": 7,
+      "primary": "latent-power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "power-charm-iii",
+      "rarity": 8,
+      "primary": "latent-power",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "recovery-charm-i",
+      "rarity": 3,
+      "primary": "recovery-up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "recovery-charm-ii",
+      "rarity": 4,
+      "primary": "recovery-up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "recovery-charm-iii",
+      "rarity": 6,
+      "primary": "recovery-up",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
       "name": "rice-ball-charm",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "rice-ball",
       "secondary": "",
       "ternary": "",
       "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sanity-charm-i",
+      "rarity": 5,
+      "primary": "antivirus",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sanity-charm-ii",
+      "rarity": 6,
+      "primary": "antivirus",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sanity-charm-iii",
+      "rarity": 7,
+      "primary": "antivirus",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sheathe-charm-i",
+      "rarity": 4,
+      "primary": "quick-sheathe",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sheathe-charm-ii",
+      "rarity": 5,
+      "primary": "quick-sheathe",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sheathe-charm-iii",
+      "rarity": 6,
+      "primary": "quick-sheathe",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sleep-charm-i",
+      "rarity": 3,
+      "primary": "sleep-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sleep-charm-ii",
+      "rarity": 4,
+      "primary": "sleep-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "sleep-charm-iii",
+      "rarity": 5,
+      "primary": "sleep-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "speed-heal-charm-i",
+      "rarity": 2,
+      "primary": "recovery-speed",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "speed-heal-charm-ii",
+      "rarity": 4,
+      "primary": "recovery-speed",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "speed-heal-charm-iii",
+      "rarity": 5,
+      "primary": "recovery-speed",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "stun-charm-i",
+      "rarity": 3,
+      "primary": "stun-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "stun-charm-ii",
+      "rarity": 4,
+      "primary": "stun-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "stun-charm-iii",
+      "rarity": 5,
+      "primary": "stun-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "surge-charm-i",
+      "rarity": 4,
+      "primary": "stamina-surge",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "surge-charm-ii",
+      "rarity": 5,
+      "primary": "stamina-surge",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "surge-charm-iii",
+      "rarity": 6,
+      "primary": "stamina-surge",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "survival-charm-i",
+      "rarity": 3,
+      "primary": "survival-expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "survival-charm-ii",
+      "rarity": 5,
+      "primary": "survival-expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "survival-charm-iii",
+      "rarity": 6,
+      "primary": "survival-expert",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "thunder-charm-i",
+      "rarity": 3,
+      "primary": "thunder-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "thunder-charm-ii",
+      "rarity": 4,
+      "primary": "thunder-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "thunder-charm-iii",
+      "rarity": 5,
+      "primary": "thunder-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "tremor-charm-i",
+      "rarity": 4,
+      "primary": "tremor-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "tremor-charm-ii",
+      "rarity": 5,
+      "primary": "tremor-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "tremor-charm-iii",
+      "rarity": 6,
+      "primary": "tremor-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "unscathed-charm-i",
+      "rarity": 5,
+      "primary": "peak-performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "unscathed-charm-ii",
+      "rarity": 7,
+      "primary": "peak-performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "unscathed-charm-iii",
+      "rarity": 8,
+      "primary": "peak-performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "water-charm-i",
+      "rarity": 2,
+      "primary": "water-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "water-charm-ii",
+      "rarity": 4,
+      "primary": "water-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "water-charm-iii",
+      "rarity": 5,
+      "primary": "water-resistance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "windproof-charm-i",
+      "rarity": 4,
+      "primary": "windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "windproof-charm-ii",
+      "rarity": 5,
+      "primary": "windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "windproof-charm-iii",
+      "rarity": 6,
+      "primary": "windproof",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
       "secondaryLv": 0,
       "ternaryLv": 0
     }
