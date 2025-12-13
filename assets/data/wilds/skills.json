@@ -737,6 +737,72 @@
       "category": "armor",
       "maxLevel": 1,
       "desc": ""
+    },
+    {
+      "name": "convert-thunder-resistance",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "bladescale-honing",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "bladescale-loading",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "power-stone",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "crackling-cornpopper",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "grillmaster",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "evading-reload",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "darkside",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "synthetic-shield",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "synergy",
+      "category": "weapon",
+      "maxLevel": 1,
+      "desc": ""
+    },
+    {
+      "name": "rice-ball",
+      "category": "armor",
+      "maxLevel": 1,
+      "desc": ""
     }
   ]
 }

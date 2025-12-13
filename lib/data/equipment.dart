@@ -13,6 +13,7 @@ import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 
 part 'equipment.freezed.dart';
+
 part 'equipment.g.dart';
 
 enum Part {
@@ -77,6 +78,7 @@ class All {
   static final List<Deco> decos = [];
   static final Map<String, Deco> decosByString = {};
   static final List<Armor> armorList = [];
+  static final List<Charm> charmList = [];
   static final Map<String, Equipment> equipment = {};
   static final Map<Skill, List<Deco>> decosMap = {};
   static final Map<SkillTemplate, List<Armor>> helmets = {};
@@ -94,6 +96,7 @@ class All {
     Part.waist: waists,
     Part.leg: legs
   };
+  static final Map<String, int> rarityMap = {};
 
   static final List<ArmorSetSortFunction> sortFunctions = [];
 
@@ -103,6 +106,8 @@ class All {
   static final int startHighRankRarity = 5;
 
   static final Map<String, String> langEn = {};
+
+  static final List<String> charmTiers = ['-i', '-ii', '-iii', '-iv', '-v', '-vi', '-vii', '-viii', '-ix', '-x'];
 
   static void addSkill(String name, SkillCategory category, int maxLevel, String desc) {
     String trueName = name;
@@ -174,6 +179,7 @@ class All {
     All.equipment[equipment.name] = equipment;
     if (equipment is Charm) {
       if (fromWeb) log.info('Adding charm ${equipment.name}');
+      charmList.add(equipment);
       // only fully upgraded charms should be mapped from skills
       // this is done after everything is loaded
       return;
@@ -199,6 +205,15 @@ class All {
   static void saveData() {
     _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
     _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
+  }
+
+  static void saveAll() {
+    _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/bonus_skills.json", {'data': armorBonuses.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/charms.json", {'data': charmList.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
+    _writeJsonData("data/wilds/lang/en_us.json", langEn);
   }
 
   static _clearData() {
@@ -330,7 +345,7 @@ class All {
     _parseSkillsFromJson(json['skills'], json['bskills']);
     _parseDecosFromJson(json['decos']);
     for (Json j in json['charms']) {
-      _addEquipment(Armor.fromJson(j), false);
+      _addEquipment(Charm.fromJson(j), false);
     }
     for (Json j in json['armor']) {
       _addEquipment(Armor.fromJson(j), false);
@@ -387,6 +402,7 @@ class All {
     for (Map<String, dynamic> element in json) {
       var charm = Charm.fromJson(element);
       _addEquipment(charm, false);
+      rarityMap[charm.name] = charm.rarity;
     }
   }
 
@@ -451,6 +467,7 @@ class All {
       }
       armor = armor.copyWith(rarity: currentRarity)*/
       _addEquipment(armor, false);
+      rarityMap[armor.name] = armor.rarity;
     }
   }
 
@@ -475,7 +492,47 @@ class All {
     return null;
   }
 
-  static parseSkillsFromWeb() async {
+  static checkWebUpdate(String outName,
+      {bool checkSkills = true, bool checkDecos = true, bool checkCharms = true, bool checkArmor = true}) async {
+    Set<Skill> skills = Set.from(All.skills);
+    Set<BonusSkill> armorBonuses = Set.from(All.armorBonuses);
+    Set<Deco> decos = Set.from(All.decos);
+    Set<Charm> charmList = Set.from(All.charmList);
+    Set<Armor> armorList = Set.from(All.armorList);
+    All.langEn.clear();
+    if (checkSkills) All.skills.clear();
+    if (checkSkills) All.armorBonuses.clear();
+    if (checkDecos) All.decos.clear();
+    if (checkCharms) All.charmList.clear();
+    if (checkArmor) All.armorList.clear();
+    log.info("Checking for updates from web");
+    if (checkSkills) await parseSkillsFromWeb(writeFile: false);
+    if (checkDecos) await parseDecosFromWeb(writeFile: false);
+    if (checkCharms) await parseCharmsFromWeb(writeFile: false);
+    if (checkArmor) await parseArmorFromWeb(writeFile: false);
+    log.info("Done parsing");
+    if (checkSkills) _checkDif("skills", skills, All.skills);
+    if (checkSkills) _checkDif("armorBonuses", armorBonuses, All.armorBonuses);
+    if (checkDecos) _checkDif("decos", decos, All.decos);
+    if (checkCharms) _checkDif("charm", charmList, All.charmList);
+    if (checkArmor) _checkDif("armor", armorList, All.armorList);
+    Map<String, dynamic> json = {
+      'lang': {'en_us': All.langEn},
+      if (checkSkills) 'skills': All.skills.map((e) => e.toJson()).toList(),
+      if (checkSkills) 'bskills': All.armorBonuses.map((e) => e.toJson()).toList(),
+      if (checkDecos) 'decos': All.decos.map((e) => e.toJson()).toList(),
+      if (checkCharms) 'charms': All.charmList.map((e) => e.toJson()).toList(),
+      if (checkArmor) 'armor': All.armorList.map((e) => e.toJson()).toList()
+    };
+    _writeJsonData("data/wilds/updates/$outName.json", json);
+  }
+
+  static void _checkDif<T>(String name, Set<T> base, List<T> bigger) {
+    bigger.removeWhere((e) => base.contains(e));
+    log.info("Found ${bigger.length} new entries of $name");
+  }
+
+  static parseSkillsFromWeb({bool writeFile = true}) async {
     log.info('Parsing skills from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/skills'));
     if (response.statusCode == 200) {
@@ -488,9 +545,11 @@ class All {
         _parseSkillList(list.children[2], SkillCategory.groupBonus),
         _parseSkillList(list.children[3], SkillCategory.setBonus),
       ]);
-      _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
-      _writeJsonData("data/wilds/bonus_skills.json", {'data': armorBonuses.map((e) => e.toJson()).toList()});
-      _writeLang();
+      if (writeFile) {
+        _writeJsonData("data/wilds/skills.json", {'data': skills.map((e) => e.toJson()).toList()});
+        _writeJsonData("data/wilds/bonus_skills.json", {'data': armorBonuses.map((e) => e.toJson()).toList()});
+        _writeLang();
+      }
     }
   }
 
@@ -544,7 +603,7 @@ class All {
     return int.parse(lv.substring(2));
   }
 
-  static parseDecosFromWeb() async {
+  static parseDecosFromWeb({bool writeFile = true}) async {
     log.info('Parsing decos from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/decorations'));
     if (response.statusCode == 200) {
@@ -583,30 +642,35 @@ class All {
             sS = Skill.fromString(sN);
             if (sL != 1) throw Exception('Invalid secondary level');
           }
+          log.info('Adding deco $regName');
           decos.add(Deco(name: regName, primary: pS, primaryLvl: pL, size: size, secondary: sS));
           langEn['deco:$regName'] = name;
         } else {
           log.info('Could not receive web page for deco $regName');
         }
       }
-      _writeJsonData("data/wilds/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
-      _writeLang();
+      if (writeFile) {
+        _writeJsonData("data/wilds/decos.json", {'data': decos.map((e) => e.toJson()).toList()});
+        _writeLang();
+      }
     } else {
       throw Exception();
     }
   }
 
-  static parseCharmsFromWeb() async {
+  static parseCharmsFromWeb({bool writeFile = true}) async {
     log.info('Parsing charms from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/charms'));
     if (response.statusCode == 200) {
       var doc = parse(response.body);
       var table = _findElement(doc, 'tbody', '[&_tr:last-child]:border-0 text-sm')!;
-      List<Charm> allCharms = [];
-
       for (var child in table.children) {
         var link = child.children[0].children[0].attributes['href']!;
         var regName = _parseRegName(link);
+        if (regName == 'unknown-charm' ||
+            regName == 'historical-charm' ||
+            regName == 'secret-charm' ||
+            regName == 'golden-age-charm') continue;
         langEn['charm:$regName'] = child.children[0].text;
         final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com$link'));
         if (response.statusCode == 200) {
@@ -638,17 +702,25 @@ class All {
             }
           }
           log.info('Adding charm $regName');
-          allCharms.add(Charm(name: regName, rarity: 1, primary: p!, primaryLv: pLvl, secondary: s, secondaryLv: sLvl));
+          charmList.add(Charm(
+              name: regName,
+              rarity: rarityMap[regName] ?? 8,
+              primary: p!,
+              primaryLv: pLvl,
+              secondary: s,
+              secondaryLv: sLvl));
         }
       }
-      _writeJsonData("data/wilds/charms.json", {'data': allCharms.map((e) => e.toJson()).toList()});
-      _writeLang();
+      if (writeFile) {
+        _writeJsonData("data/wilds/charms.json", {'data': charmList.map((e) => e.toJson()).toList()});
+        _writeLang();
+      }
     } else {
       throw Exception();
     }
   }
 
-  static parseArmorFromWeb() async {
+  static parseArmorFromWeb({bool writeFile = true}) async {
     log.info('Parsing armor from web');
     final response = await http.Client().get(Uri.parse('https://mhwilds.kiranico.com/data/armor-series'));
     if (response.statusCode == 200) {
@@ -740,7 +812,7 @@ class All {
               Armor armor = Armor(
                   name: regName,
                   part: part,
-                  rarity: 1,
+                  rarity: rarityMap[regName] ?? 8,
                   primary: p!,
                   primaryLv: pLvl,
                   secondary: s,
@@ -764,8 +836,10 @@ class All {
           }
         }
       }
-      _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
-      _writeLang();
+      if (writeFile) {
+        _writeJsonData("data/wilds/armor.json", {'data': armorList.map((e) => e.toJson()).toList()});
+        _writeLang();
+      }
     } else {
       throw Exception(response.statusCode);
     }
@@ -1215,36 +1289,12 @@ abstract class Charm with _$Charm, Equipment {
   String get localizedName => All.langEn['charm:$name']!;
 
   String get baseName {
-    int i = 0;
-    String n = name;
-    if (n.lastChar(0) == 'i') {
-      if (n.lastChar(1) == 'i') {
-        if (n.lastChar(2) == 'i') {
-          if (n.lastChar(3) == '-') {
-            i = 4;
-          }
-        } else {
-          if (n.lastChar(2) == '-') {
-            i = 3;
-          }
-        }
-      } else {
-        if (n.lastChar(1) == '-') {
-          i = 2;
-        }
-      }
-    } else if (n.lastChar(0) == 'v') {
-      if (n.lastChar(1) == 'i') {
-        if (n.lastChar(2) == '-') {
-          i = 3;
-        }
-      } else {
-        if (n.lastChar(1) == '-') {
-          i = 2;
-        }
+    for (String tier in All.charmTiers) {
+      if (name.endsWith(tier)) {
+        return name.substring(0, name.length - tier.length);
       }
     }
-    return i > 0 ? n.substring(0, n.length - i) : n;
+    return name;
   }
 
   static Charm fromString(String name) {

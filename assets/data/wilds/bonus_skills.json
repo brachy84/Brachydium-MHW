@@ -2,7 +2,6 @@
   "data": [
     {
       "name": "neopteron-alert",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -12,7 +11,6 @@
     },
     {
       "name": "doshagumas-might",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -22,7 +20,6 @@
     },
     {
       "name": "neopteron-camouflage",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -32,7 +29,6 @@
     },
     {
       "name": "rathaloss-flare",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -42,7 +38,6 @@
     },
     {
       "name": "xu-wus-vigor",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -52,7 +47,6 @@
     },
     {
       "name": "scaling-prowess",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -62,7 +56,6 @@
     },
     {
       "name": "gravioss-protection",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -72,7 +65,6 @@
     },
     {
       "name": "scale-layering",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -82,7 +74,6 @@
     },
     {
       "name": "blangongas-spirit",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -92,7 +83,6 @@
     },
     {
       "name": "flexible-leathercraft",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -102,7 +92,6 @@
     },
     {
       "name": "ebony-odogarons-power",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -112,7 +101,6 @@
     },
     {
       "name": "buttery-leathercraft",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -122,7 +110,6 @@
     },
     {
       "name": "fulgur-anjanaths-will",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -132,7 +119,6 @@
     },
     {
       "name": "fortifying-pelt",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -142,7 +128,6 @@
     },
     {
       "name": "uth-dunas-cover",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -152,7 +137,6 @@
     },
     {
       "name": "alluring-pelt",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -162,7 +146,6 @@
     },
     {
       "name": "rey-daus-voltage",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -172,7 +155,6 @@
     },
     {
       "name": "lords-favor",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -182,7 +164,6 @@
     },
     {
       "name": "nu-udras-mutiny",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -192,7 +173,6 @@
     },
     {
       "name": "lords-fury",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -202,7 +182,6 @@
     },
     {
       "name": "jin-dahaads-revolt",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -212,7 +191,6 @@
     },
     {
       "name": "guardians-pulse",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -222,7 +200,6 @@
     },
     {
       "name": "gore-magalas-tyranny",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -232,7 +209,6 @@
     },
     {
       "name": "guardians-protection",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -242,7 +218,6 @@
     },
     {
       "name": "arkvelds-hunger",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -252,7 +227,6 @@
     },
     {
       "name": "guardian-arkvelds-vitality",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -262,7 +236,6 @@
     },
     {
       "name": "imparted-wisdom",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -272,7 +245,6 @@
     },
     {
       "name": "mizutsunes-prowess",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -282,7 +254,6 @@
     },
     {
       "name": "lords-soul",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -292,7 +263,6 @@
     },
     {
       "name": "zoh-shias-pulse",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -302,7 +272,6 @@
     },
     {
       "name": "festival-spirit",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
@@ -312,7 +281,6 @@
     },
     {
       "name": "blossomdance-prayer",
-      "altName": null,
       "category": "setBonus",
       "maxLevel": 4,
       "primaryCount": 2,
@@ -322,13 +290,75 @@
     },
     {
       "name": "glorys-favor",
-      "altName": null,
       "category": "groupBonus",
       "maxLevel": 3,
       "primaryCount": 3,
       "secondaryCount": 0,
       "primaryDesc": "Increases quest target rewards. (No effect when joining mid-quest.)",
       "secondaryDesc": ""
+    },
+    {
+      "name": "master-of-the-fist",
+      "category": "groupBonus",
+      "maxLevel": 3,
+      "primaryCount": 3,
+      "secondaryCount": 0,
+      "primaryDesc": "Increases power of special actions. Drive Impacts can trigger offset attacks. Further increases power of offset attacks.",
+      "secondaryDesc": ""
+    },
+    {
+      "name": "leviathans-fury",
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Temporarily increases affinity and can deal extra thunder damage upon buildup. (Excludes some attacks.)",
+      "secondaryDesc": "Temporarily increases affinity and can deal extra thunder damage upon buildup. (Excludes some attacks.)"
+    },
+    {
+      "name": "seregioss-tenacity",
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Extends the duration of Adrenaline Rush. If triggered again while the skill is active, extends the effect duration once.",
+      "secondaryDesc": "Extends the duration of Adrenaline Rush. If triggered again while the skill is active, extends the effect duration once."
+    },
+    {
+      "name": "flamefete-prayer",
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "During Flamefete, adds special items to quest rewards. (No effect when joining mid-quest.)",
+      "secondaryDesc": "During Flamefete, adds special items to quest rewards. (No effect when joining mid-quest.)"
+    },
+    {
+      "name": "dreamspell-prayer",
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "During Dreamspell, adds special items to quest rewards. (No effect when joining mid-quest.)",
+      "secondaryDesc": "During Dreamspell, adds special items to quest rewards. (No effect when joining mid-quest.)"
+    },
+    {
+      "name": "soul-of-the-dark-knight",
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "Having recoverable damage increases elemental attack, and some great sword Lvl 3 charged slashes are strengthened.",
+      "secondaryDesc": "Having recoverable damage increases elemental attack, and some great sword Lvl 3 charged slashes are strengthened."
+    },
+    {
+      "name": "omega-resonance",
+      "category": "setBonus",
+      "maxLevel": 4,
+      "primaryCount": 2,
+      "secondaryCount": 4,
+      "primaryDesc": "(When quest starts) Local and Remote Resonance alternate, increasing attack or affinity when conditions are met.",
+      "secondaryDesc": "(When quest starts) Local and Remote Resonance alternate, increasing attack or affinity when conditions are met."
     }
   ]
 }

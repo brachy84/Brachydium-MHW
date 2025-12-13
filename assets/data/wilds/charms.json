@@ -1649,6 +1649,136 @@
       "primaryLv": 1,
       "secondaryLv": 1,
       "ternaryLv": 0
+    },
+    {
+      "name": "unscathed-charm-iii",
+      "rarity": 1,
+      "primary": "peak-performance",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "fury-charm-iii",
+      "rarity": 1,
+      "primary": "resentment",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "mighty-charm-iii",
+      "rarity": 1,
+      "primary": "maximum-might",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "friendship-charm-v",
+      "rarity": 1,
+      "primary": "wide-range",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 5,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "grit-charm-iv",
+      "rarity": 1,
+      "primary": "heroics",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "foray-charm-iii",
+      "rarity": 1,
+      "primary": "foray",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "chain-charm-iii",
+      "rarity": 1,
+      "primary": "burst",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "counterattack-charm-iii",
+      "rarity": 1,
+      "primary": "adrenaline-rush",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "descent-charm-iii",
+      "rarity": 1,
+      "primary": "ambush",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 3,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "imbibe-charm-ii",
+      "rarity": 1,
+      "primary": "elemental-absorption",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 2,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "hope-charm",
+      "rarity": 1,
+      "primary": "recovery-up",
+      "secondary": "self-improvement",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 1,
+      "ternaryLv": 0
+    },
+    {
+      "name": "maintenance-charm-iv",
+      "rarity": 1,
+      "primary": "tool-specialist",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 4,
+      "secondaryLv": 0,
+      "ternaryLv": 0
+    },
+    {
+      "name": "rice-ball-charm",
+      "rarity": 1,
+      "primary": "rice-ball",
+      "secondary": "",
+      "ternary": "",
+      "primaryLv": 1,
+      "secondaryLv": 0,
+      "ternaryLv": 0
     }
   ]
 }

@@ -4,7 +4,8 @@
       "id": "test",
       "minVersion": "1.0.0",
       "availableSince": "2025-04-27",
-      "updateVersion": 0
+      "updateVersion": 0,
+      "ignore": true
     }
   ]
 }

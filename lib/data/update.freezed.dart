@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -19,6 +18,7 @@ mixin _$Update {
   String get minVersion;
   DateTime get availableSince;
   int get updateVersion;
+  bool get ignore;
 
   /// Create a copy of Update
   /// with the given fields replaced by the non-null parameter values.
@@ -41,17 +41,18 @@ mixin _$Update {
             (identical(other.availableSince, availableSince) ||
                 other.availableSince == availableSince) &&
             (identical(other.updateVersion, updateVersion) ||
-                other.updateVersion == updateVersion));
+                other.updateVersion == updateVersion) &&
+            (identical(other.ignore, ignore) || other.ignore == ignore));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, minVersion, availableSince, updateVersion);
+  int get hashCode => Object.hash(
+      runtimeType, id, minVersion, availableSince, updateVersion, ignore);
 
   @override
   String toString() {
-    return 'Update(id: $id, minVersion: $minVersion, availableSince: $availableSince, updateVersion: $updateVersion)';
+    return 'Update(id: $id, minVersion: $minVersion, availableSince: $availableSince, updateVersion: $updateVersion, ignore: $ignore)';
   }
 }
 
@@ -64,7 +65,8 @@ abstract mixin class $UpdateCopyWith<$Res> {
       {String id,
       String minVersion,
       DateTime availableSince,
-      int updateVersion});
+      int updateVersion,
+      bool ignore});
 }
 
 /// @nodoc
@@ -83,6 +85,7 @@ class _$UpdateCopyWithImpl<$Res> implements $UpdateCopyWith<$Res> {
     Object? minVersion = null,
     Object? availableSince = null,
     Object? updateVersion = null,
+    Object? ignore = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -101,7 +104,177 @@ class _$UpdateCopyWithImpl<$Res> implements $UpdateCopyWith<$Res> {
           ? _self.updateVersion
           : updateVersion // ignore: cast_nullable_to_non_nullable
               as int,
+      ignore: null == ignore
+          ? _self.ignore
+          : ignore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [Update].
+extension UpdatePatterns on Update {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Update value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Update() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Update value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Update():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Update value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Update() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, String minVersion, DateTime availableSince,
+            int updateVersion, bool ignore)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Update() when $default != null:
+        return $default(_that.id, _that.minVersion, _that.availableSince,
+            _that.updateVersion, _that.ignore);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String minVersion, DateTime availableSince,
+            int updateVersion, bool ignore)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Update():
+        return $default(_that.id, _that.minVersion, _that.availableSince,
+            _that.updateVersion, _that.ignore);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String id, String minVersion, DateTime availableSince,
+            int updateVersion, bool ignore)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Update() when $default != null:
+        return $default(_that.id, _that.minVersion, _that.availableSince,
+            _that.updateVersion, _that.ignore);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -112,7 +285,8 @@ class _Update implements Update {
       {required this.id,
       required this.minVersion,
       required this.availableSince,
-      this.updateVersion = 0});
+      this.updateVersion = 0,
+      this.ignore = false});
   factory _Update.fromJson(Map<String, dynamic> json) => _$UpdateFromJson(json);
 
   @override
@@ -124,6 +298,9 @@ class _Update implements Update {
   @override
   @JsonKey()
   final int updateVersion;
+  @override
+  @JsonKey()
+  final bool ignore;
 
   /// Create a copy of Update
   /// with the given fields replaced by the non-null parameter values.
@@ -151,17 +328,18 @@ class _Update implements Update {
             (identical(other.availableSince, availableSince) ||
                 other.availableSince == availableSince) &&
             (identical(other.updateVersion, updateVersion) ||
-                other.updateVersion == updateVersion));
+                other.updateVersion == updateVersion) &&
+            (identical(other.ignore, ignore) || other.ignore == ignore));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, minVersion, availableSince, updateVersion);
+  int get hashCode => Object.hash(
+      runtimeType, id, minVersion, availableSince, updateVersion, ignore);
 
   @override
   String toString() {
-    return 'Update(id: $id, minVersion: $minVersion, availableSince: $availableSince, updateVersion: $updateVersion)';
+    return 'Update(id: $id, minVersion: $minVersion, availableSince: $availableSince, updateVersion: $updateVersion, ignore: $ignore)';
   }
 }
 
@@ -175,7 +353,8 @@ abstract mixin class _$UpdateCopyWith<$Res> implements $UpdateCopyWith<$Res> {
       {String id,
       String minVersion,
       DateTime availableSince,
-      int updateVersion});
+      int updateVersion,
+      bool ignore});
 }
 
 /// @nodoc
@@ -194,6 +373,7 @@ class __$UpdateCopyWithImpl<$Res> implements _$UpdateCopyWith<$Res> {
     Object? minVersion = null,
     Object? availableSince = null,
     Object? updateVersion = null,
+    Object? ignore = null,
   }) {
     return _then(_Update(
       id: null == id
@@ -212,6 +392,10 @@ class __$UpdateCopyWithImpl<$Res> implements _$UpdateCopyWith<$Res> {
           ? _self.updateVersion
           : updateVersion // ignore: cast_nullable_to_non_nullable
               as int,
+      ignore: null == ignore
+          ? _self.ignore
+          : ignore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
