@@ -44,9 +44,9 @@ void main() async {
   _packageInfo = await PackageInfo.fromPlatform();
   log.info("App version ${packageInfo.version}");
   await All.init(); // total data size (armor, deco, charm, skill) around 140 KB
-  All.saveAll();
+  //All.saveAll();
   //await All.checkWebUpdate("tu2_and_tu3");
-  /*await SearchManager.init();
+  await SearchManager.init();
   await Profile.init();
   //testSearch();
   // init window size
@@ -56,7 +56,7 @@ void main() async {
     setWindowMinSize(const Size(340, 600));
   }
   // run app
-  runApp(const BrachysArmorSetSearcherApp());*/
+  runApp(const BrachysArmorSetSearcherApp());
 }
 
 class BrachysArmorSetSearcherApp extends StatelessWidget {

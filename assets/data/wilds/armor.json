@@ -13504,7 +13504,7 @@
     {
       "name": "lagiacrus-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "maximum-might",
       "secondary": "latent-power",
       "ternary": "",
@@ -13527,7 +13527,7 @@
     {
       "name": "lagiacrus-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "stamina-surge",
       "ternary": "thunder-resistance",
@@ -13550,7 +13550,7 @@
     {
       "name": "lagiacrus-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "stamina-surge",
       "ternary": "aquaticoilsilt-mobility",
@@ -13573,7 +13573,7 @@
     {
       "name": "lagiacrus-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "maximum-might",
       "ternary": "aquaticoilsilt-mobility",
@@ -13596,7 +13596,7 @@
     {
       "name": "lagiacrus-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "latent-power",
       "ternary": "thunder-resistance",
@@ -13619,7 +13619,7 @@
     {
       "name": "lagiacrus-b-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "maximum-might",
       "secondary": "",
       "ternary": "",
@@ -13642,7 +13642,7 @@
     {
       "name": "lagiacrus-b-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "stamina-surge",
       "ternary": "",
@@ -13665,7 +13665,7 @@
     {
       "name": "lagiacrus-b-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "stamina-surge",
       "ternary": "",
@@ -13688,7 +13688,7 @@
     {
       "name": "lagiacrus-b-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "maximum-might",
       "ternary": "",
@@ -13711,7 +13711,7 @@
     {
       "name": "lagiacrus-b-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "weakness-exploit",
       "secondary": "latent-power",
       "ternary": "",
@@ -13734,7 +13734,7 @@
     {
       "name": "seregios-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "adrenaline-rush",
       "secondary": "bleeding-resistance",
       "ternary": "counterstrike",
@@ -13757,7 +13757,7 @@
     {
       "name": "seregios-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "evade-window",
       "secondary": "agitator",
       "ternary": "counterstrike",
@@ -13780,7 +13780,7 @@
     {
       "name": "seregios-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "adrenaline-rush",
       "secondary": "evade-extender",
       "ternary": "",
@@ -13803,7 +13803,7 @@
     {
       "name": "seregios-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "evade-window",
       "secondary": "agitator",
       "ternary": "bleeding-resistance",
@@ -13826,7 +13826,7 @@
     {
       "name": "seregios-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "adrenaline-rush",
       "secondary": "agitator",
       "ternary": "bleeding-resistance",
@@ -13849,7 +13849,7 @@
     {
       "name": "seregios-b-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "adrenaline-rush",
       "secondary": "bleeding-resistance",
       "ternary": "",
@@ -13872,7 +13872,7 @@
     {
       "name": "seregios-b-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "evade-window",
       "secondary": "agitator",
       "ternary": "",
@@ -13895,7 +13895,7 @@
     {
       "name": "seregios-b-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "adrenaline-rush",
       "secondary": "",
       "ternary": "",
@@ -13918,7 +13918,7 @@
     {
       "name": "seregios-b-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "evade-window",
       "secondary": "agitator",
       "ternary": "",
@@ -13941,7 +13941,7 @@
     {
       "name": "seregios-b-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "adrenaline-rush",
       "secondary": "agitator",
       "ternary": "",
@@ -13964,7 +13964,7 @@
     {
       "name": "uth-duna-g-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "peak-performance",
       "secondary": "earplugs",
       "ternary": "",
@@ -13987,7 +13987,7 @@
     {
       "name": "uth-duna-g-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "peak-performance",
       "secondary": "earplugs",
       "ternary": "",
@@ -14010,7 +14010,7 @@
     {
       "name": "uth-duna-g-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "tool-specialist",
       "secondary": "agitator",
       "ternary": "",
@@ -14033,7 +14033,7 @@
     {
       "name": "uth-duna-g-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "tool-specialist",
       "secondary": "",
       "ternary": "",
@@ -14056,7 +14056,7 @@
     {
       "name": "uth-duna-g-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "quick-sheathe",
       "secondary": "agitator",
       "ternary": "",
@@ -14079,7 +14079,7 @@
     {
       "name": "nu-udra-g-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "burst",
       "secondary": "",
       "ternary": "",
@@ -14102,7 +14102,7 @@
     {
       "name": "nu-udra-g-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "counterstrike",
       "secondary": "",
       "ternary": "",
@@ -14125,7 +14125,7 @@
     {
       "name": "nu-udra-g-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "resentment",
       "secondary": "",
       "ternary": "",
@@ -14148,7 +14148,7 @@
     {
       "name": "nu-udra-g-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "burst",
       "secondary": "ambush",
       "ternary": "",
@@ -14171,7 +14171,7 @@
     {
       "name": "nu-udra-g-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "resentment",
       "secondary": "counterstrike",
       "ternary": "speed-eating",
@@ -14194,7 +14194,7 @@
     {
       "name": "afi-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "bombardier",
       "secondary": "fire-resistance",
       "ternary": "",
@@ -14217,7 +14217,7 @@
     {
       "name": "afi-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "burst",
       "secondary": "heroics",
       "ternary": "",
@@ -14240,7 +14240,7 @@
     {
       "name": "afi-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "burst",
       "secondary": "",
       "ternary": "",
@@ -14263,7 +14263,7 @@
     {
       "name": "afi-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "burst",
       "secondary": "blast-resistance",
       "ternary": "fire-resistance",
@@ -14286,7 +14286,7 @@
     {
       "name": "afi-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "burst",
       "secondary": "bombardier",
       "ternary": "blast-resistance",
@@ -14309,7 +14309,7 @@
     {
       "name": "diver-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "ambush",
       "secondary": "",
       "ternary": "",
@@ -14332,7 +14332,7 @@
     {
       "name": "diver-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "hunger-resistance",
       "secondary": "leap-of-faith",
       "ternary": "",
@@ -14355,7 +14355,7 @@
     {
       "name": "diver-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "ambush",
       "secondary": "marathon-runner",
       "ternary": "",
@@ -14378,7 +14378,7 @@
     {
       "name": "diver-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "aquaticoilsilt-mobility",
       "secondary": "hunger-resistance",
       "ternary": "",
@@ -14401,7 +14401,7 @@
     {
       "name": "diver-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "aquaticoilsilt-mobility",
       "secondary": "marathon-runner",
       "ternary": "",
@@ -14424,7 +14424,7 @@
     {
       "name": "dreamwalker-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "flayer",
       "secondary": "ambush",
       "ternary": "wide-range",
@@ -14447,7 +14447,7 @@
     {
       "name": "dreamwalker-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "flayer",
       "secondary": "wide-range",
       "ternary": "sleep-resistance",
@@ -14470,7 +14470,7 @@
     {
       "name": "dreamwalker-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "flayer",
       "secondary": "sleep-resistance",
       "ternary": "",
@@ -14493,7 +14493,7 @@
     {
       "name": "dreamwalker-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "flayer",
       "secondary": "ambush",
       "ternary": "",
@@ -14516,7 +14516,7 @@
     {
       "name": "dreamwalker-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "flayer",
       "secondary": "wide-range",
       "ternary": "",
@@ -14539,7 +14539,7 @@
     {
       "name": "harvest-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "resentment",
       "secondary": "botanist",
       "ternary": "",
@@ -14562,7 +14562,7 @@
     {
       "name": "harvest-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "resentment",
       "secondary": "mushroomancer",
       "ternary": "",
@@ -14585,7 +14585,7 @@
     {
       "name": "harvest-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "constitution",
       "secondary": "mushroomancer",
       "ternary": "free-meal",
@@ -14608,7 +14608,7 @@
     {
       "name": "harvest-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "constitution",
       "secondary": "free-meal",
       "ternary": "botanist",
@@ -14631,7 +14631,7 @@
     {
       "name": "harvest-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "constitution",
       "secondary": "botanist",
       "ternary": "",
@@ -14654,7 +14654,7 @@
     {
       "name": "akuma-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "partbreaker",
       "secondary": "",
       "ternary": "",
@@ -14677,7 +14677,7 @@
     {
       "name": "akuma-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "heroics",
       "secondary": "",
       "ternary": "",
@@ -14700,7 +14700,7 @@
     {
       "name": "akuma-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "partbreaker",
       "secondary": "",
       "ternary": "",
@@ -14723,7 +14723,7 @@
     {
       "name": "akuma-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "evade-window",
       "secondary": "",
       "ternary": "",
@@ -14746,7 +14746,7 @@
     {
       "name": "akuma-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "partbreaker",
       "secondary": "",
       "ternary": "",
@@ -14769,7 +14769,7 @@
     {
       "name": "bale-armor-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "resentment",
       "secondary": "maximum-might",
       "ternary": "",
@@ -14792,7 +14792,7 @@
     {
       "name": "bale-armor-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "quick-sheathe",
       "secondary": "latent-power",
       "ternary": "",
@@ -14815,7 +14815,7 @@
     {
       "name": "bale-armor-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "latent-power",
       "secondary": "maximum-might",
       "ternary": "resentment",
@@ -14838,7 +14838,7 @@
     {
       "name": "bale-armor-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "resentment",
       "secondary": "constitution",
       "ternary": "",
@@ -14861,7 +14861,7 @@
     {
       "name": "bale-armor-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "resentment",
       "secondary": "latent-power",
       "ternary": "",
@@ -14884,7 +14884,7 @@
     {
       "name": "omega-attire-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "weakness-exploit",
       "secondary": "divine-blessing",
       "ternary": "",
@@ -14907,7 +14907,7 @@
     {
       "name": "omega-attire-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "partbreaker",
       "secondary": "",
       "ternary": "",
@@ -14930,7 +14930,7 @@
     {
       "name": "omega-attire-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "agitator",
       "secondary": "divine-blessing",
       "ternary": "",
@@ -14953,7 +14953,7 @@
     {
       "name": "omega-attire-a-waist",
       "part": "waist",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "burst",
       "secondary": "divine-blessing",
       "ternary": "",
@@ -14976,7 +14976,7 @@
     {
       "name": "omega-attire-a-leg",
       "part": "leg",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "evade-window",
       "secondary": "",
       "ternary": "",
@@ -14999,7 +14999,7 @@
     {
       "name": "faux-felyne-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "palico-rally",
       "secondary": "",
       "ternary": "",
@@ -15022,7 +15022,7 @@
     {
       "name": "pinion-necklace-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 7,
       "primary": "heroics",
       "secondary": "agitator",
       "ternary": "",
@@ -15045,7 +15045,7 @@
     {
       "name": "hawkheart-jacket-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "constitution",
       "secondary": "quick-sheathe",
       "ternary": "",
@@ -15068,7 +15068,7 @@
     {
       "name": "half-rim-glasses-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "wide-range",
       "secondary": "",
       "ternary": "",
@@ -15091,7 +15091,7 @@
     {
       "name": "lovely-shades-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "mushroomancer",
       "secondary": "",
       "ternary": "",
@@ -15114,7 +15114,7 @@
     {
       "name": "doshagumask-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "latent-power",
       "secondary": "stamina-surge",
       "ternary": "recovery-up",
@@ -15137,7 +15137,7 @@
     {
       "name": "toe-bean-mittens-a-arm",
       "part": "arm",
-      "rarity": 1,
+      "rarity": 5,
       "primary": "item-prolonger",
       "secondary": "bombardier",
       "ternary": "",
@@ -15160,7 +15160,7 @@
     {
       "name": "gelidron-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "speed-eating",
       "secondary": "hunger-resistance",
       "ternary": "free-meal",
@@ -15183,7 +15183,7 @@
     {
       "name": "gelidron-a-chest",
       "part": "chest",
-      "rarity": 1,
+      "rarity": 6,
       "primary": "speed-eating",
       "secondary": "hunger-resistance",
       "ternary": "free-meal",
@@ -15206,7 +15206,7 @@
     {
       "name": "aviator-shades-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "windproof",
       "secondary": "tool-specialist",
       "ternary": "",
@@ -15229,7 +15229,7 @@
     {
       "name": "kitten-frames-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "ambush",
       "secondary": "evade-extender",
       "ternary": "jump-master",
@@ -15252,7 +15252,7 @@
     {
       "name": "skull-mask-a-head",
       "part": "head",
-      "rarity": 1,
+      "rarity": 8,
       "primary": "intimidator",
       "secondary": "earplugs",
       "ternary": "",
